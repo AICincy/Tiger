@@ -1,0 +1,19 @@
+# Raw Overpass snapshots — large (~1 MB each) and reproducible from a fresh run.
+tiger_audit_*/data/*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
