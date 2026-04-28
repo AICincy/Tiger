@@ -115,13 +115,58 @@ CDN; all defect data is embedded.
 
 - Six-card sidebar (Total / Residential / Class AB / Class A / Class B / Node Gaps).
 - Layer toggles per defect class + node-disconnect markers + density heatmap.
-- Satellite imagery toggle (Esri World Imagery).
+- **Multi-source basemap selector** with token support — see below.
 - Street-name search.
 - Live viewport stats (segments/streets/gaps in the current view).
 - "Export visible" buttons for GeoJSON or CSV — only what's in the current
   viewport, ready to hand to a volunteer for that neighborhood.
 - Every way and every gap has a popup with deep links to OSM, the iD editor at
   that location, and JOSM Remote Control.
+
+#### Basemap options
+
+The dashboard's "Basemap" dropdown switches between several free imagery / road
+tile sources. The current selection (and any custom URL or token) is persisted
+in browser `localStorage` — never embedded in the committed HTML and never sent
+anywhere except to the tile server you select.
+
+| Option | Provider | Notes |
+|---|---|---|
+| CARTO Voyager *(default)* | CARTO | Vector road basemap derived from OSM |
+| CARTO Positron | CARTO | Light, low-contrast — good for screenshots |
+| OpenStreetMap Standard | OSMF | Standard OSM tiles |
+| Esri World Imagery | Esri | Satellite, public-tier |
+| Esri World Imagery (Clarity) | Esri | Sharper / Firefly-style imagery |
+| USGS National Map — Imagery | USGS | NAIP-derived; very crisp at high zoom in OH |
+| USGS National Map — Topo | USGS | Standard USGS topographic tiles |
+| Esri World Topographic | Esri | Topo with road labels |
+| **Ohio OSIP** *(best-effort)* | OGRIP / Ohio | 6-inch / 15 cm imagery; URL is best-effort and may need adjustment per service availability |
+| **Custom (URL + token)** | any | See below |
+
+#### Premium / authenticated content (your USGS / ArcGIS Online token)
+
+The "Premium / Custom" panel accepts a tile URL template and an optional token.
+Use it for ArcGIS Online services that require authentication — e.g.
+[Wayback Imagery](https://livingatlas.arcgis.com/wayback/), federal Living Atlas
+content, or your organization's hosted layers.
+
+1. Paste a URL template with `{z}/{x}/{y}` (or `{z}/{y}/{x}` — Esri uses the
+   latter) into the Custom URL box. Examples:
+   - Wayback for a specific release date:
+     `https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/<release>/{z}/{y}/{x}`
+   - Any ArcGIS Online hosted MapServer: paste the Service URL +
+     `/tile/{z}/{y}/{x}`
+2. Paste your ArcGIS token in the second box.
+3. Pick "Custom (uses URL + token below)" from the Basemap dropdown.
+
+The dashboard appends `?token=...` (URL-encoded) when fetching tiles. Token and
+URL live in `localStorage` only; they are not written to the dashboard HTML, the
+git repo, or any committed file. Closing the browser tab keeps them; clearing
+site data wipes them.
+
+> **Don't paste org-issued tokens into a dashboard you intend to share.** A
+> shared HTML file plus a screen-shared browser session would expose the token
+> via `localStorage`. The token field is for your own local browsing.
 
 ---
 

@@ -711,7 +711,33 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 <div class="lt"><input type="checkbox" id="lc"><span class="sw" style="background:#999;width:14px;height:4px"></span><label for="lc">Class C Unreviewed</label></div>
 <div class="lt"><input type="checkbox" id="lgap" checked><span class="sw" style="background:#9C27B0;width:10px;height:10px;border-radius:50%"></span><label for="lgap">Node disconnect points</label></div>
 <div class="lt"><input type="checkbox" id="lheat"><span class="sw" style="background:linear-gradient(90deg,blue,yellow,red);width:30px;height:8px"></span><label for="lheat">Density heatmap</label></div>
-<div style="margin-top:8px"><div class="lt"><input type="checkbox" id="lsat"><label for="lsat">Satellite imagery</label></div></div>
+</div>
+<div class="sec"><h3>Basemap</h3>
+<select id="bmsel" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;background:white">
+<optgroup label="Vector / road">
+<option value="carto-voyager">CARTO Voyager (default)</option>
+<option value="carto-positron">CARTO Positron (light)</option>
+<option value="osm">OpenStreetMap Standard</option>
+</optgroup>
+<optgroup label="Imagery (free)">
+<option value="esri-imagery">Esri World Imagery</option>
+<option value="esri-clarity">Esri World Imagery (Clarity)</option>
+<option value="usgs-imagery">USGS National Map - Imagery</option>
+<option value="osip">Ohio OSIP (6-inch, best-effort)</option>
+</optgroup>
+<optgroup label="Topo">
+<option value="usgs-topo">USGS National Map - Topo</option>
+<option value="esri-topo">Esri World Topographic</option>
+</optgroup>
+<optgroup label="Authenticated">
+<option value="custom">Custom (uses URL + token below)</option>
+</optgroup>
+</select>
+</div>
+<div class="sec"><h3>Premium / Custom</h3>
+<input type="text" id="agurl" placeholder="Tile URL with {z}/{x}/{y} or {z}/{y}/{x}" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-family:monospace">
+<input type="password" id="agtok" placeholder="ArcGIS token (optional)" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;margin-top:6px">
+<div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Stored in your browser's localStorage; never embedded in this file or transmitted anywhere except to the tile server you specify.</div>
 </div>
 <div class="sec"><h3>Search</h3>
 <input type="text" id="search" placeholder="Street name...">
@@ -732,10 +758,41 @@ var CW={AB:4,A:3,B:2.5,C:1.5};
 var CN={AB:'Compound (A+B)',A:'False One-Way',B:'Multi-Segment',C:'Unreviewed'};
 
 var map=L.map('map',{zoomControl:true}).setView(__CENTER__,13);
-var stT=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
-  attribution:'OpenStreetMap, CARTO',subdomains:'abcd',maxZoom:20}).addTo(map);
-var saT=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
-  attribution:'Esri',maxZoom:19});
+
+var BMS={
+  'carto-voyager':{url:'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
+  'carto-positron':{url:'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
+  'osm':{url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',opts:{subdomains:'abc',maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}},
+  'esri-imagery':{url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, USDA, USGS, AeroGRID, IGN'}},
+  'esri-clarity':{url:'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Firefly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Esri Clarity / Firefly'}},
+  'usgs-imagery':{url:'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:18,attribution:'USGS National Map: Imagery'}},
+  'usgs-topo':{url:'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:18,attribution:'USGS National Map: Topo'}},
+  'esri-topo':{url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Tiles &copy; Esri'}},
+  'osip':{url:'https://gis5.oit.ohio.gov/arcgis/rest/services/OSIP/OSIP_Latest/ImageServer/tile/{z}/{y}/{x}',opts:{maxZoom:20,attribution:'OGRIP / Ohio Statewide Imagery Program'}}
+};
+
+var curBM=null;
+function setBasemap(key){
+  if(curBM){map.removeLayer(curBM);curBM=null;}
+  var url, opts;
+  if(key==='custom'){
+    var tpl=(document.getElementById('agurl').value||'').trim();
+    var tok=(document.getElementById('agtok').value||'').trim();
+    if(!tpl){
+      alert('Paste a custom tile URL (with {z}/{x}/{y} placeholders) into the Premium/Custom box first.');
+      document.getElementById('bmsel').value='carto-voyager';
+      setBasemap('carto-voyager');return;
+    }
+    url=tok?(tpl+(tpl.indexOf('?')>=0?'&':'?')+'token='+encodeURIComponent(tok)):tpl;
+    opts={maxZoom:20,attribution:'Custom tile source'+(tok?' (token-authenticated)':'')};
+  } else {
+    var b=BMS[key]||BMS['carto-voyager'];
+    url=b.url;opts=b.opts;
+  }
+  curBM=L.tileLayer(url,opts).addTo(map);
+  curBM.bringToBack();
+  try{localStorage.setItem('tigerBmKey',key);}catch(e){}
+}
 
 var ly={AB:L.layerGroup(),A:L.layerGroup(),B:L.layerGroup(),C:L.layerGroup()};
 var gL=L.layerGroup(),hL=null,aP=[];
@@ -790,10 +847,27 @@ document.getElementById('lheat').addEventListener('change',function(){
   }else if(hL)map.removeLayer(hL);
 });
 
-document.getElementById('lsat').addEventListener('change',function(){
-  if(this.checked){map.removeLayer(stT);saT.addTo(map);}
-  else{map.removeLayer(saT);stT.addTo(map);}
-});
+// Basemap selector + token persistence (token never leaves the browser).
+(function initBasemap(){
+  var bmEl=document.getElementById('bmsel'),tokEl=document.getElementById('agtok'),urlEl=document.getElementById('agurl');
+  try{
+    tokEl.value=localStorage.getItem('tigerArcgisToken')||'';
+    urlEl.value=localStorage.getItem('tigerCustomUrl')||'';
+  }catch(e){}
+  var saved='carto-voyager';
+  try{saved=localStorage.getItem('tigerBmKey')||'carto-voyager';}catch(e){}
+  if(bmEl.querySelector('option[value="'+saved+'"]'))bmEl.value=saved;
+  setBasemap(bmEl.value);
+  bmEl.addEventListener('change',function(){setBasemap(this.value);});
+  tokEl.addEventListener('input',function(){
+    try{localStorage.setItem('tigerArcgisToken',this.value);}catch(e){}
+    if(bmEl.value==='custom')setBasemap('custom');
+  });
+  urlEl.addEventListener('input',function(){
+    try{localStorage.setItem('tigerCustomUrl',this.value);}catch(e){}
+    if(bmEl.value==='custom')setBasemap('custom');
+  });
+})();
 
 function uvs(){
   var b=map.getBounds(),v={t:0,AB:0,A:0,B:0,C:0,gp:0,st:new Set()};
