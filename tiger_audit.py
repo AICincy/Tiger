@@ -745,7 +745,9 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 <div class="sec"><h3>Premium / Custom</h3>
 <input type="text" id="agurl" placeholder="Tile URL with {z}/{x}/{y} or {z}/{y}/{x}" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-family:monospace">
 <input type="password" id="agtok" placeholder="ArcGIS token (optional)" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;margin-top:6px">
-<div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Stored in your browser's localStorage; never embedded in this file or transmitted anywhere except to the tile server you specify.</div>
+<input type="text" id="agportal" placeholder="Portal URL (e.g. geoplatform.maps.arcgis.com)" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-family:monospace;margin-top:6px">
+<button class="eb" id="getTokenBtn" style="margin-top:6px;width:100%;font-size:11px">Get token via OAuth (signs in with SSO)</button>
+<div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Token + URL stored in your browser's localStorage; never embedded in this file or transmitted anywhere except to the tile server you specify.</div>
 </div>
 <div class="sec"><h3>Search</h3>
 <input type="text" id="search" placeholder="Street name...">
@@ -913,11 +915,13 @@ document.getElementById('lheat').addEventListener('change',function(){
 // Basemap selector + token persistence (token never leaves the browser).
 (function initBasemap(){
   var bmEl=document.getElementById('bmsel'),tokEl=document.getElementById('agtok'),urlEl=document.getElementById('agurl');
-  var wbEl=document.getElementById('waybackRel');
+  var wbEl=document.getElementById('waybackRel'),portalEl=document.getElementById('agportal');
+  var getTokenBtn=document.getElementById('getTokenBtn');
   try{
     tokEl.value=localStorage.getItem('tigerArcgisToken')||'';
     urlEl.value=localStorage.getItem('tigerCustomUrl')||'';
-  }catch(e){}
+    portalEl.value=localStorage.getItem('tigerPortal')||'https://www.arcgis.com';
+  }catch(e){portalEl.value='https://www.arcgis.com';}
   var saved='carto-voyager';
   try{saved=localStorage.getItem('tigerBmKey')||'carto-voyager';}catch(e){}
   if(bmEl.querySelector('option[value="'+saved+'"]'))bmEl.value=saved;
@@ -935,6 +939,32 @@ document.getElementById('lheat').addEventListener('change',function(){
   urlEl.addEventListener('input',function(){
     try{localStorage.setItem('tigerCustomUrl',this.value);}catch(e){}
     if(bmEl.value==='custom')setBasemap('custom');
+  });
+  portalEl.addEventListener('input',function(){
+    try{localStorage.setItem('tigerPortal',this.value);}catch(e){}
+  });
+  // OAuth helper: opens portal's OAuth implicit endpoint with arcgisonline
+  // (pre-registered built-in client, works for any signed-in user regardless
+  // of role). Out-of-band redirect_uri shows the token in plain text on the
+  // resulting page; the user copies it back into the token field.
+  getTokenBtn.addEventListener('click',function(){
+    var portal=(portalEl.value||'https://www.arcgis.com').trim().replace(/[/]+$/,'');
+    if(!/^https?:[/][/]/i.test(portal))portal='https://'+portal;
+    var oauth=portal+'/sharing/rest/oauth2/authorize'+
+      '?client_id=arcgisonline'+
+      '&response_type=token'+
+      '&expiration=20160'+
+      '&redirect_uri='+encodeURIComponent('urn:ietf:wg:oauth:2.0:oob');
+    var w=window.open(oauth,'_blank','width=700,height=800');
+    if(!w){
+      alert('Popup blocked. Allow popups for this page, or open this URL manually:\n\n'+oauth);
+      return;
+    }
+    // Show a quick instruction overlay
+    var inst=document.createElement('div');
+    inst.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1F4E79;color:#fff;padding:16px 20px;border-radius:8px;font-size:13px;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,0.3);max-width:380px;line-height:1.5';
+    inst.innerHTML='<b>Sign in via your portal&rsquo;s SSO</b><br>The popup will redirect through Login.gov / your IdP, then show a page with a long token string.<br><br>Copy the token, close the popup, and paste it into the <b>ArcGIS token</b> field. <button style="background:#fff;color:#1F4E79;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;margin-top:6px;font-weight:bold" onclick="this.parentElement.remove()">Got it</button>';
+    document.body.appendChild(inst);
   });
 })();
 

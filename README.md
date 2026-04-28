@@ -229,41 +229,61 @@ will validate when the dashboard opens from `file://` or localhost — but note
 the token is bound to that referer, so don't paste it into a dashboard hosted
 elsewhere.
 
-### B) Federated SSO account (e.g. USGS via Login.gov)
+### B) Federated SSO account (e.g. USGS / GeoPlatform via Login.gov)
 
-The `generateToken` endpoint won't accept your federated password. Three
-options, easiest first:
+The `generateToken` endpoint won't accept your federated password, and pasting
+`https://*.maps.arcgis.com/sharing/rest/community/self?f=pjson` directly into a
+tab often returns `{"error": {"code": 400, "message": "Not logged in."}}` —
+that's because federated SSO sessions don't always propagate cookies across
+all `*.arcgis.com` subdomains. Use OAuth instead.
 
-**1. Browser-session shortcut (≈30 s).**
-Sign in to <https://www.arcgis.com> with your federated identity. Then visit:
+**1. One-click button in the dashboard *(easiest)*.**
+The dashboard sidebar has a **"Get token via OAuth (signs in with SSO)"**
+button. Steps:
+
+  - Type your portal URL into the "Portal URL" field — e.g.
+    `https://geoplatform.maps.arcgis.com` (defaults to `https://www.arcgis.com`).
+  - Click the button. A popup opens, redirects through your IdP (Login.gov or
+    your org's SSO), then displays the token as plain text on the OAuth
+    success page.
+  - Copy the token, close the popup, paste it into the **ArcGIS token** field.
+
+Under the hood the button opens:
 
 ```
-https://www.arcgis.com/sharing/rest/portals/self?f=json
+https://<your-portal>/sharing/rest/oauth2/authorize
+  ?client_id=arcgisonline
+  &response_type=token
+  &expiration=20160
+  &redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-Open DevTools → Network → click that request. Look at the request URL — it
-includes `&token=<long-string>`. Copy it. Lasts ~2 hours, refreshable by
-revisiting the URL while signed in.
+`client_id=arcgisonline` is a **pre-registered built-in OAuth client on every
+AGOL portal** — it works regardless of your role (Viewer, Creator, Publisher,
+or Admin). You don't need to register a developer app. `expiration=20160` is
+14 days (the max for refresh-less tokens).
 
-**2. OAuth 2.0 token via a registered app.**
-At <https://developers.arcgis.com/applications> create a free "OAuth 2.0
-client" app, copy its `client_id`, then visit:
-
-```
-https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=token&redirect_uri=urn:ietf:wg:oauth:2.0:oob&expiration=20160
-```
-
-Sign in via Login.gov (your federated provider). The success page displays the
-token as plain text. `expiration=20160` is 14 days (the max for refresh-less
-access tokens).
-
-**3. ArcGIS Pro / ArcMap "Get Tokens".**
+**2. ArcGIS Pro / ArcMap "Get Tokens".**
 If you have ArcGIS Pro installed and signed in, the Portal panel has a "Get
 Tokens" action that issues a long-lived token bound to your portal account.
+
+**3. Network-tab harvest.**
+While signed in to your org subdomain (e.g. `geoplatform.maps.arcgis.com`),
+DevTools → Network → filter `token=` → trigger any API call (avatar menu,
+content browse, etc.) → copy `&token=<long>` from any matching request URL.
 
 For all three: the token never has to be saved to disk. Paste it into the
 dashboard once; `localStorage` keeps it across reloads of that file in that
 browser only.
+
+#### "Not logged in" troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `community/self` returns `{"error": {"code": 400, "message": "Not logged in."}}` even though you signed in via the org's web app | Federated SSO session is scoped to one app/subdomain; cookies aren't sent to other `*.arcgis.com` paths | Use the OAuth button (option 1) — it forces a fresh auth round-trip and bypasses cookie scope entirely |
+| OAuth popup shows `Invalid client_id` | Your portal restricts the public `arcgisonline` client | Register a personal OAuth app at `https://developers.arcgis.com/applications/` (Creator role can do this) and substitute its `client_id` |
+| Token validates against `community/self` but `ibasemaps-api.arcgis.com` returns 401 | Token's referer policy doesn't match | Use a tile URL on your **org subdomain** (e.g. `https://<org>.maps.arcgis.com/server/...`) instead of the cross-subscription `ibasemaps-api` host |
+| Token works in browser but expires after a few hours | Default expiration | Pass `expiration=20160` (14 days) when generating |
 
 ### What the strings on the "License Strings" page are NOT for
 
