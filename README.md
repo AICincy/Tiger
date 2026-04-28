@@ -168,6 +168,112 @@ site data wipes them.
 > shared HTML file plus a screen-shared browser session would expose the token
 > via `localStorage`. The token field is for your own local browsing.
 
+#### Wayback Imagery (date-stamped historical satellite)
+
+Picking **Esri Wayback (date selector)** from the basemap dropdown reveals a
+"Wayback Release" panel. The dashboard fetches Esri's release manifest at
+`https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json`
+and populates the dropdown with every dated capture (typically 60–80 going back
+to 2014-02-20). Picking a release switches the tile URL to the corresponding
+WMTS layer:
+
+```
+https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/<release>/{z}/{y}/{x}
+```
+
+Wayback is free / unauthenticated for normal viewing — no token needed. The
+selected release persists in `localStorage`.
+
+The practical use for this audit: when you spot a Class AB or node-disconnect
+candidate, flip through 2-3 Wayback dates to confirm the road geometry on the
+ground actually disagrees with what's tagged. If imagery from 2014 already
+shows the road connected and OSM still has a gap, that's a high-confidence fix.
+
+---
+
+## Generating an ArcGIS Online token
+
+Most options in the basemap dropdown work without authentication. You only need
+a token for **paid Living Atlas content, premium subscriber layers, or hosted
+services in your AGOL organization**. Two paths depending on how you sign in:
+
+### A) Built-in AGOL account (username + password)
+
+```bash
+curl -X POST 'https://www.arcgis.com/sharing/rest/generateToken' \
+  --data-urlencode 'username=YOUR_AGOL_USERNAME' \
+  --data-urlencode 'password=YOUR_AGOL_PASSWORD' \
+  --data-urlencode 'referer=https://localhost' \
+  --data-urlencode 'expiration=120' \
+  --data 'f=json'
+```
+
+PowerShell equivalent:
+
+```powershell
+$body = @{
+  username   = 'YOUR_AGOL_USERNAME'
+  password   = 'YOUR_AGOL_PASSWORD'
+  referer    = 'https://localhost'
+  expiration = 120
+  f          = 'json'
+}
+Invoke-RestMethod -Uri 'https://www.arcgis.com/sharing/rest/generateToken' `
+                  -Method POST -Body $body
+```
+
+Returns `{"token": "...", "expires": <unix-ms>, "ssl": true}`. Paste the
+`token` value into the dashboard's "ArcGIS token" field. `expiration` is in
+minutes; max is `20160` (14 days). Use `referer=https://localhost` so the token
+will validate when the dashboard opens from `file://` or localhost — but note
+the token is bound to that referer, so don't paste it into a dashboard hosted
+elsewhere.
+
+### B) Federated SSO account (e.g. USGS via Login.gov)
+
+The `generateToken` endpoint won't accept your federated password. Three
+options, easiest first:
+
+**1. Browser-session shortcut (≈30 s).**
+Sign in to <https://www.arcgis.com> with your federated identity. Then visit:
+
+```
+https://www.arcgis.com/sharing/rest/portals/self?f=json
+```
+
+Open DevTools → Network → click that request. Look at the request URL — it
+includes `&token=<long-string>`. Copy it. Lasts ~2 hours, refreshable by
+revisiting the URL while signed in.
+
+**2. OAuth 2.0 token via a registered app.**
+At <https://developers.arcgis.com/applications> create a free "OAuth 2.0
+client" app, copy its `client_id`, then visit:
+
+```
+https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=token&redirect_uri=urn:ietf:wg:oauth:2.0:oob&expiration=20160
+```
+
+Sign in via Login.gov (your federated provider). The success page displays the
+token as plain text. `expiration=20160` is 14 days (the max for refresh-less
+access tokens).
+
+**3. ArcGIS Pro / ArcMap "Get Tokens".**
+If you have ArcGIS Pro installed and signed in, the Portal panel has a "Get
+Tokens" action that issues a long-lived token bound to your portal account.
+
+For all three: the token never has to be saved to disk. Paste it into the
+dashboard once; `localStorage` keeps it across reloads of that file in that
+browser only.
+
+### What the strings on the "License Strings" page are NOT for
+
+The Esri Developers dashboard has a page titled **"ArcGIS Maps SDKs for Native
+Apps License Strings"** showing `runtimelite,...` and `nativelite,...` values.
+**Those are for compiled native apps** (iOS / Android / .NET / Java / Qt) —
+they're passed to `ArcGISRuntimeEnvironment.setLicense()` at app startup. They
+don't authenticate browser HTTP tile requests and won't work in the dashboard's
+token field. Use the `generateToken` / OAuth flows above instead.
+
 ---
 
 ## Quick start

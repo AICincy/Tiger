@@ -722,6 +722,7 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 <optgroup label="Imagery (free)">
 <option value="esri-imagery">Esri World Imagery</option>
 <option value="esri-clarity">Esri World Imagery (Clarity)</option>
+<option value="esri-wayback">Esri Wayback (date selector)</option>
 <option value="usgs-imagery">USGS National Map - Imagery</option>
 <option value="osip">Ohio OSIP (6-inch, best-effort)</option>
 </optgroup>
@@ -733,6 +734,13 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 <option value="custom">Custom (uses URL + token below)</option>
 </optgroup>
 </select>
+</div>
+<div class="sec" id="waybackSec" style="display:none">
+<h3>Wayback Release</h3>
+<select id="waybackRel" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;background:white">
+<option value="">Loading available releases...</option>
+</select>
+<div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Each entry is a dated snapshot of Esri World Imagery. Useful for confirming whether a TIGER defect was already wrong on recent imagery vs. earlier captures. <a href="https://livingatlas.arcgis.com/wayback/" target="_blank">About Wayback</a></div>
 </div>
 <div class="sec"><h3>Premium / Custom</h3>
 <input type="text" id="agurl" placeholder="Tile URL with {z}/{x}/{y} or {z}/{y}/{x}" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-family:monospace">
@@ -772,10 +780,65 @@ var BMS={
 };
 
 var curBM=null;
+var WAYBACK_CONFIG_URL='https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json';
+var waybackConfig=null,waybackLoading=null;
+
+function loadWaybackConfig(){
+  if(waybackConfig)return Promise.resolve(waybackConfig);
+  if(waybackLoading)return waybackLoading;
+  waybackLoading=fetch(WAYBACK_CONFIG_URL,{cache:'force-cache'})
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(function(j){waybackConfig=j;return j;})
+    .catch(function(err){console.warn('Wayback config fetch failed:',err);waybackConfig={};return {};});
+  return waybackLoading;
+}
+
+function populateWaybackSelect(){
+  var sel=document.getElementById('waybackRel');
+  loadWaybackConfig().then(function(cfg){
+    var keys=Object.keys(cfg);
+    if(!keys.length){
+      sel.innerHTML='<option value="">Could not load releases &mdash; try Custom URL with a Wayback release ID from livingatlas.arcgis.com/wayback</option>';
+      return;
+    }
+    var entries=keys.map(function(k){
+      var rec=cfg[k]||{};
+      var date=rec.itemReleaseName||rec.releaseDateLabel||rec.itemTitle||k;
+      return {rel:k,date:String(date)};
+    }).sort(function(a,b){return a.date<b.date?1:(a.date>b.date?-1:0);});
+    var saved='';try{saved=localStorage.getItem('tigerWaybackRel')||'';}catch(e){}
+    sel.innerHTML='';
+    entries.forEach(function(e){
+      var o=document.createElement('option');
+      o.value=e.rel;o.textContent=e.date;sel.appendChild(o);
+    });
+    if(saved&&sel.querySelector('option[value="'+saved+'"]'))sel.value=saved;
+    else sel.value=entries[0].rel;
+    if(document.getElementById('bmsel').value==='esri-wayback')setBasemap('esri-wayback');
+  });
+}
+
+function updateWaybackVis(){
+  var key=document.getElementById('bmsel').value;
+  document.getElementById('waybackSec').style.display=(key==='esri-wayback')?'':'none';
+  if(key==='esri-wayback'&&!waybackConfig)populateWaybackSelect();
+}
+
 function setBasemap(key){
   if(curBM){map.removeLayer(curBM);curBM=null;}
+  updateWaybackVis();
   var url, opts;
-  if(key==='custom'){
+  if(key==='esri-wayback'){
+    var rel=document.getElementById('waybackRel').value;
+    if(!rel){
+      // still loading config; fall back to current World Imagery briefly
+      var b0=BMS['esri-imagery'];url=b0.url;opts=b0.opts;
+    } else {
+      url='https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/'+encodeURIComponent(rel)+'/{z}/{y}/{x}';
+      opts={maxZoom:19,attribution:'Esri Wayback Imagery (release '+rel+')'};
+      try{localStorage.setItem('tigerWaybackRel',rel);}catch(e){}
+    }
+  } else if(key==='custom'){
     var tpl=(document.getElementById('agurl').value||'').trim();
     var tok=(document.getElementById('agtok').value||'').trim();
     if(!tpl){
@@ -850,6 +913,7 @@ document.getElementById('lheat').addEventListener('change',function(){
 // Basemap selector + token persistence (token never leaves the browser).
 (function initBasemap(){
   var bmEl=document.getElementById('bmsel'),tokEl=document.getElementById('agtok'),urlEl=document.getElementById('agurl');
+  var wbEl=document.getElementById('waybackRel');
   try{
     tokEl.value=localStorage.getItem('tigerArcgisToken')||'';
     urlEl.value=localStorage.getItem('tigerCustomUrl')||'';
@@ -857,8 +921,13 @@ document.getElementById('lheat').addEventListener('change',function(){
   var saved='carto-voyager';
   try{saved=localStorage.getItem('tigerBmKey')||'carto-voyager';}catch(e){}
   if(bmEl.querySelector('option[value="'+saved+'"]'))bmEl.value=saved;
+  updateWaybackVis();
   setBasemap(bmEl.value);
   bmEl.addEventListener('change',function(){setBasemap(this.value);});
+  wbEl.addEventListener('change',function(){
+    try{localStorage.setItem('tigerWaybackRel',this.value);}catch(e){}
+    if(bmEl.value==='esri-wayback')setBasemap('esri-wayback');
+  });
   tokEl.addEventListener('input',function(){
     try{localStorage.setItem('tigerArcgisToken',this.value);}catch(e){}
     if(bmEl.value==='custom')setBasemap('custom');
