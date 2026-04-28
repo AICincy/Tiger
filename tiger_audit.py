@@ -742,13 +742,20 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 </select>
 <div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Each entry is a dated snapshot of Esri World Imagery. Useful for confirming whether a TIGER defect was already wrong on recent imagery vs. earlier captures. <a href="https://livingatlas.arcgis.com/wayback/" target="_blank">About Wayback</a></div>
 </div>
-<div class="sec"><h3>Premium / Custom</h3>
+<details class="sec" id="premiumSec" style="padding:0">
+<summary style="padding:12px 14px;cursor:pointer;list-style:none;border-bottom:1px solid #eee;outline:none">
+<span style="display:inline-block;font-size:13px;color:#1F4E79;font-weight:bold;text-transform:uppercase;letter-spacing:.5px">Premium / Custom</span>
+<span style="float:right;font-size:10px;color:#888;font-weight:normal;text-transform:none;letter-spacing:0;margin-top:2px">optional &mdash; click to expand</span>
+<div style="clear:both;font-size:10px;color:#888;margin-top:4px;font-weight:normal;line-height:1.4">All basemaps above (CARTO, OSM, Esri imagery, USGS, Wayback, OSIP) work without sign-in. This section is only for paid / restricted AGOL content.</div>
+</summary>
+<div style="padding:12px 14px">
 <input type="text" id="agurl" placeholder="Tile URL with {z}/{x}/{y} or {z}/{y}/{x}" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-family:monospace">
 <input type="password" id="agtok" placeholder="ArcGIS token (optional)" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;margin-top:6px">
 <input type="text" id="agportal" placeholder="Portal URL (e.g. geoplatform.maps.arcgis.com)" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-family:monospace;margin-top:6px">
 <button class="eb" id="getTokenBtn" style="margin-top:6px;width:100%;font-size:11px">Get token via OAuth (signs in with SSO)</button>
 <div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Token + URL stored in your browser's localStorage; never embedded in this file or transmitted anywhere except to the tile server you specify.</div>
 </div>
+</details>
 <div class="sec"><h3>Search</h3>
 <input type="text" id="search" placeholder="Street name...">
 <div id="sr" style="margin-top:6px;max-height:120px;overflow-y:auto"></div>
