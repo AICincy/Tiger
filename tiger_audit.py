@@ -663,8 +663,12 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 #header{background:#1F4E79;color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;z-index:1000}
 #header h1{font-size:16px}
 #header .sub{font-size:12px;opacity:.85}
-#main{display:flex;height:calc(100vh - 42px)}
-#sidebar{width:300px;background:#fff;overflow-y:auto;border-right:1px solid #ddd;flex-shrink:0;font-size:13px}
+#main{display:flex;height:calc(100vh - 42px);position:relative}
+#sidebar{width:300px;background:#fff;overflow-y:auto;border-right:1px solid #ddd;flex-shrink:0;font-size:13px;transition:width .25s ease,min-width .25s ease}
+#sidebar.collapsed{width:0;min-width:0;border-right:none;overflow:hidden}
+#sbToggle{position:absolute;top:50%;left:300px;transform:translate(-50%,-50%);width:22px;height:60px;background:#1F4E79;color:#fff;border:none;border-radius:0 6px 6px 0;cursor:pointer;z-index:1000;font-size:13px;line-height:1;box-shadow:2px 0 4px rgba(0,0,0,0.15);transition:left .25s ease;padding:0;display:flex;align-items:center;justify-content:center}
+#sbToggle:hover{background:#16375a}
+#sidebar.collapsed ~ #sbToggle{left:0;border-radius:0 6px 6px 0;transform:translate(0,-50%)}
 #sidebar .sec{padding:12px 14px;border-bottom:1px solid #eee}
 #sidebar .sec h3{font-size:13px;color:#1F4E79;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
 .kg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -749,6 +753,7 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 <button class="eb" onclick="xCSV()">CSV</button>
 </div>
 </div>
+<button id="sbToggle" type="button" title="Collapse sidebar" aria-label="Toggle sidebar">&#9664;</button>
 <div id="map"></div>
 </div>
 <script>
@@ -904,6 +909,26 @@ document.getElementById('lheat').addEventListener('change',function(){
   wbEl.addEventListener('change',function(){
     try{localStorage.setItem('tigerWaybackRel',this.value);}catch(e){}
     if(bmEl.value==='esri-wayback')setBasemap('esri-wayback');
+  });
+})();
+
+// Sidebar collapse toggle.
+(function initSidebarToggle(){
+  var sb=document.getElementById('sidebar'),btn=document.getElementById('sbToggle');
+  function apply(collapsed){
+    if(collapsed){sb.classList.add('collapsed');btn.innerHTML='&#9654;';btn.title='Expand sidebar';}
+    else{sb.classList.remove('collapsed');btn.innerHTML='&#9664;';btn.title='Collapse sidebar';}
+    // Leaflet needs to recompute its container size; do it once the CSS
+    // transition has finished so the map fills the new space.
+    setTimeout(function(){if(map&&map.invalidateSize)map.invalidateSize();uvs();},280);
+  }
+  var startCollapsed=false;
+  try{startCollapsed=localStorage.getItem('tigerSidebarCollapsed')==='1';}catch(e){}
+  apply(startCollapsed);
+  btn.addEventListener('click',function(){
+    var nowCollapsed=!sb.classList.contains('collapsed');
+    apply(nowCollapsed);
+    try{localStorage.setItem('tigerSidebarCollapsed',nowCollapsed?'1':'0');}catch(e){}
   });
 })();
 
