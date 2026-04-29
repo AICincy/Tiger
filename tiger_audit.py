@@ -25,6 +25,16 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 
+# All pipeline outputs are anchored to the script's directory, not CWD.
+# Otherwise running `cd /elsewhere && python /path/to/tiger_audit.py` would
+# scatter generated artifacts and Sheet 6's cross-zone status check would
+# read a different tree than the one being written.
+try:
+    SCRIPT_DIR = Path(__file__).resolve().parent
+except NameError:
+    SCRIPT_DIR = Path.cwd()
+
+
 ZONES = {
     "blue_ash_montgomery": {
         "name": "Blue Ash / Montgomery",
@@ -163,6 +173,7 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
             print(f"  Attempt failed: {exc}")
             continue
 
+    fresh_fetch = payload is not None
     if payload is None:
         # Sort by mtime, not filename — robust to timestamp format changes.
         cached = sorted(
@@ -188,19 +199,30 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
             raise RuntimeError(
                 f"Overpass query failed and no cached data available: {last_error}"
             )
-    else:
-        elements = payload.get("elements")
-        if not isinstance(elements, list):
-            snippet = json.dumps(payload)[:500]
-            raise RuntimeError(
-                f"Overpass JSON missing 'elements' array. First 500 chars:\n{snippet}"
-            )
-        if len(elements) < SANITY_THRESHOLD:
-            print(
-                f"  WARNING: only {len(elements)} elements returned (sanity threshold {SANITY_THRESHOLD})"
-            )
-            payload["_under_threshold"] = True
-            payload["_element_count"] = len(elements)
+
+    # Validation + sanity check applies to BOTH fresh fetches and cached
+    # payloads. A truncated cache file (manual edit, partial download, prior
+    # under-threshold fetch that was saved without a tag, ...) needs to
+    # surface the warning the same way a thin live response would. Recompute
+    # the threshold flag here so it reflects this run's payload, not whatever
+    # state was baked into the cache when it was written.
+    payload.pop("_under_threshold", None)
+    payload.pop("_element_count", None)
+    elements = payload.get("elements")
+    if not isinstance(elements, list):
+        snippet = json.dumps(payload)[:500]
+        raise RuntimeError(
+            f"Overpass JSON missing 'elements' array. First 500 chars:\n{snippet}"
+        )
+    if len(elements) < SANITY_THRESHOLD:
+        print(
+            f"  WARNING: only {len(elements)} elements (sanity threshold "
+            f"{SANITY_THRESHOLD}) — audit may be based on truncated data."
+        )
+        payload["_under_threshold"] = True
+        payload["_element_count"] = len(elements)
+
+    if fresh_fetch:
         out_file = data_dir / f"{zone_key}_raw_{_utc_stamp()}.json"
         with out_file.open("w", encoding="utf-8") as fh:
             json.dump(payload, fh, ensure_ascii=False, indent=2)
@@ -689,10 +711,8 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
             seg: int | str = stats["total"]
             severity_for_row = "OK"
         else:
-            # Anchor to the parent of the output directories to ensure consistency
-            # with _zone_paths, which uses CWD-relative paths.
-            workspace = out_path.parents[2]
-            other_csv = workspace / f"tiger_audit_{k}" / "csv" / "all_ways.csv"
+            # Read from the same SCRIPT_DIR-anchored tree the pipeline writes to.
+            other_csv = SCRIPT_DIR / f"tiger_audit_{k}" / "csv" / "all_ways.csv"
             if other_csv.exists():
                 try:
                     with other_csv.open("r", encoding="utf-8") as fh:
@@ -1733,7 +1753,7 @@ def print_summary(classified: dict, zone_key: str, audit_ts: str, out_dir: Path,
 # ---------------------------------------------------------------------------
 
 def _zone_paths(zone_key: str) -> tuple[Path, Path, Path, Path]:
-    out_dir = Path(f"tiger_audit_{zone_key}")
+    out_dir = SCRIPT_DIR / f"tiger_audit_{zone_key}"
     return (
         out_dir,
         out_dir / "reports",
@@ -2009,7 +2029,7 @@ def main(argv: list[str]) -> int:
 
     if args.zone == "all":
         results = [run_zone(k) for k in ZONES]
-        write_combined_dashboard(results, Path("tiger_audit_all_zones"))
+        write_combined_dashboard(results, SCRIPT_DIR / "tiger_audit_all_zones")
     else:
         run_zone(args.zone)
     return 0
