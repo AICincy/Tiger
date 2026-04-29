@@ -103,7 +103,7 @@ Paste this into the Console on `map_3d.html`. It will trigger six browser downlo
 })();
 ```
 
-> **`preserveDrawingBuffer` is already on.** The flag has been pre-applied to the 3D MapLibre constructor in this repo's copy of `prototypes/map_3d.html`, so the script above downloads real pixels rather than blank PNGs. (If you adapt these scripts for a fresh MapLibre instance elsewhere, the flag is required.)
+> **Open the prototype with `?capture=1`.** `preserveDrawingBuffer` is required for `canvas.toBlob()` to return real pixels, but it disables a WebGL back-buffer optimisation and noticeably costs interactive performance. The 3D prototype now toggles the flag from a query string rather than always-on: open `prototypes/map_3d.html?capture=1` (locally `http://localhost:8000/map_3d.html?capture=1`) before running the script. For ordinary browsing, omit the flag and the prototype runs at full speed.
 
 ---
 

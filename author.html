@@ -37,7 +37,8 @@
     text-rendering:optimizeLegibility;
   }
 
-  /* App shell — sticky header + sticky tab strip + scroll body */
+  /* App shell — naturally-scrolling title block above a sticky tab strip;
+     content panels scroll with the document. */
   .app{display:flex;flex-direction:column;min-height:100vh}
 
   header.titleblock{
@@ -143,6 +144,7 @@
     line-height:1.55;
   }
   .map-meta a{color:var(--accent)}
+  .map-print-fallback{display:none}
 
   /* Section hierarchy */
   h2{
@@ -311,11 +313,17 @@
     .map-frame{height:calc(100vh - 180px);min-height:480px}
   }
 
-  /* Print: all panels, no tab bar */
+  /* Print: every panel as a continuous document, no tab bar.
+     The Map panel's iframe and live-meta strip are hidden because an
+     embedded interactive viewport doesn't print usefully; a print-only
+     fallback paragraph carries the dashboard URL in their place. */
   @media print{
-    nav.tabs,.nav-back,.map-panel{display:none !important}
-    .panel{display:block !important;page-break-before:always;max-width:none;padding-top:24px}
+    nav.tabs,.nav-back{display:none !important}
+    .panel{display:block !important;page-break-before:always;max-width:none;padding:24px 0 0}
     .panel:first-of-type{page-break-before:auto}
+    .map-panel{padding:24px 0 0;max-width:760px;margin:0 auto}
+    .map-panel .map-frame,.map-panel .map-meta{display:none !important}
+    .map-print-fallback{display:block;font-family:var(--serif)}
     body{background:#fff;font-size:11pt;line-height:1.55}
     header.titleblock{border-bottom:1px solid #000;padding:0 0 12px;margin-bottom:24px}
     a{border-bottom:none !important;color:#000}
@@ -499,6 +507,12 @@ out geom tags;</code></pre>
     Open the standalone view at <a href="tiger_audit_all_zones/TIGER-Audit-All-Zones-Dashboard.html" target="_blank" rel="noopener">tiger_audit_all_zones/TIGER-Audit-All-Zones-Dashboard.html</a>
     or browse the <a href="./" target="_blank" rel="noopener">per-zone landing page</a>.
   </div>
+  <div class="map-print-fallback">
+    <h2>Map (interactive)</h2>
+    <p>The Map tab embeds an interactive Leaflet view of the combined four-zone dataset (6,096 unique unreviewed ways, 221 Class&nbsp;AB defects, 710 probable node disconnects). The interactive map does not render in print; open the live view at:</p>
+    <p><a href="https://aicincy.github.io/Tiger/tiger_audit_all_zones/TIGER-Audit-All-Zones-Dashboard.html">aicincy.github.io/Tiger/tiger_audit_all_zones/TIGER-Audit-All-Zones-Dashboard.html</a></p>
+    <p>Per-zone dashboards and the design-handoff prototypes are linked from <a href="https://aicincy.github.io/Tiger/">aicincy.github.io/Tiger</a>.</p>
+  </div>
 </section>
 
 <!-- ========== APPENDIX & NOTES ========== -->
@@ -520,11 +534,11 @@ out geom tags;</code></pre>
   <div class="footnotes">
     <h2>Notes</h2>
     <ol>
-      <li id="fn1">Provenance, licence (Open Database Licence, ODbL), and contributor norms documented at <a href="https://www.openstreetmap.org/about">openstreetmap.org/about</a>.</li>
-      <li id="fn2">U.S. Census Bureau, <em>TIGER/Line Shapefiles</em> (<a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">census.gov</a>); OSM-side import history and remediation conventions at the <a href="https://wiki.openstreetmap.org/wiki/TIGER_fixup">TIGER fixup</a> page.</li>
-      <li id="fn3">Asserted as a positioning claim consistent with the spatial distribution observed in the present audit and with prior community discussion of TIGER residuals; not formally measured here. A formal test requires a multi-county comparative audit, indicated in &sect;&nbsp;5.3.</li>
-      <li id="fn4">Sourced from publicly available ViaMapping product documentation as of April&nbsp;2026. Not a reading of any contract instrument, and the SORTA&ndash;Via contractual division of road-graph QA responsibility is not visible to this author. Counsel review of the operative contract is recommended before any operational claim is grounded in the documentation summary.</li>
-      <li id="fn5">The &ldquo;Class&nbsp;A&nbsp;total&rdquo; column reports |{w&nbsp;:&nbsp;<em>A</em>(w)&nbsp;&or;&nbsp;<em>AB</em>(w)}|, i.e. the union (single-segment Class&nbsp;A) &cup; (compound Class&nbsp;AB). Single-segment-only Class&nbsp;A&nbsp;= Class&nbsp;A&nbsp;total&nbsp;&minus;&nbsp;Class&nbsp;AB. The two columns are reported separately because the dashboard renders the categories as disjoint KPI cards while the per-zone XLSX preserves the union for historical compatibility.</li>
+      <li id="fn1" tabindex="-1">Provenance, licence (Open Database Licence, ODbL), and contributor norms documented at <a href="https://www.openstreetmap.org/about">openstreetmap.org/about</a>.</li>
+      <li id="fn2" tabindex="-1">U.S. Census Bureau, <em>TIGER/Line Shapefiles</em> (<a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">census.gov</a>); OSM-side import history and remediation conventions at the <a href="https://wiki.openstreetmap.org/wiki/TIGER_fixup">TIGER fixup</a> page.</li>
+      <li id="fn3" tabindex="-1">Asserted as a positioning claim consistent with the spatial distribution observed in the present audit and with prior community discussion of TIGER residuals; not formally measured here. A formal test requires a multi-county comparative audit, indicated in &sect;&nbsp;5.3.</li>
+      <li id="fn4" tabindex="-1">Sourced from publicly available ViaMapping product documentation as of April&nbsp;2026. Not a reading of any contract instrument, and the SORTA&ndash;Via contractual division of road-graph QA responsibility is not visible to this author. Counsel review of the operative contract is recommended before any operational claim is grounded in the documentation summary.</li>
+      <li id="fn5" tabindex="-1">The &ldquo;Class&nbsp;A&nbsp;total&rdquo; column reports |{w&nbsp;:&nbsp;<em>A</em>(w)&nbsp;&or;&nbsp;<em>AB</em>(w)}|, i.e. the union (single-segment Class&nbsp;A) &cup; (compound Class&nbsp;AB). Single-segment-only Class&nbsp;A&nbsp;= Class&nbsp;A&nbsp;total&nbsp;&minus;&nbsp;Class&nbsp;AB. The two columns are reported separately because the dashboard renders the categories as disjoint KPI cards while the per-zone XLSX preserves the union for historical compatibility.</li>
     </ol>
     <p style="margin-top:18px">Road data &copy; OpenStreetMap contributors, ODbL. TIGER/Line: U.S.&nbsp;Census Bureau, public domain. Tile imagery on the live dashboards: CARTO Voyager (OSM-derived), Esri World Imagery and Wayback (public tiers). Independent work; no affiliation is asserted with SORTA, Via Transportation, or the OpenStreetMap Foundation.</p>
   </div>
@@ -555,20 +569,28 @@ out geom tags;</code></pre>
       if(active){
         panel.classList.add('is-active');
         panel.removeAttribute('hidden');
+        if(opts.focus) t.focus();
       } else {
         panel.classList.remove('is-active');
         panel.setAttribute('hidden', '');
       }
     });
     if(opts.updateHash !== false){
-      try{ history.replaceState(null, '', '#' + id); }catch(e){}
+      // pushState so the back/forward buttons traverse tab history;
+      // hashchange will re-fire on navigation and route through the
+      // listener below with {updateHash:false} to avoid re-pushing.
+      try{
+        var newHash = '#' + id;
+        if(location.hash !== newHash){
+          history.pushState({tab:id}, '', newHash);
+        }
+      }catch(e){}
     }
     if(opts.scroll !== false){
       var titleblock = document.querySelector('header.titleblock');
       var top = titleblock ? titleblock.offsetTop : 0;
-      window.scrollTo({top: top, behavior: 'instant' in window ? 'auto' : 'auto'});
+      window.scrollTo({top: top, behavior: 'auto'});
     }
-    if(opts.focus){ TABS.forEach(function(t){ if(t.getAttribute('data-target')===id){ t.focus(); }}); }
   }
 
   // Click handlers
