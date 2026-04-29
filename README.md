@@ -83,8 +83,8 @@ For each zone (default `blue_ash_montgomery`):
 tiger_audit_<zone_key>/
   data/<zone_key>_raw_<UTC>.json          # raw Overpass response (timestamped, preserved)
   reports/
-    TIGER_Audit_<Zone>.xlsx               # 8-sheet styled workbook
-    TIGER_Audit_<Zone>_Dashboard.html     # interactive Leaflet dashboard
+    TIGER-Audit-<Zone>.xlsx               # 8-sheet styled workbook
+    TIGER-Audit-<Zone>-Dashboard.html     # interactive Leaflet dashboard
   csv/
     all_ways.csv                          # master inventory
     class_a_false_oneway.csv              # residential + oneway=yes
@@ -340,7 +340,7 @@ A real run is included under
 Open the dashboard locally:
 
 ```
-tiger_audit_blue_ash_montgomery/reports/TIGER_Audit_Blue_Ash_Montgomery_Dashboard.html
+tiger_audit_blue_ash_montgomery/reports/TIGER-Audit-Blue-Ash-Montgomery-Dashboard.html
 ```
 
 ---
@@ -414,8 +414,8 @@ no longer flag the segment.
     │   ├── class_ab_compound.csv
     │   └── class_b_multi_segment.csv
     └── reports/
-        ├── TIGER_Audit_Blue_Ash_Montgomery.xlsx
-        └── TIGER_Audit_Blue_Ash_Montgomery_Dashboard.html
+        ├── TIGER-Audit-Blue-Ash-Montgomery.xlsx
+        └── TIGER-Audit-Blue-Ash-Montgomery-Dashboard.html
 ```
 
 The raw Overpass JSON snapshots in `tiger_audit_*/data/` are gitignored — they

@@ -1613,8 +1613,8 @@ def write_readme(out_dir: Path, zone_key: str, audit_ts: str) -> None:
         f"```\n\n"
         f"## Files\n\n"
         f"- `data/{zone_key}_raw_<UTC>.json` - raw Overpass response (preserved)\n"
-        f"- `reports/TIGER_Audit_*.xlsx` - styled multi-sheet workbook\n"
-        f"- `reports/TIGER_Audit_*_Dashboard.html` - interactive dashboard (open in browser)\n"
+        f"- `reports/TIGER-Audit-*.xlsx` - styled multi-sheet workbook\n"
+        f"- `reports/TIGER-Audit-*-Dashboard.html` - interactive dashboard (open in browser)\n"
         f"- `csv/all_ways.csv` - master inventory\n"
         f"- `csv/class_a_false_oneway.csv` - residential + oneway=yes\n"
         f"- `csv/class_b_multi_segment.csv` - streets with 2+ unreviewed segments\n"
@@ -1674,7 +1674,9 @@ def _zone_paths(zone_key: str) -> tuple[Path, Path, Path, Path]:
 
 
 def _zone_name_to_filename(zone_name: str) -> str:
-    return zone_name.replace(" / ", "_").replace(" ", "_").replace(".", "")
+    # Hyphens, not underscores — chat apps (Slack/Discord/Markdown) italicize
+    # text between underscores, which mangles shared file URLs.
+    return zone_name.replace(" / ", "-").replace(" ", "-").replace(".", "")
 
 
 def run_zone(zone_key: str) -> dict:
@@ -1699,8 +1701,8 @@ def run_zone(zone_key: str) -> dict:
     )
 
     safe_name = _zone_name_to_filename(zone["name"])
-    xlsx_name = f"TIGER_Audit_{safe_name}.xlsx"
-    html_name = f"TIGER_Audit_{safe_name}_Dashboard.html"
+    xlsx_name = f"TIGER-Audit-{safe_name}.xlsx"
+    html_name = f"TIGER-Audit-{safe_name}-Dashboard.html"
 
     audit_ts = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
@@ -1794,7 +1796,7 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
         .replace("__CENTER__", f"[{center[0]},{center[1]}]")
         .replace("__DATA_JSON__", json.dumps(payload, ensure_ascii=False))
     )
-    out_path = out_dir / "TIGER_Audit_All_Zones_Dashboard.html"
+    out_path = out_dir / "TIGER-Audit-All-Zones-Dashboard.html"
     out_path.write_text(html, encoding="utf-8")
     print(f"  Combined dashboard: {out_path}")
 
