@@ -1084,20 +1084,24 @@ var ZONE_NAME='__ZONE_NAME__';
 
 var map=L.map('map',{zoomControl:true}).setView(__CENTER__,13);
 
+// Transparent labels overlay (street + place names). Auto-stacked on top
+// of imagery basemaps that have no labels of their own.
+var LABELS_OVERLAY={url:'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,opacity:0.95,attribution:'Labels &copy; CARTO'}};
+
 var BMS={
   'carto-voyager':{url:'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
   'carto-positron':{url:'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
   'carto-darkmatter':{url:'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
   'osm':{url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',opts:{subdomains:'abc',maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}},
-  'esri-imagery':{url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, USDA, USGS, AeroGRID, IGN'}},
-  'esri-clarity':{url:'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Firefly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Esri Clarity / Firefly'}},
-  'usgs-imagery':{url:'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:18,attribution:'USGS National Map: Imagery'}},
+  'esri-imagery':{url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, USDA, USGS, AeroGRID, IGN'},labels:true},
+  'esri-clarity':{url:'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Firefly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Esri Clarity / Firefly'},labels:true},
+  'usgs-imagery':{url:'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:18,attribution:'USGS National Map: Imagery'},labels:true},
   'usgs-topo':{url:'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:18,attribution:'USGS National Map: Topo'}},
   'esri-topo':{url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Tiles &copy; Esri'}},
-  'osip':{url:'https://gis5.oit.ohio.gov/arcgis/rest/services/OSIP/OSIP_Latest/ImageServer/tile/{z}/{y}/{x}',opts:{maxZoom:20,attribution:'OGRIP / Ohio Statewide Imagery Program'}}
+  'osip':{url:'https://gis5.oit.ohio.gov/arcgis/rest/services/OSIP/OSIP_Latest/ImageServer/tile/{z}/{y}/{x}',opts:{maxZoom:20,attribution:'OGRIP / Ohio Statewide Imagery Program'},labels:true}
 };
 
-var curBM=null,curBMKey='carto-voyager',prevBMKey=null;
+var curBM=null,curBMKey='carto-voyager',prevBMKey=null,curLabels=null;
 var WAYBACK_CONFIG_URL='https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json';
 var waybackConfig=null,waybackLoading=null;
 
@@ -1144,9 +1148,10 @@ function updateWaybackVis(){
 
 function setBasemap(key){
   if(curBM){map.removeLayer(curBM);curBM=null;}
+  if(curLabels){map.removeLayer(curLabels);curLabels=null;}
   curBMKey=key;
   updateWaybackVis();
-  var url, opts;
+  var url, opts, wantLabels=false;
   if(key==='esri-wayback'){
     var rel=document.getElementById('waybackRel').value;
     if(!rel){
@@ -1156,12 +1161,20 @@ function setBasemap(key){
       opts={maxZoom:19,attribution:'Esri Wayback Imagery (release '+rel+')'};
       try{localStorage.setItem('tigerWaybackRel',rel);}catch(e){}
     }
+    wantLabels=true; // Wayback is satellite imagery — always overlay labels.
   } else {
     var b=BMS[key]||BMS['carto-voyager'];
     url=b.url;opts=b.opts;
+    wantLabels=!!b.labels;
   }
   curBM=L.tileLayer(url,opts).addTo(map);
   curBM.bringToBack();
+  if(wantLabels){
+    // Stack the transparent labels tile layer above the basemap. Both are
+    // in tilePane, so polylines/markers (overlayPane/markerPane) still
+    // render on top.
+    curLabels=L.tileLayer(LABELS_OVERLAY.url,LABELS_OVERLAY.opts).addTo(map);
+  }
   try{localStorage.setItem('tigerBmKey',key);}catch(e){}
   scheduleHashWrite();
 }
