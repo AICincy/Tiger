@@ -1806,14 +1806,18 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
     for _name, groups in streets_by_name.items():
         components: list[set[int]] = []
         for grp in groups:
-            absorbed = False
+            # A group can bridge multiple existing components when it shares
+            # way IDs with two or more of them. Absorb every intersecting
+            # component into a single merged set, then reinsert.
+            merged = set(grp)
+            survivors: list[set[int]] = []
             for comp in components:
-                if comp & grp:
-                    comp |= grp
-                    absorbed = True
-                    break
-            if not absorbed:
-                components.append(set(grp))
+                if comp & merged:
+                    merged |= comp
+                else:
+                    survivors.append(comp)
+            survivors.append(merged)
+            components = survivors
         class_b_streets_total += len(components)
 
     # Same problem with gaps — a node disconnect inside an overlap region
