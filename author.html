@@ -629,7 +629,15 @@ out geom tags;</code></pre>
   // Hash change (back/forward)
   window.addEventListener('hashchange', function(){
     var id = location.hash.replace('#','');
-    if(PANELS[id]){ activate(id, {updateHash:false, scroll:false}); }
+    if(PANELS[id]){
+      activate(id, {updateHash:false, scroll:false});
+    } else if(id && id.indexOf('fn') === 0){
+      activate('appendix', {updateHash:false, scroll:false});
+      setTimeout(function(){
+        var target = document.getElementById(id);
+        if(target){ target.scrollIntoView({behavior:'auto', block:'center'}); }
+      }, 30);
+    }
   });
 })();
 </script>
