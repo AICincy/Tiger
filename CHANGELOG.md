@@ -4,6 +4,96 @@ All notable changes to the TIGER/Line audit pipeline.
 
 ## [Unreleased]
 
+_Empty — next batch of changes lands here._
+
+## [2026-04-29] — Author suite
+
+### Graduate-register rewrite of `author.html` and `README.md`; design handoff (PR #15)
+- `author.html`: prose register raised across §1–§6 (passive-leaning,
+  denser, less rhetorical); abstract recast as a position-and-contribution
+  paragraph; §7 ("About the Author") replaced by a minimal title-block
+  byline; footnotes tightened. Visual: serif body
+  (Charter / Iowan Old Style), sans-serif headings (Inter / system
+  stack), Tufte-leaning table grammar (top + bottom rules only,
+  tabular numerals on numeric columns), lighter section breaks.
+  Mobile rules preserved.
+- New Appendix A: design-handoff reference with a 2D-prototype
+  screenshot inline and links to the live prototype URLs.
+- `README.md`: matching register; "Why this exists" replaced by a
+  "Position" section; Scope, defect-classification, and
+  node-disconnect-detection sections written formally; outputs and
+  layout sections preserved (file-tree content unchanged); Sample-run
+  section retained verbatim (numbers unchanged); new "Methodological
+  constraints" cross-link to `author.html` §5.1. Layout tree updated
+  to include `design_handoff_tiger_audit_map/`.
+- New `design_handoff_tiger_audit_map/` directory: high-fidelity
+  design reference for an alternative cartographic presentation —
+  2D Leaflet and 3D MapLibre prototypes, screenshots, design-token
+  tables. Reference-only; the production port (recommended target
+  React + Vite per the handoff README) is out of scope for this
+  repo's current pipeline.
+
+### Tabbed UX for `author.html` (PR #16)
+- Long-scroll layout replaced with a six-tab interface: Overview /
+  Methods / Results / Discussion / Map / Appendix & Notes. §1–§6
+  numbering preserved inside the body for citation; tabs group
+  sections into reading-paced units rather than mirroring every
+  numbered section one-for-one.
+- Sticky title block + sticky tab strip; the strip scrolls
+  horizontally on narrow viewports without a visible scrollbar.
+- Map tab embeds the live combined four-zone dashboard
+  (`tiger_audit_all_zones/...Dashboard.html`) via a full-width iframe;
+  a meta strip below links to the standalone view.
+- ARIA: `role="tablist" / "tab" / "tabpanel"`, `aria-selected` and
+  `tabindex` flip on activation, arrow-key / Home / End navigation
+  across the strip, visible focus ring.
+- Footnote sup-links auto-switch to the Appendix & Notes tab and
+  scroll-and-highlight the targeted footnote.
+- URL hash carries the active tab (`#overview` … `#appendix`); deep
+  links to footnotes (`#fn1` …) open the Appendix tab and scroll.
+- `@media print` expands every panel into a continuous document and
+  hides the tab strip, so paper output is identical to the prior
+  long-scroll version.
+- New `design_handoff_tiger_audit_map/index.html` landing page so
+  `/design_handoff_tiger_audit_map/` resolves to a 2D-vs-3D chooser
+  rather than a directory listing. `map_3d.html`:
+  `preserveDrawingBuffer: true` added to the MapLibre constructor so
+  the `CAPTURE-MEDIA.md` capture script works without a manual edit.
+
+### Author follow-ups (PR #17)
+- Tab switches use `history.pushState` (was `replaceState`) so the
+  browser back/forward buttons traverse tab history; `activate()`
+  guards against re-pushing the active hash, and the existing
+  `hashchange` listener routes back/forward through `activate()` with
+  `{updateHash:false}` to avoid double-pushing.
+- Print stylesheet no longer hides `.map-panel` wholesale (the rule
+  conflicted with `.panel{display:block !important}` at equal
+  specificity and was getting overridden anyway). The Map panel now
+  renders in print, but its iframe and live-meta strip are hidden and
+  a new `.map-print-fallback` paragraph carries the dashboard URL on
+  paper so the section is preserved.
+- `preserveDrawingBuffer` in `map_3d.html` now toggles from a URL
+  query flag (`?capture=1`) rather than always-on. The flag is
+  required for `canvas.toBlob()` to return real pixels for the
+  `CAPTURE-MEDIA.md` screenshot scripts, but it disables a WebGL
+  back-buffer optimisation and costs interactive performance for
+  ordinary browsing. `CAPTURE-MEDIA.md` updated to describe the new
+  entry point.
+- Footnote `<li>` targets carry `tabindex="-1"` so the click
+  handler's `target.focus({preventScroll:true})` reliably moves
+  keyboard / screen-reader focus and the `:target` highlight
+  resolves accessibly.
+- `activate()` cleanup: dropped a no-op
+  `'instant' in window ? 'auto' : 'auto'` ternary in `window.scrollTo`
+  and folded the trailing focus-loop into the main `TABS.forEach`
+  pass where the active tab is already in scope.
+- CSS shell comment updated from `sticky header + sticky tab strip`
+  to `naturally-scrolling title block above a sticky tab strip` so
+  it matches the implemented behaviour (the title block scrolls
+  naturally; only the tab strip is `position: sticky`).
+
+## [2026-04-28] — Pipeline perfection pass + cross-zone audit
+
 ### Output filenames — hyphens, not underscores
 - Generated XLSX, dashboard HTML, and combined-zone files now use hyphens
   (`TIGER-Audit-Blue-Ash-Montgomery-Dashboard.html`) instead of underscores.
@@ -96,7 +186,7 @@ All notable changes to the TIGER/Line audit pipeline.
 - README adds a Windows `file://` note covering corporate-proxy and
   JOSM-on-HTTPS edge cases.
 - `TigerAuditPrompt.md` (in `Krass\`, separate repo) is synced to the
-  current pipeline: Overpass query uses `out geom tags` with a 180 s
+  current pipeline: Overpass query uses `out tags geom` with a 180 s
   timeout, Phase 2 documents node-disconnect detection, Phase 4
   specifies Leaflet (not Chart.js) with CARTO Voyager tiles, Phase 5
   console summary includes a gap count line, and an Expected Results
