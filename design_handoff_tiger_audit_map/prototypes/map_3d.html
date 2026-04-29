@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blue Ash / Montgomery — TIGER Audit · 3D Pan / Tilt / Zoom</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0f1216; --panel:#161b22; --panel-soft:#1d242c; --rule:#2a323d;
+    --ink:#e8e3d6; --ink-soft:#a8a294; --ink-mute:#6b6557;
+    --accent:#d4af37; --crit:#ff5a47; --high:#ffa84a; --low:#7c8089; --gap:#9d7bff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5;
+  }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-feature-settings:"tnum"; }
+
+  #app {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 56px 1fr 32px;
+    grid-template-areas: "head head" "side map" "foot foot";
+    height: 100vh;
+  }
+
+  /* Header */
+  header {
+    grid-area: head; background: var(--panel); border-bottom: 1px solid var(--rule);
+    display: flex; align-items: stretch;
+  }
+  header .title { padding: 8px 18px; border-right: 1px solid var(--rule); display:flex; flex-direction:column; justify-content:center; min-width:320px; }
+  header .title h1 { font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); }
+  header .title .sub { font-size:11px; color:var(--ink-mute); font-family:'IBM Plex Mono',monospace; margin-top:2px; }
+  header .meta { flex:1; display:flex; align-items:center; padding:0 18px; gap:22px; overflow:hidden; }
+  header .meta .stat { display:flex; flex-direction:column; }
+  header .meta .stat .lbl { font-size:10px; color:var(--ink-mute); text-transform:uppercase; letter-spacing:.08em; }
+  header .meta .stat .val { font-family:'IBM Plex Mono',monospace; font-size:17px; font-weight:500; margin-top:1px; }
+  header .meta .stat.crit .val{color:var(--crit);} header .meta .stat.high .val{color:var(--high);}
+  header .actions { display:flex; align-items:center; gap:4px; padding-right:10px; }
+  header .actions button {
+    background: transparent; border: 1px solid var(--rule); color: var(--ink-soft);
+    font: inherit; font-size: 11px; padding: 5px 10px; cursor: pointer; letter-spacing:.04em;
+  }
+  header .actions button:hover { background: var(--panel-soft); color: var(--ink); }
+  header .actions a { font-size:10px; color: var(--ink-mute); text-decoration:none; padding: 5px 8px; border:1px solid var(--rule); margin-right:4px; }
+  header .actions a:hover { color: var(--ink); }
+
+  /* Sidebar */
+  aside { grid-area: side; background: var(--panel); border-right: 1px solid var(--rule); overflow-y: auto; }
+  .section { padding: 14px 18px; border-bottom: 1px solid var(--rule); }
+  .section h2 { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 10px; }
+
+  .class-row {
+    display: grid; grid-template-columns: 16px 1fr auto;
+    align-items: center; gap: 10px; padding: 7px 0; cursor: pointer;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .class-row:last-child { border-bottom: none; }
+  .class-row input { display: none; }
+  .class-row .swatch { width:16px; height:4px; background: var(--low); }
+  .class-row.crit .swatch { background: var(--crit); height:5px; box-shadow:0 0 8px var(--crit); }
+  .class-row.high .swatch { background: var(--high); height:5px; }
+  .class-row.low  .swatch { background: var(--low);  height:3px; }
+  .class-row .label .name { font-size:12px; font-weight:500; color: var(--ink); }
+  .class-row .label .desc { font-size:11px; color: var(--ink-mute); }
+  .class-row .count { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); background:var(--bg); padding:1px 6px; border:1px solid var(--rule); }
+  .class-row.off { opacity: 0.4; }
+
+  /* Basemap chips */
+  .chip-row { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
+  .chip {
+    flex: 1 1 calc(33% - 4px);
+    background: var(--panel-soft); border: 1px solid var(--rule); color: var(--ink-soft);
+    font: inherit; font-size: 10.5px; padding: 6px 4px; cursor: pointer;
+    letter-spacing: .03em; text-align: center; min-width: 0;
+  }
+  .chip:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .chip.active { background: var(--accent); color: #1a1410; border-color: var(--accent); font-weight: 600; }
+
+  /* PTZ pad */
+  .ptz {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px; margin-top: 10px;
+  }
+  .ptz button {
+    background: var(--panel-soft); border: 1px solid var(--rule); color: var(--ink-soft);
+    font: inherit; font-size: 12px; padding: 8px 4px; cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .ptz button:hover { background: var(--bg); color: var(--accent); border-color: var(--accent); }
+  .ptz .full { grid-column: 1 / -1; font-size: 10px; }
+  .ptz .blank { visibility: hidden; }
+
+  .slider-row { display:flex; align-items:center; gap: 8px; margin: 10px 0; }
+  .slider-row label { font-size: 10px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: .06em; min-width: 44px; }
+  .slider-row input[type=range] { flex: 1; accent-color: var(--accent); }
+  .slider-row .v { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink); min-width: 36px; text-align: right; }
+
+  #search { width:100%; background: var(--bg); border: 1px solid var(--rule); padding: 7px 10px; font: inherit; font-size: 12px; color: var(--ink); }
+  #search:focus { outline: none; border-color: var(--accent); }
+  #search-results { margin-top: 6px; max-height: 180px; overflow-y: auto; }
+  .sr-item { padding: 5px 8px; font-size: 12px; cursor: pointer; border-left: 2px solid transparent; display:flex; justify-content:space-between; gap: 8px; }
+  .sr-item:hover { background: var(--panel-soft); border-left-color: var(--accent); }
+  .sr-item .ct { font-family:'IBM Plex Mono',monospace; font-size:10px; color: var(--ink-mute); }
+
+  /* Selection */
+  #selection.empty { display: none; }
+  #selection .sel-head { background: var(--bg); padding: 12px 18px 10px; border-bottom: 1px solid var(--rule); }
+  #selection .way-name { font-size: 16px; font-weight: 600; color: var(--ink); }
+  #selection .way-class { display:inline-block; margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:.1em; padding:2px 7px; background: var(--low); color:#0f1216; }
+  #selection .way-class.crit{background:var(--crit);} #selection .way-class.high{background:var(--high);color:#1a1410;}
+  #selection .sel-body { padding: 12px 18px 14px; font-size: 12px; }
+  .kv { display: grid; grid-template-columns: 90px 1fr; gap: 4px 10px; margin-bottom: 10px; }
+  .kv dt { font-size:10px; text-transform:uppercase; letter-spacing:.06em; color: var(--ink-mute); padding-top:1px; }
+  .kv dd { font-family:'IBM Plex Mono',monospace; font-size:11px; color: var(--ink); word-break: break-word; }
+  .kv dd em { font-style: normal; color: var(--ink-mute); }
+  .narrative { background: var(--panel-soft); border-left: 2px solid var(--accent); padding: 8px 10px; font-size: 11px; color: var(--ink-soft); line-height: 1.55; margin-top: 8px; }
+  .ext-links { display:flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .ext-links a { font-size:11px; text-decoration:none; color: var(--ink); border:1px solid var(--rule); padding: 4px 8px; background: var(--panel-soft); }
+  .ext-links a:hover { background: var(--bg); border-color: var(--accent); color: var(--accent); }
+
+  #selection-empty { padding: 18px; color: var(--ink-mute); font-size: 12px; line-height: 1.6; }
+  #selection-empty .arrow { font-size: 20px; color: var(--accent); }
+
+  /* Map */
+  main { grid-area: map; position: relative; background: #000; }
+  #map { position: absolute; inset: 0; }
+  .maplibregl-popup-content { background: var(--panel) !important; color: var(--ink) !important; border: 1px solid var(--rule); font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; padding: 8px 10px; }
+  .maplibregl-popup-tip { border-top-color: var(--panel) !important; }
+  .maplibregl-ctrl-group { background: var(--panel) !important; border: 1px solid var(--rule) !important; box-shadow: none !important; }
+  .maplibregl-ctrl-group button { background-color: var(--panel) !important; }
+  .maplibregl-ctrl button.maplibregl-ctrl-zoom-in span,
+  .maplibregl-ctrl button.maplibregl-ctrl-zoom-out span,
+  .maplibregl-ctrl button.maplibregl-ctrl-compass span,
+  .maplibregl-ctrl button.maplibregl-ctrl-pitchtoggle span { filter: invert(1) brightness(1.4); }
+
+  /* HUD overlays */
+  .hud {
+    position: absolute; z-index: 10; background: rgba(22,27,34,0.92); border: 1px solid var(--rule);
+    padding: 8px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    color: var(--ink-soft); pointer-events: none; backdrop-filter: blur(6px);
+  }
+  #hud-cam { top: 14px; left: 14px; min-width: 220px; }
+  #hud-cam .row { display:flex; justify-content:space-between; gap: 14px; padding: 1px 0; }
+  #hud-cam .lbl { color: var(--ink-mute); text-transform: uppercase; letter-spacing: .08em; font-size: 9px; }
+  #hud-cam .val { color: var(--accent); }
+  #hud-coord { bottom: 14px; right: 14px; }
+  #hud-coord .lbl { color: var(--ink-mute); margin-right: 4px; }
+
+  /* Compass */
+  #compass-3d {
+    position: absolute; top: 14px; right: 14px; z-index: 10;
+    width: 64px; height: 64px; background: rgba(22,27,34,.92);
+    border-radius: 50%; border: 1px solid var(--rule); display:flex; align-items:center; justify-content:center;
+    cursor: pointer; backdrop-filter: blur(6px);
+  }
+  #compass-3d:hover { border-color: var(--accent); }
+  #compass-3d .needle { position: absolute; transition: transform .25s ease; }
+
+  /* Footer */
+  footer { grid-area: foot; background: var(--panel); border-top: 1px solid var(--rule); display:flex; align-items:center; padding: 0 18px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--ink-mute); gap: 20px; overflow:hidden; white-space: nowrap; }
+  footer .filler { flex:1; }
+  footer .legend-inline { display:flex; gap:16px; align-items:center; }
+  footer .legend-inline span { display:flex; align-items:center; gap:6px; }
+  footer .legend-inline i { display:inline-block; width:12px; height:3px; background: var(--low); }
+  footer .legend-inline i.crit { background: var(--crit); height:4px; }
+  footer .legend-inline i.high { background: var(--high); height:4px; }
+
+  aside::-webkit-scrollbar { width: 8px; }
+  aside::-webkit-scrollbar-thumb { background: var(--rule); }
+  aside::-webkit-scrollbar-track { background: var(--panel); }
+
+  @media (max-width: 760px) {
+    #app { grid-template-columns: 1fr; grid-template-rows: 56px 1fr 240px 32px; grid-template-areas: "head" "map" "side" "foot"; }
+    aside { border-right: none; border-top: 1px solid var(--rule); }
+    header .meta { display: none; }
+    #compass-3d, #hud-cam { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div class="title">
+      <h1>Blue Ash · Montgomery</h1>
+      <div class="sub">3D AUDIT VIEW · PTZ ENABLED</div>
+    </div>
+    <div class="meta">
+      <div class="stat"><span class="lbl">Total ways</span><span class="val mono" id="m-total">—</span></div>
+      <div class="stat crit"><span class="lbl">Class AB</span><span class="val mono" id="m-ab">—</span></div>
+      <div class="stat crit"><span class="lbl">Class A</span><span class="val mono" id="m-a">—</span></div>
+      <div class="stat high"><span class="lbl">Class B</span><span class="val mono" id="m-b">—</span></div>
+      <div class="stat"><span class="lbl">Class C</span><span class="val mono" id="m-c">—</span></div>
+    </div>
+    <div class="actions">
+      <a href="map.html" title="Switch to flat 2D map">⊟ 2D View</a>
+      <button id="btn-fit">Fit bounds</button>
+      <button id="btn-critical">Critical only</button>
+      <button id="btn-flyaround" title="Animated 360° orbit">Orbit</button>
+    </div>
+  </header>
+
+  <aside>
+    <div class="section">
+      <h2>Defect classes</h2>
+      <label class="class-row crit" data-cls="AB">
+        <input type="checkbox" checked>
+        <span class="swatch"></span>
+        <span class="label"><span class="name">AB · Compound</span><span class="desc">False oneway + multi-segment</span></span>
+        <span class="count mono" id="cnt-AB">—</span>
+      </label>
+      <label class="class-row crit" data-cls="A">
+        <input type="checkbox" checked>
+        <span class="swatch"></span>
+        <span class="label"><span class="name">A · False oneway</span><span class="desc">Residential tagged oneway=yes</span></span>
+        <span class="count mono" id="cnt-A">—</span>
+      </label>
+      <label class="class-row high" data-cls="B">
+        <input type="checkbox" checked>
+        <span class="swatch"></span>
+        <span class="label"><span class="name">B · Multi-segment</span><span class="desc">Street fragmented across &gt;5 ways</span></span>
+        <span class="count mono" id="cnt-B">—</span>
+      </label>
+      <label class="class-row low" data-cls="C">
+        <input type="checkbox">
+        <span class="swatch"></span>
+        <span class="label"><span class="name">C · Unreviewed</span><span class="desc">tiger:reviewed=no, no other defect</span></span>
+        <span class="count mono" id="cnt-C">—</span>
+      </label>
+    </div>
+
+    <div class="section">
+      <h2>Basemap</h2>
+      <div class="chip-row">
+        <button class="chip" data-bm="dark">Dark</button>
+        <button class="chip" data-bm="positron">Light</button>
+        <button class="chip" data-bm="osm">OSM</button>
+      </div>
+      <div class="chip-row">
+        <button class="chip active" data-bm="esri-imagery">Esri Sat</button>
+        <button class="chip" data-bm="esri-clarity">Clarity</button>
+        <button class="chip" data-bm="usgs">USGS NAIP</button>
+      </div>
+      <div class="chip-row">
+        <button class="chip" data-bm="osip" title="Ohio OSIP — 12–18 inch state aerial, sharpest available">OSIP HD</button>
+        <button class="chip" data-bm="esri-topo">Topo</button>
+        <button class="chip" data-bm="none">None</button>
+      </div>
+      <div style="font-size: 10px; color: var(--ink-mute); margin-top: 4px; line-height: 1.5;">
+        Esri / USGS imagery is sharpest at Z18-Z20. Tilt with right-drag (desktop) or two-finger drag (touch).
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Camera · Pan / Tilt / Zoom</h2>
+      <div class="ptz">
+        <button class="blank"></button>
+        <button id="ptz-up" title="Pan north">↑</button>
+        <button class="blank"></button>
+        <button id="ptz-left" title="Pan west">←</button>
+        <button id="ptz-recenter" title="Recenter">⊙</button>
+        <button id="ptz-right" title="Pan east">→</button>
+        <button class="blank"></button>
+        <button id="ptz-down" title="Pan south">↓</button>
+        <button class="blank"></button>
+        <button class="full" id="ptz-zoomin">+ ZOOM IN</button>
+        <button class="full" id="ptz-zoomout" style="grid-column: span 1">− ZOOM OUT</button>
+        <button class="full" id="ptz-zoomstreet" style="grid-column: span 1">STREET (Z19)</button>
+      </div>
+      <div class="slider-row">
+        <label>Tilt</label>
+        <input type="range" id="sl-pitch" min="0" max="85" step="1" value="55">
+        <span class="v" id="sl-pitch-v">55°</span>
+      </div>
+      <div class="slider-row">
+        <label>Bearing</label>
+        <input type="range" id="sl-bearing" min="-180" max="180" step="1" value="0">
+        <span class="v" id="sl-bearing-v">0°</span>
+      </div>
+      <div class="slider-row">
+        <label>Zoom</label>
+        <input type="range" id="sl-zoom" min="11" max="20" step="0.1" value="14">
+        <span class="v" id="sl-zoom-v">14.0</span>
+      </div>
+      <div class="slider-row">
+        <label>Lines</label>
+        <input type="range" id="sl-opacity" min="20" max="100" step="5" value="95">
+        <span class="v" id="sl-opacity-v">95%</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Search</h2>
+      <input id="search" type="text" placeholder="street name…" autocomplete="off">
+      <div id="search-results"></div>
+    </div>
+
+    <div id="selection" class="empty">
+      <div class="sel-head">
+        <div class="way-name" id="sel-name">—</div>
+        <span class="way-class" id="sel-class">—</span>
+      </div>
+      <div class="sel-body" id="sel-body"></div>
+    </div>
+    <div id="selection-empty">
+      <span class="arrow">←</span> Click a segment to inspect tags. Use the PTZ pad or the on-map controls to pan, tilt, zoom.
+    </div>
+  </aside>
+
+  <main>
+    <div id="map"></div>
+    <div id="hud-cam" class="hud">
+      <div class="row"><span class="lbl">CAM</span><span class="val" id="hud-mode">PTZ</span></div>
+      <div class="row"><span class="lbl">ZOOM</span><span class="val" id="hud-z">—</span></div>
+      <div class="row"><span class="lbl">PITCH</span><span class="val" id="hud-p">—</span></div>
+      <div class="row"><span class="lbl">BEARING</span><span class="val" id="hud-b">—</span></div>
+    </div>
+    <div id="compass-3d" title="Click to reset bearing">
+      <svg class="needle" id="needle" width="44" height="44" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#a8a294" stroke-width="1.5"/>
+        <polygon points="50,12 42,52 50,46 58,52" fill="#ff5a47"/>
+        <polygon points="50,88 42,48 50,54 58,48" fill="#e8e3d6"/>
+        <text x="50" y="34" font-family="IBM Plex Mono" font-size="11" font-weight="700" text-anchor="middle" fill="#e8e3d6">N</text>
+      </svg>
+    </div>
+    <div id="hud-coord" class="hud">
+      <span class="lbl">LAT</span><span id="coord-lat">—</span>
+      &nbsp;<span class="lbl">LON</span><span id="coord-lon">—</span>
+    </div>
+  </main>
+
+  <footer>
+    <span>BLUE ASH / MONTGOMERY · HAMILTON CO., OH</span>
+    <span class="legend-inline">
+      <span><i class="crit"></i> AB / A</span>
+      <span><i class="high"></i> B</span>
+      <span><i></i> C</span>
+    </span>
+    <span class="filler"></span>
+    <span id="visible-count">— of — visible</span>
+    <span>OSM 2026-04-29 13:06Z · MapLibre GL</span>
+  </footer>
+</div>
+
+<script>
+const HIGHWAY_LABELS = {
+  residential:'residential', service:'service road', tertiary:'tertiary',
+  secondary:'secondary', primary:'primary', trunk:'trunk', motorway:'motorway',
+  motorway_link:'motorway link', secondary_link:'secondary link', trunk_link:'trunk link',
+  unclassified:'unclassified', footway:'footway'
+};
+const fmt = n => n.toLocaleString('en-US');
+const el = id => document.getElementById(id);
+
+const RASTER_SOURCES = {
+  'dark':       { tiles:['https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png','https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'], tileSize:512, maxzoom:20, attribution:'© CARTO · © OSM' },
+  'positron':   { tiles:['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png','https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'], tileSize:512, maxzoom:20, attribution:'© CARTO · © OSM' },
+  'osm':        { tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'], tileSize:256, maxzoom:19, attribution:'© OSM contributors' },
+  'esri-imagery': { tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], tileSize:256, maxzoom:19, attribution:'© Esri · Maxar · USDA NAIP' },
+  'esri-clarity': { tiles:['https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], tileSize:256, maxzoom:19, attribution:'© Esri Clarity' },
+  'usgs':       { tiles:['https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}'], tileSize:256, maxzoom:18, attribution:'USGS · The National Map (NAIP 1m)' },
+  'osip':       { tiles:['https://gis5.oit.ohio.gov/arcgis/rest/services/OSIP_3/OSIP_2021_Pictometry_18in/MapServer/tile/{z}/{y}/{x}'], tileSize:256, maxzoom:21, attribution:'Ohio OSIP-3 (12-18”)' },
+  'esri-topo':  { tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'], tileSize:256, maxzoom:19, attribution:'© Esri Topo' }
+};
+
+let map;
+let DATA = null;
+let activeBasemap = 'esri-imagery';
+let selectedId = null;
+let visibleClasses = new Set(['AB','A','B']);
+let lineOpacity = 0.95;
+let orbitTimer = null;
+
+function makeStyle(bmKey) {
+  const sources = {};
+  const layers = [{ id:'bg', type:'background', paint:{ 'background-color':'#0f1216' } }];
+  if (bmKey && bmKey !== 'none' && RASTER_SOURCES[bmKey]) {
+    const src = RASTER_SOURCES[bmKey];
+    sources['bm'] = { type:'raster', tiles: src.tiles, tileSize: src.tileSize || 256, maxzoom: src.maxzoom, attribution: src.attribution };
+    layers.push({ id:'bm', type:'raster', source:'bm', paint: { 'raster-resampling': 'linear' } });
+  }
+  return { version: 8, sources, layers };
+}
+
+async function init() {
+  const res = await fetch('ways.geojson');
+  const geo = await res.json();
+  DATA = geo;
+
+  const c = geo.summary?.byClass || {};
+  el('m-total').textContent = fmt(geo.features.length);
+  el('m-ab').textContent = fmt(c.AB || 0);
+  el('m-a').textContent  = fmt(c.A  || 0);
+  el('m-b').textContent  = fmt(c.B  || 0);
+  el('m-c').textContent  = fmt(c.C  || 0);
+  el('cnt-AB').textContent = fmt(c.AB || 0);
+  el('cnt-A').textContent  = fmt(c.A  || 0);
+  el('cnt-B').textContent  = fmt(c.B  || 0);
+  el('cnt-C').textContent  = fmt(c.C  || 0);
+
+  const b = geo.summary.bounds;
+  const center = [(b.minLon + b.maxLon)/2, (b.minLat + b.maxLat)/2];
+
+  map = new maplibregl.Map({
+    container: 'map',
+    style: makeStyle(activeBasemap),
+    center,
+    zoom: 12,
+    pitch: 55,
+    bearing: -18,
+    maxZoom: 22,
+    minZoom: 10,
+    antialias: true,
+    pixelRatio: Math.max(window.devicePixelRatio || 1, 2),
+    cooperativeGestures: false,
+  });
+  map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-right');
+  map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+  map.on('error', e => console.error('[maplibre]', e?.error?.message || e));
+
+  let booted = false;
+  function boot() {
+    if (booted) return;
+    booted = true;
+    addDataLayers();
+    map.fitBounds([[b.minLon, b.minLat],[b.maxLon, b.maxLat]], { padding: 60, pitch: 55, bearing: -18, duration: 1200 });
+    wireUI();
+    updateHUD();
+  }
+  map.on('load', boot);
+  map.on('style.load', () => { if (map.isStyleLoaded()) boot(); });
+  // Belt and suspenders: if both events skipped, poll
+  setTimeout(() => { if (!booted && map.isStyleLoaded()) boot(); }, 1500);
+  setTimeout(() => { if (!booted) boot(); }, 4000);
+  map.on('move', updateHUD);
+  map.on('mousemove', e => {
+    el('coord-lat').textContent = e.lngLat.lat.toFixed(5);
+    el('coord-lon').textContent = e.lngLat.lng.toFixed(5);
+  });
+}
+
+function addDataLayers() {
+  if (map.getSource('ways')) return;
+  map.addSource('ways', { type: 'geojson', data: DATA, promoteId: 'id' });
+
+  // Casing for critical
+  map.addLayer({
+    id: 'ways-casing',
+    type: 'line',
+    source: 'ways',
+    layout: { 'line-cap':'round', 'line-join':'round' },
+    paint: {
+      'line-color':'#000',
+      'line-opacity': 0.55,
+      'line-width': [
+        'interpolate', ['linear'], ['zoom'],
+        12, ['match', ['get','cls'], 'AB', 3, 'A', 3, 'B', 2, 1],
+        18, ['match', ['get','cls'], 'AB', 9, 'A', 9, 'B', 6, 3]
+      ]
+    }
+  });
+
+  map.addLayer({
+    id: 'ways-line',
+    type: 'line',
+    source: 'ways',
+    layout: { 'line-cap':'round', 'line-join':'round', 'line-sort-key': ['get','rank'] },
+    paint: {
+      'line-color': [
+        'match', ['get','cls'],
+        'AB', '#ff5a47',
+        'A',  '#ff5a47',
+        'B',  '#ffa84a',
+        '#7c8089'
+      ],
+      'line-opacity': lineOpacity,
+      'line-width': [
+        'interpolate', ['linear'], ['zoom'],
+        12, ['match', ['get','cls'], 'AB', 2, 'A', 2, 'B', 1.4, 0.6],
+        16, ['match', ['get','cls'], 'AB', 4, 'A', 4, 'B', 3, 1.2],
+        20, ['match', ['get','cls'], 'AB', 9, 'A', 9, 'B', 7, 3]
+      ]
+    }
+  });
+
+  // Highlighted layer for hover/selected (rendered above)
+  map.addLayer({
+    id: 'ways-hl',
+    type: 'line',
+    source: 'ways',
+    filter: ['==', ['id'], -1],
+    layout: { 'line-cap':'round', 'line-join':'round' },
+    paint: {
+      'line-color': '#fff',
+      'line-width': 8,
+      'line-opacity': 1,
+      'line-blur': 0.5
+    }
+  });
+
+  let hoverId = null;
+  map.on('mousemove', 'ways-line', e => {
+    map.getCanvas().style.cursor = 'pointer';
+    if (e.features?.length) {
+      const id = e.features[0].properties.id;
+      if (hoverId !== id && id !== selectedId) {
+        hoverId = id;
+        if (selectedId == null) map.setFilter('ways-hl', ['==', ['id'], id]);
+      }
+    }
+  });
+  map.on('mouseleave', 'ways-line', () => {
+    map.getCanvas().style.cursor = '';
+    hoverId = null;
+    if (selectedId == null) map.setFilter('ways-hl', ['==', ['id'], -1]);
+  });
+  map.on('click', 'ways-line', e => {
+    if (e.features?.length) selectFeature(e.features[0].properties.id);
+  });
+
+  applyVisibility();
+}
+
+function selectFeature(id) {
+  selectedId = id;
+  map.setFilter('ways-hl', ['==', ['id'], id]);
+  const f = DATA.features.find(x => x.properties.id == id);
+  if (!f) return;
+  renderSelection(f.properties, f.geometry);
+
+  // Frame and tilt
+  const coords = f.geometry.coordinates;
+  let minx=Infinity, miny=Infinity, maxx=-Infinity, maxy=-Infinity;
+  for (const [x,y] of coords) { if(x<minx)minx=x; if(x>maxx)maxx=x; if(y<miny)miny=y; if(y>maxy)maxy=y; }
+  if (map.getZoom() < 16.5) {
+    map.fitBounds([[minx,miny],[maxx,maxy]], { padding: 100, pitch: 60, duration: 900, maxZoom: 18.5 });
+  } else {
+    map.flyTo({ center:[(minx+maxx)/2,(miny+maxy)/2], pitch: 60, duration: 700 });
+  }
+}
+
+function renderSelection(p, geom) {
+  const sel = el('selection'), empty = el('selection-empty');
+  sel.classList.remove('empty'); empty.style.display = 'none';
+  el('sel-name').textContent = p.name || '(unnamed way)';
+  const cl = el('sel-class');
+  cl.textContent = `Class ${p.cls}`;
+  cl.className = 'way-class ' + (p.cls === 'AB' || p.cls === 'A' ? 'crit' : p.cls === 'B' ? 'high' : '');
+
+  const hwLabel = HIGHWAY_LABELS[p.hw] || p.hw || '—';
+  const oneway = p.ow === 'yes' ? 'YES (suspect)' : p.ow === 'no' ? 'no' : '—';
+  const tigerBase = p.nb ? (p.nb + (p.nt ? ' ' + p.nt : '')) : '—';
+
+  let narrative = '';
+  if (p.cls === 'AB')      narrative = `Both defects: TIGER baseline shows two-way residential, OSM tags <strong>oneway=yes</strong>, AND street is fragmented into ${p.segs || '?'} ways with ${p.gaps || '?'} node disconnects.`;
+  else if (p.cls === 'A')  narrative = `Residential street tagged <strong>oneway=yes</strong> against TIGER baseline. Likely a stale 2007 import artifact.`;
+  else if (p.cls === 'B')  narrative = `Continuous TIGER-named street fragmented across <strong>${p.segs || '?'}</strong> OSM ways with <strong>${p.gaps || '?'}</strong> node-connectivity gaps.`;
+  else                     narrative = `tiger:reviewed=no — included for completeness.`;
+
+  // Compute mid coord
+  const cs = geom.coordinates;
+  const mid = cs[Math.floor(cs.length/2)];
+
+  el('sel-body').innerHTML = `
+    <dl class="kv">
+      <dt>OSM ID</dt><dd>${p.id}</dd>
+      <dt>Highway</dt><dd>${hwLabel}</dd>
+      <dt>Oneway</dt><dd>${oneway}</dd>
+      <dt>Lanes</dt><dd>${p.ln || '<em>—</em>'}</dd>
+      <dt>Surface</dt><dd>${p.sf || '<em>—</em>'}</dd>
+      <dt>Maxspeed</dt><dd>${p.sp || '<em>—</em>'}</dd>
+      <dt>TIGER name</dt><dd>${tigerBase}</dd>
+      <dt>ZIP</dt><dd>${p.zl || '<em>—</em>'}</dd>
+      ${p.cls === 'B' || p.cls === 'AB' ? `<dt>Segments</dt><dd>${p.segs}</dd><dt>Node gaps</dt><dd>${p.gaps}</dd>` : ''}
+    </dl>
+    <div class="narrative">${narrative}</div>
+    <div class="ext-links">
+      <a target="_blank" rel="noopener" href="https://www.openstreetmap.org/way/${p.id}">OSM ↗</a>
+      <a target="_blank" rel="noopener" href="https://www.openstreetmap.org/edit?way=${p.id}#map=18/${mid[1]}/${mid[0]}">iD edit ↗</a>
+      <a target="_blank" rel="noopener" href="https://overpass-turbo.eu/?Q=way(${p.id});out%20geom;&R">Overpass ↗</a>
+    </div>
+  `;
+}
+
+function applyVisibility() {
+  const filt = ['in', ['get','cls'], ['literal', [...visibleClasses]]];
+  map.setFilter('ways-line', filt);
+  map.setFilter('ways-casing', filt);
+  let n = 0;
+  for (const f of DATA.features) if (visibleClasses.has(f.properties.cls)) n++;
+  el('visible-count').textContent = `${fmt(n)} of ${fmt(DATA.features.length)} visible`;
+}
+
+function setBasemap(bm) {
+  activeBasemap = bm;
+  document.querySelectorAll('.chip[data-bm]').forEach(b => b.classList.toggle('active', b.dataset.bm === bm));
+  // Replace just the basemap source/layer rather than rebuilding the whole style
+  if (map.getLayer('bm')) map.removeLayer('bm');
+  if (map.getSource('bm')) map.removeSource('bm');
+  if (bm !== 'none') {
+    const src = RASTER_SOURCES[bm];
+    map.addSource('bm', { type:'raster', tiles: src.tiles, tileSize: src.tileSize || 256, maxzoom: src.maxzoom, attribution: src.attribution });
+    map.addLayer({ id: 'bm', type: 'raster', source: 'bm', paint: { 'raster-resampling': 'linear' } }, 'ways-casing');
+  }
+}
+
+function wireUI() {
+  // Class toggles
+  document.querySelectorAll('.class-row').forEach(row => {
+    const cls = row.dataset.cls;
+    if (!visibleClasses.has(cls)) row.classList.add('off');
+    row.addEventListener('change', () => {
+      const cb = row.querySelector('input');
+      if (cb.checked) { visibleClasses.add(cls); row.classList.remove('off'); }
+      else { visibleClasses.delete(cls); row.classList.add('off'); }
+      applyVisibility();
+    });
+  });
+
+  document.querySelectorAll('.chip[data-bm]').forEach(b => b.addEventListener('click', () => setBasemap(b.dataset.bm)));
+
+  // PTZ
+  const PAN = 0.4;
+  el('ptz-up').onclick    = () => map.panBy([0, -120]);
+  el('ptz-down').onclick  = () => map.panBy([0,  120]);
+  el('ptz-left').onclick  = () => map.panBy([-120, 0]);
+  el('ptz-right').onclick = () => map.panBy([ 120, 0]);
+  el('ptz-recenter').onclick = () => {
+    const b = DATA.summary.bounds;
+    map.fitBounds([[b.minLon, b.minLat],[b.maxLon, b.maxLat]], { padding: 60, pitch: 55, bearing: -18, duration: 800 });
+  };
+  el('ptz-zoomin').onclick   = () => map.zoomTo(map.getZoom() + 1, { duration: 350 });
+  el('ptz-zoomout').onclick  = () => map.zoomTo(map.getZoom() - 1, { duration: 350 });
+  el('ptz-zoomstreet').onclick = () => map.easeTo({ zoom: 19, duration: 700 });
+
+  // Sliders
+  const slP = el('sl-pitch'),   slPV = el('sl-pitch-v');
+  const slB = el('sl-bearing'), slBV = el('sl-bearing-v');
+  const slZ = el('sl-zoom'),    slZV = el('sl-zoom-v');
+  const slO = el('sl-opacity'), slOV = el('sl-opacity-v');
+  slP.oninput = () => { const v=+slP.value; map.setPitch(v); slPV.textContent = v + '°'; };
+  slB.oninput = () => { const v=+slB.value; map.setBearing(v); slBV.textContent = v + '°'; };
+  slZ.oninput = () => { const v=+slZ.value; map.setZoom(v); slZV.textContent = v.toFixed(1); };
+  slO.oninput = () => {
+    lineOpacity = +slO.value / 100;
+    map.setPaintProperty('ways-line', 'line-opacity', lineOpacity);
+    slOV.textContent = slO.value + '%';
+  };
+
+  // Header buttons
+  el('btn-fit').onclick = () => el('ptz-recenter').click();
+  el('btn-critical').onclick = () => {
+    const crit = DATA.features.filter(f => f.properties.cls === 'AB' || f.properties.cls === 'A');
+    if (!crit.length) return;
+    let minx=Infinity, miny=Infinity, maxx=-Infinity, maxy=-Infinity;
+    for (const f of crit) for (const [x,y] of f.geometry.coordinates) { if(x<minx)minx=x; if(x>maxx)maxx=x; if(y<miny)miny=y; if(y>maxy)maxy=y; }
+    map.fitBounds([[minx,miny],[maxx,maxy]], { padding: 80, pitch: 60, duration: 1000 });
+  };
+  el('btn-flyaround').onclick = toggleOrbit;
+
+  // Compass click
+  el('compass-3d').onclick = () => map.easeTo({ bearing: 0, pitch: 0, duration: 700 });
+
+  // Search
+  el('search').addEventListener('input', onSearch);
+}
+
+function onSearch() {
+  const q = el('search').value.trim().toLowerCase();
+  const out = el('search-results');
+  out.innerHTML = '';
+  if (q.length < 2) return;
+  const groups = new Map();
+  for (const f of DATA.features) {
+    const name = f.properties.name;
+    if (!name) continue;
+    if (!name.toLowerCase().includes(q)) continue;
+    if (!groups.has(name)) groups.set(name, { name, features: [] });
+    groups.get(name).features.push(f);
+  }
+  const items = [...groups.values()].sort((a,b) => a.name.localeCompare(b.name)).slice(0, 30);
+  if (!items.length) {
+    out.innerHTML = `<div style="font-size:11px;color:var(--ink-mute);padding:6px 0;font-family:'IBM Plex Mono',monospace">no matches</div>`;
+    return;
+  }
+  for (const it of items) {
+    const div = document.createElement('div');
+    div.className = 'sr-item';
+    const r = { AB:3, A:2, B:1, C:0 };
+    const worstCls = it.features.reduce((acc, f) => r[f.properties.cls] > r[acc] ? f.properties.cls : acc, 'C');
+    div.innerHTML = `<span>${it.name}</span><span class="ct">${it.features.length}× ${worstCls}</span>`;
+    div.addEventListener('click', () => {
+      let minx=Infinity, miny=Infinity, maxx=-Infinity, maxy=-Infinity;
+      for (const f of it.features) for (const [x,y] of f.geometry.coordinates) { if(x<minx)minx=x; if(x>maxx)maxx=x; if(y<miny)miny=y; if(y>maxy)maxy=y; }
+      map.fitBounds([[minx,miny],[maxx,maxy]], { padding: 100, pitch: 60, duration: 900, maxZoom: 18 });
+      selectFeature(it.features[0].properties.id);
+    });
+    out.appendChild(div);
+  }
+}
+
+function toggleOrbit() {
+  const btn = el('btn-flyaround');
+  if (orbitTimer) {
+    clearInterval(orbitTimer); orbitTimer = null;
+    btn.textContent = 'Orbit'; btn.classList.remove('active');
+    el('hud-mode').textContent = 'PTZ'; return;
+  }
+  btn.textContent = 'Stop'; btn.classList.add('active');
+  el('hud-mode').textContent = 'ORBIT';
+  let bearing = map.getBearing();
+  orbitTimer = setInterval(() => {
+    bearing = (bearing + 0.6) % 360;
+    map.setBearing(bearing);
+  }, 30);
+}
+
+function updateHUD() {
+  el('hud-z').textContent = map.getZoom().toFixed(2);
+  el('hud-p').textContent = map.getPitch().toFixed(0) + '°';
+  const br = map.getBearing();
+  el('hud-b').textContent = br.toFixed(0) + '°';
+  el('needle').style.transform = `rotate(${-br}deg)`;
+  // Sync sliders without triggering input
+  const slP = el('sl-pitch'); if (slP) { slP.value = Math.round(map.getPitch()); el('sl-pitch-v').textContent = Math.round(map.getPitch()) + '°'; }
+  const slB = el('sl-bearing'); if (slB) { slB.value = Math.round(br); el('sl-bearing-v').textContent = Math.round(br) + '°'; }
+  const slZ = el('sl-zoom'); if (slZ) { slZ.value = map.getZoom().toFixed(1); el('sl-zoom-v').textContent = map.getZoom().toFixed(1); }
+}
+
+init().catch(err => {
+  console.error(err);
+  document.body.innerHTML = '<div style="padding:40px;font-family:monospace;color:#ff5a47;background:#0f1216;height:100vh">Failed to load: ' + err.message + '</div>';
+});
+</script>
+</body>
+</html>
