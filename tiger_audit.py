@@ -689,13 +689,9 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
             seg: int | str = stats["total"]
             severity_for_row = "OK"
         else:
-            # Anchor to the script's directory so the cross-zone check works
-            # regardless of CWD. Falls back to CWD-relative if __file__ isn't
-            # resolvable for any reason.
-            try:
-                workspace = Path(__file__).resolve().parent
-            except NameError:
-                workspace = Path.cwd()
+            # Anchor to the parent of the output directories to ensure consistency
+            # with _zone_paths, which uses CWD-relative paths.
+            workspace = out_path.parents[2]
             other_csv = workspace / f"tiger_audit_{k}" / "csv" / "all_ways.csv"
             if other_csv.exists():
                 try:
