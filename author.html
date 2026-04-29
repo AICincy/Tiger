@@ -579,7 +579,13 @@ out geom tags;</code></pre>
   // Arrow key nav
   document.querySelector('nav.tabs').addEventListener('keydown', function(e){
     if(['ArrowLeft','ArrowRight','Home','End'].indexOf(e.key) < 0) return;
-    var idx = TABS.findIndex(function(t){ return t.getAttribute('aria-selected') === 'true'; });
+    var idx = -1;
+    for(var i=0; i<TABS.length; i++) {
+      if(TABS[i].getAttribute('aria-selected') === 'true') {
+        idx = i;
+        break;
+      }
+    }
     if(idx < 0) idx = 0;
     var next = idx;
     if(e.key === 'ArrowLeft') next = (idx - 1 + TABS.length) % TABS.length;
