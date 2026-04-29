@@ -410,6 +410,13 @@ async function init() {
   const b = geo.summary.bounds;
   const center = [(b.minLon + b.maxLon)/2, (b.minLat + b.maxLat)/2];
 
+  // preserveDrawingBuffer is needed for canvas.toBlob()/toDataURL() to return
+  // real pixels (used by CAPTURE-MEDIA.md scripts), but it disables a WebGL
+  // optimisation that lets the browser discard the back-buffer between
+  // frames. For interactive browsing we leave it off; capture flows append
+  // ?capture=1 to the URL.
+  const CAPTURE_MODE = new URLSearchParams(location.search).get('capture') === '1';
+
   map = new maplibregl.Map({
     container: 'map',
     style: makeStyle(activeBasemap),
@@ -420,7 +427,7 @@ async function init() {
     maxZoom: 22,
     minZoom: 10,
     antialias: true,
-    preserveDrawingBuffer: true,
+    preserveDrawingBuffer: CAPTURE_MODE,
     pixelRatio: Math.max(window.devicePixelRatio || 1, 2),
     cooperativeGestures: false,
   });
