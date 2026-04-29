@@ -1729,26 +1729,57 @@ def run_zone(zone_key: str) -> dict:
 def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # Zone bboxes overlap (Northgate ↔ Forest Park ~32 km², Springdale ↔
+    # Forest Park ~14 km²). The same OSM way appears in multiple per-zone
+    # audits when it sits in an overlap region, so we dedupe by way ID
+    # before computing combined stats — otherwise the totals double-count.
+    seen_way_ids: set[int] = set()
     merged_ways: list[dict] = []
-    merged_gaps: list[dict] = []
-    by_class: dict[str, int] = defaultdict(int)
-    total = residential = oneway_yes = class_b_streets_total = 0
     seen_streets: set[str] = set()
+    class_b_streets_total = 0
     for r in results:
         c = r["classified"]
-        s = c["summary_stats"]
-        total += s["total"]
-        residential += s["residential"]
-        oneway_yes += s["oneway_yes_total"]
-        for k, v in s.get("by_class", {}).items():
-            by_class[k] += v
+        for w in c["all_ways"]:
+            wid = w["id"]
+            if wid is None or wid in seen_way_ids:
+                continue
+            seen_way_ids.add(wid)
+            merged_ways.append(w)
         for street in c["class_b_streets"]:
             if street not in seen_streets:
                 seen_streets.add(street)
                 class_b_streets_total += 1
-        for w in c["all_ways"]:
-            merged_ways.append(w)
-        merged_gaps.extend(c.get("gaps", []))
+
+    # Same problem with gaps — a node disconnect inside an overlap region
+    # is detected once per audit. Dedupe by the unordered way-pair key.
+    seen_gap_pairs: set[tuple[int, int]] = set()
+    merged_gaps: list[dict] = []
+    for r in results:
+        for g in r["classified"].get("gaps", []):
+            try:
+                key = tuple(sorted([int(g["way1_id"]), int(g["way2_id"])]))
+            except (KeyError, TypeError, ValueError):
+                merged_gaps.append(g)
+                continue
+            if key in seen_gap_pairs:
+                continue
+            seen_gap_pairs.add(key)
+            merged_gaps.append(g)
+
+    # Stats are computed from the deduped list, not summed across zones.
+    total = len(merged_ways)
+    residential = sum(1 for w in merged_ways if w["highway"] == "residential")
+    oneway_yes = sum(1 for w in merged_ways if w["oneway"] == "yes")
+    by_class: dict[str, int] = defaultdict(int)
+    for w in merged_ways:
+        by_class[w["defect_class"]] += 1
+
+    naive_total = sum(r["classified"]["summary_stats"]["total"] for r in results)
+    duplicate_count = naive_total - total
+    print(
+        f"  Combined dashboard dedup: {naive_total:,} per-zone-sum -> "
+        f"{total:,} unique ({duplicate_count:,} ways in overlapping bboxes)"
+    )
 
     audit_ts = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     compact_stats = {
@@ -1815,6 +1846,30 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
                 s["class_a_count"], s["class_b_street_count"], s["class_b_way_count"],
                 s["class_ab_count"], s.get("gaps_found", 0),
             ])
+        # Per-zone-summed totals (with overlap duplicates) AND deduped unique
+        # totals on the bottom two rows, so the overlap is visible in the data.
+        sum_total = sum(r["classified"]["summary_stats"]["total"] for r in results)
+        sum_resi = sum(r["classified"]["summary_stats"]["residential"] for r in results)
+        sum_a = sum(r["classified"]["summary_stats"]["class_a_count"] for r in results)
+        sum_b_streets = sum(r["classified"]["summary_stats"]["class_b_street_count"] for r in results)
+        sum_b_ways = sum(r["classified"]["summary_stats"]["class_b_way_count"] for r in results)
+        sum_ab = sum(r["classified"]["summary_stats"]["class_ab_count"] for r in results)
+        sum_gaps = sum(r["classified"]["summary_stats"].get("gaps_found", 0) for r in results)
+        class_b_way_unique = sum(
+            1 for ww in merged_ways
+            if ww["defect_class"] in (CLASS_B, CLASS_AB)
+        )
+        w.writerow([
+            "Hamilton County (per-zone sum, includes overlap duplicates)", "_sum",
+            sum_total, sum_resi, sum_a, sum_b_streets, sum_b_ways, sum_ab, sum_gaps,
+        ])
+        w.writerow([
+            "Hamilton County (unique, deduped by way ID)", "_unique",
+            total, residential,
+            by_class.get(CLASS_A, 0) + by_class.get(CLASS_AB, 0),
+            class_b_streets_total, class_b_way_unique,
+            by_class.get(CLASS_AB, 0), len(merged_gaps),
+        ])
     print(f"  Combined summary CSV: {csv_path}")
 
 
