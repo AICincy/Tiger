@@ -210,10 +210,15 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
     # state was baked into the cache when it was written.
     if not isinstance(payload, dict):
         snippet = repr(payload)[:200]
+        advice = (
+            ""
+            if fresh_fetch
+            else " The cache may be corrupt or manually edited; delete the "
+                 "file and re-run, or fix it."
+        )
         raise RuntimeError(
             f"Overpass payload from {payload_source} is not a JSON object "
-            f"(got {type(payload).__name__}). The cache may be corrupt or "
-            f"manually edited; delete the file and re-run, or fix it. "
+            f"(got {type(payload).__name__}).{advice} "
             f"First 200 chars of the payload: {snippet}"
         )
     payload.pop("_under_threshold", None)
