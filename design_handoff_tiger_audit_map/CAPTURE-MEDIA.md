@@ -103,7 +103,7 @@ Paste this into the Console on `map_3d.html`. It will trigger six browser downlo
 })();
 ```
 
-If the script warns that `preserveDrawingBuffer` is off, open `prototypes/map_3d.html`, find the `new maplibregl.Map({ ... })` block, add the line `preserveDrawingBuffer: true,` next to `antialias: true,`, save, reload, and re-run.
+> **`preserveDrawingBuffer` is already on.** The flag has been pre-applied to the 3D MapLibre constructor in this repo's copy of `prototypes/map_3d.html`, so the script above downloads real pixels rather than blank PNGs. (If you adapt these scripts for a fresh MapLibre instance elsewhere, the flag is required.)
 
 ---
 
