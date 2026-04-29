@@ -12,6 +12,7 @@ import csv
 import datetime as dt
 import glob
 import json
+import math
 import os
 import sys
 import time
@@ -29,21 +30,25 @@ ZONES = {
         "name": "Blue Ash / Montgomery",
         "bbox": (39.16, -84.44, 39.24, -84.33),
         "description": "Blue Ash, Montgomery, Deer Park, Silverton, Kenwood, Madeira",
+        "index_case_street": "O'Leary Avenue",
     },
     "springdale_sharonville": {
         "name": "Springdale / Sharonville",
         "bbox": (39.24, -84.48, 39.32, -84.38),
         "description": "Springdale, Sharonville, Glendale, Evendale, Lincoln Heights",
+        "index_case_street": None,
     },
     "northgate_mt_healthy": {
         "name": "Northgate / Mt. Healthy",
         "bbox": (39.22, -84.58, 39.30, -84.48),
         "description": "Mt. Healthy, North College Hill, Finneytown, Northgate",
+        "index_case_street": None,
     },
     "forest_park_pleasant_run": {
         "name": "Forest Park / Pleasant Run",
         "bbox": (39.26, -84.56, 39.34, -84.46),
         "description": "Forest Park, Pleasant Run, Greenhills",
+        "index_case_street": None,
     },
 }
 
@@ -89,6 +94,26 @@ def _post_overpass(url: str, query: str) -> requests.Response:
     return requests.post(url, data={"data": query}, headers=OVERPASS_HEADERS, timeout=240)
 
 
+CACHE_RETENTION_DAYS = 14
+
+
+def _prune_old_cache(data_dir: Path, zone_key: str, keep_newest: int = 3) -> None:
+    cached = sorted(
+        data_dir.glob(f"{zone_key}_raw_*.json"),
+        key=lambda p: p.stat().st_mtime,
+    )
+    if len(cached) <= keep_newest:
+        return
+    cutoff = time.time() - CACHE_RETENTION_DAYS * 86400
+    for old in cached[:-keep_newest]:
+        if old.stat().st_mtime < cutoff:
+            try:
+                old.unlink()
+                print(f"  Pruned stale cache: {old.name}")
+            except OSError as exc:
+                print(f"  Could not prune {old.name}: {exc}")
+
+
 def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
     zone = ZONES[zone_key]
     query = overpass_query(zone["bbox"])
@@ -125,16 +150,35 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
                     f"Overpass response was not JSON. First 500 chars:\n{snippet}"
                 ) from exc
             break
-        except Exception as exc:  # noqa: BLE001 - we want to retry broadly
+        except (
+            requests.RequestException,
+            ValueError,
+            json.JSONDecodeError,
+            RuntimeError,
+        ) as exc:
             last_error = exc
             print(f"  Attempt failed: {exc}")
             continue
 
     if payload is None:
-        cached = sorted(data_dir.glob(f"{zone_key}_raw_*.json"))
+        # Sort by mtime, not filename — robust to timestamp format changes.
+        cached = sorted(
+            data_dir.glob(f"{zone_key}_raw_*.json"),
+            key=lambda p: p.stat().st_mtime,
+        )
         if cached:
             latest = cached[-1]
-            print(f"Using cached data from {latest.name}. Live query failed.")
+            age_s = time.time() - latest.stat().st_mtime
+            age_label = f"{age_s/3600:.1f}h" if age_s < 86400 else f"{age_s/86400:.1f}d"
+            print(
+                f"Using cached data from {latest.name} (age {age_label}). "
+                f"Live query failed."
+            )
+            if age_s > 14 * 86400:
+                print(
+                    f"  WARNING: cache is {age_label} old — re-run with network "
+                    f"access for fresh data when possible."
+                )
             with latest.open("r", encoding="utf-8") as fh:
                 payload = json.load(fh)
         else:
@@ -156,6 +200,7 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
         with out_file.open("w", encoding="utf-8") as fh:
             json.dump(payload, fh, ensure_ascii=False, indent=2)
         print(f"  Saved raw JSON to {out_file}")
+        _prune_old_cache(data_dir, zone_key)
 
     n = len(payload.get("elements", []))
     print(f"Fetched {n} elements for {zone['name']}")
@@ -175,10 +220,15 @@ def _norm_name(name: str | None) -> str | None:
     return s.lower()
 
 
-import math
+def _valid_latlon(lat: float, lon: float) -> bool:
+    return -90.0 <= lat <= 90.0 and -180.0 <= lon <= 180.0
 
 
 def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    if not (_valid_latlon(lat1, lon1) and _valid_latlon(lat2, lon2)):
+        raise ValueError(
+            f"Invalid lat/lon for haversine: ({lat1},{lon1}) ({lat2},{lon2})"
+        )
     R = 6371000.0
     p1 = math.radians(lat1)
     p2 = math.radians(lat2)
@@ -232,12 +282,19 @@ def classify(raw: dict) -> dict:
     by_norm: dict[str, list[dict]] = defaultdict(list)
 
     all_ways: list[dict] = []
+    skipped_geom = 0
     for el in elements:
         tags = el.get("tags", {}) or {}
         name = tags.get("name")
         norm = _norm_name(name)
         geom = el.get("geometry") or []
-        geom_pairs = [[g["lat"], g["lon"]] for g in geom if "lat" in g and "lon" in g]
+        geom_pairs = [
+            [g["lat"], g["lon"]]
+            for g in geom
+            if "lat" in g and "lon" in g and _valid_latlon(g["lat"], g["lon"])
+        ]
+        if not geom_pairs:
+            skipped_geom += 1
         record = {
             "id": el.get("id"),
             "name": name,
@@ -297,6 +354,12 @@ def classify(raw: dict) -> dict:
 
     gaps = detect_gaps(class_b_streets)
 
+    if skipped_geom:
+        print(
+            f"  WARNING: {skipped_geom} ways had missing or invalid geometry "
+            f"(rendered without polylines)."
+        )
+
     summary_stats = {
         "total": len(all_ways),
         "residential": residential_count,
@@ -309,6 +372,7 @@ def classify(raw: dict) -> dict:
             1 for w in all_ways if w["defect_class"] in (CLASS_B, CLASS_AB)
         ),
         "gaps_found": len(gaps),
+        "ways_missing_geom": skipped_geom,
         "by_highway": dict(by_highway),
         "by_class": dict(by_class),
     }
@@ -496,9 +560,10 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
         ws3.cell(row=1, column=col, value=h)
     _style_header_row(ws3, 1, len(headers3))
     widths3: dict[int, int] = {i + 1: len(h) for i, h in enumerate(headers3)}
+    index_street = (zone.get("index_case_street") or "").strip()
     for idx, w in enumerate(a_only_sorted, start=1):
         row = idx + 1
-        is_index = (w["name"] or "").strip() == "O'Leary Avenue"
+        is_index = bool(index_street) and (w["name"] or "").strip() == index_street
         status = "INDEX CASE" if is_index else "Not started"
         values = [idx, w["name_display"], w["id"], CRITICAL, status]
         _write_row(ws3, row, values, widths3)
@@ -725,8 +790,14 @@ select#bmsel,select#waybackRel{background:var(--input-bg);color:var(--text);bord
   #sbToggle{display:none}
   #hamburger{display:block}
   #backdrop:not([hidden]){display:block}
-  #main{display:block}#map{height:calc(100vh - 42px);width:100%}
+  #main{display:block}
+  #map{height:calc(100vh - 42px);width:100%}
+  /* Hide zoom control on small screens — it overlaps the hamburger and is rarely needed when pinch-zoom is available */
+  .leaflet-control-zoom{display:none}
 }
+/* Visible focus indicator for keyboard navigation */
+.leaflet-interactive:focus,#sr [role="option"]:focus{outline:3px solid #FFB800;outline-offset:2px}
+#sr [role="option"][aria-selected="true"]{background:rgba(255,184,0,0.18);outline:1px dashed var(--accent)}
 
 /* E4 pulse */
 @keyframes pulseStroke{0%,100%{stroke-opacity:1}50%{stroke-opacity:0.4}}
@@ -785,10 +856,10 @@ select#bmsel,select#waybackRel{background:var(--input-bg);color:var(--text);bord
 <div class="sub">__TOTAL__ unreviewed road segments &middot; Full geometry + node gap analysis &middot; __AUDIT_TS__</div></div>
 </div>
 <button id="hamburger" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
-<div id="backdrop" hidden></div>
+<div id="backdrop" role="presentation" hidden></div>
 <div id="main">
 <div id="sidebar" role="region" aria-label="Dashboard controls">
-<div class="sec"><h3>Zone Totals <button id="dmt" aria-label="Toggle dark mode" title="Toggle dark mode">&#127769;</button></h3>
+<div class="sec"><h3>Zone Totals <button id="dmt" aria-label="Switch to dark mode" title="Switch to dark mode">&#127769;</button></h3>
 <div class="kg">
 <div class="kp"><div class="n" id="kt" aria-live="polite">-</div><div class="l">Total</div></div>
 <div class="kp"><div class="n" id="kr" aria-live="polite">-</div><div class="l">Residential</div></div>
@@ -1150,18 +1221,42 @@ map.on('moveend',function(){uvs();scheduleHashWrite();});
 var si={};
 D.ways.forEach(function(w){if(w.n&&!si[w.n]&&w.g&&w.g.length)si[w.n]=w.g[Math.floor(w.g.length/2)];});
 
+var srActiveIdx=-1;
+function srUpdateActive(idx){
+  var sr=document.getElementById('sr');
+  var opts=sr.querySelectorAll('[role="option"]');
+  if(!opts.length){srActiveIdx=-1;document.getElementById('search').removeAttribute('aria-activedescendant');return;}
+  if(idx<0)idx=opts.length-1;else if(idx>=opts.length)idx=0;
+  srActiveIdx=idx;
+  opts.forEach(function(el,i){
+    var on=i===idx;
+    el.setAttribute('aria-selected',on?'true':'false');
+    if(on){el.scrollIntoView({block:'nearest'});}
+  });
+  document.getElementById('search').setAttribute('aria-activedescendant',opts[idx].id);
+}
 document.getElementById('search').addEventListener('input',function(){
   var q=this.value.toLowerCase(),r=document.getElementById('sr'),self=this;
+  srActiveIdx=-1;self.removeAttribute('aria-activedescendant');
   if(q.length<2){r.innerHTML='';self.setAttribute('aria-expanded','false');return;}
   var m=Object.keys(si).filter(function(n){return n.toLowerCase().indexOf(q)>=0;}).slice(0,10);
   self.setAttribute('aria-expanded',m.length>0?'true':'false');
   r.innerHTML=m.map(function(n,i){
-    return '<div role="option" tabindex="0" id="opt'+i+'" style="padding:3px 0;cursor:pointer;color:var(--link);font-size:11px" data-street="'+escAttr(n)+'">'+n+'</div>';
+    return '<div role="option" tabindex="0" id="opt'+i+'" aria-selected="false" style="padding:3px 0;cursor:pointer;color:var(--link);font-size:11px" data-street="'+escAttr(n)+'">'+n+'</div>';
   }).join('');
   r.querySelectorAll('div').forEach(function(el){
     el.addEventListener('click',function(){flyTo(this.getAttribute('data-street'));});
     el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flyTo(this.getAttribute('data-street'));}});
   });
+});
+document.getElementById('search').addEventListener('keydown',function(e){
+  if(e.key==='ArrowDown'){e.preventDefault();srUpdateActive(srActiveIdx+1);}
+  else if(e.key==='ArrowUp'){e.preventDefault();srUpdateActive(srActiveIdx-1);}
+  else if(e.key==='Enter'){
+    var sr=document.getElementById('sr');
+    var opts=sr.querySelectorAll('[role="option"]');
+    if(srActiveIdx>=0&&opts[srActiveIdx]){e.preventDefault();flyTo(opts[srActiveIdx].getAttribute('data-street'));}
+  }
 });
 
 function flyTo(name){
@@ -1221,6 +1316,8 @@ document.addEventListener('keydown',function(e){
     var s=document.getElementById('search');s.blur();s.value='';
     document.getElementById('sr').innerHTML='';
     s.setAttribute('aria-expanded','false');
+    s.removeAttribute('aria-activedescendant');
+    srActiveIdx=-1;
     if(helpOpen)toggleHelp();
   }else if(['1','2','3','4','5','6'].indexOf(e.key)>=0){
     var ids=['lab','la','lb','lc','lgap','lheat'];
@@ -1314,7 +1411,8 @@ function loadInJOSM(wayIds){
     var batches=[],cur=[],curLen=80;
     wayIds.forEach(function(id){
       var s='w'+id;
-      if(curLen+s.length+1>7000){batches.push(cur);cur=[];curLen=80;}
+      // 7500 chars leaves headroom under the typical 8000-char URL limit.
+      if(curLen+s.length+1>7500){batches.push(cur);cur=[];curLen=80;}
       cur.push(s);curLen+=s.length+1;
     });
     if(cur.length)batches.push(cur);
@@ -1334,15 +1432,29 @@ function printView(){
   gL.eachLayer(function(m){if(b.contains(m.getLatLng()))v.gp++;});
   document.getElementById('printBar').innerHTML='TIGER Audit \\u2014 '+ZONE_NAME+' \\u2014 '+new Date().toLocaleDateString()
     +' &middot; Visible: '+v.AB+' AB &middot; '+v.A+' A &middot; '+v.B+' B &middot; '+v.C+' C &middot; '+v.gp+' gaps';
+  // Force light theme for printing so paper output stays readable, restore after.
+  var wasDark=document.documentElement.classList.contains('dark');
+  if(wasDark)document.documentElement.classList.remove('dark');
   document.body.classList.add('printing');
   setTimeout(function(){window.print();},250);
+  window._tigerPrintWasDark=wasDark;
 }
-window.addEventListener('afterprint',function(){document.body.classList.remove('printing');});
+window.addEventListener('afterprint',function(){
+  document.body.classList.remove('printing');
+  if(window._tigerPrintWasDark){
+    document.documentElement.classList.add('dark');
+    window._tigerPrintWasDark=false;
+  }
+});
 
 // === E6 dark mode (chrome theme; tiles are managed by basemap selector) ===
 function setDark(on){
   document.documentElement.classList.toggle('dark',!!on);
-  document.getElementById('dmt').textContent=on?'\\u2600\\uFE0F':'\\uD83C\\uDF19';
+  var btn=document.getElementById('dmt');
+  btn.textContent=on?'\\u2600\\uFE0F':'\\uD83C\\uDF19';
+  var lbl=on?'Switch to light mode':'Switch to dark mode';
+  btn.setAttribute('aria-label',lbl);
+  btn.setAttribute('title',lbl);
   try{localStorage.setItem('tiger-dark-mode',on?'1':'0');}catch(e){}
   scheduleHashWrite();
 }
@@ -1449,15 +1561,36 @@ def write_csvs(classified: dict, csv_dir: Path) -> None:
         sorted(classified["class_a"], key=lambda w: ((w["name_display"] or "").lower(), w["id"] or 0)),
         CSV_FIELDS_ALL,
     )
+
+    # Per-street gap counts so volunteers can prioritize Class B streets
+    # by the number of probable disconnects rather than just segment count.
+    gaps_per_street: dict[str, int] = defaultdict(int)
+    for g in classified.get("gaps", []):
+        street = g.get("street")
+        if street:
+            gaps_per_street[street] += 1
+
     class_b_rows: list[dict] = []
     for street, ways in classified["class_b_streets"].items():
+        gap_count = gaps_per_street.get(street, 0)
         for w in ways:
-            class_b_rows.append({**w, "_street_segments": len(ways)})
-    class_b_rows.sort(key=lambda w: (-w["_street_segments"], (w["name_display"] or "").lower(), w["id"] or 0))
+            class_b_rows.append({
+                **w,
+                "_street_segments": len(ways),
+                "_street_gap_count": gap_count,
+            })
+    class_b_rows.sort(
+        key=lambda w: (
+            -w["_street_gap_count"],
+            -w["_street_segments"],
+            (w["name_display"] or "").lower(),
+            w["id"] or 0,
+        )
+    )
     _write_csv(
         csv_dir / "class_b_multi_segment.csv",
         class_b_rows,
-        CSV_FIELDS_ALL + ["_street_segments"],
+        CSV_FIELDS_ALL + ["_street_segments", "_street_gap_count"],
     )
     _write_csv(
         csv_dir / "class_ab_compound.csv",
@@ -1513,6 +1646,7 @@ def print_summary(classified: dict, zone_key: str, audit_ts: str, out_dir: Path,
     print(f"  Class A (false one-way):      {s['class_a_count']:,}")
     print(f"  Class B (multi-segment):      {s['class_b_way_count']:,}")
     print(f"  Class AB (compound):          {s['class_ab_count']:,}")
+    print(f"  Node gaps detected:           {s.get('gaps_found', 0):,}")
     print("-" * 44)
     print(f"  Est. volunteer hours (P0+P1): {p0p1:.1f}")
     print(f"  Est. volunteer hours (all):   {total_h:.1f}")
