@@ -104,6 +104,28 @@ def _post_overpass(url: str, query: str) -> requests.Response:
     return requests.post(url, data={"data": query}, headers=OVERPASS_HEADERS, timeout=240)
 
 
+def _bounded_payload_snippet(payload, *, max_chars: int = 200) -> str:
+    """Type-aware, allocation-bounded debug snippet for a malformed payload.
+
+    A cached Overpass response can be megabytes; calling repr() or
+    json.dumps() on it just to slice the first few hundred chars
+    materializes the whole string in memory. This helper looks at the
+    type and produces a short, useful description without paying that
+    cost.
+    """
+    if isinstance(payload, list):
+        head = payload[:3]
+        return f"list[{len(payload)} items], first 3: {repr(head)[:max_chars]}"
+    if isinstance(payload, dict):
+        keys = list(payload.keys())[:10]
+        more = "..." if len(payload) > 10 else ""
+        keys_str = ", ".join(repr(k) for k in keys)[:max_chars]
+        return f"dict[{len(payload)} keys]: {keys_str}{more}"
+    if isinstance(payload, str):
+        return payload[:max_chars]
+    return repr(payload)[:max_chars]
+
+
 CACHE_RETENTION_DAYS = 14
 
 
@@ -156,12 +178,20 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
                 continue
             resp.raise_for_status()
             try:
-                payload = resp.json()
+                parsed = resp.json()
             except ValueError as exc:
                 snippet = resp.text[:500]
                 raise RuntimeError(
                     f"Overpass response was not JSON. First 500 chars:\n{snippet}"
                 ) from exc
+            # A successful HTTP 200 carrying JSON `null` should NOT be
+            # treated as "fetch succeeded" — that lets a buggy upstream
+            # silently slip past the retry loop and fall through to the
+            # cache fallback (or worse, a `last_error: None` failure).
+            # Treat it as a retryable error.
+            if parsed is None:
+                raise RuntimeError("Overpass returned JSON null")
+            payload = parsed
             break
         except (
             requests.RequestException,
@@ -209,26 +239,31 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
     # the threshold flag here so it reflects this run's payload, not whatever
     # state was baked into the cache when it was written.
     if not isinstance(payload, dict):
-        snippet = repr(payload)[:200]
-        advice = (
-            ""
+        snippet = _bounded_payload_snippet(payload)
+        remediation = (
+            "The live Overpass response was malformed; retry later or "
+            "check Overpass/network status."
             if fresh_fetch
-            else " The cache may be corrupt or manually edited; delete the "
+            else "The cache may be corrupt or manually edited; delete the "
                  "file and re-run, or fix it."
         )
         raise RuntimeError(
             f"Overpass payload from {payload_source} is not a JSON object "
-            f"(got {type(payload).__name__}).{advice} "
-            f"First 200 chars of the payload: {snippet}"
+            f"(got {type(payload).__name__}). {remediation} Snippet: {snippet}"
         )
     payload.pop("_under_threshold", None)
     payload.pop("_element_count", None)
     elements = payload.get("elements")
     if not isinstance(elements, list):
-        snippet = json.dumps(payload)[:500]
+        # payload is a dict here; show its keys + the elements value's type
+        # so the snippet is bounded regardless of how big the rest of the
+        # payload is.
+        keys_preview = ", ".join(repr(k) for k in list(payload.keys())[:10])
+        elem_type = type(elements).__name__ if "elements" in payload else "missing"
         raise RuntimeError(
-            f"Overpass payload from {payload_source} is missing 'elements' "
-            f"array (or it is not a list). First 500 chars:\n{snippet}"
+            f"Overpass payload from {payload_source} has malformed "
+            f"'elements' (got {elem_type}, expected list). "
+            f"Top-level keys ({len(payload)}): {keys_preview}"
         )
     if len(elements) < SANITY_THRESHOLD:
         print(
