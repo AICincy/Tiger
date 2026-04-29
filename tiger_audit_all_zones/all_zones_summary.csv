@@ -3,3 +3,5 @@ Blue Ash / Montgomery,blue_ash_montgomery,1934,1163,57,182,1064,55,308
 Springdale / Sharonville,springdale_sharonville,1549,856,97,160,993,95,239
 Northgate / Mt. Healthy,northgate_mt_healthy,1664,1075,47,129,816,44,222
 Forest Park / Pleasant Run,forest_park_pleasant_run,2066,1109,85,156,1261,83,394
+"Hamilton County (per-zone sum, includes overlap duplicates)",_sum,7213,4203,286,627,4134,277,1163
+"Hamilton County (unique, deduped by way ID)",_unique,6096,3583,228,517,3468,221,949
