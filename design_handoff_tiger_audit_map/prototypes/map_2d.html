@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blue Ash / Montgomery — TIGER Audit Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --bg: #f4f0e8;
+    --paper: #ebe4d4;
+    --ink: #1d1c1a;
+    --ink-soft: #514c44;
+    --ink-mute: #8a8377;
+    --rule: #c9bfa9;
+    --rule-soft: #d9d0bc;
+    --panel: #fbf8f1;
+    --accent: #6b3a2e;
+    --crit: #b42a1d;
+    --high: #c8761a;
+    --low:  #6e6759;
+    --gap:  #4f3aa8;
+    --ok:   #4a6a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.5;
+    overflow: hidden;
+  }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-feature-settings: "tnum"; }
+
+  /* ── Layout ─────────────────────────────────────────── */
+  #app {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 56px 1fr 32px;
+    grid-template-areas:
+      "head head"
+      "side map"
+      "foot foot";
+    height: 100vh;
+  }
+  header {
+    grid-area: head;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    display: flex;
+    align-items: stretch;
+  }
+  header .title {
+    padding: 8px 18px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 320px;
+  }
+  header .title h1 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  header .title .sub {
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 2px;
+  }
+  header .meta {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 22px;
+    overflow: hidden;
+  }
+  header .meta .stat { display: flex; flex-direction: column; }
+  header .meta .stat .lbl {
+    font-size: 10px; color: var(--ink-mute);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  header .meta .stat .val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px; font-weight: 500;
+    margin-top: 1px;
+  }
+  header .meta .stat.crit .val { color: var(--crit); }
+  header .meta .stat.high .val { color: var(--high); }
+  header .meta .stat.gap  .val { color: var(--gap); }
+  header .meta .spacer { flex: 1; }
+  header .actions { display: flex; align-items: center; gap: 4px; padding-right: 10px; }
+  header .actions button {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: 11px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 0;
+    letter-spacing: 0.04em;
+  }
+  header .actions button:hover { background: var(--bg); color: var(--ink); }
+  header .actions button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ── Sidebar ─────────────────────────────────────────── */
+  aside {
+    grid-area: side;
+    background: var(--panel);
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+    padding: 0;
+  }
+  .section {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .section h2 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+
+  /* Class filters */
+  .class-row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    cursor: pointer;
+    border-bottom: 1px dotted var(--rule-soft);
+  }
+  .class-row:last-child { border-bottom: none; }
+  .class-row input { display: none; }
+  .class-row .swatch {
+    width: 16px; height: 4px;
+    border-radius: 1px;
+    background: var(--low);
+  }
+  .class-row.crit .swatch { background: var(--crit); height: 5px; }
+  .class-row.high .swatch { background: var(--high); height: 5px; }
+  .class-row.low  .swatch { background: var(--low); height: 3px; }
+  .class-row.gap  .swatch { background: var(--gap); width: 8px; height: 8px; border-radius: 50%; margin: 0 4px; }
+  .class-row .label .name { font-size: 12px; font-weight: 500; }
+  .class-row .label .desc { font-size: 11px; color: var(--ink-mute); }
+  .class-row .count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: var(--bg);
+    padding: 1px 6px;
+    border: 1px solid var(--rule);
+  }
+  .class-row.off { opacity: 0.4; }
+  .class-row.off .swatch { background: var(--ink-mute); }
+
+  /* Search */
+  #search {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 7px 10px;
+    font: inherit;
+    font-size: 12px;
+    color: var(--ink);
+  }
+  #search:focus { outline: none; border-color: var(--ink); }
+  #search-results {
+    margin-top: 6px;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  .sr-item {
+    padding: 5px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .sr-item:hover { background: var(--bg); border-left-color: var(--accent); }
+  .sr-item .nm { color: var(--ink); }
+  .sr-item .ct { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--ink-mute); }
+
+  /* Basemap */
+  .basemap-row {
+    display: flex;
+    border: 1px solid var(--rule);
+  }
+  .basemap-row button {
+    flex: 1;
+    background: var(--panel);
+    border: none;
+    border-right: 1px solid var(--rule);
+    padding: 6px 0;
+    font: inherit;
+    font-size: 11px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    letter-spacing: 0.03em;
+  }
+  .basemap-row button:last-child { border-right: none; }
+  .basemap-row button.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* Selection panel */
+  #selection {
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  #selection.empty { display: none; }
+  #selection .sel-head {
+    background: var(--bg);
+    padding: 12px 18px 10px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  #selection .sel-head .way-name {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  #selection .sel-head .way-class {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 2px 7px;
+    background: var(--low);
+    color: var(--paper);
+  }
+  #selection .sel-head .way-class.crit { background: var(--crit); }
+  #selection .sel-head .way-class.high { background: var(--high); }
+  #selection .sel-body {
+    padding: 12px 18px 14px;
+    font-size: 12px;
+  }
+  .kv {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 4px 10px;
+    margin-bottom: 10px;
+  }
+  .kv dt {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    padding-top: 1px;
+  }
+  .kv dd {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    word-break: break-word;
+  }
+  .kv dd em { font-style: normal; color: var(--ink-mute); }
+
+  .narrative {
+    background: var(--bg);
+    border-left: 2px solid var(--accent);
+    padding: 8px 10px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-top: 8px;
+  }
+
+  .ext-links {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .ext-links a {
+    font-size: 11px;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    background: var(--panel);
+    transition: background 0.15s;
+  }
+  .ext-links a:hover { background: var(--bg); border-color: var(--ink); }
+
+  /* ── Map ─────────────────────────────────────────── */
+  main { grid-area: map; position: relative; }
+  #map { width: 100%; height: 100%; background: var(--bg); }
+
+  /* Custom Leaflet skin */
+  .leaflet-container { background: var(--bg); font-family: 'IBM Plex Sans', sans-serif; }
+  .leaflet-control-zoom { border: 1px solid var(--rule) !important; }
+  .leaflet-control-zoom a {
+    background: var(--panel) !important;
+    color: var(--ink) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--rule-soft) !important;
+    width: 28px !important; height: 28px !important;
+    line-height: 28px !important;
+    font-size: 16px !important;
+    font-family: 'IBM Plex Sans', sans-serif !important;
+  }
+  .leaflet-control-zoom a:last-child { border-bottom: none !important; }
+  .leaflet-control-zoom a:hover { background: var(--bg) !important; }
+  .leaflet-control-attribution {
+    background: rgba(251,248,241,0.85) !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 9px !important;
+    color: var(--ink-mute) !important;
+  }
+  .leaflet-control-attribution a { color: var(--ink-soft) !important; }
+
+  /* Crosshair + scale ornament */
+  #crosshair {
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    z-index: 400;
+  }
+  #scale-block {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 500;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 8px 10px 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink);
+    pointer-events: none;
+    min-width: 150px;
+  }
+  #scale-block .lbl { font-size: 9px; color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  #scale-block .bar {
+    display: flex;
+    border: 1px solid var(--ink);
+    height: 6px;
+  }
+  #scale-block .bar div { flex: 1; }
+  #scale-block .bar div:nth-child(odd) { background: var(--ink); }
+  #scale-block .ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+    font-size: 9px;
+    color: var(--ink-soft);
+  }
+
+  #compass {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 500;
+    width: 56px; height: 56px;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  }
+  #compass svg { width: 70%; height: 70%; }
+
+  /* coordinate readout */
+  #coord {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 500;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 6px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    pointer-events: none;
+  }
+  #coord .lbl { color: var(--ink-mute); margin-right: 4px; }
+
+  footer {
+    grid-area: foot;
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    gap: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  footer .filler { flex: 1; }
+  footer .legend-inline { display: flex; gap: 16px; align-items: center; }
+  footer .legend-inline span { display: flex; align-items: center; gap: 6px; }
+  footer .legend-inline i {
+    display: inline-block; width: 12px; height: 3px; background: var(--low);
+  }
+  footer .legend-inline i.crit { background: var(--crit); height: 4px; }
+  footer .legend-inline i.high { background: var(--high); height: 4px; }
+  footer .legend-inline i.gap  { width: 7px; height: 7px; border-radius: 50%; background: var(--gap); }
+
+  /* SVG line styling */
+  .way-path { fill: none; cursor: pointer; }
+  .way-path.crit { stroke: var(--crit); stroke-width: 3; }
+  .way-path.high { stroke: var(--high); stroke-width: 2.5; }
+  .way-path.low  { stroke: var(--low);  stroke-width: 1; opacity: 0.55; }
+  .way-path.crit:hover, .way-path.high:hover, .way-path.low:hover { stroke: #000; stroke-width: 5; opacity: 1; }
+  .way-path.selected { stroke: #000 !important; stroke-width: 6 !important; opacity: 1 !important; }
+  .way-path.dim { opacity: 0.08 !important; }
+
+  .gap-marker {
+    background: var(--gap);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--gap);
+  }
+
+  /* Empty selection state */
+  #selection-empty {
+    padding: 18px;
+    color: var(--ink-mute);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  #selection-empty .arrow { font-size: 20px; color: var(--accent); }
+
+  /* Scrollbar polish */
+  aside::-webkit-scrollbar, #search-results::-webkit-scrollbar { width: 8px; }
+  aside::-webkit-scrollbar-thumb, #search-results::-webkit-scrollbar-thumb { background: var(--rule); }
+  aside::-webkit-scrollbar-track, #search-results::-webkit-scrollbar-track { background: var(--panel); }
+
+  @media (max-width: 760px) {
+    #app { grid-template-columns: 1fr; grid-template-rows: 56px 1fr 240px 32px; grid-template-areas: "head" "map" "side" "foot"; }
+    aside { border-right: none; border-top: 1px solid var(--rule); }
+    header .meta { display: none; }
+    #compass { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div class="title">
+      <h1>Blue Ash · Montgomery</h1>
+      <div class="sub">TIGER audit · OSM unreviewed segments</div>
+    </div>
+    <div class="meta">
+      <div class="stat"><span class="lbl">Total ways</span><span class="val mono" id="m-total">—</span></div>
+      <div class="stat crit"><span class="lbl">Class AB</span><span class="val mono" id="m-ab">—</span></div>
+      <div class="stat crit"><span class="lbl">Class A</span><span class="val mono" id="m-a">—</span></div>
+      <div class="stat high"><span class="lbl">Class B</span><span class="val mono" id="m-b">—</span></div>
+      <div class="stat"><span class="lbl">Class C</span><span class="val mono" id="m-c">—</span></div>
+      <div class="spacer"></div>
+    </div>
+    <div class="actions">
+      <button id="btn-fit" title="Fit map to all data">Fit bounds</button>
+      <button id="btn-critical" title="Zoom to critical only">Critical only</button>
+      <button id="btn-help" title="Show help">?</button>
+    </div>
+  </header>
+
+  <aside>
+    <div class="section">
+      <h2>Defect classes</h2>
+      <label class="class-row crit" data-cls="AB">
+        <input type="checkbox" checked>
+        <span class="swatch"></span>
+        <span class="label">
+          <span class="name">AB · Compound</span>
+          <span class="desc">False oneway + multi-segment</span>
+        </span>
+        <span class="count mono" id="cnt-AB">—</span>
+      </label>
+      <label class="class-row crit" data-cls="A">
+        <input type="checkbox" checked>
+        <span class="swatch"></span>
+        <span class="label">
+          <span class="name">A · False oneway</span>
+          <span class="desc">Residential tagged oneway=yes</span>
+        </span>
+        <span class="count mono" id="cnt-A">—</span>
+      </label>
+      <label class="class-row high" data-cls="B">
+        <input type="checkbox" checked>
+        <span class="swatch"></span>
+        <span class="label">
+          <span class="name">B · Multi-segment</span>
+          <span class="desc">Street fragmented across &gt;5 ways</span>
+        </span>
+        <span class="count mono" id="cnt-B">—</span>
+      </label>
+      <label class="class-row low" data-cls="C">
+        <input type="checkbox">
+        <span class="swatch"></span>
+        <span class="label">
+          <span class="name">C · Unreviewed</span>
+          <span class="desc">tiger:reviewed=no, no other defect</span>
+        </span>
+        <span class="count mono" id="cnt-C">—</span>
+      </label>
+    </div>
+
+    <div class="section">
+      <h2>Search</h2>
+      <input id="search" type="text" placeholder="street name…" autocomplete="off">
+      <div id="search-results"></div>
+    </div>
+
+    <div class="section">
+      <h2>Basemap</h2>
+      <div class="basemap-row">
+        <button data-bm="none" class="active">None</button>
+        <button data-bm="positron">Positron</button>
+        <button data-bm="osm">OSM</button>
+      </div>
+      <div class="basemap-row" style="margin-top:6px">
+        <button data-bm="esri-imagery">Esri Sat</button>
+        <button data-bm="esri-clarity">Clarity</button>
+        <button data-bm="usgs-imagery">USGS</button>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--ink-soft);cursor:pointer;">
+        <input type="checkbox" id="overlay-labels"> Street name overlay
+      </label>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+        <label style="font-size:10px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.06em;">Line opacity</label>
+        <input type="range" id="op-range" min="20" max="100" value="95" style="flex:1">
+      </div>
+      <div style="font-size: 10px; color: var(--ink-mute); margin-top: 8px; line-height: 1.5;">
+        Esri Clarity and USGS imagery render sharpest at zoom 18-20. Use the “+” control or scroll-zoom on a defect.
+      </div>
+    </div>
+
+    <div id="selection" class="empty">
+      <div class="sel-head">
+        <div class="way-name" id="sel-name">—</div>
+        <span class="way-class" id="sel-class">—</span>
+      </div>
+      <div class="sel-body" id="sel-body"></div>
+    </div>
+    <div id="selection-empty">
+      <span class="arrow">←</span> Click any segment on the map to inspect its tags and defect details.
+    </div>
+  </aside>
+
+  <main>
+    <div id="map"></div>
+    <div id="compass" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#1d1c1a" stroke-width="1.5"/>
+        <line x1="50" y1="8" x2="50" y2="20" stroke="#1d1c1a" stroke-width="1.5"/>
+        <line x1="50" y1="80" x2="50" y2="92" stroke="#1d1c1a" stroke-width="1"/>
+        <line x1="8" y1="50" x2="20" y2="50" stroke="#1d1c1a" stroke-width="1"/>
+        <line x1="80" y1="50" x2="92" y2="50" stroke="#1d1c1a" stroke-width="1"/>
+        <polygon points="50,18 44,52 50,46 56,52" fill="#b42a1d"/>
+        <polygon points="50,82 44,48 50,54 56,48" fill="#1d1c1a"/>
+        <text x="50" y="34" font-family="IBM Plex Mono" font-size="10" font-weight="600" text-anchor="middle" fill="#1d1c1a">N</text>
+      </svg>
+    </div>
+    <div id="scale-block">
+      <div class="lbl">Scale</div>
+      <div class="bar" id="scale-bar"><div></div><div></div><div></div><div></div></div>
+      <div class="ticks" id="scale-ticks"><span>0</span><span></span><span></span></div>
+    </div>
+    <div id="coord">
+      <span class="lbl">lat</span><span id="coord-lat">—</span>
+      &nbsp;<span class="lbl">lon</span><span id="coord-lon">—</span>
+      &nbsp;<span class="lbl">z</span><span id="coord-z">—</span>
+    </div>
+  </main>
+
+  <footer>
+    <span>BLUE ASH / MONTGOMERY · HAMILTON CO., OH</span>
+    <span class="legend-inline">
+      <span><i class="crit"></i> AB</span>
+      <span><i class="crit"></i> A</span>
+      <span><i class="high"></i> B</span>
+      <span><i></i> C</span>
+    </span>
+    <span class="filler"></span>
+    <span id="visible-count">— of — visible</span>
+    <span>OSM 2026-04-29 13:06Z</span>
+  </footer>
+
+</div>
+
+<script>
+const FALLBACK_NAME = '(unnamed way)';
+const HIGHWAY_LABELS = {
+  residential: 'residential',
+  service: 'service road',
+  tertiary: 'tertiary',
+  secondary: 'secondary',
+  primary: 'primary',
+  trunk: 'trunk',
+  motorway: 'motorway',
+  motorway_link: 'motorway link',
+  secondary_link: 'secondary link',
+  trunk_link: 'trunk link',
+  unclassified: 'unclassified',
+  footway: 'footway'
+};
+
+let DATA = null;
+let map, svgLayer;
+const pathById = new Map();
+let selectedId = null;
+const visibleClasses = new Set(['AB','A','B']); // C off by default
+let activeBasemap = 'none';
+let basemapLayer = null;
+
+const el = (id) => document.getElementById(id);
+const fmt = (n) => n.toLocaleString('en-US');
+
+// ── Init ───────────────────────────────────────────────
+async function init() {
+  const res = await fetch('data.json');
+  DATA = await res.json();
+
+  // Wire stats
+  const c = DATA.summary.byClass;
+  el('m-total').textContent = fmt(DATA.summary.total);
+  el('m-ab').textContent = fmt(c.AB || 0);
+  el('m-a').textContent  = fmt(c.A  || 0);
+  el('m-b').textContent  = fmt(c.B  || 0);
+  el('m-c').textContent  = fmt(c.C  || 0);
+  el('cnt-AB').textContent = fmt(c.AB || 0);
+  el('cnt-A').textContent  = fmt(c.A  || 0);
+  el('cnt-B').textContent  = fmt(c.B  || 0);
+  el('cnt-C').textContent  = fmt(c.C  || 0);
+
+  // Map
+  const b = DATA.summary.bounds;
+  map = L.map('map', {
+    zoomControl: true,
+    attributionControl: true,
+    minZoom: 10,
+    maxZoom: 21,
+    preferCanvas: false,
+    wheelPxPerZoomLevel: 80,
+    zoomSnap: 0.5,
+    zoomDelta: 0.5
+  });
+  map.fitBounds([[b.minLat, b.minLon],[b.maxLat, b.maxLon]], { padding: [30, 30] });
+  L.control.attribution({ prefix: false }).addAttribution('© OSM contributors · TIGER 2010').addTo(map);
+
+  // SVG renderer for proper z-ordering
+  svgLayer = L.svg({ padding: 0.3 }).addTo(map);
+
+  // Render features as native SVG polylines so we can class them
+  buildPaths();
+
+  // Hooks
+  map.on('moveend zoomend', updateScale);
+  map.on('mousemove', (e) => {
+    el('coord-lat').textContent = e.latlng.lat.toFixed(5);
+    el('coord-lon').textContent = e.latlng.lng.toFixed(5);
+  });
+  map.on('zoomend', () => el('coord-z').textContent = map.getZoom());
+  el('coord-z').textContent = map.getZoom();
+
+  // Class toggles
+  document.querySelectorAll('.class-row').forEach(row => {
+    const cls = row.dataset.cls;
+    if (!visibleClasses.has(cls)) row.classList.add('off');
+    row.addEventListener('change', () => {
+      const cb = row.querySelector('input');
+      if (cb.checked) { visibleClasses.add(cls); row.classList.remove('off'); }
+      else { visibleClasses.delete(cls); row.classList.add('off'); }
+      applyVisibility();
+    });
+  });
+
+  // Basemap
+  document.querySelectorAll('.basemap-row button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.basemap-row button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      setBasemap(btn.dataset.bm);
+    });
+  });
+
+  // Search
+  el('search').addEventListener('input', onSearch);
+
+  // Header buttons
+  el('btn-fit').addEventListener('click', () => map.fitBounds([[b.minLat, b.minLon],[b.maxLat, b.maxLon]], { padding: [30, 30] }));
+  el('btn-critical').addEventListener('click', () => {
+    const crit = DATA.features.filter(f => f.cls === 'AB' || f.cls === 'A');
+    if (!crit.length) return;
+    const lats = crit.flatMap(f => f.g.map(p => p[0]));
+    const lons = crit.flatMap(f => f.g.map(p => p[1]));
+    map.fitBounds([[Math.min(...lats), Math.min(...lons)],[Math.max(...lats), Math.max(...lons)]], { padding: [40,40] });
+  });
+  el('btn-help').addEventListener('click', showHelp);
+
+  applyVisibility();
+  updateScale();
+}
+
+// ── Path rendering ───────────────────────────────────────
+function buildPaths() {
+  // Sort so critical draws on top
+  const order = { C: 0, B: 1, A: 2, AB: 3 };
+  const sorted = [...DATA.features].sort((a,b) => order[a.cls] - order[b.cls]);
+
+  const STYLES = {
+    crit: { color: '#b42a1d', weight: 3,   opacity: 0.95 },
+    high: { color: '#c8761a', weight: 2.5, opacity: 0.9  },
+    low:  { color: '#6e6759', weight: 1,   opacity: 0.55 }
+  };
+  for (const f of sorted) {
+    const latlngs = f.g.map(p => [p[0], p[1]]);
+    const klass = f.cls === 'AB' ? 'crit' : f.cls === 'A' ? 'crit' : f.cls === 'B' ? 'high' : 'low';
+    const baseStyle = STYLES[klass];
+    const poly = L.polyline(latlngs, {
+      className: 'way-path ' + klass,
+      stroke: true,
+      interactive: true,
+      bubblingMouseEvents: false,
+      lineCap: 'round',
+      lineJoin: 'round',
+      ...baseStyle
+    });
+    poly.feature = f;
+    poly._baseStyle = baseStyle;
+    poly._klass = klass;
+    poly.on('mouseover', () => { if (selectedId !== f.id) poly.setStyle({ color: '#000', weight: baseStyle.weight + 2, opacity: 1 }); });
+    poly.on('mouseout',  () => { if (selectedId !== f.id) poly.setStyle(baseStyle); });
+    poly.on('click', () => selectFeature(f.id));
+    poly.addTo(map);
+    pathById.set(f.id, poly);
+  }
+}
+
+function applyVisibility() {
+  let visibleCnt = 0;
+  for (const [id, p] of pathById) {
+    const feat = p.feature;
+    const show = visibleClasses.has(feat.cls);
+    if (show) {
+      p.getElement()?.style.setProperty('display', '');
+      visibleCnt++;
+    } else {
+      p.getElement()?.style.setProperty('display', 'none');
+    }
+  }
+  el('visible-count').textContent = `${fmt(visibleCnt)} of ${fmt(DATA.features.length)} visible`;
+}
+
+// ── Selection ───────────────────────────────────────────
+function selectFeature(id) {
+  if (selectedId !== null) {
+    const prev = pathById.get(selectedId);
+    if (prev) prev.setStyle(prev._baseStyle);
+  }
+  selectedId = id;
+  const p = pathById.get(id);
+  if (!p) return;
+  p.setStyle({ color: '#000', weight: p._baseStyle.weight + 3, opacity: 1 });
+  p.bringToFront();
+  renderSelection(p.feature);
+}
+
+function renderSelection(f) {
+  const sel = el('selection');
+  const empty = el('selection-empty');
+  sel.classList.remove('empty');
+  empty.style.display = 'none';
+
+  el('sel-name').textContent = f.name || FALLBACK_NAME;
+  const cl = el('sel-class');
+  cl.textContent = `Class ${f.cls}`;
+  cl.className = 'way-class ' + (f.cls === 'AB' || f.cls === 'A' ? 'crit' : f.cls === 'B' ? 'high' : '');
+
+  const hwLabel = HIGHWAY_LABELS[f.hw] || f.hw || '—';
+  const oneway = f.ow === 'yes' ? 'YES (suspect)' : f.ow === 'no' ? 'no' : '—';
+  const tigerBase = f.nb ? (f.nb + (f.nt ? ' ' + f.nt : '')) : '—';
+
+  let narrative = '';
+  if (f.cls === 'AB') {
+    narrative = `Both defects present: TIGER source records this as a two-way residential street, but OSM tags it <strong>oneway=yes</strong>, AND the street is fragmented into ${f.segs || 'many'} separate ways with ${f.gaps || '?'} node disconnects. Verify on imagery and merge.`;
+  } else if (f.cls === 'A') {
+    narrative = `Residential street tagged <strong>oneway=yes</strong> against TIGER baseline. Likely a stale import artifact — check Wayback imagery for residential cul-de-sac patterns.`;
+  } else if (f.cls === 'B') {
+    narrative = `Continuous TIGER-named street fragmented across <strong>${f.segs || '?'}</strong> OSM ways with <strong>${f.gaps || '?'}</strong> node-connectivity gaps. Candidate for ways-merge audit.`;
+  } else {
+    narrative = `No specific defect class assigned. Marked tiger:reviewed=no — included for completeness.`;
+  }
+
+  el('sel-body').innerHTML = `
+    <dl class="kv">
+      <dt>OSM ID</dt><dd>${f.id}</dd>
+      <dt>Highway</dt><dd>${hwLabel}</dd>
+      <dt>Oneway</dt><dd>${oneway}</dd>
+      <dt>Lanes</dt><dd>${f.ln || '<em>—</em>'}</dd>
+      <dt>Surface</dt><dd>${f.sf || '<em>—</em>'}</dd>
+      <dt>Maxspeed</dt><dd>${f.sp || '<em>—</em>'}</dd>
+      <dt>TIGER name</dt><dd>${tigerBase}</dd>
+      <dt>ZIP</dt><dd>${f.zl || '<em>—</em>'}</dd>
+      ${f.cls === 'B' || f.cls === 'AB' ? `<dt>Segments</dt><dd>${f.segs}</dd><dt>Node gaps</dt><dd>${f.gaps}</dd>` : ''}
+    </dl>
+    <div class="narrative">${narrative}</div>
+    <div class="ext-links">
+      <a target="_blank" rel="noopener" href="https://www.openstreetmap.org/way/${f.id}">OSM ↗</a>
+      <a target="_blank" rel="noopener" href="https://www.openstreetmap.org/edit?way=${f.id}">iD edit ↗</a>
+      <a target="_blank" rel="noopener" href="https://overpass-turbo.eu/?Q=way(${f.id});out%20geom;&R">Overpass ↗</a>
+    </div>
+  `;
+
+  // Frame the selection
+  const bounds = pathById.get(f.id).getBounds();
+  if (map.getZoom() < 16) map.fitBounds(bounds, { maxZoom: 17, padding: [60, 60] });
+}
+
+// ── Search ─────────────────────────────────────────────
+function onSearch() {
+  const q = el('search').value.trim().toLowerCase();
+  const out = el('search-results');
+  out.innerHTML = '';
+  if (q.length < 2) return;
+  const groups = new Map();
+  for (const f of DATA.features) {
+    if (!f.name) continue;
+    if (!f.name.toLowerCase().includes(q)) continue;
+    if (!groups.has(f.name)) groups.set(f.name, { name: f.name, features: [] });
+    groups.get(f.name).features.push(f);
+  }
+  const items = [...groups.values()].sort((a,b) => a.name.localeCompare(b.name)).slice(0, 30);
+  if (!items.length) {
+    out.innerHTML = `<div style="font-size:11px;color:var(--ink-mute);padding:6px 0;font-family:'IBM Plex Mono',monospace">no matches</div>`;
+    return;
+  }
+  for (const it of items) {
+    const div = document.createElement('div');
+    div.className = 'sr-item';
+    const worstCls = it.features.reduce((acc, f) => {
+      const r = { AB: 3, A: 2, B: 1, C: 0 };
+      return r[f.cls] > r[acc] ? f.cls : acc;
+    }, 'C');
+    div.innerHTML = `<span class="nm">${it.name}</span><span class="ct">${it.features.length}× ${worstCls}</span>`;
+    div.addEventListener('click', () => {
+      // Fit to all matching features
+      const lats = it.features.flatMap(f => f.g.map(p => p[0]));
+      const lons = it.features.flatMap(f => f.g.map(p => p[1]));
+      map.fitBounds([[Math.min(...lats), Math.min(...lons)],[Math.max(...lats), Math.max(...lons)]], { padding: [60,60], maxZoom: 17 });
+      selectFeature(it.features[0].id);
+    });
+    out.appendChild(div);
+  }
+}
+
+// ── Basemap ────────────────────────────────────────────
+let labelOverlay = null;
+function setBasemap(bm) {
+  if (basemapLayer) { map.removeLayer(basemapLayer); basemapLayer = null; }
+  const opts = { maxZoom: 21, maxNativeZoom: 19, detectRetina: true };
+  if (bm === 'positron') {
+    basemapLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+      { ...opts, maxNativeZoom: 19, attribution: '© CARTO · © OSM' });
+  } else if (bm === 'osm') {
+    basemapLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { ...opts, maxNativeZoom: 19, attribution: '© OSM contributors' });
+  } else if (bm === 'esri-imagery') {
+    basemapLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { ...opts, maxNativeZoom: 19, attribution: '© Esri · Maxar' });
+  } else if (bm === 'esri-clarity') {
+    basemapLayer = L.tileLayer('https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { ...opts, maxNativeZoom: 19, attribution: '© Esri Clarity' });
+  } else if (bm === 'usgs-imagery') {
+    basemapLayer = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}',
+      { ...opts, maxNativeZoom: 16, attribution: 'USGS · The National Map' });
+  }
+  if (basemapLayer) basemapLayer.addTo(map).bringToBack();
+  activeBasemap = bm;
+  applyLabelOverlay();
+  document.body.classList.toggle('with-basemap', bm !== 'none');
+}
+
+function applyLabelOverlay() {
+  const want = document.getElementById('overlay-labels')?.checked && (activeBasemap === 'esri-imagery' || activeBasemap === 'esri-clarity' || activeBasemap === 'usgs-imagery' || activeBasemap === 'none');
+  if (labelOverlay) { map.removeLayer(labelOverlay); labelOverlay = null; }
+  if (want) {
+    labelOverlay = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
+      maxZoom: 21, maxNativeZoom: 19, detectRetina: true, pane: 'overlayPane', opacity: 0.85,
+      attribution: '© CARTO labels'
+    }).addTo(map);
+  }
+}
+
+// ── Scale bar ──────────────────────────────────────────
+function updateScale() {
+  const b = map.getBounds();
+  const center = b.getCenter();
+  const left  = L.latLng(center.lat, b.getWest());
+  const right = L.latLng(center.lat, b.getEast());
+  const meters = left.distanceTo(right);
+  // Pick a clean target ~ 25% of the visible width
+  const target = meters * 0.25;
+  // Round to a nice number
+  const niceSteps = [10,20,50,100,200,500,1000,2000,5000,10000,20000];
+  let pick = niceSteps[0];
+  for (const s of niceSteps) if (s <= target) pick = s;
+  // pick is the full width of the bar
+  const ticks = el('scale-ticks');
+  const half = pick / 2;
+  const fmtDist = (m) => m >= 1000 ? (m/1000).toFixed(m % 1000 ? 1 : 0) + ' km' : m + ' m';
+  ticks.children[0].textContent = '0';
+  ticks.children[1].textContent = fmtDist(half);
+  ticks.children[2].textContent = fmtDist(pick);
+}
+
+// ── Help ───────────────────────────────────────────────
+function showHelp() {
+  alert(
+    'Blue Ash / Montgomery — TIGER Audit Map\n\n' +
+    'This map shows OSM road segments in the Blue Ash / Montgomery audit zone (Hamilton Co., OH) that have not been hand-reviewed since the 2007 TIGER bulk import.\n\n' +
+    'CLASSES\n' +
+    '  AB  Compound: false oneway AND multi-segment fragmentation (CRITICAL)\n' +
+    '  A   False oneway: residential street incorrectly tagged oneway=yes\n' +
+    '  B   Multi-segment: street fragmented across many small ways\n' +
+    '  C   Unreviewed only: tiger:reviewed=no, no other defect\n\n' +
+    'INTERACTION\n' +
+    '  Click any segment for details and OSM links.\n' +
+    '  Toggle classes in the sidebar.\n' +
+    '  Search by street name. "Critical only" zooms to AB+A.\n\n' +
+    'Rendered from OSM extract 2026-04-29 13:06Z.'
+  );
+}
+
+init().catch(err => {
+  console.error(err);
+  document.body.innerHTML = '<div style="padding:40px;font-family:monospace">Failed to load: ' + err.message + '</div>';
+});
+</script>
+</body>
+</html>

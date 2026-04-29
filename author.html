@@ -3,156 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A TIGER/Line Defect Audit of Hamilton County's MetroNow Service Area — Krauss, 2026</title>
+<title>A TIGER/Line Defect Audit of Hamilton County's MetroNow Service Area — Krass, 2026</title>
 <meta name="description" content="A read-only OpenStreetMap audit of unreviewed 2007-2008 TIGER/Line road segments inside SORTA MetroNow's four microtransit zones in Hamilton County, OH. Identifies 221 compound defects and 710 unique probable node disconnects across 6,096 unique unreviewed ways.">
 <style>
   :root {
-    --text: #1a1a1a;
-    --muted: #555;
-    --rule: #cdcdcd;
+    --text: #1c1c1f;
+    --muted: #6e6e76;
+    --soft: #f5f4f1;
     --accent: #1F4E79;
-    --code-bg: #f4f4f6;
-    --link: #0563C1;
+    --rule: #e8e6e1;
+    --code-bg: #f7f5f1;
+    --link: #1F4E79;
+    --bg: #fdfdfb;
+    --serif: "Charter", "Iowan Old Style", "Source Serif Pro", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
   }
   *{box-sizing:border-box}
-  html { font-size: 16px; }
+  html { font-size: 17px; }
   body {
-    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    font-family: var(--serif);
     color: var(--text);
-    background: #fff;
-    max-width: 760px;
+    background: var(--bg);
+    max-width: 720px;
     margin: 0 auto;
-    padding: 48px 24px 96px;
-    line-height: 1.6;
+    padding: 72px 28px 120px;
+    line-height: 1.72;
+    font-variant-ligatures: common-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+
+  /* Title block — quiet, no ruling line */
   header.titleblock {
-    border-bottom: 2px solid var(--text);
-    padding-bottom: 24px;
-    margin-bottom: 32px;
+    margin-bottom: 56px;
   }
   header.titleblock h1 {
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.65rem;
-    line-height: 1.25;
-    margin: 0 0 16px;
+    font-family: var(--sans);
+    font-size: 1.85rem;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    margin: 0 0 28px;
     color: var(--text);
-    font-weight: 700;
+    font-weight: 600;
   }
   .meta {
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.92rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
     color: var(--muted);
-    line-height: 1.5;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
   }
-  .meta div { margin-bottom: 4px; }
-  .meta a { color: var(--link); text-decoration: none; }
-  .meta a:hover { text-decoration: underline; }
+  .meta div { margin-bottom: 2px; }
+  .meta strong { color: var(--text); font-weight: 600; margin-right: 4px; }
+  .meta a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms; }
+  .meta a:hover { border-bottom-color: var(--accent); }
+  .nav { margin-top: 16px; font-size: 0.85rem; }
+  .nav a { color: var(--muted); }
+
+  /* Section hierarchy — whitespace, not rules */
   h2 {
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.25rem;
-    margin-top: 40px;
-    margin-bottom: 12px;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 56px 0 16px;
     color: var(--accent);
-    font-weight: 700;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 4px;
+    font-weight: 600;
   }
   h3 {
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.05rem;
-    margin-top: 28px;
-    margin-bottom: 8px;
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    margin: 36px 0 8px;
     color: var(--text);
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: -0.005em;
   }
+
+  /* Abstract — quiet block, no left bar */
   .abstract {
-    font-size: 0.96rem;
-    background: #fafafa;
-    border-left: 3px solid var(--accent);
-    padding: 16px 20px;
-    margin: 24px 0 32px;
-    line-height: 1.55;
+    font-size: 1rem;
+    background: var(--soft);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 0 0 56px;
+    line-height: 1.7;
   }
-  .abstract strong { font-variant: small-caps; letter-spacing: 0.05em; }
-  p { margin: 0 0 12px; }
-  a { color: var(--link); }
+  .abstract p { margin: 0; }
+  .abstract strong {
+    font-family: var(--sans);
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9em;
+  }
+
+  p { margin: 0 0 16px; hyphens: auto; }
+  a { color: var(--link); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--link) 30%, transparent); }
+  a:hover { border-bottom-color: var(--link); }
+
+  /* Code */
   code, pre {
-    font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-    font-size: 0.9rem;
+    font-family: var(--mono);
+    font-size: 0.88rem;
   }
-  code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; }
+  code { background: var(--code-bg); padding: 1px 6px; border-radius: 3px; font-size: 0.85em; }
   pre {
     background: var(--code-bg);
-    padding: 12px 16px;
+    padding: 16px 20px;
     border-radius: 4px;
     overflow-x: auto;
-    line-height: 1.45;
-    border: 1px solid var(--rule);
+    line-height: 1.55;
+    margin: 16px 0 24px;
   }
-  pre code { background: none; padding: 0; }
+  pre code { background: none; padding: 0; font-size: 0.88rem; }
+
+  /* Tables — minimal Edward-Tufte-ish ruling */
   table {
     border-collapse: collapse;
-    margin: 12px 0 20px;
-    font-size: 0.93rem;
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    margin: 20px 0 8px;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    width: 100%;
   }
-  th, td {
-    border-top: 1px solid var(--rule);
+  thead th {
+    border-bottom: 1.5px solid var(--text);
+    background: transparent;
+    font-weight: 600;
+    color: var(--text);
+    padding: 8px 14px 8px 0;
+    text-align: left;
+    vertical-align: bottom;
+  }
+  tbody tr:last-child td { border-bottom: 1.5px solid var(--text); }
+  tbody td {
     border-bottom: 1px solid var(--rule);
-    padding: 6px 12px 6px 0;
+    padding: 7px 14px 7px 0;
     text-align: left;
     vertical-align: top;
   }
-  th {
-    background: #fafafa;
-    font-weight: 600;
-    color: var(--text);
-  }
-  td.num, th.num { text-align: right; padding-right: 16px; }
+  td.num, th.num { text-align: right; padding-right: 18px; font-variant-numeric: tabular-nums; }
   caption {
     caption-side: bottom;
-    font-size: 0.85rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
     color: var(--muted);
     text-align: left;
-    margin-top: 6px;
-    line-height: 1.4;
+    margin-top: 14px;
+    line-height: 1.55;
   }
-  ol, ul { padding-left: 24px; }
-  li { margin-bottom: 4px; }
+  caption strong { color: var(--text); font-weight: 600; }
+
+  /* Lists */
+  ol, ul { padding-left: 24px; margin: 0 0 16px; }
+  li { margin-bottom: 6px; }
+  li::marker { color: var(--muted); }
+
+  /* Footnotes */
   .footnotes {
-    font-size: 0.86rem;
+    font-family: var(--sans);
+    font-size: 0.84rem;
     color: var(--muted);
+    margin-top: 80px;
+    padding-top: 24px;
     border-top: 1px solid var(--rule);
-    padding-top: 16px;
-    margin-top: 48px;
-    line-height: 1.5;
+    line-height: 1.65;
   }
-  .footnotes ol { padding-left: 20px; }
-  sup a { text-decoration: none; }
+  .footnotes h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border: none;
+    padding: 0;
+    margin: 0 0 16px;
+  }
+  .footnotes ol { padding-left: 22px; }
+  .footnotes li { margin-bottom: 10px; }
+  sup a { text-decoration: none; border: none; color: var(--accent); }
+  sup a:hover { color: var(--text); }
+
+  /* Equation */
+  .equation {
+    text-align: center;
+    margin: 28px 0;
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--text);
+    padding: 8px 0;
+  }
+
   blockquote {
-    margin: 12px 0;
-    padding: 8px 16px;
-    border-left: 3px solid var(--rule);
+    margin: 16px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 2px solid var(--rule);
     color: var(--muted);
     font-style: italic;
   }
-  .equation {
-    text-align: center;
-    margin: 16px 0;
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: 0.95rem;
-    color: var(--text);
+
+  /* Figures */
+  figure {
+    margin: 28px 0;
   }
-  .nav {
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.88rem;
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+  figcaption {
+    font-family: var(--sans);
+    font-size: 0.82rem;
     color: var(--muted);
-    margin-top: 8px;
+    text-align: left;
+    margin-top: 12px;
+    line-height: 1.55;
   }
+  figcaption strong { color: var(--text); font-weight: 600; }
+
   @media (max-width: 600px) {
-    body { padding: 24px 16px 64px; }
-    header.titleblock h1 { font-size: 1.35rem; }
-    h2 { font-size: 1.1rem; }
+    html { font-size: 16px; }
+    body { padding: 36px 20px 80px; max-width: none; }
+    header.titleblock h1 { font-size: 1.45rem; }
+    .abstract { padding: 20px 22px; }
   }
 </style>
 </head>
@@ -161,8 +237,9 @@
 <header class="titleblock">
   <h1>A TIGER/Line Defect Audit of Hamilton County's MetroNow Microtransit Service Area: Methods, Results, and Volunteer Remediation Pathways</h1>
   <div class="meta">
-    <div><strong>Author:</strong> Jared Krauss &lt;<a href="mailto:jaredcincy@gmail.com">jaredcincy@gmail.com</a>&gt;</div>
-    <div><strong>Affiliation:</strong> Independent. Resident, Deer Park, OH (Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery MetroNow service zone).</div>
+    <div><strong>Author:</strong> Krass</div>
+    <div><strong>Affiliation:</strong> Independent.</div>
+    <div><strong>Locus:</strong> Cincinnati-area MetroNow rider.</div>
     <div><strong>Version of record:</strong> April&nbsp;2026.</div>
     <div><strong>Source &amp; data:</strong> <a href="https://github.com/AICincy/Tiger">github.com/AICincy/Tiger</a> &middot; <a href="https://aicincy.github.io/Tiger/">aicincy.github.io/Tiger</a></div>
     <div class="nav"><a href="./">&larr; Back to dashboards</a></div>
@@ -170,48 +247,41 @@
 </header>
 
 <div class="abstract">
-  <p><strong>Abstract.</strong> Microtransit routing platforms typically consume <span style="font-variant: small-caps">OpenStreetMap</span> (OSM) as a base-map layer. In Hamilton County, Ohio, the Southwest Ohio Regional Transit Authority (SORTA) operates the <em>MetroNow</em> microtransit service in partnership with Via Transportation; the latter's routing engine ingests OSM data including a substantial population of road segments seeded by the 2007&ndash;2008 U.S. Census Bureau TIGER/Line bulk import and never subsequently verified by a human editor. This work performs a read-only audit of every such segment inside the four MetroNow service-zone bounding boxes via the Overpass API, classifies each segment against a four-class taxonomy (A&nbsp;false-one-way, B&nbsp;multi-segment, AB&nbsp;compound, C&nbsp;unreviewed-without-signal), and runs an endpoint-distance heuristic to flag probable node disconnects between same-named segments. Across the four zones, <strong>6,096 unique unreviewed ways</strong> are identified (7,213 before zone-overlap deduplication), of which <strong>221 are compound (Class&nbsp;AB) defects</strong> and <strong>710 are unique probable node disconnects</strong>. The author's own residential address contains a documented compound defect that produces a reproducible MetroNow routing failure. The audit is presented as material for the OpenStreetMap volunteer community to evaluate and remediate; the pipeline does not mutate OSM and the heuristics are not assertions of ground truth.</p>
+  <p><strong>Abstract.</strong> SORTA's MetroNow microtransit service in Hamilton County, Ohio, is operated by Via Transportation against an OpenStreetMap (OSM) base layer in which a non-trivial residual of unreviewed ways persists from the 2007&ndash;2008 TIGER/Line bulk import. We present a four-zone read-only audit that enumerates every way carrying <code>tiger:reviewed=no</code> inside each MetroNow service-zone bounding box, classifies each into a four-element disjoint taxonomy (A&nbsp;false-one-way, B&nbsp;multi-segment, AB&nbsp;compound, C&nbsp;residual), and applies an endpoint-distance heuristic with junction-level spatial clustering to identify probable node disconnects between same-named segments. After cross-zone deduplication by OSM way&nbsp;ID and connected-components analysis on shared way IDs, the system-wide population is <strong>6,096</strong> unique unreviewed ways, of which <strong>221</strong> carry the compound defect and <strong>710</strong> are probable node disconnects. We characterise the heuristic's recall bias at zone boundaries, position the five methodological constraints that frame the result-set as a lower bound on the true defect population, and locate the audit within the comparability standard of 49&nbsp;C.F.R.&nbsp;&sect;&nbsp;37.121 without pre-empting the legal question.</p>
 </div>
 
 <h2>1. Introduction</h2>
 
-<p>Public-transit microtransit services increasingly depend on routing engines whose base maps are sourced from OpenStreetMap (OSM)<sup><a href="#fn1">1</a></sup>. The data quality of those base maps therefore directly affects whether transit-dependent riders receive routes that successfully terminate at their addresses. This work is motivated by a single, reproducible failure mode: when a routing engine encounters a residential road segment carrying a false <code>oneway=yes</code> tag, it computes ingress with no legal egress and may declare the address unreachable. For a transit-dependent rider, the operational distinction between &ldquo;unreachable&rdquo; and &ldquo;denied service&rdquo; is moot.</p>
+<p>The pipeline that delivers a microtransit ride to a residential address depends on a chain of base-map abstractions whose error budgets are rarely audited end-to-end. Where that chain consumes OpenStreetMap (OSM)<sup><a href="#fn1">1</a></sup>, the inherited error budget includes any uncorrected artefact of the 2007&ndash;2008 TIGER/Line bulk import that has persisted in unreviewed form for the intervening two decades. The operational consequence is asymmetric: a single false <code>oneway=yes</code> tag on a residential segment, or a missing intersection node between two segments of the same physical street, is sufficient to render a target address unreachable to a routing engine that treats the OSM graph as authoritative. For a transit-dependent rider, the distinction between &ldquo;unreachable&rdquo; and &ldquo;denied service&rdquo; is not a technicality.</p>
 
-<p>The author observed this failure mode at his own residential address in Deer Park, OH&mdash;a community within the Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery MetroNow service zone&mdash;and traced it to a residential way carrying both a false <code>oneway=yes</code> tag and an unjoined intersection node, both inherited from the 2007&ndash;2008 TIGER/Line Census import and never subsequently verified by an OSM editor. The investigation broadened from a single street to a four-zone audit. The contribution of this work is the methodology and the resulting deduplicated, machine-readable defect inventory.</p>
+<p>This audit was prompted by a routing failure of that class observed within the author's own MetroNow service area. The case index proved non-idiosyncratic. We extend the analysis to all four MetroNow service zones and report a deduplicated population-level inventory of the same defect class, an explicit characterisation of the heuristics that produced it, and a discussion of where those heuristics undercount.</p>
 
 <h2>2. Background</h2>
 
-<h3>2.1 TIGER/Line and the 2007&ndash;2008 OSM bulk import</h3>
+<h3>2.1 The TIGER residual in OSM</h3>
 
-<p>The U.S. Census Bureau's TIGER/Line dataset is a public-domain national road graph, originally constructed for the 1990 decennial census and updated periodically thereafter. Between 2007 and 2008 a near-complete TIGER/Line snapshot was bulk-imported into OSM<sup><a href="#fn2">2</a></sup>. Each imported way received the tag <code>tiger:reviewed=no</code>, indicating that no human editor had subsequently verified the geometry, connectivity, or attribute set against ground truth. Nearly two decades on, a non-trivial fraction of those ways persist in this unreviewed state, particularly in residential areas with low contributor density.</p>
+<p>The TIGER/Line bulk import (2007&ndash;2008) inserted a near-complete U.S. Census road graph into OSM, tagging each imported way <code>tiger:reviewed=no</code> to record the absence of human verification of geometry, topology, or attributes against ground truth.<sup><a href="#fn2">2</a></sup> Two decades later, a substantial residual remains, distributed unevenly with respect to contributor density: in residential zones outside metropolitan cores, the surviving population of unreviewed ways correlates with the historical mapping activity of the local OSM community.<sup><a href="#fn3">3</a></sup> Two failure modes recur in this residual: <strong>erroneous directional restrictions</strong> on residential dead-ends and cul-de-sacs that the import classified as one-way, and <strong>disconnected nodes</strong> in which two ways of the same physical street terminate within a few metres of each other without being joined at a shared OSM node, leaving the routing graph topologically disconnected at that vertex.</p>
 
-<p>Two failure modes recur in the unreviewed population<sup><a href="#fn3">3</a></sup>:</p>
+<h3>2.2 MetroNow, Via, and the QA locus</h3>
 
-<ol>
-  <li><strong>Erroneous one-way restrictions</strong>, particularly on dead-end residential streets and cul-de-sacs that the import classified as one-way without ground-truth verification.</li>
-  <li><strong>Disconnected nodes</strong>, in which two ways representing segments of the same physical street terminate within a few metres of each other but are not joined by a shared OSM node, leaving the routing graph topologically disconnected.</li>
-</ol>
+<p>MetroNow is a microtransit service operated by SORTA under contract with Via Transportation, Inc., funded by the 0.8&nbsp;% Hamilton County Issue&nbsp;7 sales tax (2020). Via's routing engine consumes OSM as its base layer. The proprietary ViaMapping product augments the OSM base with speed data, turn restrictions, and points of interest; per publicly available product documentation, the augmentation is not described as auditing the underlying road-graph topology, verifying directional tagging, or detecting disconnected nodes.<sup><a href="#fn4">4</a></sup> The locus of road-graph quality-assurance responsibility under the SORTA&ndash;Via contract is not publicly documented; this audit treats the question as open and addresses only the empirical predicate.</p>
 
-<h3>2.2 SORTA MetroNow and the Via routing platform</h3>
+<h3>2.3 Heuristic vs. ground truth</h3>
 
-<p>SORTA's MetroNow microtransit service is funded by Hamilton County's Issue 7 (2020) levy&mdash;a 0.8&nbsp;% sales tax approved by referendum&mdash;and operated under contract by Via Transportation, Inc. Via's routing engine consumes OSM as its base map. Via additionally markets a proprietary layer (&ldquo;ViaMapping&rdquo;) that augments OSM with speed data, turn restrictions, and points of interest; based on publicly available ViaMapping documentation, the layer is not described as performing a road-graph topology audit, verifying one-way tags, or detecting disconnected nodes<sup><a href="#fn4">4</a></sup>. The contractual division of road-graph QA responsibility between SORTA and Via is not publicly visible at the time of this writing.</p>
-
-<h3>2.3 Why the audit is heuristic</h3>
-
-<p>An OSM defect cannot be confirmed in the abstract; the canonical referent is the road as it actually exists. This audit therefore produces <em>candidates for review</em>, not assertions of error. Each candidate is supported by deep links to the iD editor and to JOSM Remote Control, so that a human editor can evaluate the defect against satellite imagery, street-level photography (Mapillary, KartaView), and personal field knowledge before committing any change to OSM.</p>
+<p>OSM defect status is not abstractly resolvable: the canonical referent is the physical road. The audit therefore produces <em>flagged candidates</em>, not confirmed errors. Each candidate is paired with deep links to the iD editor and JOSM Remote Control pre-zoomed to the defect, supporting adjudication against satellite imagery, street-level photography (Mapillary, KartaView), historical imagery (Esri Wayback), and field knowledge before any OSM mutation is undertaken. The pipeline performs no mutation.</p>
 
 <h2>3. Methodology</h2>
 
 <h3>3.1 Data acquisition</h3>
 
-<p>For each MetroNow service zone <em>Z</em> with bounding box <code>(s, w, n, e)</code>, a single Overpass API query is issued:</p>
+<p>For each service zone <em>Z</em> with axis-aligned bounding box <code>(s, w, n, e)</code>, a single Overpass query is issued:</p>
 
 <pre><code>[out:json][timeout:180];
 way["highway"]["tiger:reviewed"="no"]
   (s, w, n, e);
 out geom tags;</code></pre>
 
-<p>The <code>out geom tags</code> directive returns the full node coordinate array for each way inline, enabling endpoint-based topology analysis without a second round-trip. The primary endpoint is <code>https://overpass-api.de/api/interpreter</code>; on failure the pipeline retries against the kumi.systems mirror and, only on full upstream failure, falls back to the most recent locally cached snapshot (with a console warning if the cache exceeds 14&nbsp;days of age). JSON-<code>null</code> responses are treated as retryable rather than as successful empty fetches. Each successful fetch is persisted as a timestamped JSON snapshot for reproducibility; snapshots older than 14&nbsp;days are auto-pruned with the three most recent retained per zone.</p>
+<p>The <code>out geom tags</code> directive returns the full coordinate array of every way inline, supporting endpoint-based topology analysis without a second-round trip. The primary endpoint is <code>https://overpass-api.de/api/interpreter</code>; on transient failure the pipeline retries against the kumi.systems mirror and, only on full upstream failure, falls back to the most recent locally cached snapshot, with a console warning when cache age exceeds 14&nbsp;days. A JSON-<code>null</code> response is treated as retryable rather than as a successful empty fetch. Each successful fetch is persisted as a timestamped snapshot for reproducibility; snapshots older than 14&nbsp;days are auto-pruned with the three most recent retained per zone.</p>
 
 <h3>3.2 Defect classification</h3>
 
@@ -232,24 +302,22 @@ out geom tags;</code></pre>
 
 <h3>3.3 Probable-node-disconnect detection</h3>
 
-<p>Within each Class&nbsp;B street (a maximal set of ways sharing a normalised <code>name</code>), the pipeline enumerates unordered pairs of ways and computes the minimum great-circle distance between the four candidate endpoint pairings using the haversine formula:</p>
+<p>Within each Class&nbsp;B street (the maximal set of ways sharing a normalised <code>name</code>), unordered way-pairs are enumerated and the minimum great-circle distance computed across the four candidate endpoint pairings using the haversine formula:</p>
 
 <div class="equation">d = 2R &middot; arcsin(&radic;(sin&sup2;(&Delta;&phi;/2) + cos&phi;&#8321; &middot; cos&phi;&#8322; &middot; sin&sup2;(&Delta;&lambda;/2)))</div>
 
-<p>where <em>R</em>&nbsp;=&nbsp;6,371,000&nbsp;m is the WGS-84 mean Earth radius, &phi; denotes latitude in radians, and &lambda; denotes longitude in radians. Pairs whose minimum endpoint distance lies in the half-open interval (0.01&nbsp;m, 30&nbsp;m] are flagged as probable disconnects. The lower bound excludes pairs that are already coincident; the upper bound is a heuristic chosen to capture near-misses while excluding endpoints that are merely on different parts of a long road.</p>
+<p>where <em>R</em>&nbsp;=&nbsp;6,371,000&nbsp;m approximates the WGS-84 mean Earth radius and (&phi;,&nbsp;&lambda;) are latitude and longitude in radians. Pairs whose minimum endpoint distance falls in the half-open interval (0.01&nbsp;m, 30&nbsp;m] are emitted as candidate disconnects. The lower bound excludes already-coincident pairs; the 30&nbsp;m upper bound balances recall against the false-positive rate from endpoints on disjoint segments of a long arterial.</p>
 
-<p>A naive pairwise emission produces <em>k</em>(<em>k</em>&minus;1)/2 records for a junction at which <em>k</em>&nbsp;&geq;&nbsp;3 ways meet without a shared node. Because the audit is intended to surface <em>physical</em> disconnects rather than way-pair candidates, a clustering pass is applied: per-street pairwise records are sorted ascending by gap distance and any record whose midpoint lies within 5&nbsp;m of an already-emitted cluster representative is discarded. The retained representative is therefore the tightest pair at each physical junction. The clustering threshold (5&nbsp;m) was selected to be wider than residential lane-width but narrower than typical adjacent-junction spacing.</p>
+<p>Naive pairwise emission produces <em>k</em>(<em>k</em>&nbsp;&minus;&nbsp;1)/2 records for a junction at which <em>k</em>&nbsp;&geq;&nbsp;3 ways converge without a shared node, conflating junction count with pair count. Because the unit of physical interest is the missing junction node rather than the unordered way-pair, a per-street spatial clustering pass is applied: candidates are sorted by gap distance ascending, and any candidate whose midpoint lies within 5&nbsp;m of an already-retained representative is suppressed. The retained representative is therefore the tightest endpoint pair at each physical junction. The 5&nbsp;m threshold is calibrated against residential geometry: wider than nominal lane width but narrower than the modal block dimension of the audited zones.</p>
 
 <h3>3.4 Cross-zone deduplication</h3>
 
-<p>The four MetroNow zone bounding boxes overlap in at least three pairwise regions, of which the Northgate&nbsp;/&nbsp;Mt.&nbsp;Healthy &harr; Forest&nbsp;Park&nbsp;/&nbsp;Pleasant&nbsp;Run overlap (~32&nbsp;km&sup2;) and the Springdale&nbsp;/&nbsp;Sharonville &harr; Forest&nbsp;Park&nbsp;/&nbsp;Pleasant&nbsp;Run overlap (~14.5&nbsp;km&sup2;) are non-trivial. A way that lies inside the union of two zone bboxes appears in both per-zone audits. Per-zone counts are correct as zone-specific totals; system-wide totals must therefore be derived from a deduplicated population.</p>
-
-<p>Three independent dedup operations are applied for the combined-zone view:</p>
+<p>The four service-zone bounding boxes overlap pairwise. The Northgate&nbsp;/&nbsp;Mt.&nbsp;Healthy &harr; Forest&nbsp;Park&nbsp;/&nbsp;Pleasant&nbsp;Run intersection covers approximately 32&nbsp;km&sup2;; the Springdale&nbsp;/&nbsp;Sharonville &harr; Forest&nbsp;Park&nbsp;/&nbsp;Pleasant&nbsp;Run intersection approximately 14.5&nbsp;km&sup2;. A way inside any pairwise intersection is emitted by every per-zone audit it falls within. Per-zone counts are correct as zone-specific totals, but combined-zone aggregation requires explicit deduplication along three axes:</p>
 
 <ol>
-  <li><strong>Way deduplication</strong> by OSM way ID. The merged inventory contains each unique way exactly once.</li>
-  <li><strong>Multi-segment-street counting</strong> by connected-components analysis over the (street&nbsp;name, way-ID set) groups, transitively coalescing components that share at least one way ID. An arterial that crosses a zone boundary collapses to a single street; two unrelated streets that happen to share a name in zones with disjoint way-ID populations are counted separately.</li>
-  <li><strong>Gap deduplication</strong> in two passes: first by unordered <code>(way<sub>i</sub>, way<sub>j</sub>)</code> pair, then by 5&nbsp;m spatial proximity per street. The second pass catches a boundary edge case in which two zones independently elect different &ldquo;tightest pair&rdquo; representatives for the same physical junction.</li>
+  <li><strong>Way deduplication</strong> by OSM way ID. The combined inventory contains each unique way exactly once.</li>
+  <li><strong>Multi-segment-street counting</strong> by transitive connected-components analysis over (<em>name</em>, way-ID&nbsp;set) groups. An arterial crossing a zone boundary collapses to one street; two unrelated streets sharing a name in zones with disjoint way-ID populations are counted separately. The transitive merge is required: a bridging group whose way IDs intersect two existing components must absorb both, not merely the first encountered.</li>
+  <li><strong>Gap deduplication</strong> in two passes &mdash; by unordered (way<sub>i</sub>, way<sub>j</sub>) pair, then by 5&nbsp;m spatial proximity per street. The second pass captures the boundary case in which two zones independently elect different &ldquo;tightest pair&rdquo; representatives for the same physical junction.</li>
 </ol>
 
 <h2>4. Results</h2>
@@ -272,52 +340,69 @@ out geom tags;</code></pre>
   <caption><strong>Table&nbsp;2.</strong> Defect counts per MetroNow service zone, plus the naive per-zone sum (which over-counts ways present in more than one zone bbox) and the deduplicated unique total. Source: Overpass API live query, 2026-04-29; pipeline at <a href="https://github.com/AICincy/Tiger">AICincy/Tiger</a>, run via <code>python tiger_audit.py --zone all</code>.</caption>
 </table>
 
-<h3>4.2 Distribution of unreviewed ways</h3>
+<h3>4.2 Population structure</h3>
 
-<p>Across the four zones, a majority of unreviewed ways are residential (3,583&nbsp;/&nbsp;6,096&nbsp;=&nbsp;58.8&nbsp;%). The compound-defect (Class&nbsp;AB) population is small in absolute terms (221 ways across 522 multi-segment streets, of which 20 streets in Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery alone carry the original index case) but is precisely the population most likely to produce <em>complete</em> routing failures, because each compound-defect way carries both a false legal-direction restriction and an adjacent topology gap. Class&nbsp;B and Class&nbsp;A-only populations are larger but each individual defect produces a less catastrophic failure mode (a misrouted approach rather than a complete unreachability).</p>
+<p>Residential ways constitute 58.8&nbsp;% of the deduplicated population (3,583&nbsp;/&nbsp;6,096). The compound-defect (Class&nbsp;AB) subpopulation, while small in absolute terms (<em>n</em>&nbsp;=&nbsp;221 across 522 multi-segment streets), is the methodologically privileged target: each Class&nbsp;AB way carries both a directional-restriction error and an adjacent topology gap, the conjunction sufficient to produce complete unreachability rather than a sub-optimal approach. The disjoint Class&nbsp;A and Class&nbsp;B populations are individually larger but their per-way severity is dominated by missed approach geometry, not by unreachability.</p>
 
-<h3>4.3 The Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery index case</h3>
+<h3>4.3 Index case</h3>
 
-<p>The author's residential street&mdash;O'Leary Avenue, in Deer Park&mdash;is one of the 2 single-segment Class&nbsp;A ways flagged in the Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery zone. The street carries <code>oneway=yes</code> in OSM despite being two-way on the ground, and a near-miss endpoint at the intersection with the principal cross street is below the 30&nbsp;m gap threshold but above the coincidence floor. The combination of these two defects is sufficient to produce a routing failure for any MetroNow journey terminating at the address, which the author has verified by direct observation of the dispatched vehicle's path.</p>
+<p>One of the two single-segment Class&nbsp;A ways in the Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery zone is the index case from which this audit was constructed. The way carries <code>oneway=yes</code> despite being two-way on the ground, and one of its endpoints sits within the 30&nbsp;m gap interval relative to a terminating node of the principal cross street, above the coincidence floor. Direct observation of dispatched MetroNow vehicles attempting to terminate at addresses on this segment confirms a reproducible navigation failure consistent with the predicted routing-graph topology error. The case index is not in itself the contribution of the audit; it is the existence proof that the failure mode the population-level inventory is designed to enumerate is empirically operative.</p>
 
 <h2>5. Discussion</h2>
 
-<h3>5.1 Limitations</h3>
+<h3>5.1 Methodological constraints</h3>
 
-<p>The audit's heuristics are deliberately conservative; the population of true defects is almost certainly broader than the population this audit flags. In particular:</p>
+<p>The flagged population should be read as a lower bound on the true defect set rather than as a complete enumeration. Five constraints structure the gap between the two.</p>
 
-<ul>
-  <li><strong>Heuristic, not ground-truth.</strong> The presence of <code>tiger:reviewed=no</code> indicates the absence of human verification; it does not entail the presence of an error. A way carrying the tag may nevertheless be entirely correct. Conversely, a way that has lost the tag (because some prior editor removed it without verifying the geometry) is invisible to this audit and may still contain defects.</li>
-  <li><strong>Class&nbsp;B grouping by name string.</strong> The grouping of ways into multi-segment streets relies on case-insensitive equality of the <code>name</code> tag. Streets that share a name across non-adjacent geographies (e.g.&nbsp;a generic name appearing in two unrelated zones) are correctly separated by the connected-components dedup at the system level but may be merged incorrectly within a single zone if the zone bbox happens to include disjoint segments of two same-named streets.</li>
-  <li><strong>Endpoint-only gap detection.</strong> The 30&nbsp;m threshold catches only gaps at way endpoints; mid-way disconnects (e.g.&nbsp;a short cross-street that should split a long way into two) are invisible to the heuristic.</li>
-  <li><strong>Cross-zone gaps.</strong> A node disconnect whose two participating ways lie strictly in different zones (each bbox contains exactly one way of the pair) is not detected by any per-zone audit; the audit's coverage of such cross-boundary defects is consequently incomplete.</li>
-  <li><strong>Cache-fallback freshness.</strong> When the Overpass API is unreachable, the pipeline falls back to a cached snapshot. Cached payloads are revalidated for non-list <code>elements</code> and for the &lt;100-element sanity threshold, but a cache that is stale relative to recent OSM edits may produce results that no longer match the live OSM state.</li>
-</ul>
+<p><em>Heuristic vs. ground truth.</em> The <code>tiger:reviewed=no</code> tag records the absence of human verification, not the presence of error; a way carrying the tag may be entirely correct. Conversely, ways from which a prior editor removed the tag without fully verifying the geometry are outside the audit's discrimination and remain a contributing population for routing failure.</p>
 
-<h3>5.2 Federal accessibility framing</h3>
+<p><em>Name-string equivalence.</em> Class&nbsp;B grouping is keyed on case-insensitive equality of the OSM <code>name</code> tag. Physically distinct streets sharing a name across non-adjacent geographies are correctly separated by the system-level connected-components dedup but may be conflated within a single per-zone audit when the bounding box encloses disjoint segments of two same-named streets.</p>
 
-<p>49&nbsp;C.F.R.&nbsp;&sect;&nbsp;37.121 requires that complementary paratransit service provide a level of service comparable to fixed-route service for individuals with disabilities. Whether routing failures driven by uncorrected base-map data, where they prevent navigation to residential addresses inside a designated service zone, may bear on the comparability standard under that section is a question the author recommends SORTA legal counsel review; nothing in this work should be read as a legal conclusion. The technical question of whether such failures occur is, however, what this audit is designed to answer empirically.</p>
+<p><em>Endpoint-only gap detection.</em> The 30&nbsp;m threshold operates on way endpoints. Mid-way disconnects&mdash;e.g. a short connecting road that should split a long way into two&mdash;lie outside the heuristic's discrimination.</p>
+
+<p><em>Cross-zone-boundary blind spot.</em> A probable disconnect whose two participating ways lie strictly in different zones (each zone's bounding box contains exactly one of the pair) is not detected by any per-zone audit. Recall is consequently biased against zone-boundary defects.</p>
+
+<p><em>Cache-fallback freshness.</em> Upstream-failure paths fall back to the most recent cached Overpass snapshot. Cached payloads are revalidated for dictionary-typed top-level structure, list-typed <code>elements</code>, and a &lt;100-element sanity threshold, but cache age relative to recent OSM activity is not enforced; results from a stale cache may diverge from current OSM state without flagging.</p>
+
+<h3>5.2 Comparability under 49&nbsp;C.F.R.&nbsp;&sect;&nbsp;37.121</h3>
+
+<p>49&nbsp;C.F.R.&nbsp;&sect;&nbsp;37.121 obliges complementary paratransit to provide service comparable to fixed-route service for individuals with disabilities. Whether base-map&ndash;driven navigation failures, where they prevent service termination at residential addresses inside a designated service zone, are cognizable under the comparability standard is a legal question this audit does not resolve and that warrants counsel review by the relevant agency. The technical predicate&mdash;whether such failures empirically occur, and at what scale&mdash;is what the audit is designed to characterise.</p>
 
 <h3>5.3 Generalisation</h3>
 
-<p>The methodology is not specific to MetroNow, to Hamilton County, or to Via Transportation. Any routing service that consumes OSM and operates inside a geography subject to the 2007&ndash;2008 TIGER bulk import is exposed to the same defect population, scaled by local contributor density. The pipeline accepts arbitrary bounding-box parameterisations and is, in principle, redeployable to any U.S.&nbsp;county.</p>
+<p>The methodology is not specific to MetroNow, Hamilton County, or Via Transportation. Any routing service consuming OSM inside a geography subject to the TIGER import inherits the same residual defect population, modulo local contributor density. The pipeline is parameterised on bounding box and is in principle redeployable across U.S. counties; a comparative audit across multiple counties would render the population-density correlation hypothesis advanced in &sect;&nbsp;2.1 empirically testable.</p>
 
-<h2>6. Recommendations</h2>
+<h2>6. Implications and remediation pathways</h2>
 
-<p>The audit is presented for two audiences. To the OpenStreetMap volunteer community: every flagged way and every flagged gap carries a deep link to the iD editor and to JOSM Remote Control, pre-zoomed to the defect; the author requests evaluation and remediation of the 221 compound defects (Class&nbsp;AB) as the highest-priority subpopulation. To SORTA and Via Transportation: the author requests acknowledgement of the data-quality issue, engagement with Via on the contractual division of road-graph QA responsibility, and consideration of an ongoing map-quality assurance process for the four MetroNow service zones.</p>
+<p>The audit serves two distinct downstream constituencies and is structured to be actionable to each without further intermediation.</p>
 
-<p>The complete dataset, the per-zone Excel workbooks, the interactive Leaflet dashboards, and the pipeline source are openly available at <a href="https://github.com/AICincy/Tiger">github.com/AICincy/Tiger</a>; the dashboards are also browsable at <a href="https://aicincy.github.io/Tiger/">aicincy.github.io/Tiger</a>. Reproduction requires Python&nbsp;3.11+ and the two dependencies pinned in <code>requirements.txt</code>; total runtime is approximately one minute per zone on a network-warm machine.</p>
+<p><em>OSM volunteer community.</em> Each flagged way and each disconnect candidate is paired with deep links to the iD editor and JOSM Remote Control pre-zoomed to the defect coordinate. The 221 Class&nbsp;AB defects constitute the highest-priority subpopulation by failure-mode severity: their evaluation and remediation against canonical referents (satellite imagery, street-level photography, field knowledge) is the lowest-effort intervention with the highest expected impact on MetroNow service availability inside the four zones.</p>
+
+<p><em>Operator and contracting authority.</em> SORTA and Via Transportation. The findings warrant acknowledgement of the empirical predicate, scoping of contractual road-graph QA obligations between the parties, and consideration of a recurring map-quality assurance process tied to operationally significant service geographies. The legal question raised in &sect;&nbsp;5.2 is logically independent of the technical findings and is left to counsel.</p>
+
+<p>The complete dataset, the per-zone workbooks, the interactive dashboards, and the pipeline source are openly available at <a href="https://github.com/AICincy/Tiger">github.com/AICincy/Tiger</a>; the dashboards are browsable at <a href="https://aicincy.github.io/Tiger/">aicincy.github.io/Tiger</a>. Reproduction requires Python&nbsp;3.11+ and the two dependencies pinned in <code>requirements.txt</code>; per-zone runtime is approximately one minute on a network-warm machine. The methodology, the dedup operations, the haversine-threshold calibration, and the cache-fallback path are open to re-derivation, contestation, and replacement by any reader from the cited sources of record.</p>
+
+<h2>Appendix A. Design handoff &mdash; alternative cartographic presentation</h2>
+
+<p>A high-fidelity design reference for an alternative presentation of the audit data is included in the repository at <a href="https://github.com/AICincy/Tiger/tree/main/design_handoff_tiger_audit_map"><code>design_handoff_tiger_audit_map/</code></a>. The handoff packages two working HTML prototypes &mdash; a flat Leaflet 2D view and a MapLibre&nbsp;GL&nbsp;JS 3D view with pan / tilt / zoom &mdash; against the Blue&nbsp;Ash&nbsp;/&nbsp;Montgomery dataset, in a deliberately warmer cartographer palette than the production Leaflet dashboard. The prototypes are reference-only: typography, spacing, hover-and-selection states, and copy are at production fidelity, but the artefacts are not intended to ship as-is. The intended downstream is a port into a modern application stack (the handoff recommends React + Vite), preserving the visual grammar while replacing the demonstration scaffolding.</p>
+
+<figure>
+  <img src="design_handoff_tiger_audit_map/screenshots/2d-01-default.png" alt="Screenshot of the 2D design prototype showing the Blue Ash / Montgomery zone with defect classes A, AB, B, and C in a warm cartographer palette, with sidebar controls for class toggles, search, and basemap selection.">
+  <figcaption><strong>Figure&nbsp;A.1.</strong> Default state of the 2D design prototype (<code>map_2d.html</code>): three-row CSS-grid layout with header KPI strip, 320&nbsp;px sidebar, scaled map canvas, and footer status row. Class AB and Class A render in the critical-defect colour ramp; Class B in the multi-segment ramp; Class C de-emphasised. The handoff README documents the full token table and the corresponding 3D MapLibre prototype.</figcaption>
+</figure>
+
+<p>Live prototype access (after Pages redeploy): <a href="https://aicincy.github.io/Tiger/design_handoff_tiger_audit_map/prototypes/map_2d.html"><code>map_2d.html</code></a> &middot; <a href="https://aicincy.github.io/Tiger/design_handoff_tiger_audit_map/prototypes/map_3d.html"><code>map_3d.html</code></a>. Static screenshots and the design-token tables are at <a href="https://github.com/AICincy/Tiger/blob/main/design_handoff_tiger_audit_map/README.md"><code>design_handoff_tiger_audit_map/README.md</code></a>.</p>
 
 <div class="footnotes">
-  <h2 style="border:none; color: var(--muted); font-size: 1rem;">References &amp; Footnotes</h2>
+  <h2 style="border:none;">Notes</h2>
   <ol>
-    <li id="fn1">OpenStreetMap is a collaborative, openly-licensed geographic dataset. Contributor base, licence (Open Database Licence, ODbL), and quality-assurance norms are described at <a href="https://www.openstreetmap.org/about">openstreetmap.org/about</a> and in the OSM wiki.</li>
-    <li id="fn2">U.S. Census Bureau, <em>TIGER/Line Shapefiles</em>, with metadata at <a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">census.gov/geographies/mapping-files/&hellip;/tiger-line-file</a>. The OSM wiki documents the import history, known defects, and remediation conventions at <a href="https://wiki.openstreetmap.org/wiki/TIGER_fixup">wiki.openstreetmap.org/wiki/TIGER_fixup</a>.</li>
-    <li id="fn3">The two failure modes described here are the classes the audit instruments. Other documented TIGER-import defect classes (e.g.&nbsp;centreline offsets, classification-tag inaccuracy, missing service roads) exist but are out of scope for this work.</li>
-    <li id="fn4">This claim is sourced from publicly available ViaMapping product documentation as of April&nbsp;2026; it is not a reading of any contract document, and the contractual division of road-graph QA responsibility between SORTA and Via Transportation is not visible to the author. SORTA legal review of the underlying contract is recommended before any operational claim is built on the documentation summary.</li>
-    <li id="fn5">&ldquo;Class&nbsp;A&nbsp;total&rdquo; in this column counts ways satisfying <em>A</em>(w) without regard to whether they are also Class&nbsp;B; that is, it includes the Class&nbsp;AB sub-population. A way that is single-segment-only Class&nbsp;A is computed as Class&nbsp;A&nbsp;total &minus; Class&nbsp;AB. The two columns are reported separately because the dashboard's KPI cards present them as disjoint categories while the per-zone XLSX exports the union for compatibility with the historical record.</li>
+    <li id="fn1">Provenance, licence (Open Database Licence, ODbL), and contributor norms documented at <a href="https://www.openstreetmap.org/about">openstreetmap.org/about</a>.</li>
+    <li id="fn2">U.S. Census Bureau, <em>TIGER/Line Shapefiles</em> (<a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">census.gov</a>); OSM-side import history and remediation conventions at the <a href="https://wiki.openstreetmap.org/wiki/TIGER_fixup">TIGER fixup</a> page.</li>
+    <li id="fn3">Asserted as a positioning claim consistent with the spatial distribution observed in the present audit and with prior community discussion of TIGER residuals; not formally measured here. A formal test requires a multi-county comparative audit, indicated in &sect;&nbsp;5.3.</li>
+    <li id="fn4">Sourced from publicly available ViaMapping product documentation as of April&nbsp;2026. Not a reading of any contract instrument, and the SORTA&ndash;Via contractual division of road-graph QA responsibility is not visible to this author. Counsel review of the operative contract is recommended before any operational claim is grounded in the documentation summary.</li>
+    <li id="fn5">The &ldquo;Class&nbsp;A&nbsp;total&rdquo; column reports |{w&nbsp;:&nbsp;<em>A</em>(w)&nbsp;&or;&nbsp;<em>AB</em>(w)}|, i.e. the union (single-segment Class&nbsp;A) &cup; (compound Class&nbsp;AB). Single-segment-only Class&nbsp;A&nbsp;= Class&nbsp;A&nbsp;total&nbsp;&minus;&nbsp;Class&nbsp;AB. The two columns are reported separately because the dashboard renders the categories as disjoint KPI cards while the per-zone XLSX preserves the union for historical compatibility.</li>
   </ol>
-  <p style="margin-top: 16px;">Data: &copy; OpenStreetMap contributors, ODbL. TIGER/Line: U.S.&nbsp;Census Bureau, public domain. Tile imagery on the live dashboards: CARTO Voyager (OSM-derived) and Esri World Imagery (public-tier). This work is independent and is not affiliated with SORTA, Via Transportation, the OpenStreetMap Foundation, or the Cincinnati Edition of any of the foregoing.</p>
+  <p style="margin-top: 18px;">Road data &copy; OpenStreetMap contributors, ODbL. TIGER/Line: U.S.&nbsp;Census Bureau, public domain. Tile imagery on the live dashboards: CARTO Voyager (OSM-derived), Esri World Imagery and Wayback (public tiers). Independent work; no affiliation is asserted with SORTA, Via Transportation, or the OpenStreetMap Foundation.</p>
 </div>
 
 </body>
