@@ -1,0 +1,994 @@
+id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_name_base,surface,lanes,maxspeed,_street_segments,_street_gap_count
+19063562,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,59
+27669425,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+27669426,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
+28162292,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
+28162293,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
+33655264,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+33655265,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,59
+33655286,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+33655297,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+41935299,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,59
+79248283,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+79248287,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+372671723,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116827,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116830,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
+549116833,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
+549116834,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116836,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116837,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,59
+549116838,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116839,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116840,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116841,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116842,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116843,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116853,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116862,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116863,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+549116868,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+549116877,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553002807,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002808,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
+553002809,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002810,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002811,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553002812,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002813,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002814,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002822,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002823,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002825,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002838,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553002843,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553002847,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553002850,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,59
+553002852,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
+553002857,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553002862,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553002863,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553002864,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553002887,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
+553002890,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
+553002891,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
+553148241,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,,120,59
+553148242,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148243,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148244,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148245,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148246,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148247,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148248,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,59
+553148250,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
+553148251,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
+553148252,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
+553148320,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
+553225449,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225451,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553225452,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553225453,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225454,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225455,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225465,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225466,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225467,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225472,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225478,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225480,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225483,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225484,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225485,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225490,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225491,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553225493,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225494,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,59
+553225495,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225498,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553225499,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553378390,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553378394,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,59
+553378397,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,59
+553378398,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,59
+553378399,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553378400,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,59
+553378403,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+553378404,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,59
+553378410,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+553378411,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553378412,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+553378559,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
+705294795,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
+753108627,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+753108628,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+762784443,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
+762784444,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
+887751604,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,59
+887751605,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
+887751607,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
+887751609,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
+887751610,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
+887751611,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
+887751612,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+887751617,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+887751622,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+887751623,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
+887777400,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,59
+1150839680,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+1150839688,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+1150839689,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
+1304161311,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
+1415323024,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,59
+19053606,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
+531487351,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,4,,12,19
+531487374,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
+531487378,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,3,,12,19
+531487379,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,3,,12,19
+544231775,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,asphalt,4,,12,19
+660503348,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,,,,12,19
+730051975,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,asphalt,4,,12,19
+730051976,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
+730051977,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
+730051978,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
+1450208279,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
+19071025,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,12
+208937331,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,,19,12
+222481039,West Kemper Road,secondary,no,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
+531487444,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
+531746310,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,2,,19,12
+531746319,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,3,,19,12
+531746349,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,,19,12
+531746355,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,4,,19,12
+531746361,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
+531746366,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
+531746373,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
+531746376,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,12
+531746377,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
+545769990,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,6,35 mph,19,12
+627151535,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,4,35 mph,19,12
+627151536,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,2,35 mph,19,12
+840371034,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,6,35 mph,19,12
+840371035,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,6,35 mph,19,12
+840400514,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,12
+19062934,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,,42,11
+27669437,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+27669465,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
+27669467,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
+27669468,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
+52096461,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,,42,11
+531207361,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,4,,42,11
+531658011,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,,,42,11
+553155472,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
+553155474,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155476,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155482,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155484,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
+553155485,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155490,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155491,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
+553155492,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155499,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,6,,42,11
+553155500,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553155501,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,5,,42,11
+553155503,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,5,,42,11
+553155504,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,4,,42,11
+553155505,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,4,,42,11
+553155506,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,5,,42,11
+553155509,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,5,,42,11
+553155510,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,4,,42,11
+553155512,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+553200920,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,4,,42,11
+553200921,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,6,,42,11
+553200922,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,5,,42,11
+553200926,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,35 mph,42,11
+553200927,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,2,35 mph,42,11
+553200928,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,35 mph,42,11
+553225570,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,35 mph,42,11
+553225578,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,2,35 mph,42,11
+553225579,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,,42,11
+553225580,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,2,,42,11
+1037961610,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,,,42,11
+1037961611,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,,,42,11
+1147495719,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
+1372284738,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,,42,11
+1420151543,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,35 mph,42,11
+19064676,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
+531487390,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,10
+531487396,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,10
+531487399,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
+531487400,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
+531487401,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
+531487402,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,10
+531487421,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
+531487422,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,6,35 mph,22,10
+531487423,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,7,35 mph,22,10
+531487424,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,5,35 mph,22,10
+531657999,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,10
+531658000,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
+531658001,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,10
+531658002,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
+531658003,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
+531658004,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
+531658005,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,,35 mph,22,10
+671732880,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,10
+671732881,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
+1374689928,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
+1374689929,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
+52096952,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+208937339,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+531657994,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+531657995,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
+531657996,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
+531657997,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+532001118,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
+532001119,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+532001120,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
+532001121,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+532001124,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
+671732942,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
+372671724,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,11,7
+549080898,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+549116828,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,7
+549116829,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,7
+549116831,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,11,7
+549116832,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,7
+670135674,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+725759808,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+725759809,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+725759814,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+725759815,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+18981220,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,6,,37,6
+31735683,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+32031629,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+203976657,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+203976763,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+248869657,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+248869660,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,asphalt,3,,37,6
+531491719,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,5,,37,6
+531491721,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+543087121,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,,,37,6
+543087123,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087124,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087127,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,,,37,6
+543087137,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087140,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,4,,37,6
+543087143,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,,,37,6
+543087144,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087148,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087150,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087151,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+543087153,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087154,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087155,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087157,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+543087158,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087159,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+543087162,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087163,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+543087174,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,asphalt,3,,37,6
+543087176,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+543087177,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+543087178,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,5,,37,6
+543087180,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,6,,37,6
+655265794,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
+747195774,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,,,37,6
+856317971,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+856317972,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
+19055380,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,,,31,6
+19055383,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,,,31,6
+61357838,Chester Road,residential,,B,HIGH,no,A41,Chester,asphalt,3,,31,6
+531487296,Chester Road,residential,,B,HIGH,no,A41,Chester,,,,31,6
+531487297,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,5,35 mph,31,6
+553200923,Chester Road,tertiary,,B,HIGH,no,A41,Chester,asphalt,3,,31,6
+553200924,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,5,35 mph,31,6
+553200930,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553200933,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553200934,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553200935,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,5,35 mph,31,6
+553200940,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553200941,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,6,35 mph,31,6
+553200944,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553200946,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553200968,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,5,35 mph,31,6
+553200973,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,5,35 mph,31,6
+553200979,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,5,35 mph,31,6
+553200982,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553201006,Chester Road,secondary,,B,HIGH,no,A41,Chester,asphalt,4,35 mph,31,6
+553211009,Chester Road,secondary,,B,HIGH,no,A41,Chester,,5,35 mph,31,6
+553225438,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,,,31,6
+553225440,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,,,31,6
+553225441,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,3,,31,6
+553225442,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,,,31,6
+553225443,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,,,31,6
+553225444,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,3,,31,6
+553225445,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,4,,31,6
+553225446,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,5,,31,6
+553225447,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,3,,31,6
+553225448,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,4,,31,6
+31890369,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+31890371,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+530904820,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+530904821,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+542673606,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,4,,20,6
+542673607,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,4,40 mph,20,6
+542673611,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+542673612,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+542673614,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+542673615,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,5,40 mph,20,6
+542673616,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,4,40 mph,20,6
+543087099,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+543087104,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+543087106,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+543087107,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+680116108,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,,,20,6
+1410885743,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+1410885744,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+1456808950,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
+1456808951,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
+19069009,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,6
+200417091,Bishopsgate Drive,residential,,B,HIGH,no,A41,Bishopsgate,,,,4,6
+200417095,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,6
+200417118,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,6
+19064572,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+531391793,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,5,,19,5
+531391794,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,5,,19,5
+531391795,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,5,,19,5
+531391796,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+531391797,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+531391798,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,7,,19,5
+531391799,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,7,,19,5
+531391800,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+531391801,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,6,,19,5
+531391806,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,5,,19,5
+543087142,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,3,,19,5
+553155477,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+661055519,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,6,,19,5
+744262605,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+761378112,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+762198937,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+767466454,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+767466455,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
+19071957,Brandywine Drive,residential,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
+19071959,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
+61357367,Brandywine Drive,residential,yes,AB,CRITICAL,no,A41,Brandywine,asphalt,,,5,5
+61357368,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
+61357380,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
+18982971,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,3,,16,4
+543087073,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,,16,4
+543087076,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,45 mph,16,4
+543087082,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,3,45 mph,16,4
+543087084,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,3,,16,4
+543087085,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,,16,4
+543087086,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,,16,4
+543087096,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,3,45 mph,16,4
+543087098,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,45 mph,16,4
+543087101,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,3,45 mph,16,4
+543087108,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,,,16,4
+543087111,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,3,45 mph,16,4
+543087112,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,3,,16,4
+543087114,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,2,,16,4
+543087116,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,4,,16,4
+543087118,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,3,45 mph,16,4
+68507296,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,4
+549116857,Lake Forest Drive,residential,,B,HIGH,no,A41,Lake Forest,,,,7,4
+549117004,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,3,,7,4
+549117009,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,4
+549117013,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,3,,7,4
+549117018,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,4
+1162425976,Lake Forest Drive,residential,,B,HIGH,no,A41,Lake Forest,,,,7,4
+32708907,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+32708908,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+36828573,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+36828574,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+305370182,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,6,55 mph,31,3
+542673600,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+542673601,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,6,55 mph,31,3
+542673603,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,6,55 mph,31,3
+542673604,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,55 mph,31,3
+542673605,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,6,55 mph,31,3
+542673608,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,6,55 mph,31,3
+542673609,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,6,55 mph,31,3
+542673619,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,6,45 mph,31,3
+542673625,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,6,45 mph,31,3
+542673626,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,7,45 mph,31,3
+542673627,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,5,45 mph,31,3
+543072265,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,45 mph,31,3
+543072267,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,45 mph,31,3
+543072270,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,45 mph,31,3
+543072272,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,5,45 mph,31,3
+543072273,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,5,45 mph,31,3
+543072281,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,55 mph,31,3
+543072283,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,6,55 mph,31,3
+543072290,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,55 mph,31,3
+543072291,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,55 mph,31,3
+543072292,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+543072294,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
+1088796661,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,,31,3
+1088796662,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,5,35 mph,31,3
+1422196734,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,6,45 mph,31,3
+1422196735,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,asphalt,5,45 mph,31,3
+128362413,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,2,,22,3
+128362414,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,4,35 mph,22,3
+222478293,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,4,35 mph,22,3
+531658015,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,3,35 mph,22,3
+532001313,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,3,,22,3
+532001323,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,3,,22,3
+532001337,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,2,,22,3
+532001351,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,3,,22,3
+532001419,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,3,,22,3
+532001420,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,2,,22,3
+532001421,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,3,,22,3
+553225553,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,4,35 mph,22,3
+553432691,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,4,35 mph,22,3
+966071703,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,4,35 mph,22,3
+966071704,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,4,35 mph,22,3
+1370373487,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,2,,22,3
+1375527636,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,asphalt,2,,22,3
+1415817368,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,4,35 mph,22,3
+1415817370,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,3,35 mph,22,3
+1416296401,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,4,35 mph,22,3
+1416296402,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,3,35 mph,22,3
+1422785035,Springfield Pike,primary,,B,HIGH,no,A31,Springfield,,3,35 mph,22,3
+380530704,Reed Hartman Highway,secondary,yes,B,HIGH,no,A41,Reed Hartman,,3,40 mph,21,3
+549116870,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116871,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116872,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,6,40 mph,21,3
+549116874,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,4,40 mph,21,3
+549116887,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,4,40 mph,21,3
+549116889,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,6,40 mph,21,3
+549116890,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116896,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116907,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,4,40 mph,21,3
+549116908,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116910,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116989,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116990,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549116997,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,6,40 mph,21,3
+549117021,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,asphalt,4,40 mph,21,3
+549117046,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,5,40 mph,21,3
+549117053,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,asphalt,5,40 mph,21,3
+549117193,Reed Hartman Highway,secondary,yes,B,HIGH,no,A41,Reed Hartman,,3,40 mph,21,3
+549117196,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,4,40 mph,21,3
+549117197,Reed Hartman Highway,secondary,,B,HIGH,no,A41,Reed Hartman,,4,40 mph,21,3
+19051892,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,4,,9,3
+549116844,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,,,9,3
+549116845,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,3,,9,3
+549116846,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,3,,9,3
+549116847,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,,,9,3
+549116848,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,3,,9,3
+549116852,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,,,9,3
+553002792,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,asphalt,3,,9,3
+553002799,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,asphalt,3,,9,3
+19071713,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
+203976729,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
+1019963872,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
+1019963873,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,3,,8,3
+1019963874,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,3,,8,3
+1019963875,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,,,8,3
+1019963876,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,,,8,3
+1019963877,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
+19062784,Dixie Court,residential,,B,HIGH,no,A41,Dixie,,,,7,3
+52432057,Dixie Court,path,,B,HIGH,no,A41,Dixie,,,,7,3
+921937911,Dixie Court,residential,,B,HIGH,no,A41,Dixie,,,,7,3
+921937912,Dixie Court,residential,,B,HIGH,no,A41,Dixie,,,,7,3
+995631885,Dixie Court,service,,B,HIGH,no,A41,Dixie,,,,7,3
+995631886,Dixie Court,service,,B,HIGH,no,A41,Dixie,,,,7,3
+1265842052,Dixie Court,service,,B,HIGH,no,A41,Dixie,,,,7,3
+19054183,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,3
+1054992606,Maple Knoll Terrace,residential,,B,HIGH,no,A41,Maple Knoll,asphalt,,,4,3
+1054992607,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,3
+1054992608,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,3
+19063301,Creek Road,tertiary,,B,HIGH,no,A41,Creek,,,25 mph,13,2
+19063302,Creek Road,residential,,B,HIGH,no,A41,Creek,asphalt,,,13,2
+206064171,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,,13,2
+531207346,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,,13,2
+531207347,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,,13,2
+531207349,Creek Road,tertiary,,B,HIGH,no,A41,Creek,,,25 mph,13,2
+549117059,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,25 mph,13,2
+549117065,Creek Road,tertiary,,B,HIGH,no,A41,Creek,,3,25 mph,13,2
+549117070,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,4,25 mph,13,2
+553002776,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,25 mph,13,2
+553002784,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,25 mph,13,2
+1105049351,Creek Road,tertiary,,B,HIGH,no,A41,Creek,,,25 mph,13,2
+1105049352,Creek Road,tertiary,,B,HIGH,no,A41,Creek,,,25 mph,13,2
+19058475,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657985,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657986,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657987,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,,,11,2
+531657988,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657989,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657990,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657991,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+531657993,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
+763074073,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,,,11,2
+763074074,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,,,11,2
+19058276,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,,35 mph,7,2
+531207199,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,4,,7,2
+531207200,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,3,,7,2
+531207201,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,3,,7,2
+531207202,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,4,,7,2
+531207203,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,,,7,2
+921637537,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,,,7,2
+19059057,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,2
+61353105,Old Commons Drive,residential,yes,AB,CRITICAL,no,A41,Commons,asphalt,,,7,2
+61353224,Old Commons Drive,residential,yes,AB,CRITICAL,no,A41,Commons,asphalt,,,7,2
+531487381,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,7,2
+531487382,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,2
+730046456,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,2
+730046457,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,7,2
+19060664,Allenhurst Boulevard East,residential,,B,HIGH,no,A41,Allenhurst,,,,5,2
+112262550,Allenhurst Boulevard East,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,5,2
+112262553,Allenhurst Boulevard East,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,5,2
+112262571,Allenhurst Boulevard East,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,5,2
+1105049397,Allenhurst Boulevard East,residential,,B,HIGH,no,A41,Allenhurst,asphalt,,,5,2
+19055708,Morse Avenue,residential,,B,HIGH,no,A41,Morse,asphalt,,,5,2
+1391960590,Morse Avenue,residential,,B,HIGH,no,A41,Morse,asphalt,,,5,2
+1391960591,Morse Avenue,residential,,B,HIGH,no,A41,Morse,asphalt,,,5,2
+1391960595,Morse Avenue,residential,,B,HIGH,no,A41,Morse,asphalt,,,5,2
+1391960596,Morse Avenue,residential,,B,HIGH,no,A41,Morse,asphalt,,,5,2
+136150472,Union Centre Boulevard,secondary,yes,B,HIGH,no,A41,Union Center,,2,,5,2
+542673785,Union Centre Boulevard,secondary,yes,B,HIGH,no,A41,Union Center,,2,,5,2
+543087081,Union Centre Boulevard,secondary,yes,B,HIGH,no,A41,Union Center,,2,,5,2
+543087091,Union Centre Boulevard,secondary,yes,B,HIGH,no,A41,Union Center,,3,,5,2
+543087095,Union Centre Boulevard,secondary,yes,B,HIGH,no,A41,Union Center,,2,,5,2
+19060888,Allenhurst Boulevard West,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,4,2
+112262560,Allenhurst Boulevard West,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,4,2
+112262568,Allenhurst Boulevard West,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,4,2
+112262574,Allenhurst Boulevard West,residential,,B,HIGH,no,A41,Allenhurst,asphalt,,,4,2
+19054244,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
+767855730,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
+923280457,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
+923280458,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
+19056371,Executive Park Drive,residential,yes,AB,CRITICAL,no,A41,Executive Park,,,,3,2
+531207187,Executive Park Drive,residential,,B,HIGH,no,A41,Executive Park,,,,3,2
+531207188,Executive Park Drive,residential,yes,AB,CRITICAL,no,A41,Executive Park,,,,3,2
+24007955,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+24007956,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27918738,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27918755,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27918763,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27918794,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27918926,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27919025,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27919026,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,5,65 mph,33,1
+27919031,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27919036,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27919107,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27919108,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+27919115,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,6,65 mph,33,1
+27919116,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,5,65 mph,33,1
+27919188,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,5,65 mph,33,1
+27919264,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,concrete,4,65 mph,33,1
+27919266,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,5,65 mph,33,1
+27919281,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,5,65 mph,33,1
+28436453,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,6,65 mph,33,1
+28436454,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+531207176,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,4,65 mph,33,1
+531746192,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+531746193,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,3,65 mph,33,1
+531746194,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,5,65 mph,33,1
+531746195,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+531746197,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,5,65 mph,33,1
+531746198,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,5,65 mph,33,1
+531746199,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,4,65 mph,33,1
+921637536,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,4,65 mph,33,1
+1055973576,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,4,65 mph,33,1
+1086100722,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,asphalt,4,65 mph,33,1
+1342074965,Circle Freeway,motorway,yes,B,HIGH,no,A15,I-275,,6,65 mph,33,1
+31875631,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,4,35 mph,15,1
+531207363,Reading Road,secondary,,B,HIGH,no,A21,Reading,,,35 mph,15,1
+531207366,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,4,,15,1
+531207367,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,3,35 mph,15,1
+531207368,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,,35 mph,15,1
+543087119,Reading Road,secondary,,B,HIGH,no,A21,Reading,,3,,15,1
+543087181,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,3,35 mph,15,1
+543087182,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,3,,15,1
+859101746,Reading Road,secondary,,B,HIGH,no,A21,Reading,,,,15,1
+859101747,Reading Road,secondary,yes,B,HIGH,no,A21,Reading,asphalt,,,15,1
+859101748,Reading Road,secondary,yes,B,HIGH,no,A21,Reading,asphalt,,,15,1
+859101785,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,3,35 mph,15,1
+859101786,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,4,35 mph,15,1
+881839060,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,,35 mph,15,1
+885028089,Reading Road,secondary,,B,HIGH,no,A21,Reading,asphalt,,35 mph,15,1
+19059055,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,6,,8,1
+531487345,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,4,,8,1
+531487346,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,8,1
+544229685,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,7,,8,1
+660504522,Commons Drive,service,,B,HIGH,no,A41,Commons,,,,8,1
+671942923,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,8,1
+671942927,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,8,1
+671942930,Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,8,1
+19056079,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,3,,8,1
+553432552,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,3,,8,1
+553432553,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,4,,8,1
+553432555,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,,,8,1
+553432557,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,3,,8,1
+553432558,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,,,8,1
+553432559,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,3,,8,1
+553432560,Grove Road,tertiary,,B,HIGH,no,A41,Grove,,,,8,1
+19053142,Evendale Drive,residential,,B,HIGH,no,A41,Evendale,,,,7,1
+19053144,Evendale Drive,residential,,B,HIGH,no,A41,Evendale,,,,7,1
+52432845,Evendale Drive,tertiary,,B,HIGH,no,A41,Evendale,,,,7,1
+81465691,Evendale Drive,tertiary,,B,HIGH,no,A63,,,3,,7,1
+553148254,Evendale Drive,tertiary,,B,HIGH,no,A63,,,3,,7,1
+887751603,Evendale Drive,tertiary,,B,HIGH,no,A63,,,2,,7,1
+921637535,Evendale Drive,tertiary,,B,HIGH,no,A41,Evendale,,,,7,1
+27669440,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,,,7,1
+36897218,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,3,,7,1
+553148175,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,,,7,1
+553148228,Medallion Drive,tertiary,yes,B,HIGH,no,A41,Medallion,,,,7,1
+739365778,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,,,7,1
+739365779,Medallion Drive,tertiary,yes,B,HIGH,no,A41,Medallion,,,,7,1
+1263286320,Medallion Drive,tertiary,no,B,HIGH,no,A41,Medallion,,,,7,1
+18985680,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
+18985682,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
+84231463,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
+84231464,Columbia Circle,residential,yes,AB,CRITICAL,no,A41,Columbia,,,,6,1
+84231465,Columbia Circle,residential,yes,AB,CRITICAL,no,A41,Columbia,,,,6,1
+84231466,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
+19057987,Lippelman Road,residential,,B,HIGH,no,A41,Lippelman,,,,6,1
+303447582,Lippelman Road,residential,,B,HIGH,no,A41,Greenwood,asphalt,3,,6,1
+531487321,Lippelman Road,residential,,B,HIGH,no,A41,Lippelman,,3,,6,1
+553200986,Lippelman Road,residential,,B,HIGH,no,A41,Greenwood,asphalt,3,,6,1
+1202733569,Lippelman Road,residential,,B,HIGH,no,A41,Lippelman,,,,6,1
+1202733570,Lippelman Road,residential,,B,HIGH,no,A41,Lippelman,,,,6,1
+19052306,Buckeye Falls Drive,service,,B,HIGH,no,A41,Buckeye Falls,asphalt,,,5,1
+52330170,Buckeye Falls Drive,service,,B,HIGH,no,A41,Buckeye Falls,,,,5,1
+52330171,Buckeye Falls Drive,service,,B,HIGH,no,A41,Buckeye Falls,,,,5,1
+560393627,Buckeye Falls Drive,service,,B,HIGH,no,A41,Buckeye Falls,,,,5,1
+560393628,Buckeye Falls Drive,service,,B,HIGH,no,A41,Buckeye Falls,asphalt,,,5,1
+33860380,Carver Road,unclassified,,B,HIGH,no,A41,Carver,,,,5,1
+549116891,Carver Road,unclassified,,B,HIGH,no,A41,Carver,,,,5,1
+549116892,Carver Road,unclassified,,B,HIGH,no,A41,Carver,,4,,5,1
+549116894,Carver Road,unclassified,,B,HIGH,no,A41,Carver,,5,,5,1
+549116895,Carver Road,unclassified,,B,HIGH,no,A41,Carver,,4,,5,1
+188983368,Fields Ertel Road,secondary,,B,HIGH,no,A41,Fields Ertel,,4,,5,1
+531207285,Fields Ertel Road,secondary,,B,HIGH,no,A41,Fields Ertel,,,,5,1
+531207286,Fields Ertel Road,secondary,,B,HIGH,no,A41,Fields Ertel,,3,,5,1
+531207287,Fields Ertel Road,secondary,,B,HIGH,no,A41,Fields Ertel,,4,,5,1
+531207288,Fields Ertel Road,secondary,,B,HIGH,no,A41,Fields Ertel,,5,,5,1
+19071669,Linden Boulevard,residential,,B,HIGH,no,A41,Linden,asphalt,,,5,1
+36951629,Linden Boulevard,residential,yes,AB,CRITICAL,no,A41,Linden,asphalt,,,5,1
+36951630,Linden Boulevard,residential,yes,AB,CRITICAL,no,A41,Linden,asphalt,,,5,1
+36951639,Linden Boulevard,residential,yes,AB,CRITICAL,no,A41,Linden,asphalt,,,5,1
+1391960648,Linden Boulevard,residential,,B,HIGH,no,A41,Linden,asphalt,,,5,1
+19065956,Anderson Way,unclassified,,B,HIGH,no,A41,Anderson,,3,,4,1
+549116893,Anderson Way,unclassified,,B,HIGH,no,A41,Anderson,,,,4,1
+683166091,Anderson Way,residential,,B,HIGH,no,A41,Anderson,,,,4,1
+683166093,Anderson Way,residential,,B,HIGH,no,A41,Anderson,,,,4,1
+19063935,Creekwood Square,residential,,B,HIGH,no,A41,Creekwood,asphalt,,,4,1
+19063936,Creekwood Square,service,,B,HIGH,no,A41,Creekwood,asphalt,,,4,1
+19063937,Creekwood Square,service,,B,HIGH,no,A41,Creekwood,asphalt,,,4,1
+19063938,Creekwood Square,residential,,B,HIGH,no,A41,Creekwood,asphalt,,,4,1
+19064522,Crowne Point Place,tertiary,,B,HIGH,no,A41,Crowne Point,,,,4,1
+553155486,Crowne Point Place,tertiary,,B,HIGH,no,A41,Crowne Point,,3,,4,1
+553155487,Crowne Point Place,tertiary,,B,HIGH,no,A41,Crowne Point,,4,,4,1
+553155511,Crowne Point Place,tertiary,,B,HIGH,no,A41,Crowne Point,,4,,4,1
+19056379,Dowlin Drive,residential,,B,HIGH,no,A41,Prince,,3,,4,1
+19062309,Dowlin Drive,residential,,B,HIGH,no,A41,Dowlin,,,,4,1
+553155494,Dowlin Drive,residential,,B,HIGH,no,A41,Prince,,,,4,1
+737183231,Dowlin Drive,residential,,B,HIGH,no,A41,Dowlin,,,,4,1
+19064509,Glendale Avenue,residential,,B,HIGH,no,A41,Glendale,asphalt,,,4,1
+19064510,Glendale Avenue,residential,,B,HIGH,no,A41,Glendale,asphalt,,,4,1
+1391960584,Glendale Avenue,residential,,B,HIGH,no,A41,Glendale,asphalt,,,4,1
+1391960585,Glendale Avenue,residential,,B,HIGH,no,A41,Glendale,asphalt,,,4,1
+19057722,Malsbary Road,residential,,B,HIGH,no,A41,Malsbary,,,,4,1
+549116906,Malsbary Road,unclassified,,B,HIGH,no,A41,Malsbary,,3,25 mph,4,1
+549116909,Malsbary Road,unclassified,,B,HIGH,no,A41,Malsbary,,3,,4,1
+1147479354,Malsbary Road,unclassified,,B,HIGH,no,A41,Malsbary,,,,4,1
+18980248,Provident Drive,residential,,B,HIGH,no,A41,Provident,,,,4,1
+543072257,Provident Drive,residential,,B,HIGH,no,A41,Provident,,3,,4,1
+543072258,Provident Drive,residential,,B,HIGH,no,A41,Provident,,3,,4,1
+740927890,Provident Drive,residential,,B,HIGH,no,A41,Provident,,3,,4,1
+19066256,Triangle Park Drive,service,,B,HIGH,no,A41,Triangle Park,,,,4,1
+19066258,Triangle Park Drive,service,,B,HIGH,no,A41,Triangle Park,,,,4,1
+19066260,Triangle Park Drive,service,,B,HIGH,no,A41,Triangle Park,,,,4,1
+19066261,Triangle Park Drive,service,,B,HIGH,no,A41,Triangle Park,,,,4,1
+19063077,Willow Avenue,residential,,B,HIGH,no,A41,Willow,asphalt,,,4,1
+19063078,Willow Avenue,residential,yes,AB,CRITICAL,no,A41,Willow,asphalt,,,4,1
+553225564,Willow Avenue,residential,,B,HIGH,no,A41,Willow,asphalt,,,4,1
+1149119678,Willow Avenue,residential,,B,HIGH,no,A41,Willow,asphalt,,,4,1
+19056780,Chicago Avenue,residential,,B,HIGH,no,A41,Chicago,,,,3,1
+19056781,Chicago Avenue,residential,,B,HIGH,no,A41,Chicago,,,,3,1
+921937915,Chicago Avenue,residential,,B,HIGH,no,A41,Chicago,,,,3,1
+19053724,Highway Drive,residential,,B,HIGH,no,A41,Highway,,,,3,1
+1167426228,Highway Drive,residential,,B,HIGH,no,A41,Highway,paved,,,3,1
+1408546844,Highway Drive,residential,,B,HIGH,no,A41,Highway,,,,3,1
+19061186,Linden Avenue,service,,B,HIGH,no,A41,Linden,,,,3,1
+80213988,Linden Avenue,residential,,B,HIGH,no,A41,Linden,,,,3,1
+1062198166,Linden Avenue,service,,B,HIGH,no,A41,Linden,,,,3,1
+19062426,North Troy Avenue,residential,,B,HIGH,no,A41,Troy,asphalt,,,3,1
+1391960612,North Troy Avenue,residential,,B,HIGH,no,A41,Troy,asphalt,,,3,1
+1391960613,North Troy Avenue,residential,,B,HIGH,no,A41,Troy,asphalt,,,3,1
+19067831,West Fountain Avenue,residential,,B,HIGH,no,A41,Fountain,,,,3,1
+1369630689,West Fountain Avenue,residential,,B,HIGH,no,A41,Fountain,,,,3,1
+1369630691,West Fountain Avenue,residential,,B,HIGH,no,A41,Fountain,,,,3,1
+19055042,YMCA Drive,residential,,B,HIGH,no,A41,Ymca,,,,3,1
+27669471,YMCA Drive,residential,,B,HIGH,no,A41,Ymca,,,,3,1
+27669472,YMCA Drive,residential,,B,HIGH,no,A41,Ymca,,,,3,1
+18982197,Dale Hollow Lane,residential,yes,AB,CRITICAL,no,A41,Dale Hollow,,,,2,1
+543072285,Dale Hollow Lane,residential,yes,AB,CRITICAL,no,A41,Dale Hollow,,,,2,1
+19056180,Matthews Drive,residential,,B,HIGH,no,A41,Matthews,,,,2,1
+553344516,Matthews Drive,residential,,B,HIGH,no,A41,Matthews,,,,2,1
+19056807,Oak Street,tertiary,,B,HIGH,no,A41,Oak,,2,,2,1
+52431248,Oak Street,residential,yes,AB,CRITICAL,no,A41,Oak,,,,2,1
+19059320,Carpenters Run,residential,,B,HIGH,no,A41,Carpenters,,,,13,0
+112262527,Carpenters Run,residential,,B,HIGH,no,A41,Carpenters,,,,13,0
+112262529,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262536,Carpenters Run,residential,,B,HIGH,no,A41,Carpenters,,,,13,0
+112262537,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262541,Carpenters Run,residential,,B,HIGH,no,A41,Carpenters,,,,13,0
+112262544,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262557,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262566,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262567,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262570,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262573,Carpenters Run,residential,yes,AB,CRITICAL,no,A41,Carpenters,,,,13,0
+112262578,Carpenters Run,residential,,B,HIGH,no,A41,Carpenters,,,,13,0
+18982676,Gano Road,residential,,B,HIGH,no,A41,Gano,,3,,6,0
+18982677,Gano Road,residential,,B,HIGH,no,A41,Gano,,,25 mph,6,0
+543087110,Gano Road,residential,no,B,HIGH,no,A41,Gano,asphalt,2,25 mph,6,0
+543087126,Gano Road,residential,,B,HIGH,no,A41,Gano,,3,,6,0
+856321172,Gano Road,residential,,B,HIGH,no,A41,Gano,,,25 mph,6,0
+856321173,Gano Road,residential,,B,HIGH,no,A41,Gano,,,25 mph,6,0
+19053897,Little Creek Lane,residential,,B,HIGH,no,A41,Little Creek,asphalt,,,6,0
+19053900,Little Creek Lane,residential,,B,HIGH,no,A41,Little Creek,asphalt,,,6,0
+36951624,Little Creek Lane,residential,yes,AB,CRITICAL,no,A41,Little Creek,asphalt,,,6,0
+36951625,Little Creek Lane,residential,yes,AB,CRITICAL,no,A41,Little Creek,asphalt,,,6,0
+36951626,Little Creek Lane,residential,,B,HIGH,no,A41,Little Creek,asphalt,,,6,0
+36951628,Little Creek Lane,service,,B,HIGH,no,A41,Little Creek,asphalt,,,6,0
+19058554,Pictoria Drive,unclassified,,B,HIGH,no,A41,Northwest,,,,6,0
+23013357,Pictoria Drive,unclassified,yes,B,HIGH,no,A63;A41,North Commerce,,,,6,0
+476361831,Pictoria Drive,unclassified,,B,HIGH,no,A63;A41,North Commerce,,3,25 mph,6,0
+518415185,Pictoria Drive,unclassified,yes,B,HIGH,no,A63;A41,North Commerce,,,,6,0
+761205748,Pictoria Drive,unclassified,,B,HIGH,no,A63;A41,North Commerce,,3,25 mph,6,0
+761205749,Pictoria Drive,unclassified,,B,HIGH,no,A63;A41,North Commerce,,3,25 mph,6,0
+19056169,Century Boulevard,residential,,B,HIGH,no,A41,Century,asphalt,6,,5,0
+531487347,Century Boulevard,residential,,B,HIGH,no,A41,Century,asphalt,4,,5,0
+531487348,Century Boulevard,residential,,B,HIGH,no,A41,Century,asphalt,5,,5,0
+672205424,Century Boulevard,residential,,B,HIGH,no,A41,Century,asphalt,3,,5,0
+672205425,Century Boulevard,residential,,B,HIGH,no,A41,Century,asphalt,3,,5,0
+112262526,Cornell Road,tertiary,,B,HIGH,no,A41,Cornell,asphalt,3,,5,0
+531207337,Cornell Road,tertiary,,B,HIGH,no,A41,Cornell,,,,5,0
+553002660,Cornell Road,tertiary,,B,HIGH,no,A41,Cornell,asphalt,4,,5,0
+553002664,Cornell Road,tertiary,,B,HIGH,no,A41,Cornell,asphalt,4,,5,0
+553002667,Cornell Road,tertiary,,B,HIGH,no,A41,Cornell,asphalt,3,,5,0
+18984117,Dimmick Road,tertiary,,B,HIGH,no,A41,Dimmick,,,35 mph,5,0
+27527208,Dimmick Road,tertiary,,B,HIGH,no,A41,Dimmick,,2,,5,0
+531207300,Dimmick Road,tertiary,,B,HIGH,no,A41,Dimmick,,3,,5,0
+679125309,Dimmick Road,tertiary,,B,HIGH,no,A41,Dimmick,,3,,5,0
+1113546817,Dimmick Road,tertiary,,B,HIGH,no,A41,Dimmick,,2,35 mph,5,0
+19052346,Mangham Drive,tertiary,,B,HIGH,no,A41,Mangham,,2,,5,0
+175944898,Mangham Drive,residential,,B,HIGH,no,A41,Mangham,,,,5,0
+553375120,Mangham Drive,tertiary,,B,HIGH,no,A41,Mangham,,2,,5,0
+553375122,Mangham Drive,tertiary,,B,HIGH,no,A41,Mangham,,2,,5,0
+921937913,Mangham Drive,residential,,B,HIGH,no,A41,Mangham,,,,5,0
+19063527,Maple Avenue,service,,B,HIGH,no,A41,Maple,unpaved,,,5,0
+19063530,Maple Avenue,residential,,B,HIGH,no,A41,Maple,,,,5,0
+19063535,Maple Avenue,residential,,B,HIGH,no,A41,Maple,,,,5,0
+1248697099,Maple Avenue,service,,B,HIGH,no,A41,Maple,unpaved,,,5,0
+1447989947,Maple Avenue,residential,,B,HIGH,no,A41,Maple,,,,5,0
+19057837,Oak Road,tertiary,,B,HIGH,no,A41,Oak,,,,5,0
+19057838,Oak Road,service,,B,HIGH,no,A41,Oak,,,,5,0
+200707874,Oak Road,residential,,B,HIGH,no,A41,Oak,,,,5,0
+553225439,Oak Road,tertiary,,B,HIGH,no,A41,Oak,,,,5,0
+1149119679,Oak Road,tertiary,,B,HIGH,no,A41,Oak,,,,5,0
+19057479,Carruthers Pond Drive,residential,,B,HIGH,no,A41,Carruthers Pond,asphalt,,,4,0
+36951645,Carruthers Pond Drive,residential,yes,AB,CRITICAL,no,A41,Carruthers Pond,asphalt,,,4,0
+36951646,Carruthers Pond Drive,residential,,B,HIGH,no,A41,Carruthers Pond,,,,4,0
+36951647,Carruthers Pond Drive,residential,yes,AB,CRITICAL,no,A41,Carruthers Pond,asphalt,,,4,0
+19065949,Champion Way,residential,,B,HIGH,no,A41,Champion,,,,4,0
+141907127,Champion Way,residential,yes,AB,CRITICAL,no,A41,Champion,,,,4,0
+141907129,Champion Way,residential,yes,AB,CRITICAL,no,A41,Champion,,,,4,0
+141907133,Champion Way,residential,,B,HIGH,no,A41,Champion,,,,4,0
+19055494,Crowne Point Drive,residential,,B,HIGH,no,A41,Crowne Point,asphalt,3,,4,0
+19055495,Crowne Point Drive,tertiary,,B,HIGH,no,A41,Crowne Point,,,,4,0
+19063433,Crowne Point Drive,residential,,B,HIGH,no,A41,Crowne Point,,3,,4,0
+553155493,Crowne Point Drive,residential,,B,HIGH,no,A41,Crowne Point,asphalt,,,4,0
+19063320,Gateclub Drive,residential,,B,HIGH,no,A41,Gateclub,,,,4,0
+33860462,Gateclub Drive,residential,,B,HIGH,no,A41,Gateclub,,,,4,0
+33860463,Gateclub Drive,residential,yes,AB,CRITICAL,no,A41,Gateclub,,,,4,0
+33860551,Gateclub Drive,residential,yes,AB,CRITICAL,no,A41,Gateclub,,,,4,0
+19072151,Progress Place,residential,,B,HIGH,no,A41,Progress,,3,,4,0
+531491686,Progress Place,residential,,B,HIGH,no,A41,Progress,,3,,4,0
+531491695,Progress Place,residential,,B,HIGH,no,A41,Progress,,3,,4,0
+531491701,Progress Place,residential,,B,HIGH,no,A41,Progress,,3,,4,0
+19053178,Sharon Park Lane,residential,,B,HIGH,no,A41,Sharon Park,,,,4,0
+19053180,Sharon Park Lane,residential,,B,HIGH,no,A41,Sharon Park,,,,4,0
+112289655,Sharon Park Lane,residential,,B,HIGH,no,A41,Sharon Park,,,,4,0
+1228315249,Sharon Park Lane,residential,,B,HIGH,no,A41,Sharon Park,,,,4,0
+19063506,Towne Commons Way,residential,,B,HIGH,no,A41,Towne Commons,,,,4,0
+19063510,Towne Commons Way,residential,yes,AB,CRITICAL,no,A41,Towne Commons,,,,4,0
+553225548,Towne Commons Way,residential,,B,HIGH,no,A41,Towne Commons,,,,4,0
+553225549,Towne Commons Way,residential,yes,AB,CRITICAL,no,A41,Towne Commons,,,,4,0
+18980018,Triangle Drive,residential,yes,AB,CRITICAL,no,A41,Triangle,,,,4,0
+18980019,Triangle Drive,residential,,B,HIGH,no,A41,Triangle,,,,4,0
+543072274,Triangle Drive,residential,,B,HIGH,no,A41,Triangle,,,,4,0
+543072276,Triangle Drive,residential,yes,AB,CRITICAL,no,A41,Triangle,,,,4,0
+19065158,Canal Road,residential,,B,HIGH,no,A41,Canal,,3,,3,0
+531391814,Canal Road,residential,,B,HIGH,no,A41,Canal,,,,3,0
+553155489,Canal Road,residential,,B,HIGH,no,A41,Canal,,3,,3,0
+19063207,Carpenters Green Lane,residential,yes,AB,CRITICAL,no,A41,Carpenters Green,,,,3,0
+112260553,Carpenters Green Lane,residential,,B,HIGH,no,A41,Carpenters Green,,,,3,0
+112260554,Carpenters Green Lane,residential,yes,AB,CRITICAL,no,A41,Carpenters Green,,,,3,0
+19065634,Carpenters Run Drive,residential,,B,HIGH,no,A41,Carpenters Run,,,,3,0
+112262540,Carpenters Run Drive,residential,yes,AB,CRITICAL,no,A41,Carpenters Run,,,,3,0
+112262581,Carpenters Run Drive,residential,yes,AB,CRITICAL,no,A41,Carpenters Run,,,,3,0
+19060507,Chesterdale Road,tertiary,,B,HIGH,no,A41,Chesterdale,asphalt,3,,3,0
+27919155,Chesterdale Road,tertiary,,B,HIGH,no,A41,Chesterdale,,,25 mph,3,0
+531487330,Chesterdale Road,tertiary,,B,HIGH,no,A41,Chesterdale,,,,3,0
+18980274,Daycrest Drive,residential,,B,HIGH,no,A41,Daycrest,,,,3,0
+543087167,Daycrest Drive,residential,yes,AB,CRITICAL,no,A41,Daycrest,,,,3,0
+543087168,Daycrest Drive,residential,yes,AB,CRITICAL,no,A41,Daycrest,,,,3,0
+18979142,Dues Drive,residential,yes,AB,CRITICAL,no,A45,Dues,,,,3,0
+18986403,Dues Drive,residential,yes,AB,CRITICAL,no,A45,Dues,,,,3,0
+84231401,Dues Drive,residential,,B,HIGH,no,A45,Dues,,,,3,0
+19064059,Evergreen Circle,residential,,B,HIGH,no,A41,Evergreen,,,,3,0
+19064063,Evergreen Circle,residential,,B,HIGH,no,A41,Evergreen,,,,3,0
+19064064,Evergreen Circle,residential,,B,HIGH,no,A41,Evergreen,,,,3,0
+19069076,Forest Avenue,service,,B,HIGH,no,A41,Forest,,,,3,0
+19069101,Forest Avenue,residential,,B,HIGH,no,A41,Forest,asphalt,,,3,0
+1303166885,Forest Avenue,residential,,B,HIGH,no,A41,Forest,,,,3,0
+19071446,Giverny Boulevard,residential,yes,AB,CRITICAL,no,A41,Giverny,,,,3,0
+112260555,Giverny Boulevard,residential,yes,AB,CRITICAL,no,A41,Giverny,,,,3,0
+112260559,Giverny Boulevard,residential,,B,HIGH,no,A41,Giverny,,,,3,0
+19058898,Glendale Road,residential,,B,HIGH,no,A41,Glendale,,3,,3,0
+553225492,Glendale Road,residential,,B,HIGH,no,A41,Glendale,,,,3,0
+1504497427,Glendale Road,residential,,B,HIGH,no,A41,Glendale,,,,3,0
+19059592,Greenville Avenue,residential,,B,HIGH,no,A41,Greenville,,,,3,0
+52096424,Greenville Avenue,residential,yes,AB,CRITICAL,no,A41,Greenville,asphalt,,,3,0
+747496739,Greenville Avenue,residential,,B,HIGH,no,A41,Greenville,asphalt,,,3,0
+19066166,Hetherington Lane,residential,,B,HIGH,no,A41,Hetherington,asphalt,,,3,0
+52096555,Hetherington Lane,residential,yes,AB,CRITICAL,no,A41,Hetherington,asphalt,,,3,0
+52096558,Hetherington Lane,residential,yes,AB,CRITICAL,no,A41,Hetherington,asphalt,,,3,0
+19060493,Highbanks Drive,service,,B,HIGH,no,A41,Highbanks,,3,,3,0
+531887095,Highbanks Drive,service,,B,HIGH,no,A41,Highbanks,,3,,3,0
+739434919,Highbanks Drive,service,,B,HIGH,no,A41,Highbanks,,,,3,0
+18984422,International Boulevard,tertiary,,B,HIGH,no,A41,International,,3,,3,0
+543072288,International Boulevard,tertiary,,B,HIGH,no,A41,International,,,,3,0
+543087161,International Boulevard,tertiary,,B,HIGH,no,A41,International,,3,,3,0
+19067186,Leggett Street,residential,,B,HIGH,no,A41,Leggett,,,,3,0
+239955702,Leggett Street,residential,,B,HIGH,no,A41,Leggett,,,,3,0
+921937914,Leggett Street,residential,,B,HIGH,no,A41,Leggett,,,,3,0
+19070347,Merchant Street,residential,,B,HIGH,no,A41,Merchant,,3,,3,0
+531657998,Merchant Street,residential,,B,HIGH,no,A41,Merchant,,3,,3,0
+531658008,Merchant Street,residential,,B,HIGH,no,A41,Merchant,,3,,3,0
+19059188,Midpines Drive,residential,,B,HIGH,no,A41,Midpines,,,,3,0
+34686690,Midpines Drive,residential,,B,HIGH,no,A41,Midpines,,,,3,0
+34686692,Midpines Drive,residential,no,B,HIGH,no,A41,Midpines,,,15 mph,3,0
+18985801,Princeton Square Circle,residential,,B,HIGH,no,A41,Princeton Square,asphalt,,,3,0
+543087170,Princeton Square Circle,residential,yes,AB,CRITICAL,no,A41,Princeton Square,asphalt,,,3,0
+543087171,Princeton Square Circle,residential,yes,AB,CRITICAL,no,A41,Princeton Square,asphalt,,,3,0
+19062291,Rachel Anne Court,residential,,B,HIGH,no,A41,Rachel Anne,,,,3,0
+112263781,Rachel Anne Court,residential,yes,AB,CRITICAL,no,A41,Rachel Anne,,,,3,0
+112263785,Rachel Anne Court,residential,yes,AB,CRITICAL,no,A41,Rachel Anne,,,,3,0
+19051896,Riddle Road,tertiary,,B,HIGH,no,A41,Riddle,,,,3,0
+80396701,Riddle Road,tertiary,,B,HIGH,no,A41,Riddle,,,,3,0
+80396702,Riddle Road,tertiary,,B,HIGH,no,A41,Riddle,,,,3,0
+19057476,Ryans Way,residential,,B,HIGH,no,A41,Ryans,,,,3,0
+19064240,Ryans Way,residential,yes,AB,CRITICAL,no,A41,Cornell,asphalt,,,3,0
+112263784,Ryans Way,residential,yes,AB,CRITICAL,no,A41,Cornell,asphalt,,,3,0
+19063597,Sharonknoll Court,residential,,B,HIGH,no,A41,Sharonknoll,,,,3,0
+24007972,Sharonknoll Court,residential,,B,HIGH,no,A41,Sharonknoll,,,,3,0
+24007973,Sharonknoll Court,residential,,B,HIGH,no,A41,Sharonknoll,,,,3,0
+19055240,Tennyson Drive,residential,yes,AB,CRITICAL,no,A41,Tennyson,,,,3,0
+112289656,Tennyson Drive,residential,,B,HIGH,no,A41,Tennyson,,,,3,0
+112289659,Tennyson Drive,residential,yes,AB,CRITICAL,no,A41,Tennyson,,,,3,0
+18982898,Timber Drive,residential,yes,AB,CRITICAL,no,A41,Timber,,,,3,0
+679125320,Timber Drive,residential,,B,HIGH,no,A41,Timber,,,,3,0
+679125321,Timber Drive,residential,yes,AB,CRITICAL,no,A41,Timber,,,,3,0
+19055729,Twilight Drive,residential,,B,HIGH,no,A41,Twilight,,,,3,0
+19055730,Twilight Drive,residential,,B,HIGH,no,A41,Twilight,,,,3,0
+19056345,Twilight Drive,residential,,B,HIGH,no,A41,Carpenters-Crk,,,,3,0
+19062960,Village Square,service,yes,B,HIGH,no,A41,Village,,,,3,0
+52096462,Village Square,service,yes,B,HIGH,no,A41,Village,,,,3,0
+52096522,Village Square,service,yes,B,HIGH,no,A41,Village,,,,3,0
+19063902,Wayne Avenue,tertiary,,B,HIGH,no,A41,Wayne,,2,,3,0
+553225489,Wayne Avenue,tertiary,,B,HIGH,no,A41,Wayne,,3,,3,0
+921937920,Wayne Avenue,tertiary,,B,HIGH,no,A41,Wayne,,2,,3,0
+19053481,Adams Street,residential,,B,HIGH,no,A41,Adams,,,,2,0
+553375121,Adams Street,residential,,B,HIGH,no,A41,Adams,,,,2,0
+19066262,Albion Avenue,residential,,B,HIGH,no,A41,Albion,asphalt,,,2,0
+19066263,Albion Avenue,residential,,B,HIGH,no,A41,Albion,,,,2,0
+19055101,Ardwick Lane,residential,,B,HIGH,no,A41,Ardwick,,,,2,0
+19055102,Ardwick Lane,residential,,B,HIGH,no,A41,Ardwick,asphalt,,,2,0
+19067955,Beekley Woods Drive,residential,,B,HIGH,no,A41,Beekley Woods,,,,2,0
+1105049321,Beekley Woods Drive,service,,B,HIGH,no,A41,Beekley Woods,,,,2,0
+18982435,Blossom Street,residential,,B,HIGH,no,A41,Blossom,,,,2,0
+543072277,Blossom Street,residential,,B,HIGH,no,A41,Blossom,,,,2,0
+18987200,Business Center Drive,residential,,B,HIGH,no,A41,Business Center,,,,2,0
+248875190,Business Center Drive,residential,,B,HIGH,no,A41,Business Center,,,,2,0
+19056113,Carver Woods Drive,residential,yes,AB,CRITICAL,no,A41,Carver Woods,,,,2,0
+191705262,Carver Woods Drive,residential,yes,AB,CRITICAL,no,A41,Carver Woods,,,,2,0
+18982675,Centre Park Drive,residential,no,B,HIGH,no,A41,Gano,asphalt,2,25 mph,2,0
+203976714,Centre Park Drive,residential,no,B,HIGH,no,A74,Centre Park,asphalt,2,25 mph,2,0
+19053290,Century Circle East,residential,,B,HIGH,no,A41,Century,asphalt,,,2,0
+672205474,Century Circle East,residential,yes,AB,CRITICAL,no,A41,Century,asphalt,,,2,0
+19053396,Century Circle North,residential,,B,HIGH,no,A41,Century,asphalt,,,2,0
+921937909,Century Circle North,residential,,B,HIGH,no,A41,Century,asphalt,,,2,0
+19062704,Chesterdale Circle,service,,B,HIGH,no,A41,Chesterdale,,,,2,0
+19062705,Chesterdale Circle,service,,B,HIGH,no,A41,Chesterdale,,,,2,0
+18979178,Cindy Drive,residential,,B,HIGH,no,A41,Cindy,,,,2,0
+18985789,Cindy Drive,residential,,B,HIGH,no,A41,Cindy,,,,2,0
+19051886,Congress Avenue,residential,,B,HIGH,no,A41,Congress,,,,2,0
+19051890,Congress Avenue,residential,,B,HIGH,no,A41,Congress,,,,2,0
+19057861,Crystalview Court,residential,,B,HIGH,no,A41,Crystal View,,3,,2,0
+531207234,Crystalview Court,residential,,B,HIGH,no,A41,Crystal View,,,,2,0
+19062612,Dantzler Drive,residential,,B,HIGH,no,A41,Dantzler,,,,2,0
+553375258,Dantzler Drive,residential,,B,HIGH,no,A41,Dantzler,,,,2,0
+18985498,Dorset Drive,residential,,B,HIGH,no,A41,Dorset,,,,2,0
+19053963,Dorset Drive,residential,,B,HIGH,no,A41,Dorset,,,,2,0
+19064885,Douglas Street,residential,,B,HIGH,no,A41,Douglas,,,,2,0
+19064886,Douglas Street,residential,,B,HIGH,no,A41,Douglas,,,,2,0
+19057564,East Fountain Avenue,residential,no,B,HIGH,no,A41,,asphalt,,,2,0
+19065402,East Fountain Avenue,residential,no,B,HIGH,no,A41,Fountain,,,,2,0
+19071762,East Leslie Avenue,residential,,B,HIGH,no,A41,Leslie,,,,2,0
+844945969,East Leslie Avenue,service,,B,HIGH,no,A41,Leslie,,,,2,0
+18986909,Fairview Avenue,residential,,B,HIGH,no,A41,Fairview,,,,2,0
+203976775,Fairview Avenue,residential,,B,HIGH,no,A41,Fairview,,,,2,0
+19055592,Forest Place,residential,,B,HIGH,no,A41,Forest,asphalt,,,2,0
+52431011,Forest Place,residential,yes,AB,CRITICAL,no,A41,Forest,asphalt,,,2,0
+19060934,Fox Hollow Drive,residential,,B,HIGH,no,A41,Fox Hollow,,,,2,0
+19060935,Fox Hollow Drive,residential,,B,HIGH,no,A41,Fox Hollow,,,,2,0
+19070424,Freightliner Drive,service,,B,HIGH,no,A41,Freightliner,,,,2,0
+1418486591,Freightliner Drive,service,,B,HIGH,no,A41,Freightliner,,,,2,0
+18987304,Front Avenue,residential,,B,HIGH,no,A41,Front,,,,2,0
+136160313,Front Avenue,residential,,B,HIGH,no,A41,Front,,,,2,0
+19054562,Grandview Avenue,residential,,B,HIGH,no,A41,Grandview,,,,2,0
+19054565,Grandview Avenue,residential,,B,HIGH,no,A41,Grandview,,,,2,0
+19055445,Indeco Drive,residential,,B,HIGH,no,A41,Indeco,,,,2,0
+19055447,Indeco Drive,residential,,B,HIGH,no,A41,Indeco,,,,2,0
+1362664910,Island Grove Drive,service,,B,HIGH,no,A41,Buckeye Falls,paved,,,2,0
+1447995755,Island Grove Drive,service,,B,HIGH,no,A41,Buckeye Falls,paved,,,2,0
+19061888,Jake Sweeney Place,residential,,B,HIGH,no,A41,McGillard,asphalt,3,35 mph,2,0
+531746374,Jake Sweeney Place,residential,,B,HIGH,no,A41,McGillard,asphalt,,35 mph,2,0
+19052762,Kingsport Drive,residential,,B,HIGH,no,A41,Kingsport,,,,2,0
+19052765,Kingsport Drive,residential,,B,HIGH,no,A41,Kingsport,,,,2,0
+19071361,Lawnview Avenue,residential,,B,HIGH,no,A41,Lawnview,asphalt,3,,2,0
+531746339,Lawnview Avenue,residential,,B,HIGH,no,A41,Lawnview,asphalt,2,,2,0
+19061476,Londonderry Drive,residential,,B,HIGH,no,A41,Londonderry,,,,2,0
+19061478,Londonderry Drive,residential,,B,HIGH,no,A41,Londonderry,,,,2,0
+19055387,Lord Alfred Court,residential,,B,HIGH,no,A41,Lord Alfred,,,,2,0
+112289308,Lord Alfred Court,residential,,B,HIGH,no,A41,Lord Alfred,,,,2,0
+19051992,Magee Avenue,residential,,B,HIGH,no,A41,Magee,,,,2,0
+19051994,Magee Avenue,residential,,B,HIGH,no,A41,Magee,,,,2,0
+19066569,Main Street,unclassified,,B,HIGH,no,A41,Main,,,,2,0
+545921470,Main Street,unclassified,yes,B,HIGH,no,A41,Main,asphalt,1,,2,0
+19071945,Maple Trace,residential,,B,HIGH,no,A41,Maple,asphalt,,,2,0
+80213967,Maple Trace,residential,,B,HIGH,no,A41,Maple,asphalt,,,2,0
+19066357,Marion Road,residential,,B,HIGH,no,A41,Marion,,3,,2,0
+553432534,Marion Road,residential,,B,HIGH,no,A41,Marion,,,,2,0
+19056417,Monet’s Lane,residential,,B,HIGH,no,A41,Monets,,,,2,0
+19071280,Monet’s Lane,residential,,B,HIGH,no,A41,Monet's,,,,2,0
+19062350,Normandy Close,residential,,B,HIGH,no,A41,Normandy Close,,,,2,0
+19062352,Normandy Close,residential,,B,HIGH,no,A41,Normandy Close,,,,2,0
+19065264,North Avenue,residential,,B,HIGH,no,A41,North,,,,2,0
+966071702,North Avenue,residential,,B,HIGH,no,A41,North,asphalt,,,2,0
+304627435,Northwest Boulevard,unclassified,,B,HIGH,no,A41,Northwest,,,,2,0
+531746189,Northwest Boulevard,unclassified,,B,HIGH,no,A41,Northwest,,5,,2,0
+531746330,Olde Gate Drive,residential,,B,HIGH,no,A41,Olde Gate,,3,,2,0
+532001117,Olde Gate Drive,residential,,B,HIGH,no,A41,Olde Gate,,,,2,0
+19070559,Rolling Hills Drive,residential,,B,HIGH,no,A41,Rolling Hills,,,,2,0
+553432661,Rolling Hills Drive,residential,,B,HIGH,no,A41,Rolling Hills,,3,,2,0
+19070615,Sharondale Road,residential,,B,HIGH,no,A41,Sharondale,,3,,2,0
+553002806,Sharondale Road,residential,,B,HIGH,no,A41,Sharondale,,,,2,0
+19069111,Shivers Court,residential,,B,HIGH,no,A41,Shiver,,,,2,0
+19070472,Shivers Court,residential,,B,HIGH,no,A41,Shivers,,,,2,0
+18984335,Sylvan Avenue,residential,,B,HIGH,no,A41,Sylvan,,,,2,0
+136160312,Sylvan Avenue,residential,,B,HIGH,no,A41,Sylvan,,,,2,0
+19052185,Techview Drive,service,,B,HIGH,no,A41,Techview,,,,2,0
+553375123,Techview Drive,service,,B,HIGH,no,A41,Techview,,,,2,0
+19065276,Thomas Court,residential,,B,HIGH,no,A41,Thomas,,,,2,0
+19065277,Thomas Court,residential,,B,HIGH,no,A41,Thomas,asphalt,,,2,0
+19065552,Van Buren Avenue,residential,,B,HIGH,no,A41,Van Buren,,,,2,0
+19065553,Van Buren Avenue,residential,,B,HIGH,no,A41,Van Buren,,,,2,0
+19064843,Wabash Avenue,residential,,B,HIGH,no,A41,Wabash,,,,2,0
+19064847,Wabash Avenue,residential,,B,HIGH,no,A41,Wabash,,,,2,0
+19066219,Walnut Street,residential,,B,HIGH,no,A41,Walnut,,,,2,0
+19066228,Walnut Street,residential,,B,HIGH,no,A41,Walnut,asphalt,,,2,0
+18984575,Windisch Road,residential,,B,HIGH,no,A41,Windisch,,,45 mph,2,0
+481106763,Windisch Road,residential,,B,HIGH,no,A41,Windisch,,,45 mph,2,0
+18981836,Windwood Drive,residential,,B,HIGH,no,A41,Windwood,,,25 mph,2,0
+531207293,Windwood Drive,residential,,B,HIGH,no,A41,Windwood,,3,25 mph,2,0
+18982315,Woodbine Avenue,residential,,B,HIGH,no,A41,Woodbine,,,,2,0
+19053859,Woodbine Avenue,residential,,B,HIGH,no,A41,Woodbine,,,,2,0
