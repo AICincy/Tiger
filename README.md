@@ -110,8 +110,15 @@ tiger_audit_<zone_key>/
 
 ### Interactive dashboard (single-file HTML)
 
-Open by double-clicking — no server required. Loads Leaflet + leaflet.heat from
-CDN; all defect data is embedded.
+Open by double-clicking — no server required. Loads Leaflet + leaflet.heat +
+leaflet.markercluster from CDN; all defect data is embedded.
+
+> **Windows note:** opening the HTML directly via `file://` works on Chrome,
+> Edge, and Firefox; CARTO and Esri tiles load fine. If a corporate proxy
+> intercepts CDN requests, or if the browser blocks mixed-content on
+> `file://`, run `python -m http.server` from the `reports/` directory and
+> open `http://localhost:8000/` instead. JOSM Remote Control is HTTP-only;
+> `https://` won't work as the dashboard origin.
 
 - Six-card sidebar (Total / Residential / Class AB / Class A / Class B / Node Gaps).
 - Layer toggles per defect class + node-disconnect markers + density heatmap.
@@ -319,9 +326,11 @@ historical data — useful for tracking progress as volunteers fix defects.
 |---|---|
 | Total unreviewed segments | 1,934 |
 | Residential | 1,163 |
-| Class A (false one-way) | 57 |
+| False-one-way residential ways (Class A + Class AB combined) | 57 |
+| &nbsp;&nbsp;— of which Class A only (single-segment) | 2 |
+| &nbsp;&nbsp;— of which Class AB (compound, also multi-segment) | 55 |
 | Class B (multi-segment ways) | 1,064 |
-| Class AB (compound) | 55 |
+| Multi-segment streets (Class B groups) | 182 |
 | Probable node disconnects | 308 |
 | Estimated volunteer hours (Class AB only) | 11.0 |
 | Estimated volunteer hours (everything) | 69.2 |
