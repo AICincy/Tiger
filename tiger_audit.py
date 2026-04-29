@@ -655,72 +655,162 @@ DASHBOARD_TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TIGER Audit Dashboard - __ZONE_NAME__</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <style>
+:root{
+  --bg:#f8f9fa;--sidebar-bg:#fff;--text:#333;--card-bg:#f8f9fa;
+  --header-bg:#1F4E79;--header-text:#fff;--border:#ddd;--border-soft:#eee;
+  --accent:#1F4E79;--link:#0563C1;--muted:#666;--input-bg:#fff;
+}
+:root.dark{
+  --bg:#1a1a2e;--sidebar-bg:#16213e;--text:#e0e0e0;--card-bg:#0f3460;
+  --header-bg:#0a1929;--header-text:#e0e0e0;--border:#2a3a5a;--border-soft:#1f2e4d;
+  --accent:#4a7fb8;--link:#80bfff;--muted:#a0a0c0;--input-bg:#0f3460;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f8f9fa}
-#header{background:#1F4E79;color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;z-index:1000}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+#header{background:var(--header-bg);color:var(--header-text);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;z-index:1000;height:42px}
 #header h1{font-size:16px}
 #header .sub{font-size:12px;opacity:.85}
 #main{display:flex;height:calc(100vh - 42px);position:relative}
-#sidebar{width:300px;background:#fff;overflow-y:auto;border-right:1px solid #ddd;flex-shrink:0;font-size:13px;transition:width .25s ease,min-width .25s ease}
+#sidebar{width:300px;background:var(--sidebar-bg);overflow-y:auto;border-right:1px solid var(--border);flex-shrink:0;font-size:13px;color:var(--text);transition:width .25s ease,min-width .25s ease}
 #sidebar.collapsed{width:0;min-width:0;border-right:none;overflow:hidden}
-#sbToggle{position:absolute;top:50%;left:300px;transform:translate(-50%,-50%);width:22px;height:60px;background:#1F4E79;color:#fff;border:none;border-radius:0 6px 6px 0;cursor:pointer;z-index:1000;font-size:13px;line-height:1;box-shadow:2px 0 4px rgba(0,0,0,0.15);transition:left .25s ease;padding:0;display:flex;align-items:center;justify-content:center}
-#sbToggle:hover{background:#16375a}
+#sbToggle{position:absolute;top:50%;left:300px;transform:translate(-50%,-50%);width:22px;height:60px;background:var(--accent);color:#fff;border:none;border-radius:0 6px 6px 0;cursor:pointer;z-index:1000;font-size:13px;line-height:1;box-shadow:2px 0 4px rgba(0,0,0,0.15);transition:left .25s ease;padding:0;display:flex;align-items:center;justify-content:center}
+#sbToggle:hover{filter:brightness(1.15)}
 #sidebar.collapsed ~ #sbToggle{left:0;border-radius:0 6px 6px 0;transform:translate(0,-50%)}
-#sidebar .sec{padding:12px 14px;border-bottom:1px solid #eee}
-#sidebar .sec h3{font-size:13px;color:#1F4E79;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+#sidebar .sec{padding:12px 14px;border-bottom:1px solid var(--border-soft)}
+#sidebar .sec h3{font-size:13px;color:var(--accent);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;justify-content:space-between}
 .kg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.kp{background:#f8f9fa;border-radius:6px;padding:8px 10px;border-left:3px solid #1F4E79}
+.kp{background:var(--card-bg);border-radius:6px;padding:8px 10px;border-left:3px solid var(--accent)}
 .kp.cr{border-left-color:#C00000}.kp.hi{border-left-color:#ED7D31}.kp.nw{border-left-color:#548235}
-.kp .n{font-size:20px;font-weight:bold;color:#1F4E79}.kp .l{font-size:10px;color:#666;text-transform:uppercase}
+.kp .n{font-size:20px;font-weight:bold;color:var(--accent)}.kp .l{font-size:10px;color:var(--muted);text-transform:uppercase}
 .lt{display:flex;align-items:center;gap:6px;padding:4px 0;cursor:pointer}
-.lt input{cursor:pointer}.lt label{cursor:pointer;font-size:12px}
+.lt input{cursor:pointer}.lt label{cursor:pointer;font-size:12px;color:var(--text)}
 .sw{display:inline-block;border-radius:2px}
-#search{width:100%;padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px}
-#search:focus{outline:none;border-color:#1F4E79}
-.eb{display:inline-block;padding:5px 10px;background:#1F4E79;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:11px;margin:2px}
-.eb:hover{background:#16375a}
-#vs{font-size:11px;color:#666;line-height:1.6}
-#vs b{color:#333}
-#map{flex:1}
-.leaflet-popup-content{max-width:300px;font-size:12px;line-height:1.5}
+#search{width:100%;padding:6px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--input-bg);color:var(--text)}
+#search:focus{outline:none;border-color:var(--accent)}
+.eb{display:inline-block;padding:5px 10px;background:var(--accent);color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:11px;margin:2px}
+.eb:hover{filter:brightness(1.15)}
+#vs{font-size:11px;color:var(--muted);line-height:1.6}
+#vs b{color:var(--text)}
+#map{flex:1;background:var(--bg)}
+.leaflet-popup-content{max-width:340px;font-size:12px;line-height:1.5;color:#333}
 .leaflet-popup-content a{color:#0563C1}
 .tg{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:bold;margin:2px 0}
 .tg.ab{background:#FFC7CE;color:#9C0006}.tg.a{background:#FFC7CE;color:#9C0006}
 .tg.b{background:#FFEB9C;color:#9C5700}.tg.c{background:#E8E8E8;color:#666}
+select#bmsel,select#waybackRel{background:var(--input-bg);color:var(--text);border:1px solid var(--border)}
+
+/* R3 loading overlay */
+#loading{position:fixed;inset:0;background:rgba(255,255,255,0.95);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#1F4E79;font-weight:bold;font-family:Arial,sans-serif}
+.spinner{width:48px;height:48px;border:4px solid #e0e0e0;border-top-color:#1F4E79;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* R2 cluster icon */
+.gcl{background:#9C27B0;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.3)}
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:none}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:none}
+
+/* R4 mobile sidebar */
+#hamburger{display:none;position:fixed;top:50px;left:12px;z-index:1001;background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+#backdrop{display:none;position:fixed;top:42px;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:999}
+#backdrop[hidden]{display:none}
+@media (max-width:768px){
+  #sidebar{position:fixed;left:-300px;top:42px;height:calc(100vh - 42px);z-index:1000;transition:left 0.3s ease;box-shadow:2px 0 8px rgba(0,0,0,0.3);width:300px !important}
+  #sidebar.open{left:0}
+  #sbToggle{display:none}
+  #hamburger{display:block}
+  #backdrop:not([hidden]){display:block}
+  #main{display:block}#map{height:calc(100vh - 42px);width:100%}
+}
+
+/* E4 pulse */
+@keyframes pulseStroke{0%,100%{stroke-opacity:1}50%{stroke-opacity:0.4}}
+.pulse{animation:pulseStroke 1s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.spinner{animation:none}.pulse{animation:none;stroke-opacity:1}}
+
+/* E2 help overlay */
+#help{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--sidebar-bg);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:20px 24px;z-index:2000;box-shadow:0 4px 24px rgba(0,0,0,0.4);max-width:380px;font-size:13px}
+#help[hidden]{display:none}
+#help h3{color:var(--accent);margin-bottom:12px;font-size:14px}
+#help table{width:100%;border-collapse:collapse;margin-bottom:8px}
+#help td{padding:4px 8px;vertical-align:top}
+#help td:first-child{color:var(--accent);font-family:monospace;white-space:nowrap;width:110px}
+#help .hint{font-size:11px;color:var(--muted);margin-top:8px;text-align:center}
+
+/* E3 status toast */
+#status{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--header-bg);color:var(--header-text);padding:10px 18px;border-radius:6px;z-index:2000;box-shadow:0 4px 12px rgba(0,0,0,0.3);font-size:13px;max-width:80vw;text-align:center}
+#status[hidden]{display:none}
+
+/* E5 print mode */
+#printBar{display:none;position:fixed;top:0;left:0;right:0;background:#1F4E79;color:#fff;padding:12px;z-index:2000;text-align:center;font-size:13px}
+.printing #sidebar,.printing #header,.printing #hamburger,.printing #sbToggle,.printing .leaflet-control-zoom,.printing .leaflet-control-attribution{display:none !important}
+.printing #map{width:100vw;height:100vh}
+.printing #printBar{display:block}
+@media print{
+  :root{--bg:#fff;--sidebar-bg:#fff;--text:#000;--card-bg:#fff;--header-bg:#1F4E79;--border:#ccc;--accent:#1F4E79;--header-text:#fff}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #sidebar,#header,#hamburger,#sbToggle,.leaflet-control-zoom,.leaflet-control-attribution,#status,#help{display:none !important}
+  #map{width:100vw;height:100vh}
+  #printBar{display:block !important}
+}
+
+/* E6 dark toggle */
+#dmt{background:none;border:1px solid var(--border);color:var(--accent);cursor:pointer;font-size:14px;padding:2px 8px;border-radius:4px;line-height:1.4}
+#dmt:hover{filter:brightness(1.2)}
+
+/* R1 street popup */
+.pp-h{font-weight:bold;color:#1F4E79;margin-bottom:6px;font-size:13px}
+.pp-bd{font-size:11px;color:#666;margin-bottom:6px}
+.pp-clicked{background:#FFF8DC;padding:4px 6px;border-radius:3px;font-size:11px;margin-bottom:6px;border-left:3px solid #ED7D31}
+.pp-list{max-height:180px;overflow-y:auto;border-top:1px solid #eee;padding-top:4px;margin-top:4px}
+.pp-row{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:11px;border-bottom:1px solid #f5f5f5}
+.pp-foot{margin-top:8px;display:flex;gap:8px;align-items:center;font-size:11px;flex-wrap:wrap}
+.pp-foot a{cursor:pointer}
+.pp-btn{display:inline-block;padding:3px 8px;background:#1F4E79;color:#fff;border:none;border-radius:3px;cursor:pointer;font-size:11px;text-decoration:none}
+.pp-btn:hover{filter:brightness(1.15)}
 </style>
 </head>
 <body>
+<div id="loading" role="status" aria-live="polite">
+  <div class="spinner" aria-hidden="true"></div>
+  <div>Rendering __TOTAL__ segments&hellip;</div>
+</div>
 <div id="header">
 <div><h1>TIGER Audit Dashboard &mdash; __ZONE_NAME__</h1>
 <div class="sub">__TOTAL__ unreviewed road segments &middot; Full geometry + node gap analysis &middot; __AUDIT_TS__</div></div>
 </div>
+<button id="hamburger" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+<div id="backdrop" hidden></div>
 <div id="main">
-<div id="sidebar">
-<div class="sec"><h3>Zone Totals</h3>
+<div id="sidebar" role="region" aria-label="Dashboard controls">
+<div class="sec"><h3>Zone Totals <button id="dmt" aria-label="Toggle dark mode" title="Toggle dark mode">&#127769;</button></h3>
 <div class="kg">
-<div class="kp"><div class="n" id="kt">-</div><div class="l">Total</div></div>
-<div class="kp"><div class="n" id="kr">-</div><div class="l">Residential</div></div>
-<div class="kp cr"><div class="n" id="kab">-</div><div class="l">Class AB</div></div>
-<div class="kp cr"><div class="n" id="ka">-</div><div class="l">Class A</div></div>
-<div class="kp hi"><div class="n" id="kb">-</div><div class="l">Class B</div></div>
-<div class="kp nw"><div class="n" id="kg">-</div><div class="l">Node Gaps</div></div>
+<div class="kp"><div class="n" id="kt" aria-live="polite">-</div><div class="l">Total</div></div>
+<div class="kp"><div class="n" id="kr" aria-live="polite">-</div><div class="l">Residential</div></div>
+<div class="kp cr"><div class="n" id="kab" aria-live="polite">-</div><div class="l">Class AB</div></div>
+<div class="kp cr"><div class="n" id="ka" aria-live="polite">-</div><div class="l">Class A</div></div>
+<div class="kp hi"><div class="n" id="kb" aria-live="polite">-</div><div class="l">Class B</div></div>
+<div class="kp nw"><div class="n" id="kg" aria-live="polite">-</div><div class="l">Node Gaps</div></div>
 </div></div>
 <div class="sec"><h3>Layers</h3>
-<div class="lt"><input type="checkbox" id="lab" checked><span class="sw" style="background:#C00000;width:14px;height:4px"></span><label for="lab">Class AB Compound (critical)</label></div>
-<div class="lt"><input type="checkbox" id="la" checked><span class="sw" style="background:#FF4444;width:14px;height:4px"></span><label for="la">Class A False one-way</label></div>
-<div class="lt"><input type="checkbox" id="lb" checked><span class="sw" style="background:#ED7D31;width:14px;height:4px"></span><label for="lb">Class B Multi-segment</label></div>
-<div class="lt"><input type="checkbox" id="lc"><span class="sw" style="background:#999;width:14px;height:4px"></span><label for="lc">Class C Unreviewed</label></div>
-<div class="lt"><input type="checkbox" id="lgap" checked><span class="sw" style="background:#9C27B0;width:10px;height:10px;border-radius:50%"></span><label for="lgap">Node disconnect points</label></div>
-<div class="lt"><input type="checkbox" id="lheat"><span class="sw" style="background:linear-gradient(90deg,blue,yellow,red);width:30px;height:8px"></span><label for="lheat">Density heatmap</label></div>
+<div class="lt"><input type="checkbox" id="lab" checked aria-label="Toggle Class AB Compound layer"><span class="sw" style="background:#C00000;width:14px;height:4px" aria-hidden="true"></span><label for="lab">Class AB Compound (critical)</label></div>
+<div class="lt"><input type="checkbox" id="la" checked aria-label="Toggle Class A False one-way layer"><span class="sw" style="background:#FF4444;width:14px;height:4px" aria-hidden="true"></span><label for="la">Class A False one-way</label></div>
+<div class="lt"><input type="checkbox" id="lb" checked aria-label="Toggle Class B Multi-segment layer"><span class="sw" style="background:#ED7D31;width:14px;height:4px" aria-hidden="true"></span><label for="lb">Class B Multi-segment</label></div>
+<div class="lt"><input type="checkbox" id="lc" aria-label="Toggle Class C Unreviewed layer"><span class="sw" style="background:#999;width:14px;height:4px" aria-hidden="true"></span><label for="lc">Class C Unreviewed</label></div>
+<div class="lt"><input type="checkbox" id="lgap" checked aria-label="Toggle Node disconnect points layer"><span class="sw" style="background:#9C27B0;width:10px;height:10px;border-radius:50%" aria-hidden="true"></span><label for="lgap">Node disconnect points</label></div>
+<div class="lt"><input type="checkbox" id="lheat" aria-label="Toggle Density heatmap layer"><span class="sw" style="background:linear-gradient(90deg,blue,yellow,red);width:30px;height:8px" aria-hidden="true"></span><label for="lheat">Density heatmap</label></div>
 </div>
 <div class="sec"><h3>Basemap</h3>
-<select id="bmsel" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;background:white">
+<select id="bmsel" aria-label="Select basemap" style="width:100%;padding:6px;border-radius:4px;font-size:12px">
 <optgroup label="Vector / road">
 <option value="carto-voyager">CARTO Voyager (default)</option>
 <option value="carto-positron">CARTO Positron (light)</option>
+<option value="carto-darkmatter">CARTO Dark Matter</option>
 <option value="osm">OpenStreetMap Standard</option>
 </optgroup>
 <optgroup label="Imagery (free)">
@@ -738,35 +828,55 @@ body{font-family:Arial,sans-serif;background:#f8f9fa}
 </div>
 <div class="sec" id="waybackSec" style="display:none">
 <h3>Wayback Release</h3>
-<select id="waybackRel" style="width:100%;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:12px;background:white">
+<select id="waybackRel" aria-label="Select Wayback release date" style="width:100%;padding:6px;border-radius:4px;font-size:12px">
 <option value="">Loading available releases...</option>
 </select>
-<div style="font-size:10px;color:#666;margin-top:4px;line-height:1.4">Each entry is a dated snapshot of Esri World Imagery. Useful for confirming whether a TIGER defect was already wrong on recent imagery vs. earlier captures. <a href="https://livingatlas.arcgis.com/wayback/" target="_blank">About Wayback</a></div>
+<div style="font-size:10px;color:var(--muted);margin-top:4px;line-height:1.4">Each entry is a dated snapshot of Esri World Imagery. Useful for confirming whether a TIGER defect was already wrong on recent imagery vs. earlier captures. <a href="https://livingatlas.arcgis.com/wayback/" target="_blank" rel="noopener">About Wayback</a></div>
 </div>
 <div class="sec"><h3>Search</h3>
-<input type="text" id="search" placeholder="Street name...">
-<div id="sr" style="margin-top:6px;max-height:120px;overflow-y:auto"></div>
+<input type="text" id="search" placeholder="Street name..." aria-label="Search streets" role="combobox" aria-expanded="false" aria-controls="sr" aria-autocomplete="list">
+<div id="sr" role="listbox" aria-label="Search results" style="margin-top:6px;max-height:120px;overflow-y:auto"></div>
 </div>
-<div class="sec"><h3>Viewport Stats</h3><div id="vs">Pan/zoom to update</div></div>
+<div class="sec"><h3>Viewport Stats</h3><div id="vs" aria-live="polite">Pan/zoom to update</div></div>
 <div class="sec"><h3>Export Visible</h3>
-<button class="eb" onclick="xGeo()">GeoJSON</button>
-<button class="eb" onclick="xCSV()">CSV</button>
+<button class="eb" onclick="xGeo()" aria-label="Export visible segments as GeoJSON">GeoJSON</button>
+<button class="eb" onclick="xCSV()" aria-label="Export visible segments as CSV">CSV</button>
+<button class="eb" onclick="loadInJOSM()" aria-label="Load all visible ways into JOSM" title="Load visible ways into JOSM via Remote Control">Load in JOSM</button>
+<button class="eb" onclick="printView()" aria-label="Open print view" title="Open print view">Print View</button>
 </div>
+<div class="sec" style="font-size:10px;color:var(--muted)">Press <b>?</b> for keyboard shortcuts</div>
 </div>
 <button id="sbToggle" type="button" title="Collapse sidebar" aria-label="Toggle sidebar">&#9664;</button>
-<div id="map"></div>
+<div id="map" role="region" aria-label="Map of TIGER audit segments"></div>
 </div>
+<div id="status" hidden role="status" aria-live="polite"></div>
+<div id="help" hidden role="dialog" aria-label="Keyboard shortcuts">
+<h3>Keyboard Shortcuts</h3>
+<table>
+<tr><td>/ or Ctrl+K</td><td>Focus search</td></tr>
+<tr><td>Esc</td><td>Clear search / highlight / popup</td></tr>
+<tr><td>1&ndash;6</td><td>Toggle layers (AB, A, B, C, Gaps, Heatmap)</td></tr>
+<tr><td>S</td><td>Toggle satellite (Esri Imagery)</td></tr>
+<tr><td>?</td><td>Show / hide this help</td></tr>
+</table>
+<div class="hint">Press <b>?</b> or <b>Esc</b> to close</div>
+</div>
+<div id="printBar"></div>
 <script>
 var D=__DATA_JSON__;
 var CL={AB:'#C00000',A:'#FF4444',B:'#ED7D31',C:'#999999'};
 var CW={AB:4,A:3,B:2.5,C:1.5};
 var CN={AB:'Compound (A+B)',A:'False One-Way',B:'Multi-Segment',C:'Unreviewed'};
+var LK={lab:'AB',la:'A',lb:'B',lc:'C',lgap:'gap',lheat:'heat'};
+var LR={AB:'lab',A:'la',B:'lb',C:'lc',gap:'lgap',heat:'lheat'};
+var ZONE_NAME='__ZONE_NAME__';
 
 var map=L.map('map',{zoomControl:true}).setView(__CENTER__,13);
 
 var BMS={
   'carto-voyager':{url:'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
   'carto-positron':{url:'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
+  'carto-darkmatter':{url:'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',opts:{subdomains:'abcd',maxZoom:20,attribution:'&copy; OSM, &copy; CARTO'}},
   'osm':{url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',opts:{subdomains:'abc',maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}},
   'esri-imagery':{url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, USDA, USGS, AeroGRID, IGN'}},
   'esri-clarity':{url:'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery_Firefly/MapServer/tile/{z}/{y}/{x}',opts:{maxZoom:19,attribution:'Esri Clarity / Firefly'}},
@@ -776,7 +886,7 @@ var BMS={
   'osip':{url:'https://gis5.oit.ohio.gov/arcgis/rest/services/OSIP/OSIP_Latest/ImageServer/tile/{z}/{y}/{x}',opts:{maxZoom:20,attribution:'OGRIP / Ohio Statewide Imagery Program'}}
 };
 
-var curBM=null;
+var curBM=null,curBMKey='carto-voyager',prevBMKey=null;
 var WAYBACK_CONFIG_URL='https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json';
 var waybackConfig=null,waybackLoading=null;
 
@@ -795,7 +905,7 @@ function populateWaybackSelect(){
   loadWaybackConfig().then(function(cfg){
     var keys=Object.keys(cfg);
     if(!keys.length){
-      sel.innerHTML='<option value="">Could not load releases &mdash; try Custom URL with a Wayback release ID from livingatlas.arcgis.com/wayback</option>';
+      sel.innerHTML='<option value="">Could not load releases &mdash; try a Wayback release ID from livingatlas.arcgis.com/wayback</option>';
       return;
     }
     var entries=keys.map(function(k){
@@ -823,12 +933,12 @@ function updateWaybackVis(){
 
 function setBasemap(key){
   if(curBM){map.removeLayer(curBM);curBM=null;}
+  curBMKey=key;
   updateWaybackVis();
   var url, opts;
   if(key==='esri-wayback'){
     var rel=document.getElementById('waybackRel').value;
     if(!rel){
-      // still loading config; fall back to current World Imagery briefly
       var b0=BMS['esri-imagery'];url=b0.url;opts=b0.opts;
     } else {
       url='https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/'+encodeURIComponent(rel)+'/{z}/{y}/{x}';
@@ -842,10 +952,25 @@ function setBasemap(key){
   curBM=L.tileLayer(url,opts).addTo(map);
   curBM.bringToBack();
   try{localStorage.setItem('tigerBmKey',key);}catch(e){}
+  scheduleHashWrite();
 }
 
 var ly={AB:L.layerGroup(),A:L.layerGroup(),B:L.layerGroup(),C:L.layerGroup()};
-var gL=L.layerGroup(),hL=null,aP=[];
+var gL=L.markerClusterGroup({
+  disableClusteringAtZoom:16,maxClusterRadius:50,
+  iconCreateFunction:function(cluster){
+    var n=cluster.getChildCount();
+    return L.divIcon({html:'<div class="gcl" role="button" aria-label="'+n+' gap markers, click to expand">'+n+'</div>',className:'',iconSize:L.point(36,36)});
+  }
+});
+gL.on('clusterclick',function(e){if(e.originalEvent)L.DomEvent.stopPropagation(e.originalEvent);});
+var hL=null,aP=[];
+var streetIndex={},wayIndex={};
+var hl={type:null,key:null};
+var gapPairLine=null;
+var restoring=false,hashTimer;
+var helpOpen=false;
+var josmProbeOk=null;
 
 document.getElementById('kt').textContent=D.stats.total.toLocaleString();
 document.getElementById('kr').textContent=D.stats.residential.toLocaleString();
@@ -854,28 +979,107 @@ document.getElementById('ka').textContent=D.stats.class_a.toLocaleString();
 document.getElementById('kb').textContent=D.stats.class_b.toLocaleString();
 document.getElementById('kg').textContent=D.stats.gaps_found.toLocaleString();
 
-D.ways.forEach(function(w){
-  if(!w.g||w.g.length<2)return;
-  var p=L.polyline(w.g,{color:CL[w.c]||'#999',weight:CW[w.c]||1.5,opacity:w.c==='C'?0.4:0.8});
-  var h='<b>'+(w.n||'[Unnamed]')+'</b><br>'
-    +'<span class="tg '+w.c.toLowerCase()+'">Class '+w.c+': '+CN[w.c]+'</span><br>'
-    +'Type: '+w.h+(w.o==='yes'?' | <b style="color:red">oneway=yes</b>':'')+'<br>'
-    +'Way: <a href="https://www.openstreetmap.org/way/'+w.id+'" target="_blank">'+w.id+'</a><br>'
-    +'<a href="https://www.openstreetmap.org/edit?editor=id#map=18/'+w.g[0][0]+'/'+w.g[0][1]+'" target="_blank">Edit in iD</a>'
-    +' | <a href="http://localhost:8111/load_and_zoom?left='+(w.g[0][1]-0.002)+'&right='+(w.g[0][1]+0.002)+'&bottom='+(w.g[0][0]-0.001)+'&top='+(w.g[0][0]+0.001)+'" target="_blank">JOSM</a>';
-  p.bindPopup(h);p.wd=w;ly[w.c].addLayer(p);aP.push(p);
-});
+function escAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 
-D.gaps.forEach(function(g){
-  var c=L.circleMarker([g.lat,g.lon],{radius:7,color:'#9C27B0',fillColor:'#CE93D8',fillOpacity:0.8,weight:2});
-  c.bindPopup('<b>Probable Node Disconnect</b><br>Street: <b>'+g.street+'</b><br>Gap: '+g.distance_m+' m<br>'
-    +'Way <a href="https://www.openstreetmap.org/way/'+g.way1_id+'" target="_blank">'+g.way1_id+'</a> &harr; '
-    +'<a href="https://www.openstreetmap.org/way/'+g.way2_id+'" target="_blank">'+g.way2_id+'</a><br>'
-    +'<a href="http://localhost:8111/load_and_zoom?left='+(g.lon-0.002)+'&right='+(g.lon+0.002)+'&bottom='+(g.lat-0.001)+'&top='+(g.lat+0.001)+'" target="_blank">Open in JOSM</a>');
-  gL.addLayer(c);
-});
+function _resetStyles(){
+  aP.forEach(function(p){
+    p.setStyle({weight:CW[p.wd.c],opacity:p.wd.c==='C'?0.4:0.8});
+    var el=p.getElement();if(el)el.classList.remove('pulse');
+  });
+  if(gapPairLine){map.removeLayer(gapPairLine);gapPairLine=null;}
+}
+function clearHighlight(){_resetStyles();hl={type:null,key:null};scheduleHashWrite();}
+function findNearMissEndpoints(g1,g2){
+  var s1=g1[0],e1=g1[g1.length-1],s2=g2[0],e2=g2[g2.length-1];
+  var pairs=[[s1,s2],[s1,e2],[e1,s2],[e1,e2]];
+  var min=Infinity,best=null;
+  pairs.forEach(function(pr){var dx=pr[0][0]-pr[1][0],dy=pr[0][1]-pr[1][1],d=dx*dx+dy*dy;if(d<min){min=d;best=pr;}});
+  return best;
+}
+function setHighlight(type,key){
+  _resetStyles();
+  hl={type:type,key:key};
+  if(type==='street'){
+    var name=key;
+    aP.forEach(function(p){
+      if(p.wd.n===name){p.setStyle({weight:CW[p.wd.c]+2,opacity:1.0});p.bringToFront();}
+      else p.setStyle({opacity:0.2});
+    });
+  }else if(type==='gap'){
+    var p1=wayIndex[key[0]],p2=wayIndex[key[1]];
+    if(p1&&p2){
+      [p1,p2].forEach(function(p){
+        p.setStyle({weight:CW[p.wd.c]+3,opacity:1.0});
+        p.bringToFront();
+        var el=p.getElement();if(el)el.classList.add('pulse');
+      });
+      var ep=findNearMissEndpoints(p1.wd.g,p2.wd.g);
+      gapPairLine=L.polyline(ep,{color:'#FF00FF',weight:3,dashArray:'5,10',interactive:false}).addTo(map);
+      map.fitBounds(L.latLngBounds(p1.wd.g.concat(p2.wd.g)),{padding:[40,40],maxZoom:18});
+    }
+  }
+  scheduleHashWrite();
+}
 
-ly.AB.addTo(map);ly.A.addTo(map);ly.B.addTo(map);gL.addTo(map);
+function openStreetPopup(w,latlng){
+  var name=w.n||'[Unnamed]';
+  var segs=w.n?(streetIndex[name]||[]):[wayIndex[w.id]];
+  var bd={AB:0,A:0,B:0,C:0};
+  segs.forEach(function(p){bd[p.wd.c]++;});
+  var bdStr=Object.keys(bd).filter(function(k){return bd[k]>0;}).map(function(k){return bd[k]+' '+k;}).join(' &middot; ');
+  var rows=segs.map(function(p){
+    var ww=p.wd;
+    var idLnk='<a href="https://www.openstreetmap.org/way/'+ww.id+'" target="_blank" rel="noopener">'+ww.id+'</a>';
+    var iD='<a href="https://www.openstreetmap.org/edit?editor=id#map=18/'+ww.g[0][0]+'/'+ww.g[0][1]+'" target="_blank" rel="noopener">iD</a>';
+    var jo='<a href="http://localhost:8111/load_and_zoom?left='+(ww.g[0][1]-0.002)+'&right='+(ww.g[0][1]+0.002)+'&bottom='+(ww.g[0][0]-0.001)+'&top='+(ww.g[0][0]+0.001)+'" target="_blank" rel="noopener">JOSM</a>';
+    var hi=ww.id===w.id?' style="background:#FFF8DC"':'';
+    return '<div class="pp-row"'+hi+'><span class="tg '+ww.c.toLowerCase()+'">'+ww.c+'</span> way '+idLnk+' &middot; '+iD+' &middot; '+jo+'</div>';
+  }).join('');
+  var ids=segs.map(function(p){return p.wd.id;}).join(',');
+  var html='<div class="pp-h">'+escAttr(name)+'</div>'
+    +'<div class="pp-bd">'+segs.length+' segment'+(segs.length>1?'s':'')+(bdStr?' &middot; '+bdStr:'')+' &middot; '+(w.h||'')+'</div>'
+    +'<div class="pp-clicked"><b>You clicked:</b> way '+w.id+' (Class '+w.c+(w.o==='yes'?', oneway=yes':'')+')</div>'
+    +'<div class="pp-list">'+rows+'</div>'
+    +'<div class="pp-foot">'
+    +'<button class="pp-btn" onclick="loadInJOSM(['+ids+'])">Open all in JOSM</button>'
+    +'<a href="#" onclick="event.preventDefault();clearHighlight();map.closePopup();">Clear highlight</a>'
+    +'</div>';
+  L.popup({maxWidth:340,autoPan:true}).setLatLng(latlng).setContent(html).openOn(map);
+}
+
+// Build polylines + gap markers (deferred so the loading overlay paints first).
+setTimeout(function(){
+  D.ways.forEach(function(w){
+    if(!w.g||w.g.length<2)return;
+    var p=L.polyline(w.g,{color:CL[w.c]||'#999',weight:CW[w.c]||1.5,opacity:w.c==='C'?0.4:0.8});
+    p.wd=w;ly[w.c].addLayer(p);aP.push(p);
+    if(w.n){(streetIndex[w.n]=streetIndex[w.n]||[]).push(p);}
+    wayIndex[w.id]=p;
+    p.on('click',function(e){
+      L.DomEvent.stopPropagation(e);
+      if(this.wd.n)setHighlight('street',this.wd.n);
+      openStreetPopup(this.wd,e.latlng);
+    });
+  });
+
+  D.gaps.forEach(function(g){
+    var c=L.circleMarker([g.lat,g.lon],{radius:7,color:'#9C27B0',fillColor:'#CE93D8',fillOpacity:0.8,weight:2});
+    c.bindPopup('<b>Probable Node Disconnect</b><br>Street: <b>'+escAttr(g.street||'')+'</b><br>Gap: '+g.distance_m+' m<br>'
+      +'Way <a href="https://www.openstreetmap.org/way/'+g.way1_id+'" target="_blank" rel="noopener">'+g.way1_id+'</a> &harr; '
+      +'<a href="https://www.openstreetmap.org/way/'+g.way2_id+'" target="_blank" rel="noopener">'+g.way2_id+'</a><br>'
+      +'<a href="http://localhost:8111/load_and_zoom?left='+(g.lon-0.002)+'&right='+(g.lon+0.002)+'&bottom='+(g.lat-0.001)+'&top='+(g.lat+0.001)+'" target="_blank" rel="noopener">Open in JOSM</a>');
+    c.on('click',function(e){
+      L.DomEvent.stopPropagation(e);
+      setHighlight('gap',[g.way1_id,g.way2_id]);
+    });
+    gL.addLayer(c);
+  });
+
+  ly.AB.addTo(map);ly.A.addTo(map);ly.B.addTo(map);gL.addTo(map);
+  uvs();
+  document.getElementById('loading').style.display='none';
+  readHash();
+},50);
 
 var hp=D.ways.map(function(w){
   if(!w.g||!w.g.length)return null;
@@ -885,7 +1089,8 @@ var hp=D.ways.map(function(w){
 
 function tgl(id,layer){
   document.getElementById(id).addEventListener('change',function(){
-    if(this.checked)map.addLayer(layer);else map.removeLayer(layer);uvs();
+    if(this.checked)map.addLayer(layer);else map.removeLayer(layer);
+    uvs();scheduleHashWrite();
   });
 }
 tgl('lab',ly.AB);tgl('la',ly.A);tgl('lb',ly.B);tgl('lc',ly.C);tgl('lgap',gL);
@@ -895,6 +1100,7 @@ document.getElementById('lheat').addEventListener('change',function(){
     if(!hL)hL=L.heatLayer(hp,{radius:20,blur:15,maxZoom:16,gradient:{0.2:'blue',0.4:'cyan',0.6:'lime',0.8:'yellow',1.0:'red'}});
     map.addLayer(hL);
   }else if(hL)map.removeLayer(hL);
+  scheduleHashWrite();
 });
 
 // Basemap selector init.
@@ -912,14 +1118,12 @@ document.getElementById('lheat').addEventListener('change',function(){
   });
 })();
 
-// Sidebar collapse toggle.
+// Sidebar collapse toggle (desktop).
 (function initSidebarToggle(){
   var sb=document.getElementById('sidebar'),btn=document.getElementById('sbToggle');
   function apply(collapsed){
     if(collapsed){sb.classList.add('collapsed');btn.innerHTML='&#9654;';btn.title='Expand sidebar';}
     else{sb.classList.remove('collapsed');btn.innerHTML='&#9664;';btn.title='Collapse sidebar';}
-    // Leaflet needs to recompute its container size; do it once the CSS
-    // transition has finished so the map fills the new space.
     setTimeout(function(){if(map&&map.invalidateSize)map.invalidateSize();uvs();},280);
   }
   var startCollapsed=false;
@@ -932,6 +1136,8 @@ document.getElementById('lheat').addEventListener('change',function(){
   });
 })();
 
+map.on('click',function(){if(hl.type){clearHighlight();map.closePopup();}});
+
 function uvs(){
   var b=map.getBounds(),v={t:0,AB:0,A:0,B:0,C:0,gp:0,st:new Set()};
   aP.forEach(function(p){var w=p.wd;if(w.g.length>0&&b.contains(L.latLng(w.g[0][0],w.g[0][1]))){v.t++;v[w.c]++;if(w.n)v.st.add(w.n);}});
@@ -939,31 +1145,31 @@ function uvs(){
   document.getElementById('vs').innerHTML='<b>'+v.t+'</b> segments in view<br><b>'+v.st.size+'</b> named streets<br>'
     +'AB: <b>'+v.AB+'</b> | A: <b>'+v.A+'</b><br>B: <b>'+v.B+'</b> | C: <b>'+v.C+'</b><br>Node gaps: <b>'+v.gp+'</b>';
 }
-map.on('moveend',uvs);uvs();
+map.on('moveend',function(){uvs();scheduleHashWrite();});
 
 var si={};
 D.ways.forEach(function(w){if(w.n&&!si[w.n]&&w.g&&w.g.length)si[w.n]=w.g[Math.floor(w.g.length/2)];});
 
 document.getElementById('search').addEventListener('input',function(){
-  var q=this.value.toLowerCase(),r=document.getElementById('sr');
-  if(q.length<2){r.innerHTML='';return;}
+  var q=this.value.toLowerCase(),r=document.getElementById('sr'),self=this;
+  if(q.length<2){r.innerHTML='';self.setAttribute('aria-expanded','false');return;}
   var m=Object.keys(si).filter(function(n){return n.toLowerCase().indexOf(q)>=0;}).slice(0,10);
-  r.innerHTML=m.map(function(n){
-    return '<div style="padding:3px 0;cursor:pointer;color:#0563C1;font-size:11px" data-street="'+n.replace(/"/g,'&quot;')+'">'+n+'</div>';
+  self.setAttribute('aria-expanded',m.length>0?'true':'false');
+  r.innerHTML=m.map(function(n,i){
+    return '<div role="option" tabindex="0" id="opt'+i+'" style="padding:3px 0;cursor:pointer;color:var(--link);font-size:11px" data-street="'+escAttr(n)+'">'+n+'</div>';
   }).join('');
   r.querySelectorAll('div').forEach(function(el){
     el.addEventListener('click',function(){flyTo(this.getAttribute('data-street'));});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flyTo(this.getAttribute('data-street'));}});
   });
 });
 
 function flyTo(name){
   var c=si[name];if(c)map.setView(c,17);
-  document.getElementById('search').value=name;
+  var s=document.getElementById('search');s.value=name;
   document.getElementById('sr').innerHTML='';
-  aP.forEach(function(p){
-    if(p.wd.n===name){p.setStyle({weight:6,opacity:1});p.bringToFront();}
-    else p.setStyle({weight:CW[p.wd.c],opacity:p.wd.c==='C'?0.4:0.8});
-  });
+  s.setAttribute('aria-expanded','false');
+  setHighlight('street',name);
 }
 
 function xGeo(){
@@ -988,6 +1194,166 @@ function xCSV(){
 }
 
 function dl(n,c,t){var b=new Blob([c],{type:t}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click();}
+
+// === R4 hamburger (mobile) ===
+(function(){
+  var hb=document.getElementById('hamburger'),bd=document.getElementById('backdrop'),sb=document.getElementById('sidebar');
+  hb.addEventListener('click',function(){
+    var open=sb.classList.toggle('open');
+    bd.hidden=!open;hb.setAttribute('aria-expanded',open?'true':'false');
+  });
+  bd.addEventListener('click',function(){
+    sb.classList.remove('open');bd.hidden=true;hb.setAttribute('aria-expanded','false');
+  });
+})();
+
+// === E2 keyboard shortcuts + help overlay ===
+function toggleLayer(id){document.getElementById(id).click();}
+function toggleHelp(){helpOpen=!helpOpen;document.getElementById('help').hidden=!helpOpen;}
+
+document.addEventListener('keydown',function(e){
+  var t=e.target,inInput=t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT';
+  if(inInput&&e.key!=='Escape')return;
+  if(e.key==='/'||(e.ctrlKey&&e.key.toLowerCase()==='k')){
+    e.preventDefault();document.getElementById('search').focus();
+  }else if(e.key==='Escape'){
+    map.closePopup();clearHighlight();
+    var s=document.getElementById('search');s.blur();s.value='';
+    document.getElementById('sr').innerHTML='';
+    s.setAttribute('aria-expanded','false');
+    if(helpOpen)toggleHelp();
+  }else if(['1','2','3','4','5','6'].indexOf(e.key)>=0){
+    var ids=['lab','la','lb','lc','lgap','lheat'];
+    toggleLayer(ids[parseInt(e.key,10)-1]);
+  }else if(e.key.toLowerCase()==='s'){
+    // Toggle between current basemap and esri-imagery
+    var bm=document.getElementById('bmsel');
+    if(bm.value==='esri-imagery'){bm.value=prevBMKey||'carto-voyager';}
+    else{prevBMKey=bm.value;bm.value='esri-imagery';}
+    setBasemap(bm.value);
+  }else if(e.key==='?'){
+    toggleHelp();
+  }
+});
+
+// === E1 URL hash state ===
+function writeHash(){
+  if(restoring)return;
+  var c=map.getCenter(),z=map.getZoom();
+  var on=['lab','la','lb','lc','lgap','lheat'].filter(function(id){return document.getElementById(id).checked;}).map(function(id){return LK[id];});
+  var parts=['z='+z,'c='+c.lat.toFixed(5)+','+c.lng.toFixed(5),'l='+on.join(',')];
+  if(curBMKey&&curBMKey!=='carto-voyager')parts.push('bm='+encodeURIComponent(curBMKey));
+  if(document.documentElement.classList.contains('dark'))parts.push('dark=1');
+  if(hl.type==='street')parts.push('hi=street:'+encodeURIComponent(hl.key).replace(/%20/g,'+'));
+  try{history.replaceState(null,'','#'+parts.join('&'));}catch(e){}
+}
+function scheduleHashWrite(){clearTimeout(hashTimer);hashTimer=setTimeout(writeHash,200);}
+
+function readHash(){
+  if(!location.hash||location.hash.length<2)return;
+  restoring=true;
+  try{
+    var p=new URLSearchParams(location.hash.slice(1));
+    if(p.has('l')){
+      var want=p.get('l').split(',');
+      Object.keys(LR).forEach(function(k){
+        var cb=document.getElementById(LR[k]);
+        var should=want.indexOf(k)>=0;
+        if(cb.checked!==should)cb.click();
+      });
+    }
+    if(p.has('bm')){
+      var bmKey=decodeURIComponent(p.get('bm'));
+      var bmEl=document.getElementById('bmsel');
+      if(bmEl.querySelector('option[value="'+bmKey+'"]')){bmEl.value=bmKey;setBasemap(bmKey);}
+    }
+    if(p.get('dark')==='1'&&!document.documentElement.classList.contains('dark'))setDark(true);
+    if(p.has('c')&&p.has('z')){
+      var cc=p.get('c').split(',').map(parseFloat);
+      map.setView([cc[0],cc[1]],parseFloat(p.get('z')));
+    }
+    if(p.has('hi')){
+      var hi=p.get('hi');
+      if(hi.indexOf('street:')===0){
+        var name=decodeURIComponent(hi.slice(7).replace(/\+/g,' '));
+        if(streetIndex[name])setHighlight('street',name);
+      }
+    }
+  }catch(err){console.warn('hash parse failed',err);}
+  restoring=false;
+}
+
+// === E3 JOSM batch remote control ===
+function showStatus(msg){var s=document.getElementById('status');s.textContent=msg;s.hidden=false;clearTimeout(s._t);s._t=setTimeout(function(){s.hidden=true;},4000);}
+
+function probeJOSM(){
+  if(josmProbeOk!==null)return Promise.resolve(josmProbeOk);
+  if(location.protocol==='https:'){josmProbeOk=false;return Promise.resolve(false);}
+  var opts={mode:'no-cors'};
+  if(typeof AbortSignal!=='undefined'&&AbortSignal.timeout){try{opts.signal=AbortSignal.timeout(800);}catch(e){}}
+  return fetch('http://localhost:8111/version',opts).then(function(){josmProbeOk=true;return true;}).catch(function(){josmProbeOk=false;return false;});
+}
+
+function loadInJOSM(wayIds){
+  if(!wayIds||!wayIds.length){
+    var b=map.getBounds();wayIds=[];
+    aP.forEach(function(p){
+      var w=p.wd;
+      if(!map.hasLayer(ly[w.c]))return;
+      if(w.g.length&&b.contains(L.latLng(w.g[0][0],w.g[0][1])))wayIds.push(w.id);
+    });
+  }
+  if(!wayIds.length){showStatus('No visible ways to load');return;}
+  probeJOSM().then(function(ok){
+    if(!ok){
+      showStatus(location.protocol==='https:'
+        ?'JOSM remote control needs http:// or file:// (this page is loaded over https://).'
+        :'JOSM not running \\u2014 start JOSM and enable Remote Control in Preferences \\u2192 Remote Control.');
+      return;
+    }
+    var batches=[],cur=[],curLen=80;
+    wayIds.forEach(function(id){
+      var s='w'+id;
+      if(curLen+s.length+1>7000){batches.push(cur);cur=[];curLen=80;}
+      cur.push(s);curLen+=s.length+1;
+    });
+    if(cur.length)batches.push(cur);
+    function next(i){
+      if(i>=batches.length){showStatus('Sent '+wayIds.length+' way'+(wayIds.length>1?'s':'')+' to JOSM ('+batches.length+' batch'+(batches.length>1?'es':'')+')');return;}
+      fetch('http://localhost:8111/load_object?objects='+batches[i].join(',')+'&relation_members=true',{mode:'no-cors'})
+        .finally(function(){setTimeout(function(){next(i+1);},500);});
+    }
+    next(0);
+  });
+}
+
+// === E5 print mode ===
+function printView(){
+  var b=map.getBounds(),v={AB:0,A:0,B:0,C:0,gp:0};
+  aP.forEach(function(p){var w=p.wd;if(w.g.length&&b.contains(L.latLng(w.g[0][0],w.g[0][1])))v[w.c]++;});
+  gL.eachLayer(function(m){if(b.contains(m.getLatLng()))v.gp++;});
+  document.getElementById('printBar').innerHTML='TIGER Audit \\u2014 '+ZONE_NAME+' \\u2014 '+new Date().toLocaleDateString()
+    +' &middot; Visible: '+v.AB+' AB &middot; '+v.A+' A &middot; '+v.B+' B &middot; '+v.C+' C &middot; '+v.gp+' gaps';
+  document.body.classList.add('printing');
+  setTimeout(function(){window.print();},250);
+}
+window.addEventListener('afterprint',function(){document.body.classList.remove('printing');});
+
+// === E6 dark mode (chrome theme; tiles are managed by basemap selector) ===
+function setDark(on){
+  document.documentElement.classList.toggle('dark',!!on);
+  document.getElementById('dmt').textContent=on?'\\u2600\\uFE0F':'\\uD83C\\uDF19';
+  try{localStorage.setItem('tiger-dark-mode',on?'1':'0');}catch(e){}
+  scheduleHashWrite();
+}
+document.getElementById('dmt').addEventListener('click',function(){
+  setDark(!document.documentElement.classList.contains('dark'));
+});
+(function(){
+  var stored=null;try{stored=localStorage.getItem('tiger-dark-mode');}catch(e){}
+  var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(stored==='1'||(stored===null&&prefersDark))setDark(true);
+})();
 </script>
 </body>
 </html>
