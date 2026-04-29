@@ -61,9 +61,12 @@ preserved (timestamped) on every run.
 
 **Node-disconnect detection:** for every Class B street, the pipeline scans
 endpoint pairs across that street's ways with the haversine distance and flags
-any pair within **30 m** that aren't already coincident. Each gap shows up as a
-purple marker on the dashboard with one-click links to JOSM (via Remote
-Control) or the iD editor at the gap location.
+any pair within **30 m** that aren't already coincident. Pairwise gap records
+within 5 m of each other on the same street are then collapsed to a single
+representative (since a 3+ way junction with no shared node would otherwise
+emit one record per pair for what's really one missing node). Each gap shows
+up as a purple marker on the dashboard with one-click links to JOSM (via
+Remote Control) or the iD editor at the gap location.
 
 **Out of scope:**
 - Modifying OSM (this is read-only).
@@ -331,7 +334,7 @@ historical data — useful for tracking progress as volunteers fix defects.
 | &nbsp;&nbsp;— of which Class AB (compound, also multi-segment) | 55 |
 | Class B (multi-segment ways) | 1,064 |
 | Multi-segment streets (Class B groups) | 182 |
-| Probable node disconnects | 308 |
+| Probable node disconnects | 248 |
 | Estimated volunteer hours (Class AB only) | 11.0 |
 | Estimated volunteer hours (everything) | 69.2 |
 

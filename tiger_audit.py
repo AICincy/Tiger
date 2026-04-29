@@ -239,6 +239,12 @@ def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 
 
 GAP_THRESHOLD_M = 30.0
+# A 3+ way junction where no node is shared produces a gap record per
+# pair (3 ways -> 3 records). Cluster pairwise gap records that fall
+# within this radius on the same street so each physical disconnect
+# counts once. 5 m is wider than typical lane width but smaller than
+# adjacent-junction spacing on residential streets.
+GAP_CLUSTER_M = 5.0
 
 
 def detect_gaps(class_b_streets: dict[str, list[dict]]) -> list[dict]:
@@ -248,6 +254,9 @@ def detect_gaps(class_b_streets: dict[str, list[dict]]) -> list[dict]:
         for w in ways:
             if len(w["geometry"]) >= 2:
                 endpoints.append((w, w["geometry"][0], w["geometry"][-1]))
+
+        # Phase 1: pairwise candidate gaps for every (way_i, way_j) on this street.
+        raw_gaps_for_street: list[dict] = []
         for i in range(len(endpoints)):
             wi, si, ei = endpoints[i]
             for j in range(i + 1, len(endpoints)):
@@ -265,7 +274,7 @@ def detect_gaps(class_b_streets: dict[str, list[dict]]) -> list[dict]:
                     continue  # already coincident -> no gap
                 if d > GAP_THRESHOLD_M:
                     continue
-                gaps.append({
+                raw_gaps_for_street.append({
                     "lat": (a[0] + b[0]) / 2,
                     "lon": (a[1] + b[1]) / 2,
                     "street": street,
@@ -274,6 +283,23 @@ def detect_gaps(class_b_streets: dict[str, list[dict]]) -> list[dict]:
                     "way2_id": wj["id"],
                     "distance_m": round(d, 1),
                 })
+
+        # Phase 2: spatial cluster-by-junction. Sorted ascending by distance
+        # so the tightest pair becomes each cluster's representative.
+        raw_gaps_for_street.sort(key=lambda g: g["distance_m"])
+        clustered_for_street: list[dict] = []
+        for g in raw_gaps_for_street:
+            collapsed = False
+            for existing in clustered_for_street:
+                if (
+                    _haversine_m(g["lat"], g["lon"], existing["lat"], existing["lon"])
+                    <= GAP_CLUSTER_M
+                ):
+                    collapsed = True
+                    break
+            if not collapsed:
+                clustered_for_street.append(g)
+        gaps.extend(clustered_for_street)
     return gaps
 
 
@@ -625,6 +651,10 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
     _autosize_columns(ws5, widths5)
 
     # ----- Sheet 6: MetroNow Zones -----
+    # Cross-zone awareness: a workbook for any one zone marks the OTHER
+    # three zones as AUDIT COMPLETE if their output CSVs exist on disk
+    # (an existing all_ways.csv is the cheapest, most reliable signal that
+    # the zone has been audited at some point).
     ws6 = wb.create_sheet("MetroNow Zones")
     headers6 = ["Zone", "Audit Status", "Unreviewed Segments", "Notes"]
     for col, h in enumerate(headers6, start=1):
@@ -634,12 +664,26 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
     for idx, (k, z) in enumerate(ZONES.items(), start=2):
         if k == zone_key:
             status = "AUDIT COMPLETE"
-            seg = stats["total"]
+            seg: int | str = stats["total"]
             severity_for_row = "OK"
         else:
-            status = "NOT STARTED"
-            seg = ""
-            severity_for_row = HIGH
+            other_csv = Path(f"tiger_audit_{k}/csv/all_ways.csv")
+            if other_csv.exists():
+                try:
+                    with other_csv.open("r", encoding="utf-8") as fh:
+                        # Subtract one for the header row.
+                        other_count = max(sum(1 for _ in fh) - 1, 0)
+                    status = "AUDIT COMPLETE"
+                    seg = other_count
+                    severity_for_row = "OK"
+                except OSError:
+                    status = "NOT STARTED"
+                    seg = ""
+                    severity_for_row = HIGH
+            else:
+                status = "NOT STARTED"
+                seg = ""
+                severity_for_row = HIGH
         values = [z["name"], status, seg, z["description"]]
         _write_row(ws6, idx, values, widths6)
         _severity_style(ws6.cell(row=idx, column=2), severity_for_row)
@@ -1735,8 +1779,6 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
     # before computing combined stats — otherwise the totals double-count.
     seen_way_ids: set[int] = set()
     merged_ways: list[dict] = []
-    seen_streets: set[str] = set()
-    class_b_streets_total = 0
     for r in results:
         c = r["classified"]
         for w in c["all_ways"]:
@@ -1745,25 +1787,71 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
                 continue
             seen_way_ids.add(wid)
             merged_ways.append(w)
-        for street in c["class_b_streets"]:
-            if street not in seen_streets:
-                seen_streets.add(street)
-                class_b_streets_total += 1
+
+    # Cross-zone class_b_streets: count unique physical streets, where two
+    # same-named groups in different zones are treated as the same physical
+    # street only if they share at least one OSM way ID. This is a
+    # connected-components count over (street_name, way_id_set) groups — so
+    # an arterial that crosses a zone boundary collapses to one street, while
+    # two unrelated streets that happen to share a name (e.g. "Park Ave"
+    # appearing in both Northgate and Forest Park with disjoint way IDs)
+    # are counted separately.
+    streets_by_name: dict[str, list[set[int]]] = defaultdict(list)
+    for r in results:
+        for street, ways in r["classified"]["class_b_streets"].items():
+            wids = {w["id"] for w in ways if w["id"] is not None}
+            if wids:
+                streets_by_name[street].append(wids)
+    class_b_streets_total = 0
+    for _name, groups in streets_by_name.items():
+        components: list[set[int]] = []
+        for grp in groups:
+            absorbed = False
+            for comp in components:
+                if comp & grp:
+                    comp |= grp
+                    absorbed = True
+                    break
+            if not absorbed:
+                components.append(set(grp))
+        class_b_streets_total += len(components)
 
     # Same problem with gaps — a node disconnect inside an overlap region
-    # is detected once per audit. Dedupe by the unordered way-pair key.
+    # is detected once per audit. First pass: dedupe by the unordered
+    # way-pair key (catches identical pairs across zones).
     seen_gap_pairs: set[tuple[int, int]] = set()
-    merged_gaps: list[dict] = []
+    pair_deduped_gaps: list[dict] = []
     for r in results:
         for g in r["classified"].get("gaps", []):
             try:
                 key = tuple(sorted([int(g["way1_id"]), int(g["way2_id"])]))
             except (KeyError, TypeError, ValueError):
-                merged_gaps.append(g)
+                pair_deduped_gaps.append(g)
                 continue
             if key in seen_gap_pairs:
                 continue
             seen_gap_pairs.add(key)
+            pair_deduped_gaps.append(g)
+
+    # Second pass: cross-zone spatial clustering. A junction in a zone-
+    # bbox overlap region may produce DIFFERENT representative way-pairs
+    # in each zone (zone A picks A↔B, zone B picks B↔C for the same
+    # physical missing node). The way-pair dedup above misses those, so
+    # collapse remaining gaps within GAP_CLUSTER_M that share a street.
+    pair_deduped_gaps.sort(key=lambda x: x.get("distance_m", 0))
+    merged_gaps: list[dict] = []
+    for g in pair_deduped_gaps:
+        collapsed = False
+        for fg in merged_gaps:
+            if fg.get("street") != g.get("street"):
+                continue
+            if (
+                _haversine_m(g["lat"], g["lon"], fg["lat"], fg["lon"])
+                <= GAP_CLUSTER_M
+            ):
+                collapsed = True
+                break
+        if not collapsed:
             merged_gaps.append(g)
 
     # Stats are computed from the deduped list, not summed across zones.
