@@ -174,6 +174,7 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
             continue
 
     fresh_fetch = payload is not None
+    payload_source = "live Overpass response"
     if payload is None:
         # Sort by mtime, not filename — robust to timestamp format changes.
         cached = sorted(
@@ -195,6 +196,7 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
                 )
             with latest.open("r", encoding="utf-8") as fh:
                 payload = json.load(fh)
+            payload_source = f"cached file {latest}"
         else:
             raise RuntimeError(
                 f"Overpass query failed and no cached data available: {last_error}"
@@ -206,13 +208,22 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
     # surface the warning the same way a thin live response would. Recompute
     # the threshold flag here so it reflects this run's payload, not whatever
     # state was baked into the cache when it was written.
+    if not isinstance(payload, dict):
+        snippet = repr(payload)[:200]
+        raise RuntimeError(
+            f"Overpass payload from {payload_source} is not a JSON object "
+            f"(got {type(payload).__name__}). The cache may be corrupt or "
+            f"manually edited; delete the file and re-run, or fix it. "
+            f"First 200 chars of the payload: {snippet}"
+        )
     payload.pop("_under_threshold", None)
     payload.pop("_element_count", None)
     elements = payload.get("elements")
     if not isinstance(elements, list):
         snippet = json.dumps(payload)[:500]
         raise RuntimeError(
-            f"Overpass JSON missing 'elements' array. First 500 chars:\n{snippet}"
+            f"Overpass payload from {payload_source} is missing 'elements' "
+            f"array (or it is not a list). First 500 chars:\n{snippet}"
         )
     if len(elements) < SANITY_THRESHOLD:
         print(
