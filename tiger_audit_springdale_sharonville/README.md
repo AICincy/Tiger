@@ -1,19 +1,19 @@
-# TIGER/Line Audit - Blue Ash / Montgomery
+# TIGER/Line Audit - Springdale / Sharonville
 
 Read-only audit of OpenStreetMap ways with `tiger:reviewed=no` inside
-the Blue Ash / Montgomery MetroNow zone (bbox (39.16, -84.44, 39.24, -84.33)).
+the Springdale / Sharonville MetroNow zone (bbox (39.24, -84.48, 39.32, -84.38)).
 
-Audit timestamp (UTC): 2026-04-29T01:27:02+00:00
+Audit timestamp (UTC): 2026-04-29T01:27:05+00:00
 
 ## Re-run
 
 ```
-python3 tiger_audit.py --zone blue_ash_montgomery
+python3 tiger_audit.py --zone springdale_sharonville
 ```
 
 ## Files
 
-- `data/blue_ash_montgomery_raw_<UTC>.json` - raw Overpass response (preserved)
+- `data/springdale_sharonville_raw_<UTC>.json` - raw Overpass response (preserved)
 - `reports/TIGER_Audit_*.xlsx` - styled multi-sheet workbook
 - `reports/TIGER_Audit_*_Dashboard.html` - interactive dashboard (open in browser)
 - `csv/all_ways.csv` - master inventory
