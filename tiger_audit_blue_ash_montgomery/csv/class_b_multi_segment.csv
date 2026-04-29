@@ -1,352 +1,333 @@
 id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_name_base,surface,lanes,maxspeed,_street_segments,_street_gap_count
-22768490,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-68507243,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-68507244,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,25 mph,84,38
-68507252,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,25 mph,84,38
-233378145,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-233378149,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-263305177,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-292927702,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,25 mph,84,38
-372002505,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-372481439,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-372481441,Kenwood Road,tertiary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-372658203,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,25 mph,84,38
-442364454,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-442364455,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-442364456,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-529042293,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,25 mph,84,38
-529042294,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-529042295,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-529042296,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-535831200,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-535831201,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-535831202,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-535831203,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-535831240,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-535831245,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-535831247,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-535831248,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-535831249,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-535831250,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-535831251,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-535831252,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-535831260,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-535831261,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-535831262,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,38
-535831266,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-535831267,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-535831268,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-535831271,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-535831272,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-535831274,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-535831275,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-535831278,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,38
-549080945,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-549080946,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,25 mph,84,38
-549080948,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,2,25 mph,84,38
-549080949,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-549081002,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-549081003,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-549081004,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-549081005,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-549081007,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-549081011,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-549081016,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,2,25 mph,84,38
-549081017,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-549081018,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-549081019,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-549081021,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461738,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461739,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461740,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461741,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461742,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461744,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461745,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461748,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461749,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461751,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461753,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461754,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461755,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461756,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461760,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,38
-570461764,Kenwood Road,tertiary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-570461766,Kenwood Road,tertiary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-739502955,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-742169757,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-742169759,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-742169760,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-742169761,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-761402733,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-762172375,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-771567190,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,38
-892646279,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,38
-892646280,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,38
-19064108,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,,25 mph,71,33
-28162996,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-28162997,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-292927566,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,,71,33
-372939678,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-372939680,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-372939682,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-431505208,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,4,25 mph,71,33
-431505209,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-431586091,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080894,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080895,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080896,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080899,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,4,25 mph,71,33
-549080900,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080907,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080908,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080909,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080910,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080911,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080912,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080916,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080917,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080918,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080919,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080920,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080923,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080924,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080925,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080926,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080934,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080935,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080936,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080937,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080938,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,4,25 mph,71,33
-549080940,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080941,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080942,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080943,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080944,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080947,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080950,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080951,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080953,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080954,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080955,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080956,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080957,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080958,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080962,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080963,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-549080970,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080971,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-549080980,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-552932651,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-552932653,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-552932662,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-552932663,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-552932664,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-552932665,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-552992262,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-552992263,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-552992264,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-552992265,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-553022293,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-553022294,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-553022300,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,33
-553022301,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-737240602,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-745343982,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-745343983,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,33
-19058005,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,asphalt,2,25 mph,66,33
-23854373,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,33
-169798315,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,33
-264466991,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,5,25 mph,66,33
-264467229,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-291923041,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-372671721,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,33
-372671728,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,33
-372671729,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-372671730,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-429259395,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-529042265,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,33
-529042270,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-529042271,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-529042272,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-529042279,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-529042280,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-529042281,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-529042283,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-549055634,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-549055635,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549055708,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-549055709,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549055715,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549055716,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-549055717,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-549055718,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-549055719,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080873,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080874,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,33
-549080875,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080884,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080885,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-549080886,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080888,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,33
-549080889,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080891,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080892,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,33
-549080893,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-549080898,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,66,33
-549137206,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-549137208,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-549137209,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-549137216,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-588107172,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-725759886,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,33
-840278757,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,33
-914948265,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-914948266,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-919240652,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-965209072,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-965209075,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-1136913969,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-1136913971,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-1136913975,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-1136913976,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-1147495712,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-1149015125,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-1149015132,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,33
-1188894469,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,33
-1196883612,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,33
-1424290186,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,33
-1424290187,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,35 mph,66,33
-1424744950,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,33
-1424744952,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,33
-1426279857,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,33
-74287312,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-74292471,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-217873987,Madison Road,secondary,,B,HIGH,no,A41,Madison,,3,,51,31
-217875034,Madison Road,secondary,,B,HIGH,no,A41,Madison,,2,30 mph,51,31
-291772231,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,31
-523833037,Madison Road,secondary,,B,HIGH,no,A41,Madison,,3,30 mph,51,31
-535414846,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535414852,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706323,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706324,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-535706327,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706330,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706336,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-535706343,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706351,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706358,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-535706362,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,35 mph,51,31
-535712273,Madison Road,secondary,,B,HIGH,no,A41,Madison,,6,30 mph,51,31
-535712274,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-535712275,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-566191003,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,35 mph,51,31
-566191004,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,30 mph,51,31
-566191005,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,31
-566191006,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-566191020,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,30 mph,51,31
-566191021,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,31
-566191025,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,35 mph,51,31
-566191026,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,35 mph,51,31
-570461640,Madison Road,secondary,,B,HIGH,no,A41,Madison,,3,30 mph,51,31
-570461645,Madison Road,secondary,,B,HIGH,no,A41,Madison,,2,,51,31
-570461668,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461670,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-570461672,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461673,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461675,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-570461677,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461678,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-570461680,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461681,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-570461684,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461685,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-570461700,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,31
-570461701,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-715987088,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,31
-715987090,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,35 mph,51,31
-729404625,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,31
-737204488,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,31
-737204489,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-741934351,Madison Road,secondary,,B,HIGH,no,A41,Madison,,2,,51,31
-1357879232,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-1357879233,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,31
-19059714,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,2,,19,21
-176067919,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,21
-535717337,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,3,,19,21
-535717338,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,21
-535717343,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,21
-535717346,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,21
-535717350,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,21
-543731989,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-566191015,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,21
-566191017,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-566191018,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-572219314,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-572219315,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,21
-669509978,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-715987089,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-715987091,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,21
-715987092,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,21
-1395652703,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,21
-1395652704,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,21
-233375767,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-233378154,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-249575158,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,25 mph,57,17
-270653607,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,25 mph,57,17
-292927265,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,25 mph,57,17
-292931507,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-533109294,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-535831183,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831184,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831185,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-535831186,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831187,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831188,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831198,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-535831199,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-535831204,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-535831205,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,5,35 mph,57,17
-535831206,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-535831230,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-535831235,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831279,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-535831280,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-549131461,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,17
-549131462,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-549131463,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,17
-549131464,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-549131469,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,25 mph,57,17
-549131470,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,4,25 mph,57,17
-549137212,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,25 mph,57,17
-549137214,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,5,25 mph,57,17
-549137215,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,5,25 mph,57,17
-553470554,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,17
-553470560,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,17
-553470566,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-553470693,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,17
-553470702,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,17
-553470712,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-553470718,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-553470726,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,25 mph,57,17
-570549286,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,17
-570549362,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-570549363,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,17
-660328012,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-660328017,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,17
-737233240,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,25 mph,57,17
-737739972,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-737739973,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-742279906,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-758060699,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-758060700,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-758060701,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-769274123,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,17
-1085773043,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,17
-1149581954,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,25 mph,57,17
-1149581955,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,17
-1149581956,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
-1149581957,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,17
+19064108,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,,25 mph,71,30
+28162996,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+28162997,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+292927566,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,,71,30
+372939678,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+372939680,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+372939682,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+431505208,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,4,25 mph,71,30
+431505209,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+431586091,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080894,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080895,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080896,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080899,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,4,25 mph,71,30
+549080900,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080907,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080908,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080909,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080910,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080911,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080912,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080916,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080917,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080918,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080919,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080920,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080923,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080924,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080925,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080926,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080934,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080935,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080936,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080937,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080938,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,4,25 mph,71,30
+549080940,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080941,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080942,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080943,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080944,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080947,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080950,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080951,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080953,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080954,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080955,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080956,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080957,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080958,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080962,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080963,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+549080970,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080971,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+549080980,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+552932651,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+552932653,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+552932662,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+552932663,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+552932664,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+552932665,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+552992262,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+552992263,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+552992264,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+552992265,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+553022293,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+553022294,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+553022300,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,2,25 mph,71,30
+553022301,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+737240602,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+745343982,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+745343983,Cooper Road,tertiary,,B,HIGH,no,A31,Cooper,,3,25 mph,71,30
+22768490,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+68507243,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+68507244,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,25 mph,84,25
+68507252,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,25 mph,84,25
+233378145,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+233378149,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+263305177,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+292927702,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,25 mph,84,25
+372002505,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+372481439,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+372481441,Kenwood Road,tertiary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+372658203,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,25 mph,84,25
+442364454,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+442364455,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+442364456,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+529042293,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,25 mph,84,25
+529042294,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+529042295,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+529042296,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+535831200,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+535831201,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+535831202,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+535831203,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+535831240,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+535831245,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+535831247,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+535831248,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+535831249,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+535831250,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+535831251,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+535831252,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+535831260,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+535831261,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+535831262,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,35 mph,84,25
+535831266,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+535831267,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+535831268,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+535831271,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+535831272,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+535831274,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+535831275,Kenwood Road,secondary,yes,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+535831278,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,4,35 mph,84,25
+549080945,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+549080946,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,4,25 mph,84,25
+549080948,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,2,25 mph,84,25
+549080949,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+549081002,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+549081003,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+549081004,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+549081005,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+549081007,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+549081011,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+549081016,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,2,25 mph,84,25
+549081017,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+549081018,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+549081019,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+549081021,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461738,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461739,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461740,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461741,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461742,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461744,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461745,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461748,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461749,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461751,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461753,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461754,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461755,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461756,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461760,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,3,35 mph,84,25
+570461764,Kenwood Road,tertiary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+570461766,Kenwood Road,tertiary,yes,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+739502955,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+742169757,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+742169759,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+742169760,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+742169761,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+761402733,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+762172375,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+771567190,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,2,35 mph,84,25
+892646279,Kenwood Road,secondary,,B,HIGH,no,A41,Kenwood,,3,25 mph,84,25
+892646280,Kenwood Road,tertiary,,B,HIGH,no,A41,Kenwood,,5,25 mph,84,25
+19058005,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,asphalt,2,25 mph,66,25
+23854373,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,25
+169798315,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,25
+264466991,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,5,25 mph,66,25
+264467229,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+291923041,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+372671721,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,25
+372671728,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,25
+372671729,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+372671730,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+429259395,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+529042265,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,25
+529042270,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+529042271,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+529042272,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+529042279,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+529042280,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+529042281,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+529042283,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+549055634,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+549055635,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549055708,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+549055709,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549055715,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549055716,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+549055717,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+549055718,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+549055719,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080873,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080874,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,25
+549080875,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080884,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080885,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+549080886,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080888,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,25
+549080889,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080891,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080892,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,25
+549080893,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+549080898,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,66,25
+549137206,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+549137208,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+549137209,Plainfield Road,secondary,no,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+549137216,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+588107172,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+725759886,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,5,25 mph,66,25
+840278757,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,25
+914948265,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+914948266,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+919240652,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+965209072,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+965209075,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+1136913969,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+1136913971,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+1136913975,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+1136913976,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+1147495712,Plainfield Road,secondary,yes,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+1149015125,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+1149015132,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,2,25 mph,66,25
+1188894469,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,25 mph,66,25
+1196883612,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,66,25
+1424290186,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,25
+1424290187,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,4,35 mph,66,25
+1424744950,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,25
+1424744952,Plainfield Road,secondary,,B,HIGH,no,A41,Plainfield,,3,35 mph,66,25
+1426279857,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,66,25
+74287312,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+74292471,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+217873987,Madison Road,secondary,,B,HIGH,no,A41,Madison,,3,,51,21
+217875034,Madison Road,secondary,,B,HIGH,no,A41,Madison,,2,30 mph,51,21
+291772231,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,21
+523833037,Madison Road,secondary,,B,HIGH,no,A41,Madison,,3,30 mph,51,21
+535414846,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535414852,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706323,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706324,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+535706327,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706330,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706336,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+535706343,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706351,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706358,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+535706362,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,35 mph,51,21
+535712273,Madison Road,secondary,,B,HIGH,no,A41,Madison,,6,30 mph,51,21
+535712274,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+535712275,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+566191003,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,35 mph,51,21
+566191004,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,30 mph,51,21
+566191005,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,21
+566191006,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+566191020,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,30 mph,51,21
+566191021,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,21
+566191025,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,35 mph,51,21
+566191026,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,2,35 mph,51,21
+570461640,Madison Road,secondary,,B,HIGH,no,A41,Madison,,3,30 mph,51,21
+570461645,Madison Road,secondary,,B,HIGH,no,A41,Madison,,2,,51,21
+570461668,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461670,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+570461672,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461673,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461675,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+570461677,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461678,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+570461680,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461681,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+570461684,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461685,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+570461700,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,30 mph,51,21
+570461701,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+715987088,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,30 mph,51,21
+715987090,Madison Road,secondary,yes,B,HIGH,no,A41,Madison,,3,35 mph,51,21
+729404625,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,30 mph,51,21
+737204488,Madison Road,secondary,,B,HIGH,no,A41,Madison,,5,35 mph,51,21
+737204489,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+741934351,Madison Road,secondary,,B,HIGH,no,A41,Madison,,2,,51,21
+1357879232,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+1357879233,Madison Road,secondary,,B,HIGH,no,A41,Madison,,4,35 mph,51,21
+233375767,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+233378154,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+249575158,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,25 mph,57,16
+270653607,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,25 mph,57,16
+292927265,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,25 mph,57,16
+292931507,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+533109294,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+535831183,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831184,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831185,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+535831186,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831187,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831188,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831198,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+535831199,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+535831204,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+535831205,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,5,35 mph,57,16
+535831206,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+535831230,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+535831235,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831279,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+535831280,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+549131461,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,16
+549131462,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+549131463,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,16
+549131464,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+549131469,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,25 mph,57,16
+549131470,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,4,25 mph,57,16
+549137212,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,25 mph,57,16
+549137214,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,5,25 mph,57,16
+549137215,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,5,25 mph,57,16
+553470554,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,16
+553470560,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,16
+553470566,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+553470693,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,16
+553470702,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,3,35 mph,57,16
+553470712,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+553470718,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+553470726,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,25 mph,57,16
+570549286,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,35 mph,57,16
+570549362,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+570549363,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,16
+660328012,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+660328017,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,16
+737233240,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,4,25 mph,57,16
+737739972,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+737739973,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+742279906,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+758060699,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+758060700,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+758060701,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+769274123,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,16
+1085773043,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,,2,35 mph,57,16
+1149581954,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,25 mph,57,16
+1149581955,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,2,35 mph,57,16
+1149581956,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
+1149581957,East Galbraith Road,secondary,,B,HIGH,no,A41,Galbraith,asphalt,3,35 mph,57,16
 19066572,Main Street,tertiary,yes,B,HIGH,no,A41,Main,,,25 mph,17,14
 552932630,Main Street,tertiary,,B,HIGH,no,A41,Main,,4,,17,14
 552932631,Main Street,tertiary,,B,HIGH,no,A41,Main,,3,,17,14
@@ -364,6 +345,25 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 552932682,Main Street,tertiary,,B,HIGH,no,A41,Main,,3,,17,14
 552932683,Main Street,tertiary,yes,B,HIGH,no,A41,Main,,2,25 mph,17,14
 701987361,Main Street,tertiary,,B,HIGH,no,A41,Main,,3,,17,14
+19059714,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,2,,19,11
+176067919,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,11
+535717337,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,3,,19,11
+535717338,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,11
+535717343,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,11
+535717346,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,11
+535717350,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,11
+543731989,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+566191015,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,11
+566191017,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+566191018,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+572219314,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+572219315,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,11
+669509978,Red Bank Expressway,motorway,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+715987089,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+715987091,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,4,45 mph,19,11
+715987092,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,11
+1395652703,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,2,45 mph,19,11
+1395652704,Red Bank Expressway,trunk,yes,B,HIGH,no,A41,Red Bank,,3,45 mph,19,11
 19057387,Duck Creek Road,tertiary,yes,B,HIGH,no,A41,Duck Creek,,2,35 mph,36,10
 19057392,Duck Creek Road,service,,B,HIGH,no,A41,,,,,36,10
 33871087,Duck Creek Road,tertiary,,B,HIGH,no,A41,Duck Creek,,4,35 mph,36,10
@@ -400,70 +400,39 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 564229995,Duck Creek Road,tertiary,yes,B,HIGH,no,A41,Duck Creek,,2,35 mph,36,10
 737201324,Duck Creek Road,tertiary,,B,HIGH,no,A41,Duck Creek,,3,35 mph,36,10
 737201325,Duck Creek Road,tertiary,,B,HIGH,no,A41,Duck Creek,,3,35 mph,36,10
-19056929,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-372672318,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-372672319,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-372828323,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-372828324,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-529042255,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-529042273,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,4,25 mph,33,10
-529042274,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-529042275,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-549080952,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-549080983,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-549080984,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-549080989,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-549080991,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-549080992,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-549080993,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-549081006,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-549081009,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-549081010,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-672424948,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-672424949,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-672424950,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-672424951,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-672425000,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-672425005,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-672425006,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-672425007,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-765889430,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-965209073,Hunt Road,secondary,yes,B,HIGH,no,A41,Hunt,,1,25 mph,33,10
-1080383548,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,10
-1136913973,Hunt Road,secondary,yes,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-1136913974,Hunt Road,secondary,yes,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-1147495690,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,10
-33112684,Ridge Road,residential,,B,HIGH,no,A41,Ridge,,,,31,8
-235008127,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,25 mph,31,8
-290686224,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,30 mph,31,8
-292800325,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,8
-529042223,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-529042224,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-529042225,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-529042226,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,35 mph,31,8
-529042233,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-529042240,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-545947799,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,30 mph,31,8
-545947800,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,30 mph,31,8
-549055547,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,30 mph,31,8
-549055548,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,30 mph,31,8
-549055550,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,asphalt,3,25 mph,31,8
-549055551,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,25 mph,31,8
-549055556,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,25 mph,31,8
-549055597,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,asphalt,3,25 mph,31,8
-553470571,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,35 mph,31,8
-553470577,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-553470584,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-553470741,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,8
-553470742,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-553470743,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,8
-553470759,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,8
-553470760,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,8
-760213503,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,35 mph,31,8
-1085292592,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,25 mph,31,8
-1085292594,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,25 mph,31,8
-1085292595,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,25 mph,31,8
-1160674113,Ridge Road,residential,,B,HIGH,no,A41,Ridge,,,,31,8
+19056929,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+372672318,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+372672319,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+372828323,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+372828324,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+529042255,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+529042273,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,4,25 mph,33,9
+529042274,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+529042275,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+549080952,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+549080983,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+549080984,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+549080989,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+549080991,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+549080992,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+549080993,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+549081006,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+549081009,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+549081010,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+672424948,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+672424949,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+672424950,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+672424951,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+672425000,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+672425005,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+672425006,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+672425007,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+765889430,Hunt Road,tertiary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+965209073,Hunt Road,secondary,yes,B,HIGH,no,A41,Hunt,,1,25 mph,33,9
+1080383548,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,3,25 mph,33,9
+1136913973,Hunt Road,secondary,yes,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+1136913974,Hunt Road,secondary,yes,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
+1147495690,Hunt Road,secondary,,B,HIGH,no,A41,Hunt,,2,25 mph,33,9
 19052236,Blue Ash Road,secondary,,B,HIGH,no,A41,Blue Ash,,2,25 mph,28,8
 23854352,Blue Ash Road,secondary,,B,HIGH,no,A41,Blue Ash,,3,25 mph,28,8
 23854354,Blue Ash Road,secondary,,B,HIGH,no,A41,Blue Ash,,2,25 mph,28,8
@@ -492,48 +461,59 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 827467760,Blue Ash Road,secondary,,B,HIGH,no,A41,Blue Ash,,3,25 mph,28,8
 827467761,Blue Ash Road,secondary,,B,HIGH,no,A41,Blue Ash,,3,25 mph,28,8
 1149573220,Blue Ash Road,secondary,,B,HIGH,no,A41,Blue Ash,,3,25 mph,28,8
-19055531,Highland Avenue,residential,,B,HIGH,no,A41,Highland,,,,22,7
-19055533,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,2,25 mph,22,7
-19055541,Highland Avenue,residential,,B,HIGH,no,A41,Highland,,,,22,7
-19060404,Highland Avenue,residential,,B,HIGH,no,A41,Highland,,3,25 mph,22,7
-19062833,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-223421968,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,7
-292959238,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,3,35 mph,22,7
-292959280,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,2,35 mph,22,7
-545947770,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-545947778,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-545947779,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,7
-545947780,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,7
-545947781,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-545947783,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-545947807,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-545947809,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,2,35 mph,22,7
-549055621,Highland Avenue,residential,,B,HIGH,no,A41,Highland,asphalt,,25 mph,22,7
-1368706451,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,7
-1368706452,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,asphalt,5,35 mph,22,7
-1369902451,Highland Avenue,residential,,B,HIGH,no,A41,Highland,asphalt,,25 mph,22,7
-1449985449,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,asphalt,5,35 mph,22,7
-1449985450,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,7
-19054713,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,4,,9,4
-298551126,Disney Avenue,service,yes,B,HIGH,no,A41,Disney,,,,9,4
-535706283,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,3,,9,4
-535706285,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,3,,9,4
-535706290,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,asphalt,3,,9,4
-535706296,Disney Avenue,residential,,B,HIGH,no,A41,Disney,,3,,9,4
-745244792,Disney Avenue,service,,B,HIGH,no,A41,Disney,,,,9,4
-1390381064,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,4,,9,4
-1390381065,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,3,,9,4
-19055257,Fox Run Drive,residential,,B,HIGH,no,A41,Fox Run,,,,7,4
-33112514,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,4
-33112528,Fox Run Drive,residential,,B,HIGH,no,A41,Fox Run,,,,7,4
-33112530,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,4
-372828325,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,4
-372828326,Fox Run Drive,residential,,B,HIGH,no,A41,Fox Run,,,,7,4
-372828327,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,4
-19058699,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,4
-322843816,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,4
-1173863210,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,4
-1173863212,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,4
+33112684,Ridge Road,residential,,B,HIGH,no,A41,Ridge,,,,31,7
+235008127,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,25 mph,31,7
+290686224,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,30 mph,31,7
+292800325,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,7
+529042223,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+529042224,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+529042225,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+529042226,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,35 mph,31,7
+529042233,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+529042240,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+545947799,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,30 mph,31,7
+545947800,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,30 mph,31,7
+549055547,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,30 mph,31,7
+549055548,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,30 mph,31,7
+549055550,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,asphalt,3,25 mph,31,7
+549055551,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,25 mph,31,7
+549055556,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,25 mph,31,7
+549055597,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,asphalt,3,25 mph,31,7
+553470571,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,35 mph,31,7
+553470577,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+553470584,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+553470741,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,7
+553470742,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+553470743,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,35 mph,31,7
+553470759,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,7
+553470760,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,,35 mph,31,7
+760213503,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,2,35 mph,31,7
+1085292592,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,4,25 mph,31,7
+1085292594,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,25 mph,31,7
+1085292595,Ridge Road,secondary,,B,HIGH,no,A41,Ridge,,3,25 mph,31,7
+1160674113,Ridge Road,residential,,B,HIGH,no,A41,Ridge,,,,31,7
+19055531,Highland Avenue,residential,,B,HIGH,no,A41,Highland,,,,22,6
+19055533,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,2,25 mph,22,6
+19055541,Highland Avenue,residential,,B,HIGH,no,A41,Highland,,,,22,6
+19060404,Highland Avenue,residential,,B,HIGH,no,A41,Highland,,3,25 mph,22,6
+19062833,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
+223421968,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,6
+292959238,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,3,35 mph,22,6
+292959280,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,2,35 mph,22,6
+545947770,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
+545947778,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
+545947779,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,6
+545947780,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,6
+545947781,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
+545947783,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
+545947807,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
+545947809,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,2,35 mph,22,6
+549055621,Highland Avenue,residential,,B,HIGH,no,A41,Highland,asphalt,,25 mph,22,6
+1368706451,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,5,35 mph,22,6
+1368706452,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,asphalt,5,35 mph,22,6
+1369902451,Highland Avenue,residential,,B,HIGH,no,A41,Highland,asphalt,,25 mph,22,6
+1449985449,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,asphalt,5,35 mph,22,6
+1449985450,Highland Avenue,tertiary,,B,HIGH,no,A41,Highland,,4,35 mph,22,6
 19065359,Kennedy Avenue,residential,,B,HIGH,no,A41,Kennedy,,,,24,3
 19065360,Kennedy Avenue,residential,,B,HIGH,no,A41,Kennedy,,,,24,3
 19065361,Kennedy Avenue,tertiary,,B,HIGH,no,A41,Kennedy,asphalt,2,,24,3
@@ -570,34 +550,15 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 690081722,Miami Avenue,secondary,,B,HIGH,no,A41,Miami,,2,35 mph,12,3
 1211064180,Miami Avenue,secondary,,B,HIGH,no,A41,Miami,asphalt,4,25 mph,12,3
 1211064181,Miami Avenue,secondary,,B,HIGH,no,A41,Miami,asphalt,4,25 mph,12,3
-19070000,Kugler Mill Road,residential,,B,HIGH,no,A41,Kugler Mill,,,,10,3
-19070007,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,asphalt,2,35 mph,10,3
-27499247,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,,,10,3
-27499250,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,,10,3
-28162989,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,35 mph,10,3
-41938307,Kugler Mill Road,unclassified,,B,HIGH,no,A41,Kugler Mill,,2,25 mph,10,3
-292931688,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,35 mph,10,3
-442364453,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,35 mph,10,3
-732966001,Kugler Mill Road,unclassified,,B,HIGH,no,A41,Kugler Mill,,2,25 mph,10,3
-1386309840,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,asphalt,2,35 mph,10,3
-19069543,Hunters Creek Drive,residential,,B,HIGH,no,A41,Hunters Creek,,,,6,3
-19069547,Hunters Creek Drive,residential,yes,AB,CRITICAL,no,A41,Hunters Creek,,,,6,3
-372939674,Hunters Creek Drive,residential,,B,HIGH,no,A41,Hunters Creek,,,,6,3
-372939675,Hunters Creek Drive,residential,yes,AB,CRITICAL,no,A41,Hunters Creek,,,,6,3
-613443616,Hunters Creek Drive,service,,B,HIGH,no,A41,Hunters Creek,,,,6,3
-613443621,Hunters Creek Drive,residential,,B,HIGH,no,A41,Hunters Creek,,,,6,3
-19071742,3rd Street,residential,,B,HIGH,no,A41,3rd,,,,4,3
-19071745,3rd Street,residential,yes,AB,CRITICAL,no,A41,3rd,,,,4,3
-68521687,3rd Street,residential,yes,AB,CRITICAL,no,A41,3rd,,,,4,3
-553022397,3rd Street,residential,yes,AB,CRITICAL,no,A41,3rd,,2,,4,3
-80318865,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,2,35 mph,4,3
-549055562,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,3,35 mph,4,3
-1081393430,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,3,35 mph,4,3
-1081393432,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,2,35 mph,4,3
-19053223,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,3
-19053224,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,3
-33971561,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,3
-33971564,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,3
+19054713,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,4,,9,3
+298551126,Disney Avenue,service,yes,B,HIGH,no,A41,Disney,,,,9,3
+535706283,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,3,,9,3
+535706285,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,3,,9,3
+535706290,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,asphalt,3,,9,3
+535706296,Disney Avenue,residential,,B,HIGH,no,A41,Disney,,3,,9,3
+745244792,Disney Avenue,service,,B,HIGH,no,A41,Disney,,,,9,3
+1390381064,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,4,,9,3
+1390381065,Disney Avenue,tertiary,,B,HIGH,no,A41,Disney,,3,,9,3
 19071439,East Columbia Avenue,secondary,,B,HIGH,no,A41,Columbia,,4,25 mph,10,2
 529042230,East Columbia Avenue,secondary,,B,HIGH,no,A41,Columbia,,3,25 mph,10,2
 553022332,East Columbia Avenue,secondary,,B,HIGH,no,A41,Columbia,,4,25 mph,10,2
@@ -608,6 +569,29 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 1422966354,East Columbia Avenue,secondary,,B,HIGH,no,A41,Columbia,,3,25 mph,10,2
 1422966355,East Columbia Avenue,secondary,,B,HIGH,no,A41,Columbia,,3,25 mph,10,2
 1499850386,East Columbia Avenue,secondary,,B,HIGH,no,A41,Columbia,,2,25 mph,10,2
+19070000,Kugler Mill Road,residential,,B,HIGH,no,A41,Kugler Mill,,,,10,2
+19070007,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,asphalt,2,35 mph,10,2
+27499247,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,,,10,2
+27499250,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,,10,2
+28162989,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,35 mph,10,2
+41938307,Kugler Mill Road,unclassified,,B,HIGH,no,A41,Kugler Mill,,2,25 mph,10,2
+292931688,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,35 mph,10,2
+442364453,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,,2,35 mph,10,2
+732966001,Kugler Mill Road,unclassified,,B,HIGH,no,A41,Kugler Mill,,2,25 mph,10,2
+1386309840,Kugler Mill Road,tertiary,,B,HIGH,no,A41,Kugler Mill,asphalt,2,35 mph,10,2
+19055257,Fox Run Drive,residential,,B,HIGH,no,A41,Fox Run,,,,7,2
+33112514,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,2
+33112528,Fox Run Drive,residential,,B,HIGH,no,A41,Fox Run,,,,7,2
+33112530,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,2
+372828325,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,2
+372828326,Fox Run Drive,residential,,B,HIGH,no,A41,Fox Run,,,,7,2
+372828327,Fox Run Drive,residential,yes,AB,CRITICAL,no,A41,Fox Run,,,,7,2
+19069543,Hunters Creek Drive,residential,,B,HIGH,no,A41,Hunters Creek,,,,6,2
+19069547,Hunters Creek Drive,residential,yes,AB,CRITICAL,no,A41,Hunters Creek,,,,6,2
+372939674,Hunters Creek Drive,residential,,B,HIGH,no,A41,Hunters Creek,,,,6,2
+372939675,Hunters Creek Drive,residential,yes,AB,CRITICAL,no,A41,Hunters Creek,,,,6,2
+613443616,Hunters Creek Drive,service,,B,HIGH,no,A41,Hunters Creek,,,,6,2
+613443621,Hunters Creek Drive,residential,,B,HIGH,no,A41,Hunters Creek,,,,6,2
 19052119,Stewart Avenue,residential,,B,HIGH,no,A41,Stewart,,,,6,2
 22768492,Stewart Avenue,tertiary,,B,HIGH,no,A41,Stewart,asphalt,2,35 mph,6,2
 570464427,Stewart Avenue,tertiary,,B,HIGH,no,A41,Stewart,,3,35 mph,6,2
@@ -619,16 +603,25 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 322843748,Commons Road,residential,,B,HIGH,no,A41,Commons,,,,5,2
 322843749,Commons Road,residential,,B,HIGH,no,A41,Commons,,,,5,2
 322843799,Commons Road,residential,,B,HIGH,no,A41,Commons,,,,5,2
-19063956,Strathmore Drive,residential,yes,AB,CRITICAL,no,A41,Strathmore,,,25 mph,4,2
-74288883,Strathmore Drive,residential,,B,HIGH,no,A41,Strathmore,,,,4,2
-74288937,Strathmore Drive,residential,yes,AB,CRITICAL,no,A41,Strathmore,,,25 mph,4,2
-737201322,Strathmore Drive,residential,yes,AB,CRITICAL,no,A41,Strathmore,,2,25 mph,4,2
+19071742,3rd Street,residential,,B,HIGH,no,A41,3rd,,,,4,2
+19071745,3rd Street,residential,yes,AB,CRITICAL,no,A41,3rd,,,,4,2
+68521687,3rd Street,residential,yes,AB,CRITICAL,no,A41,3rd,,,,4,2
+553022397,3rd Street,residential,yes,AB,CRITICAL,no,A41,3rd,,2,,4,2
+19058699,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,2
+322843816,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,2
+1173863210,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,2
+1173863212,Indiancreek Road,residential,yes,AB,CRITICAL,no,A41,Indiancreek,,,,4,2
+80318865,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,2,35 mph,4,2
+549055562,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,3,35 mph,4,2
+1081393430,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,3,35 mph,4,2
+1081393432,Losantiville Avenue,tertiary,,B,HIGH,no,A41,Losantiville,,2,35 mph,4,2
+19053223,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,2
+19053224,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,2
+33971561,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,2
+33971564,Troon Court,residential,,B,HIGH,no,A41,Troon,,,,4,2
 19070482,Superior Avenue,residential,,B,HIGH,no,A41,Superior,,,,3,2
 549055688,Superior Avenue,residential,,B,HIGH,no,A41,Superior,,,,3,2
 1149015123,Superior Avenue,residential,,B,HIGH,no,A41,Superior,,,,3,2
-19070432,William Henry Harrison Lane,residential,,B,HIGH,no,A41,William Henry Harrison,,,,3,2
-1182791767,William Henry Harrison Lane,residential,,B,HIGH,no,A41,William Henry Harrison,,,,3,2
-1182791768,William Henry Harrison Lane,residential,,B,HIGH,no,A41,William Henry Harrison,,,,3,2
 19063855,Woodford Road,tertiary,,B,HIGH,no,A41,Woodford,,3,30 mph,10,1
 59685733,Woodford Road,tertiary,,B,HIGH,no,A41,Woodford,,3,30 mph,10,1
 549055549,Woodford Road,tertiary,,B,HIGH,no,A41,Woodford,,2,30 mph,10,1
@@ -679,6 +672,10 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 19054906,Ohio Avenue,residential,,B,HIGH,no,A41,Ohio,,,,4,1
 549055622,Ohio Avenue,residential,,B,HIGH,no,A41,Ohio,,,,4,1
 549055626,Ohio Avenue,residential,,B,HIGH,no,A41,Ohio,,3,,4,1
+19063956,Strathmore Drive,residential,yes,AB,CRITICAL,no,A41,Strathmore,,,25 mph,4,1
+74288883,Strathmore Drive,residential,,B,HIGH,no,A41,Strathmore,,,,4,1
+74288937,Strathmore Drive,residential,yes,AB,CRITICAL,no,A41,Strathmore,,,25 mph,4,1
+737201322,Strathmore Drive,residential,yes,AB,CRITICAL,no,A41,Strathmore,,2,25 mph,4,1
 19063684,Darnell Avenue,residential,yes,AB,CRITICAL,no,A41,Darnell,,,,3,1
 638948925,Darnell Avenue,residential,,B,HIGH,no,A41,Darnell,,,,3,1
 919619938,Darnell Avenue,residential,yes,AB,CRITICAL,no,A41,Darnell,,2,,3,1
@@ -703,6 +700,9 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 570461724,Ward Street,residential,,B,HIGH,no,A41,Ward,,,,3,1
 741934350,Ward Street,residential,yes,AB,CRITICAL,no,A41,Ward,,,,3,1
 741934352,Ward Street,residential,,B,HIGH,no,A41,Ward,,,,3,1
+19070432,William Henry Harrison Lane,residential,,B,HIGH,no,A41,William Henry Harrison,,,,3,1
+1182791767,William Henry Harrison Lane,residential,,B,HIGH,no,A41,William Henry Harrison,,,,3,1
+1182791768,William Henry Harrison Lane,residential,,B,HIGH,no,A41,William Henry Harrison,,,,3,1
 19052090,Beredith Place,residential,,B,HIGH,no,A41,Beredith,,,,2,1
 19052091,Beredith Place,residential,,B,HIGH,no,A41,Beredith,,,,2,1
 19068023,Blome Road,tertiary,,B,HIGH,no,A41,Blome,asphalt,2,35 mph,2,1

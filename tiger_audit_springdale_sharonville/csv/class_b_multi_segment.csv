@@ -1,155 +1,124 @@
 id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_name_base,surface,lanes,maxspeed,_street_segments,_street_gap_count
-19063562,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,59
-27669425,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-27669426,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
-28162292,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
-28162293,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
-33655264,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-33655265,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,59
-33655286,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-33655297,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-41935299,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,59
-79248283,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-79248287,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-372671723,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116827,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116830,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
-549116833,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
-549116834,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116836,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116837,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,59
-549116838,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116839,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116840,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116841,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116842,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116843,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116853,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116862,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116863,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-549116868,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-549116877,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553002807,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002808,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
-553002809,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002810,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002811,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553002812,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002813,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002814,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002822,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002823,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002825,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002838,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553002843,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553002847,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553002850,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,59
-553002852,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,59
-553002857,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553002862,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553002863,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553002864,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553002887,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
-553002890,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
-553002891,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
-553148241,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,,120,59
-553148242,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148243,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148244,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148245,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148246,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148247,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148248,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,59
-553148250,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,59
-553148251,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
-553148252,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
-553148320,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
-553225449,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225451,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553225452,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553225453,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225454,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225455,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225465,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225466,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225467,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225472,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225478,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225480,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225483,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225484,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225485,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225490,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225491,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553225493,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225494,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,59
-553225495,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225498,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553225499,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553378390,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553378394,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,59
-553378397,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,59
-553378398,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,59
-553378399,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553378400,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,59
-553378403,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-553378404,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,59
-553378410,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-553378411,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553378412,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-553378559,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
-705294795,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
-753108627,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-753108628,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-762784443,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
-762784444,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,59
-887751604,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,59
-887751605,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
-887751607,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,59
-887751609,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,59
-887751610,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
-887751611,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,59
-887751612,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-887751617,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-887751622,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-887751623,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,59
-887777400,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,59
-1150839680,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-1150839688,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-1150839689,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,59
-1304161311,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,59
-1415323024,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,59
-19053606,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
-531487351,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,4,,12,19
-531487374,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
-531487378,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,3,,12,19
-531487379,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,3,,12,19
-544231775,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,asphalt,4,,12,19
-660503348,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,,,,12,19
-730051975,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,asphalt,4,,12,19
-730051976,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
-730051977,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
-730051978,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
-1450208279,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,19
-19071025,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,12
-208937331,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,,19,12
-222481039,West Kemper Road,secondary,no,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
-531487444,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
-531746310,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,2,,19,12
-531746319,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,3,,19,12
-531746349,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,,19,12
-531746355,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,4,,19,12
-531746361,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
-531746366,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
-531746373,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
-531746376,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,12
-531746377,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,12
-545769990,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,6,35 mph,19,12
-627151535,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,4,35 mph,19,12
-627151536,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,2,35 mph,19,12
-840371034,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,6,35 mph,19,12
-840371035,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,6,35 mph,19,12
-840400514,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,12
+19063562,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,34
+27669425,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+27669426,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,34
+28162292,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,34
+28162293,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,34
+33655264,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+33655265,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,34
+33655286,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+33655297,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+41935299,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,34
+79248283,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+79248287,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+372671723,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116827,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116830,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,34
+549116833,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,34
+549116834,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116836,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116837,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,34
+549116838,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116839,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116840,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116841,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116842,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116843,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116853,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116862,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116863,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+549116868,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+549116877,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553002807,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002808,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,34
+553002809,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002810,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002811,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553002812,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002813,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002814,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002822,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002823,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002825,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002838,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553002843,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553002847,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553002850,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,1,35 mph,120,34
+553002852,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,35 mph,120,34
+553002857,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553002862,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553002863,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553002864,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553002887,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,34
+553002890,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,34
+553002891,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,34
+553148241,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,,120,34
+553148242,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148243,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148244,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148245,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148246,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148247,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148248,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,34
+553148250,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,,120,34
+553148251,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,34
+553148252,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,34
+553148320,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,34
+553225449,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225451,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553225452,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553225453,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225454,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225455,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225465,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225466,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225467,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225472,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225478,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225480,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225483,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225484,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225485,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225490,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225491,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553225493,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225494,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,34
+553225495,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225498,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553225499,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553378390,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553378394,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,34
+553378397,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,34
+553378398,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,4,35 mph,120,34
+553378399,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553378400,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,34
+553378403,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+553378404,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,35 mph,120,34
+553378410,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+553378411,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553378412,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+553378559,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,34
+705294795,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,34
+753108627,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+753108628,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+762784443,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,34
+762784444,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,,35 mph,120,34
+887751604,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,34
+887751605,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,34
+887751607,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,,120,34
+887751609,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,,120,34
+887751610,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,34
+887751611,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,7,,120,34
+887751612,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+887751617,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+887751622,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+887751623,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,6,35 mph,120,34
+887777400,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,8,,120,34
+1150839680,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+1150839688,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+1150839689,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,2,35 mph,120,34
+1304161311,Glendale Milford Road,secondary,,B,HIGH,no,A31,Glendale Milford,,5,35 mph,120,34
+1415323024,Glendale Milford Road,secondary,yes,B,HIGH,no,A31,Glendale Milford,,3,,120,34
 19062934,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,,42,11
 27669437,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
 27669465,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,4,,42,11
@@ -192,51 +161,59 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 1147495719,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,,5,,42,11
 1372284738,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,,42,11
 1420151543,East Sharon Road,secondary,,B,HIGH,no,A41,Sharon,asphalt,3,35 mph,42,11
-19064676,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
-531487390,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,10
-531487396,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,10
-531487399,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
-531487400,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
-531487401,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
-531487402,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,10
-531487421,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,10
-531487422,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,6,35 mph,22,10
-531487423,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,7,35 mph,22,10
-531487424,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,5,35 mph,22,10
-531657999,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,10
-531658000,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
-531658001,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,10
-531658002,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
-531658003,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
-531658004,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,10
-531658005,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,,35 mph,22,10
-671732880,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,10
-671732881,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
-1374689928,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
-1374689929,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,10
-52096952,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-208937339,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-531657994,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-531657995,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
-531657996,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
-531657997,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-532001118,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
-532001119,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-532001120,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
-532001121,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-532001124,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,8
-671732942,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,8
-372671724,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,11,7
-549080898,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
-549116828,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,7
-549116829,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,7
-549116831,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,11,7
-549116832,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,7
-670135674,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
-725759808,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
-725759809,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
-725759814,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
-725759815,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,7
+19053606,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,9
+531487351,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,4,,12,9
+531487374,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,9
+531487378,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,3,,12,9
+531487379,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,3,,12,9
+544231775,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,asphalt,4,,12,9
+660503348,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,,,,12,9
+730051975,Kemper Commons Circle,residential,,B,HIGH,no,A41,Kemper Commons,asphalt,4,,12,9
+730051976,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,9
+730051977,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,9
+730051978,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,9
+1450208279,Kemper Commons Circle,residential,yes,AB,CRITICAL,no,A41,Kemper Commons,asphalt,2,,12,9
+19064676,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,8
+531487390,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,8
+531487396,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,8
+531487399,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,8
+531487400,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,8
+531487401,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,8
+531487402,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,3,35 mph,22,8
+531487421,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,4,35 mph,22,8
+531487422,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,6,35 mph,22,8
+531487423,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,7,35 mph,22,8
+531487424,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,5,35 mph,22,8
+531657999,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,8
+531658000,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,8
+531658001,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,8
+531658002,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,8
+531658003,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,8
+531658004,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,3,35 mph,22,8
+531658005,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,asphalt,,35 mph,22,8
+671732880,Tri-County Parkway East,residential,,B,HIGH,no,A41,Tri County,,,35 mph,22,8
+671732881,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,8
+1374689928,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,8
+1374689929,Tri-County Parkway East,residential,yes,AB,CRITICAL,no,A41,Tri County,,,35 mph,22,8
+19071025,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,7
+208937331,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,,19,7
+222481039,West Kemper Road,secondary,no,B,HIGH,no,A41,Kemper,,5,35 mph,19,7
+531487444,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,7
+531746310,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,2,,19,7
+531746319,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,3,,19,7
+531746349,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,,19,7
+531746355,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,4,,19,7
+531746361,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,7
+531746366,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,7
+531746373,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,7
+531746376,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,7
+531746377,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,,5,35 mph,19,7
+545769990,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,6,35 mph,19,7
+627151535,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,4,35 mph,19,7
+627151536,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,2,35 mph,19,7
+840371034,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,asphalt,6,35 mph,19,7
+840371035,West Kemper Road,secondary,yes,B,HIGH,no,A41,Kemper,,6,35 mph,19,7
+840400514,West Kemper Road,secondary,,B,HIGH,no,A41,Kemper,asphalt,5,35 mph,19,7
 18981220,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,6,,37,6
 31735683,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,2,,37,6
 32031629,East Crescentville Road,tertiary,,B,HIGH,no,A41,Crescentville,,3,,37,6
@@ -305,30 +282,37 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 553225446,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,5,,31,6
 553225447,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,3,,31,6
 553225448,Chester Road,tertiary,,B,HIGH,no,A41,Chester,,4,,31,6
-31890369,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-31890371,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-530904820,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-530904821,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-542673606,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,4,,20,6
-542673607,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,4,40 mph,20,6
-542673611,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-542673612,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-542673614,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-542673615,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,5,40 mph,20,6
-542673616,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,4,40 mph,20,6
-543087099,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-543087104,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-543087106,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-543087107,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-680116108,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,,,20,6
-1410885743,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-1410885744,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-1456808950,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,6
-1456808951,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,6
-19069009,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,6
-200417091,Bishopsgate Drive,residential,,B,HIGH,no,A41,Bishopsgate,,,,4,6
-200417095,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,6
-200417118,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,6
+372671724,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,25 mph,11,6
+549080898,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,11,6
+549116828,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,6
+549116829,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,6
+549116831,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,25 mph,11,6
+549116832,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,3,35 mph,11,6
+670135674,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,6
+725759808,Plainfield Road,tertiary,,B,HIGH,no,A41,Plainfield,,,35 mph,11,6
+725759809,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,6
+725759814,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,6
+725759815,Plainfield Road,tertiary,yes,B,HIGH,no,A41,Plainfield,,,35 mph,11,6
+31890369,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+31890371,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+530904820,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+530904821,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+542673606,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,4,,20,5
+542673607,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,4,40 mph,20,5
+542673611,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+542673612,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
+542673614,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
+542673615,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,5,40 mph,20,5
+542673616,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,4,40 mph,20,5
+543087099,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
+543087104,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+543087106,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
+543087107,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
+680116108,Allen Road,tertiary,,B,HIGH,no,A41,Allen,asphalt,,,20,5
+1410885743,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+1410885744,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
+1456808950,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,,40 mph,20,5
+1456808951,Allen Road,tertiary,,B,HIGH,no,A41,Allen,,3,40 mph,20,5
 19064572,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
 531391793,Mosteller Road,secondary,,B,HIGH,no,A41,Mosteller,,5,,19,5
 531391794,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,5,,19,5
@@ -348,11 +332,18 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 762198937,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
 767466454,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
 767466455,Mosteller Road,tertiary,,B,HIGH,no,A41,Mosteller,,4,,19,5
-19071957,Brandywine Drive,residential,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
-19071959,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
-61357367,Brandywine Drive,residential,yes,AB,CRITICAL,no,A41,Brandywine,asphalt,,,5,5
-61357368,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
-61357380,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,5
+52096952,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+208937339,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+531657994,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+531657995,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,5
+531657996,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,5
+531657997,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+532001118,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,5
+532001119,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+532001120,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,5
+532001121,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+532001124,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,2,35 mph,12,5
+671732942,Northland Boulevard,secondary,yes,B,HIGH,no,A41,Northland,,3,35 mph,12,5
 18982971,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,3,,16,4
 543087073,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,,16,4
 543087076,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,asphalt,4,45 mph,16,4
@@ -369,13 +360,10 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 543087114,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,2,,16,4
 543087116,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,4,,16,4
 543087118,Cincinnati-Dayton Road,secondary,,B,HIGH,no,A41,Cincinnati Dayton,,3,45 mph,16,4
-68507296,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,4
-549116857,Lake Forest Drive,residential,,B,HIGH,no,A41,Lake Forest,,,,7,4
-549117004,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,3,,7,4
-549117009,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,4
-549117013,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,3,,7,4
-549117018,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,4
-1162425976,Lake Forest Drive,residential,,B,HIGH,no,A41,Lake Forest,,,,7,4
+19069009,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,4
+200417091,Bishopsgate Drive,residential,,B,HIGH,no,A41,Bishopsgate,,,,4,4
+200417095,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,4
+200417118,Bishopsgate Drive,residential,yes,AB,CRITICAL,no,A41,Bishopsgate,asphalt,,,4,4
 32708907,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
 32708908,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
 36828573,Mulhauser Road,secondary,,B,HIGH,no,A41,Mulhauser,,4,55 mph,31,3
@@ -459,14 +447,6 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 549116852,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,,,,9,3
 553002792,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,asphalt,3,,9,3
 553002799,McKinley Road,residential,,B,HIGH,no,A41,Mc Kinley,asphalt,3,,9,3
-19071713,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
-203976729,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
-1019963872,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
-1019963873,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,3,,8,3
-1019963874,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,3,,8,3
-1019963875,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,,,8,3
-1019963876,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,,,8,3
-1019963877,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,3
 19062784,Dixie Court,residential,,B,HIGH,no,A41,Dixie,,,,7,3
 52432057,Dixie Court,path,,B,HIGH,no,A41,Dixie,,,,7,3
 921937911,Dixie Court,residential,,B,HIGH,no,A41,Dixie,,,,7,3
@@ -474,10 +454,11 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 995631885,Dixie Court,service,,B,HIGH,no,A41,Dixie,,,,7,3
 995631886,Dixie Court,service,,B,HIGH,no,A41,Dixie,,,,7,3
 1265842052,Dixie Court,service,,B,HIGH,no,A41,Dixie,,,,7,3
-19054183,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,3
-1054992606,Maple Knoll Terrace,residential,,B,HIGH,no,A41,Maple Knoll,asphalt,,,4,3
-1054992607,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,3
-1054992608,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,3
+19071957,Brandywine Drive,residential,,B,HIGH,no,A41,Brandywine,asphalt,,,5,3
+19071959,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,3
+61357367,Brandywine Drive,residential,yes,AB,CRITICAL,no,A41,Brandywine,asphalt,,,5,3
+61357368,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,3
+61357380,Brandywine Drive,service,,B,HIGH,no,A41,Brandywine,asphalt,,,5,3
 19063301,Creek Road,tertiary,,B,HIGH,no,A41,Creek,,,25 mph,13,2
 19063302,Creek Road,residential,,B,HIGH,no,A41,Creek,asphalt,,,13,2
 206064171,Creek Road,tertiary,,B,HIGH,no,A41,Creek,asphalt,3,,13,2
@@ -502,6 +483,14 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 531657993,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,3,,11,2
 763074073,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,,,11,2
 763074074,Tri-County Parkway,tertiary,,B,HIGH,no,A41,Tri County,,,,11,2
+19071713,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,2
+203976729,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,2
+1019963872,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,2
+1019963873,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,3,,8,2
+1019963874,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,3,,8,2
+1019963875,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,,,8,2
+1019963876,Commerce Boulevard,residential,,B,HIGH,no,A41,Commerce,,,,8,2
+1019963877,Commerce Boulevard,residential,yes,AB,CRITICAL,no,A41,Commerce,,,,8,2
 19058276,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,,35 mph,7,2
 531207199,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,4,,7,2
 531207200,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,3,,7,2
@@ -509,13 +498,6 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 531207202,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,4,,7,2
 531207203,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,,,7,2
 921637537,Hauck Road,residential,,B,HIGH,no,A41,Hauck,,,,7,2
-19059057,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,2
-61353105,Old Commons Drive,residential,yes,AB,CRITICAL,no,A41,Commons,asphalt,,,7,2
-61353224,Old Commons Drive,residential,yes,AB,CRITICAL,no,A41,Commons,asphalt,,,7,2
-531487381,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,7,2
-531487382,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,2
-730046456,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,2
-730046457,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,7,2
 19060664,Allenhurst Boulevard East,residential,,B,HIGH,no,A41,Allenhurst,,,,5,2
 112262550,Allenhurst Boulevard East,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,5,2
 112262553,Allenhurst Boulevard East,residential,yes,AB,CRITICAL,no,A41,Allenhurst,asphalt,,,5,2
@@ -539,6 +521,10 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 767855730,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
 923280457,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
 923280458,Chesterdale Drive,service,,B,HIGH,no,A41,Chesterdale,,,,4,2
+19054183,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,2
+1054992606,Maple Knoll Terrace,residential,,B,HIGH,no,A41,Maple Knoll,asphalt,,,4,2
+1054992607,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,2
+1054992608,Maple Knoll Terrace,residential,yes,AB,CRITICAL,no,A41,Maple Knoll,asphalt,,,4,2
 19056371,Executive Park Drive,residential,yes,AB,CRITICAL,no,A41,Executive Park,,,,3,2
 531207187,Executive Park Drive,residential,,B,HIGH,no,A41,Executive Park,,,,3,2
 531207188,Executive Park Drive,residential,yes,AB,CRITICAL,no,A41,Executive Park,,,,3,2
@@ -613,6 +599,13 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 553148254,Evendale Drive,tertiary,,B,HIGH,no,A63,,,3,,7,1
 887751603,Evendale Drive,tertiary,,B,HIGH,no,A63,,,2,,7,1
 921637535,Evendale Drive,tertiary,,B,HIGH,no,A41,Evendale,,,,7,1
+68507296,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,1
+549116857,Lake Forest Drive,residential,,B,HIGH,no,A41,Lake Forest,,,,7,1
+549117004,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,3,,7,1
+549117009,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,1
+549117013,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,3,,7,1
+549117018,Lake Forest Drive,residential,yes,AB,CRITICAL,no,A41,Lake Forest,,,,7,1
+1162425976,Lake Forest Drive,residential,,B,HIGH,no,A41,Lake Forest,,,,7,1
 27669440,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,,,7,1
 36897218,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,3,,7,1
 553148175,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,,,7,1
@@ -620,6 +613,13 @@ id,name,highway,oneway,defect_class,severity,tiger_reviewed,tiger_cfcc,tiger_nam
 739365778,Medallion Drive,tertiary,,B,HIGH,no,A41,Medallion,,,,7,1
 739365779,Medallion Drive,tertiary,yes,B,HIGH,no,A41,Medallion,,,,7,1
 1263286320,Medallion Drive,tertiary,no,B,HIGH,no,A41,Medallion,,,,7,1
+19059057,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,1
+61353105,Old Commons Drive,residential,yes,AB,CRITICAL,no,A41,Commons,asphalt,,,7,1
+61353224,Old Commons Drive,residential,yes,AB,CRITICAL,no,A41,Commons,asphalt,,,7,1
+531487381,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,7,1
+531487382,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,1
+730046456,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,3,,7,1
+730046457,Old Commons Drive,residential,,B,HIGH,no,A41,Commons,asphalt,,,7,1
 18985680,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
 18985682,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
 84231463,Columbia Circle,residential,,B,HIGH,no,A41,Columbia,,,,6,1
