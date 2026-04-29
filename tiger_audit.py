@@ -114,6 +114,9 @@ def _prune_old_cache(data_dir: Path, zone_key: str, keep_newest: int = 3) -> Non
                 print(f"  Could not prune {old.name}: {exc}")
 
 
+SANITY_THRESHOLD = 100
+
+
 def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
     zone = ZONES[zone_key]
     query = overpass_query(zone["bbox"])
@@ -192,10 +195,12 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
             raise RuntimeError(
                 f"Overpass JSON missing 'elements' array. First 500 chars:\n{snippet}"
             )
-        if len(elements) < 100:
+        if len(elements) < SANITY_THRESHOLD:
             print(
-                f"  WARNING: only {len(elements)} elements returned (sanity threshold 100)"
+                f"  WARNING: only {len(elements)} elements returned (sanity threshold {SANITY_THRESHOLD})"
             )
+            payload["_under_threshold"] = True
+            payload["_element_count"] = len(elements)
         out_file = data_dir / f"{zone_key}_raw_{_utc_stamp()}.json"
         with out_file.open("w", encoding="utf-8") as fh:
             json.dump(payload, fh, ensure_ascii=False, indent=2)
@@ -399,6 +404,7 @@ def classify(raw: dict) -> dict:
         ),
         "gaps_found": len(gaps),
         "ways_missing_geom": skipped_geom,
+        "under_sanity_threshold": bool(raw.get("_under_threshold", False)),
         "by_highway": dict(by_highway),
         "by_class": dict(by_class),
     }
@@ -496,6 +502,22 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
             f"Source: Overpass API live query | Bbox (S,W,N,E): {zone['bbox']}"
         ),
     ).font = Font(name="Arial", size=10, italic=True, color="555555")
+
+    if stats.get("under_sanity_threshold"):
+        warn = ws.cell(
+            row=3,
+            column=1,
+            value=(
+                f"WARNING: Overpass returned fewer than {SANITY_THRESHOLD} elements "
+                f"for this zone. The audit may be based on a truncated or stale "
+                f"dataset — re-run with network access before treating these "
+                f"counts as authoritative."
+            ),
+        )
+        warn.font = Font(name="Arial", size=10, bold=True, color="9C0006")
+        warn.fill = CRIT_FILL
+        warn.alignment = Alignment(wrap_text=True, vertical="center")
+        ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=3)
 
     headers = ["Metric", "Count", "Significance"]
     for col, h in enumerate(headers, start=1):
@@ -667,7 +689,14 @@ def write_xlsx(classified: dict, zone_key: str, out_path: Path, query_text: str,
             seg: int | str = stats["total"]
             severity_for_row = "OK"
         else:
-            other_csv = Path(f"tiger_audit_{k}/csv/all_ways.csv")
+            # Anchor to the script's directory so the cross-zone check works
+            # regardless of CWD. Falls back to CWD-relative if __file__ isn't
+            # resolvable for any reason.
+            try:
+                workspace = Path(__file__).resolve().parent
+            except NameError:
+                workspace = Path.cwd()
+            other_csv = workspace / f"tiger_audit_{k}" / "csv" / "all_ways.csv"
             if other_csv.exists():
                 try:
                     with other_csv.open("r", encoding="utf-8") as fh:
@@ -1874,6 +1903,14 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
     )
 
     audit_ts = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    # NOTE: compact_stats semantics differ from per-zone summary_stats and the
+    # all_zones_summary.csv columns. Here `class_a` / `class_b` / `class_ab` /
+    # `class_c` are DISJOINT counts (a way is counted in exactly one), to feed
+    # the dashboard's separate KPI cards. The CSV's `class_a_count` column
+    # follows the per-zone convention where it includes AB ways (matching
+    # `summary_stats["class_a_count"] = len(class_a)` from `classify()`). Both
+    # are correct for their artifact; do not "reconcile" them by changing the
+    # dashboard or the CSV — they intentionally measure different things.
     compact_stats = {
         "total": total,
         "residential": residential,
