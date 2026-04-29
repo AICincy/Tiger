@@ -1,6 +1,6 @@
 # Tiger — TIGER/Line Defect Audit for SORTA MetroNow
 
-**Live dashboards:** https://aicincy.github.io/Tiger/
+**Live dashboards:** https://aicincy.github.io/Tiger/ &middot; **Methods writeup:** [author.html](https://aicincy.github.io/Tiger/author.html)
 
 A read-only OpenStreetMap audit pipeline that finds routing-breaking defects in
 unreviewed 2007–2008 TIGER/Line Census road segments inside Hamilton County, OH
