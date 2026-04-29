@@ -396,8 +396,8 @@
   <pre><code>[out:json][timeout:180];
 way["highway"]["tiger:reviewed"="no"]
   (s, w, n, e);
-out geom tags;</code></pre>
-  <p>The <code>out geom tags</code> directive returns the full coordinate array of every way inline, supporting endpoint-based topology analysis without a second-round trip. The primary endpoint is <code>https://overpass-api.de/api/interpreter</code>; on transient failure the pipeline retries against the kumi.systems mirror and, only on full upstream failure, falls back to the most recent locally cached snapshot, with a console warning when cache age exceeds 14&nbsp;days. A JSON-<code>null</code> response is treated as retryable rather than as a successful empty fetch. Each successful fetch is persisted as a timestamped snapshot for reproducibility; snapshots older than 14&nbsp;days are auto-pruned with the three most recent retained per zone.</p>
+out tags geom;</code></pre>
+  <p>The <code>out tags geom</code> directive returns the full coordinate array of every way inline, supporting endpoint-based topology analysis without a second-round trip. The primary endpoint is <code>https://overpass-api.de/api/interpreter</code>; on transient failure the pipeline retries against the kumi.systems mirror and, only on full upstream failure, falls back to the most recent locally cached snapshot, with a console warning when cache age exceeds 14&nbsp;days. A JSON-<code>null</code> response is treated as retryable rather than as a successful empty fetch. Each successful fetch is persisted as a timestamped snapshot for reproducibility; snapshots older than 14&nbsp;days are auto-pruned with the three most recent retained per zone.</p>
 
   <h3>3.2 Defect classification</h3>
   <p>Each unreviewed way <em>w</em> is assigned to exactly one of four disjoint classes:</p>

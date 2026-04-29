@@ -201,7 +201,7 @@ tiger_audit_blue_ash_montgomery/reports/TIGER-Audit-Blue-Ash-Montgomery-Dashboar
 
 ## Pipeline
 
-1. **Fetch.** A single Overpass query per zone, with retry against the kumi.systems mirror on transient failure. The query emits `out geom tags;` so polylines arrive inline. Falls back to the most recent locally cached snapshot (sorted by mtime; warned past 14 days) only on full upstream failure. JSON-`null` responses are retryable. A non-dict payload from either fetch path raises a source-labelled `RuntimeError` with a bounded snippet of the offending payload.
+1. **Fetch.** A single Overpass query per zone, with retry against the kumi.systems mirror on transient failure. The query emits `out tags geom;` so polylines arrive inline. Falls back to the most recent locally cached snapshot (sorted by mtime; warned past 14 days) only on full upstream failure. JSON-`null` responses are retryable. A non-dict payload from either fetch path raises a source-labelled `RuntimeError` with a bounded snippet of the offending payload.
 2. **Classify.** Group ways by case-insensitive normalised name, apply the four disjoint class predicates, then run the 30 m endpoint-distance heuristic across all Class B streets and collapse pairwise candidates within 5 m on the same street to a single representative.
 3. **XLSX.** `openpyxl` produces the eight-sheet workbook. Totals, percentages, and volunteer-hour columns are real Excel formulas, not pre-computed values.
 4. **Dashboard HTML.** Single self-contained file; defect data is embedded as compact JSON; Leaflet, Leaflet.heat, and Leaflet.markercluster are loaded from CDN.
