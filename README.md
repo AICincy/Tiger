@@ -172,6 +172,18 @@ python3 tiger_audit.py --zone all                   # all four zones + combined 
 
 Outputs land in `tiger_audit_<zone_key>/` next to the script. The pipeline anchors all writes and cross-zone reads to the script's directory, so the working directory at invocation time does not affect output location. Raw Overpass JSON is timestamped; re-runs accumulate snapshots without overwriting historical data, with snapshots older than 14 days auto-pruned to keep the three most recent per zone.
 
+### Offline reproducibility
+
+Three flags support offline reruns and self-verification:
+
+```bash
+python3 tiger_audit.py --zone all --from-cache              # skip API; use newest cached JSON per zone
+python3 tiger_audit.py --zone blue_ash_montgomery --from-csv # rebuild from CSVs (skip fetch + classify)
+python3 tiger_audit.py --zone all --from-cache --self-test   # offline rerun + count check vs reference CSV
+```
+
+`--from-cache` and `--from-csv` are mutually exclusive sources. `--self-test` compares per-zone counts against `tiger_audit_all_zones/all_zones_summary.csv` and exits 0 on full match, 1 on any mismatch. With `--from-csv`, dashboard maps render blank (CSVs do not carry coordinates) but tabular outputs and counts are fully functional.
+
 ---
 
 ## Sample run (Blue Ash / Montgomery, 2026-04-28)
