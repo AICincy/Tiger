@@ -6,6 +6,40 @@ All notable changes to the TIGER/Line audit pipeline.
 
 _Empty — next batch of changes lands here._
 
+## [2026-04-30] — Reproducibility CLI flags
+
+### `--from-cache`
+- New CLI flag that skips the live Overpass API fetch and reads directly
+  from the newest cached JSON in `data/`. `fetch_overpass()` gains a
+  `force_cache` keyword parameter; when `True`, the entire retry loop is
+  bypassed and the function goes straight to the mtime-sorted cache
+  lookup. Prints `--from-cache: using {path} (no API call)`.
+- Threaded from `main()` → `run_zone()` → `fetch_overpass()`.
+
+### `--from-csv`
+- New CLI flag (mutually exclusive with `--from-cache`) that rebuilds
+  the pipeline's internal data structures from previously written CSVs
+  (`all_ways.csv`, `class_b_multi_segment.csv`), skipping both the
+  Overpass fetch and the classify phase entirely.
+- New function `classify_from_csvs(csv_dir)` reads the CSVs via
+  `csv.DictReader`, reconstructs way records and `class_b_streets`
+  grouping, recomputes `summary_stats`, and returns a dict matching
+  the exact shape of `classify()`.
+- Geometry is set to empty lists (CSVs don't carry coordinates);
+  dashboard maps will be blank but all tabular outputs are fully
+  functional. Gap detection is likewise empty since it requires
+  geometry.
+
+### `--self-test`
+- New CLI flag (can combine with `--from-cache` or `--from-csv`).
+- After all zone runs complete, reads
+  `tiger_audit_all_zones/all_zones_summary.csv` as a reference and
+  compares each zone's run-output counts against the CSV values.
+- Prints a comparison table and exits 0 on full match, 1 on any
+  mismatch.
+- Canonical invocation:
+  `python tiger_audit.py --zone all --from-cache --self-test`
+
 ## [2026-04-29] — Author suite
 
 ### Graduate-register rewrite of `author.html` and `README.md`; design handoff (PR #15)
