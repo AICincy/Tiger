@@ -149,7 +149,7 @@ def _prune_old_cache(data_dir: Path, zone_key: str, keep_newest: int = 3) -> Non
 SANITY_THRESHOLD = 100
 
 
-def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
+def fetch_overpass(zone_key: str, out_dir: Path, *, force_cache: bool = False) -> dict:
     zone = ZONES[zone_key]
     query = overpass_query(zone["bbox"])
     data_dir = out_dir / "data"
@@ -158,50 +158,54 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
     last_error: Exception | None = None
     payload: dict | None = None
 
-    attempts = [
-        (OVERPASS_PRIMARY, 0),
-        (OVERPASS_PRIMARY, 30),
-        (OVERPASS_MIRROR, 0),
-    ]
+    if force_cache:
+        # Skip the entire API fetch and go straight to cache lookup.
+        pass
+    else:
+        attempts = [
+            (OVERPASS_PRIMARY, 0),
+            (OVERPASS_PRIMARY, 30),
+            (OVERPASS_MIRROR, 0),
+        ]
 
-    for endpoint, presleep in attempts:
-        if presleep:
-            print(f"  Waiting {presleep}s before retry...")
-            time.sleep(presleep)
-        try:
-            print(f"  POST {endpoint}")
-            resp = _post_overpass(endpoint, query)
-            if resp.status_code == 429:
-                print("  HTTP 429 rate limit; sleeping 60s before next attempt")
-                time.sleep(60)
-                last_error = RuntimeError("429 rate limited")
-                continue
-            resp.raise_for_status()
+        for endpoint, presleep in attempts:
+            if presleep:
+                print(f"  Waiting {presleep}s before retry...")
+                time.sleep(presleep)
             try:
-                parsed = resp.json()
-            except ValueError as exc:
-                snippet = resp.text[:500]
-                raise RuntimeError(
-                    f"Overpass response was not JSON. First 500 chars:\n{snippet}"
-                ) from exc
-            # A successful HTTP 200 carrying JSON `null` should NOT be
-            # treated as "fetch succeeded" — that lets a buggy upstream
-            # silently slip past the retry loop and fall through to the
-            # cache fallback (or worse, a `last_error: None` failure).
-            # Treat it as a retryable error.
-            if parsed is None:
-                raise RuntimeError("Overpass returned JSON null")
-            payload = parsed
-            break
-        except (
-            requests.RequestException,
-            ValueError,
-            json.JSONDecodeError,
-            RuntimeError,
-        ) as exc:
-            last_error = exc
-            print(f"  Attempt failed: {exc}")
-            continue
+                print(f"  POST {endpoint}")
+                resp = _post_overpass(endpoint, query)
+                if resp.status_code == 429:
+                    print("  HTTP 429 rate limit; sleeping 60s before next attempt")
+                    time.sleep(60)
+                    last_error = RuntimeError("429 rate limited")
+                    continue
+                resp.raise_for_status()
+                try:
+                    parsed = resp.json()
+                except ValueError as exc:
+                    snippet = resp.text[:500]
+                    raise RuntimeError(
+                        f"Overpass response was not JSON. First 500 chars:\n{snippet}"
+                    ) from exc
+                # A successful HTTP 200 carrying JSON `null` should NOT be
+                # treated as "fetch succeeded" — that lets a buggy upstream
+                # silently slip past the retry loop and fall through to the
+                # cache fallback (or worse, a `last_error: None` failure).
+                # Treat it as a retryable error.
+                if parsed is None:
+                    raise RuntimeError("Overpass returned JSON null")
+                payload = parsed
+                break
+            except (
+                requests.RequestException,
+                ValueError,
+                json.JSONDecodeError,
+                RuntimeError,
+            ) as exc:
+                last_error = exc
+                print(f"  Attempt failed: {exc}")
+                continue
 
     fresh_fetch = payload is not None
     payload_source = "live Overpass response"
@@ -215,10 +219,13 @@ def fetch_overpass(zone_key: str, out_dir: Path) -> dict:
             latest = cached[-1]
             age_s = time.time() - latest.stat().st_mtime
             age_label = f"{age_s/3600:.1f}h" if age_s < 86400 else f"{age_s/86400:.1f}d"
-            print(
-                f"Using cached data from {latest.name} (age {age_label}). "
-                f"Live query failed."
-            )
+            if force_cache:
+                print(f"--from-cache: using {latest} (no API call)")
+            else:
+                print(
+                    f"Using cached data from {latest.name} (age {age_label}). "
+                    f"Live query failed."
+                )
             if age_s > 14 * 86400:
                 print(
                     f"  WARNING: cache is {age_label} old — re-run with network "
@@ -1832,20 +1839,158 @@ def _zone_name_to_filename(zone_name: str) -> str:
     return zone_name.replace(" / ", "-").replace(" ", "-").replace(".", "")
 
 
-def run_zone(zone_key: str) -> dict:
+def classify_from_csvs(csv_dir: Path) -> dict:
+    """Reconstruct the classify() return dict from previously written CSVs.
+
+    This lets downstream writers (XLSX, dashboard, CSVs) re-run without
+    network access or even the raw JSON cache.  Geometry is set to empty
+    lists because CSVs don't carry coordinate data — dashboard maps will
+    be blank but all tabular outputs are fully functional.
+    """
+    all_ways_path = csv_dir / "all_ways.csv"
+    class_b_path = csv_dir / "class_b_multi_segment.csv"
+    if not all_ways_path.exists():
+        raise FileNotFoundError(f"--from-csv: expected {all_ways_path}")
+
+    # --- Read all_ways.csv and rebuild way records ---
+    all_ways: list[dict] = []
+    with all_ways_path.open("r", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            way_id = row.get("id")
+            try:
+                way_id = int(way_id) if way_id else None
+            except (ValueError, TypeError):
+                way_id = None
+            name = row.get("name") or None
+            record = {
+                "id": way_id,
+                "name": name,
+                "name_display": name if name else "[Unnamed]",
+                "name_key": _norm_name(name),
+                "highway": row.get("highway") or None,
+                "oneway": row.get("oneway") or None,
+                "tiger_reviewed": row.get("tiger_reviewed") or None,
+                "tiger_name_base": row.get("tiger_name_base") or None,
+                "tiger_cfcc": row.get("tiger_cfcc") or None,
+                "surface": row.get("surface") or None,
+                "lanes": row.get("lanes") or None,
+                "maxspeed": row.get("maxspeed") or None,
+                "geometry": [],  # CSVs don't carry coordinates
+                "defect_class": row.get("defect_class", CLASS_C),
+                "severity": row.get("severity", LOW),
+            }
+            all_ways.append(record)
+
+    # --- Rebuild class_b_streets from class_b_multi_segment.csv ---
+    class_b_streets: dict[str, list[dict]] = {}
+    if class_b_path.exists():
+        # Build a lookup of all_ways by id for fast cross-referencing.
+        ways_by_id: dict[int | None, dict] = {w["id"]: w for w in all_ways if w["id"] is not None}
+        with class_b_path.open("r", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                wid = row.get("id")
+                try:
+                    wid = int(wid) if wid else None
+                except (ValueError, TypeError):
+                    wid = None
+                name = row.get("name") or None
+                display = name if name else "[Unnamed]"
+                # Use the record from all_ways if available (keeps a single
+                # canonical dict per way); otherwise build one from the CSV.
+                if wid is not None and wid in ways_by_id:
+                    way = ways_by_id[wid]
+                else:
+                    way = {
+                        "id": wid,
+                        "name": name,
+                        "name_display": display,
+                        "name_key": _norm_name(name),
+                        "highway": row.get("highway") or None,
+                        "oneway": row.get("oneway") or None,
+                        "tiger_reviewed": row.get("tiger_reviewed") or None,
+                        "tiger_name_base": row.get("tiger_name_base") or None,
+                        "tiger_cfcc": row.get("tiger_cfcc") or None,
+                        "surface": row.get("surface") or None,
+                        "lanes": row.get("lanes") or None,
+                        "maxspeed": row.get("maxspeed") or None,
+                        "geometry": [],
+                        "defect_class": row.get("defect_class", CLASS_B),
+                        "severity": row.get("severity", HIGH),
+                    }
+                if display not in class_b_streets:
+                    class_b_streets[display] = []
+                class_b_streets[display].append(way)
+
+    # --- Derived lists (match classify() outputs exactly) ---
+    class_a = [w for w in all_ways if w["defect_class"] in (CLASS_A, CLASS_AB)]
+    class_a_only = [w for w in all_ways if w["defect_class"] == CLASS_A]
+    class_ab = [w for w in all_ways if w["defect_class"] == CLASS_AB]
+
+    # Gaps cannot be reconstructed from CSVs (no geometry), so empty list.
+    gaps: list[dict] = []
+
+    # --- Recompute summary_stats ---
+    residential_count = sum(1 for w in all_ways if w["highway"] == "residential")
+    oneway_yes_total = sum(1 for w in all_ways if w["oneway"] == "yes")
+    by_highway: dict[str, int] = defaultdict(int)
+    for w in all_ways:
+        by_highway[w["highway"] or "(unset)"] += 1
+    by_class: dict[str, int] = defaultdict(int)
+    for w in all_ways:
+        by_class[w["defect_class"]] += 1
+
+    summary_stats = {
+        "total": len(all_ways),
+        "residential": residential_count,
+        "oneway_yes_total": oneway_yes_total,
+        "class_a_count": len(class_a),
+        "class_a_only_count": len(class_a_only),
+        "class_ab_count": len(class_ab),
+        "class_b_street_count": len(class_b_streets),
+        "class_b_way_count": sum(
+            1 for w in all_ways if w["defect_class"] in (CLASS_B, CLASS_AB)
+        ),
+        "gaps_found": len(gaps),
+        "ways_missing_geom": 0,
+        "under_sanity_threshold": False,
+        "by_highway": dict(by_highway),
+        "by_class": dict(by_class),
+    }
+
+    print(f"--from-csv: rebuilt {len(all_ways)} ways, {len(class_b_streets)} Class B streets from {csv_dir}")
+
+    return {
+        "all_ways": all_ways,
+        "class_a": class_a,
+        "class_a_only": class_a_only,
+        "class_ab": class_ab,
+        "class_b_streets": class_b_streets,
+        "gaps": gaps,
+        "summary_stats": summary_stats,
+    }
+
+
+def run_zone(zone_key: str, *, force_cache: bool = False, from_csv: bool = False) -> dict:
     zone = ZONES[zone_key]
     out_dir, reports_dir, csv_dir, data_dir = _zone_paths(zone_key)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"\n=== {zone['name']} ({zone_key}) ===")
-    print("Phase 1: Fetching from Overpass API...")
-    raw = fetch_overpass(zone_key, out_dir)
 
-    raw_files = sorted(data_dir.glob(f"{zone_key}_raw_*.json"))
-    raw_name = raw_files[-1].name if raw_files else "(none)"
+    if from_csv:
+        print("Phase 1-2: Rebuilding from CSV (skipping fetch + classify)...")
+        classified = classify_from_csvs(csv_dir)
+        raw_name = "(from-csv)"
+    else:
+        print("Phase 1: Fetching from Overpass API...")
+        raw = fetch_overpass(zone_key, out_dir, force_cache=force_cache)
 
-    print("Phase 2: Classifying defects...")
-    classified = classify(raw)
+        raw_files = sorted(data_dir.glob(f"{zone_key}_raw_*.json"))
+        raw_name = raw_files[-1].name if raw_files else "(none)"
+
+        print("Phase 2: Classifying defects...")
+        classified = classify(raw)
+
     s = classified["summary_stats"]
     print(
         f"  total={s['total']} class_a={s['class_a_count']} "
@@ -2082,6 +2227,72 @@ def write_combined_dashboard(results: list[dict], out_dir: Path) -> None:
     print(f"  Combined summary CSV: {csv_path}")
 
 
+def _run_self_test(results: list[dict]) -> int:
+    """Compare this run's per-zone counts against the reference summary CSV.
+
+    Returns 0 on full match, 1 on any mismatch or missing reference.
+    """
+    ref_path = SCRIPT_DIR / "tiger_audit_all_zones" / "all_zones_summary.csv"
+    if not ref_path.exists():
+        print(f"--self-test: reference CSV not found: {ref_path}")
+        return 1
+
+    # Load reference rows keyed by zone_key (skip aggregate rows).
+    ref: dict[str, dict[str, str]] = {}
+    with ref_path.open("r", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            zk = row.get("zone_key", "")
+            if zk.startswith("_"):
+                continue  # skip _sum / _unique aggregate rows
+            ref[zk] = row
+
+    check_cols = [
+        "total", "residential", "class_a_count", "class_b_street_count",
+        "class_b_way_count", "class_ab_count", "gaps_found",
+    ]
+
+    ok = True
+    header = f"  {'zone':<30s}" + "".join(f"  {c:<22s}" for c in check_cols)
+    print()
+    print("--self-test: comparing run output vs reference CSV")
+    print(header)
+    print("  " + "-" * (len(header) - 2))
+    for r in results:
+        zk = r["zone_key"]
+        s = r["classified"]["summary_stats"]
+        ref_row = ref.get(zk)
+        if ref_row is None:
+            print(f"  {zk:<30s}  (no reference row)")
+            ok = False
+            continue
+        row_ok = True
+        cells: list[str] = []
+        for col in check_cols:
+            run_val = s.get(col, 0)
+            try:
+                ref_val = int(ref_row.get(col, ""))
+            except (ValueError, TypeError):
+                ref_val = None
+            if ref_val is None:
+                cells.append(f"{run_val}/?".ljust(22))
+                row_ok = False
+            elif run_val == ref_val:
+                cells.append(f"{run_val}".ljust(22))
+            else:
+                cells.append(f"{run_val} (ref {ref_val})".ljust(22))
+                row_ok = False
+        status = "OK" if row_ok else "MISMATCH"
+        print(f"  {zk:<30s}" + "  ".join(cells) + f"  {status}")
+        if not row_ok:
+            ok = False
+
+    if ok:
+        print("\n--self-test: PASS (all zones match reference)")
+    else:
+        print("\n--self-test: FAIL (mismatches detected)")
+    return 0 if ok else 1
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(description="TIGER/Line audit for SORTA MetroNow zones")
     parser.add_argument(
@@ -2089,13 +2300,43 @@ def main(argv: list[str]) -> int:
         choices=list(ZONES.keys()) + ["all"],
         default="blue_ash_montgomery",
     )
+
+    # --from-cache and --from-csv are mutually exclusive data sources.
+    source_group = parser.add_mutually_exclusive_group()
+    source_group.add_argument(
+        "--from-cache",
+        action="store_true",
+        default=False,
+        help="Skip the Overpass API and use the newest cached JSON in data/.",
+    )
+    source_group.add_argument(
+        "--from-csv",
+        action="store_true",
+        default=False,
+        help="Rebuild from previously written CSVs (skip fetch + classify).",
+    )
+
+    parser.add_argument(
+        "--self-test",
+        action="store_true",
+        default=False,
+        help="After all zones complete, compare counts against all_zones_summary.csv.",
+    )
+
     args = parser.parse_args(argv)
 
     if args.zone == "all":
-        results = [run_zone(k) for k in ZONES]
+        results = [
+            run_zone(k, force_cache=args.from_cache, from_csv=args.from_csv)
+            for k in ZONES
+        ]
         write_combined_dashboard(results, SCRIPT_DIR / "tiger_audit_all_zones")
     else:
-        run_zone(args.zone)
+        results = [run_zone(args.zone, force_cache=args.from_cache, from_csv=args.from_csv)]
+
+    if args.self_test:
+        return _run_self_test(results)
+
     return 0
 
 
